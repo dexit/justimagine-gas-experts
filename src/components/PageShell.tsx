@@ -1,7 +1,5 @@
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
-import { WhatsAppFab } from "./WhatsAppFab";
-import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
@@ -9,18 +7,16 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />
-      <WhatsAppFab />
     </div>
   );
 }
 
-export function PageHero({ eyebrow, title, subtitle, crumbs }: { eyebrow: string; title: string; subtitle?: string; crumbs?: Crumb[] }) {
+export function PageHero({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
   return (
     <section className="bg-gradient-hero text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8 py-16 md:py-24">
-        {crumbs && <div className="mb-6"><Breadcrumbs items={crumbs} /></div>}
+      <div className="mx-auto max-w-7xl px-5 lg:px-8 py-20 md:py-28">
         <p className="text-xs uppercase tracking-[0.25em] text-accent font-medium mb-4">{eyebrow}</p>
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold max-w-4xl leading-[1.05]">{title}</h1>
+        <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold max-w-4xl leading-[1.05]">{title}</h1>
         {subtitle && <p className="mt-6 text-lg text-primary-foreground/75 max-w-2xl leading-relaxed">{subtitle}</p>}
       </div>
     </section>

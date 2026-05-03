@@ -3,27 +3,26 @@ import { ShieldCheck, Award, Users, Heart } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Just Imagine Ltd — Gas Safe Heating Engineers" },
-      {
-        name: "description",
-        content:
-          "Family-run, Gas Safe registered heating and plumbing specialists serving local homeowners, landlords and businesses.",
-      },
-    ],
-  }),
+  head: () => {
+    const url = "https://justimagine.ltd/about";
+    const title = "About Just Imagine Ltd — Local Gas Safe Heating Engineers in Rugby";
+    const desc = "Family-run, Gas Safe registered heating, boiler & plumbing specialists serving homeowners, landlords and letting agents across Rugby, Warwickshire & Coventry.";
+    return {
+      meta: [
+        { title }, { name: "description", content: desc },
+        { property: "og:title", content: title }, { property: "og:description", content: desc },
+        { property: "og:url", content: url },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: AboutPage,
 });
 
 function AboutPage() {
   return (
     <PageShell>
-      <PageHero
-        eyebrow="About"
-        title="A small team. A serious craft."
-        subtitle="Just Imagine Ltd was built on one simple idea — do every job like it's in your own home."
-      />
+      <PageHero eyebrow="About" title="A small team. A serious craft." subtitle="Just Imagine Ltd was built on one simple idea — do every job like it's in your own home." crumbs={[{ name: "About" }]} />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20 grid lg:grid-cols-5 gap-12">
         <div className="lg:col-span-3 space-y-5 text-muted-foreground leading-relaxed">
           <p className="text-lg text-foreground">

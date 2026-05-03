@@ -9,13 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WorkRouteImport } from './routes/work'
-import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SafetyRouteImport } from './routes/safety'
-import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,14 +22,9 @@ import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serv
 import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
 import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
 
-const WorkRoute = WorkRouteImport.update({
-  id: '/work',
-  path: '/work',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -44,19 +37,14 @@ const SafetyRoute = SafetyRouteImport.update({
   path: '/safety',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReviewsRoute = ReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -100,13 +88,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/pricing': typeof PricingRoute
-  '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
-  '/terms': typeof TermsRoute
-  '/work': typeof WorkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas/': typeof AreasIndexRoute
@@ -116,13 +102,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/pricing': typeof PricingRoute
-  '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
-  '/terms': typeof TermsRoute
-  '/work': typeof WorkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas': typeof AreasIndexRoute
@@ -133,13 +117,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/pricing': typeof PricingRoute
-  '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
-  '/terms': typeof TermsRoute
-  '/work': typeof WorkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas/': typeof AreasIndexRoute
@@ -151,13 +133,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/pricing'
-    | '/privacy'
-    | '/reviews'
+    | '/llms.txt'
+    | '/robots.txt'
     | '/safety'
     | '/services'
-    | '/terms'
-    | '/work'
+    | '/sitemap.xml'
     | '/areas/$areaSlug'
     | '/services/$serviceSlug'
     | '/areas/'
@@ -167,13 +147,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/pricing'
-    | '/privacy'
-    | '/reviews'
+    | '/llms.txt'
+    | '/robots.txt'
     | '/safety'
     | '/services'
-    | '/terms'
-    | '/work'
+    | '/sitemap.xml'
     | '/areas/$areaSlug'
     | '/services/$serviceSlug'
     | '/areas'
@@ -183,13 +161,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/pricing'
-    | '/privacy'
-    | '/reviews'
+    | '/llms.txt'
+    | '/robots.txt'
     | '/safety'
     | '/services'
-    | '/terms'
-    | '/work'
+    | '/sitemap.xml'
     | '/areas/$areaSlug'
     | '/services/$serviceSlug'
     | '/areas/'
@@ -200,31 +176,22 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  PricingRoute: typeof PricingRoute
-  PrivacyRoute: typeof PrivacyRoute
-  ReviewsRoute: typeof ReviewsRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SafetyRoute: typeof SafetyRoute
   ServicesRoute: typeof ServicesRouteWithChildren
-  TermsRoute: typeof TermsRoute
-  WorkRoute: typeof WorkRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AreasAreaSlugRoute: typeof AreasAreaSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/work': {
-      id: '/work'
-      path: '/work'
-      fullPath: '/work'
-      preLoaderRoute: typeof WorkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -241,25 +208,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SafetyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reviews': {
-      id: '/reviews'
-      path: '/reviews'
-      fullPath: '/reviews'
-      preLoaderRoute: typeof ReviewsRouteImport
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -341,13 +301,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  PricingRoute: PricingRoute,
-  PrivacyRoute: PrivacyRoute,
-  ReviewsRoute: ReviewsRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SafetyRoute: SafetyRoute,
   ServicesRoute: ServicesRouteWithChildren,
-  TermsRoute: TermsRoute,
-  WorkRoute: WorkRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   AreasAreaSlugRoute: AreasAreaSlugRoute,
   AreasIndexRoute: AreasIndexRoute,
 }

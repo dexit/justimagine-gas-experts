@@ -2,18 +2,14 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { WhatsAppFab } from "./WhatsAppFab";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
-import { BackToTop } from "./BackToTop";
-import { ScrollToTop } from "./ScrollToTop";
 
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
-      <ScrollToTop />
       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />
       <WhatsAppFab />
-      <BackToTop />
     </div>
   );
 }

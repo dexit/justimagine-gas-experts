@@ -4,26 +4,27 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
 
 export const Route = createFileRoute("/contact")({
-  head: () => {
-    const url = "https://justimagine.ltd/contact";
-    const title = "Contact Just Imagine Ltd — Book a Gas Safe Engineer in Warwickshire";
-    const desc = "Call 07774 079152, WhatsApp or email a Gas Safe registered heating engineer covering Rugby, Leamington, Warwick & Coventry. 24/7 emergency cover.";
-    return {
-      meta: [
-        { title }, { name: "description", content: desc },
-        { property: "og:title", content: title }, { property: "og:description", content: desc },
-        { property: "og:url", content: url },
-      ],
-      links: [{ rel: "canonical", href: url }],
-    };
-  },
+  head: () => ({
+    meta: [
+      { title: "Contact Just Imagine Ltd — Book a Heating Engineer" },
+      {
+        name: "description",
+        content:
+          "Call 07774 079152 or email justimagineheating@gmail.com to book a Gas Safe engineer. 24/7 emergency callouts.",
+      },
+    ],
+  }),
   component: ContactPage,
 });
 
 function ContactPage() {
   return (
     <PageShell>
-      <PageHero eyebrow="Get in touch" title="Talk to a real engineer." subtitle="Phone is fastest. We answer most calls personally — even out of hours." crumbs={[{ name: "Contact" }]} />
+      <PageHero
+        eyebrow="Get in touch"
+        title="Talk to a real engineer."
+        subtitle="Phone is fastest. We answer most calls personally — even out of hours."
+      />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20 grid lg:grid-cols-2 gap-10">
         <div className="space-y-4">
           {[

@@ -38,19 +38,33 @@ export const SERVICES: Service[] = [
     metaDesc: (a) =>
       `Fixed-price new boiler installation${local(a)}. Worcester, Vaillant & Ideal combi, system & regular boilers. Gas Safe registered, up to 12-year warranty. Free quote.`,
     intro: (a) =>
-      `Fast, fixed-price boiler installation${local(a)} from Gas Safe registered engineers. Combi, system and regular boilers from Worcester Bosch, Vaillant and Ideal — installed properly, certified, and backed by manufacturer warranties up to 12 years.`,
+      `Fast, fixed-price boiler installation${local(a)} from Gas Safe registered engineers. We specialise in high-efficiency A-rated boilers from Worcester Bosch, Vaillant, and Ideal. Whether you need a straight combi swap or a full system conversion, we provide expert installation, system balancing, and full certification.`,
     bullets: [
       "Free no-obligation quote — usually within 24 hours",
       "Worcester Accredited & Vaillant Advance installer-grade workmanship",
       "Up to 12-year manufacturer warranty",
       "Smart thermostat (Hive / Nest) included on most installs",
-      "Old boiler removed, system flushed, magnetic filter fitted",
-      "Gas Safe certificate & Building Regulations notification included",
+      "Chemical system flush & magnetic filter installation as standard",
+      "Old boiler removal and eco-friendly disposal included",
+      "Gas Safe certificate & Building Regulations notification provided",
     ],
     faqs: [
-      { q: "How much does a new boiler cost?", a: "A typical combi swap starts at £1,895 fully fitted. System and regular boilers, complex flues or relocations vary — we give a fixed written quote before any work begins." },
-      { q: "How long does a boiler installation take?", a: "A straight combi swap is usually 1 day. Conversions or relocations take 2–3 days. We dust-sheet, vacuum and leave your home tidy." },
-      { q: "Do you offer 0% finance on new boilers?", a: "Yes — we work with manufacturer-backed finance partners on Worcester and Vaillant boilers. Ask for terms when we quote." },
+      {
+        q: "How much does a new boiler cost?",
+        a: "A typical combi swap starts at £1,895 fully fitted. Prices vary based on the boiler model, flue requirements, and whether you're converting from a regular to a combi system.",
+      },
+      {
+        q: "How long does a boiler installation take?",
+        a: "Most straight swaps are completed in a single day. Complex conversions or relocations can take 2–3 days. We ensure minimal disruption to your home.",
+      },
+      {
+        q: "Which boiler brand is best?",
+        a: "We recommend Worcester Bosch for reliability, Vaillant for build quality, and Ideal for value. We'll help you choose the best fit for your home and budget.",
+      },
+      {
+        q: "Do you offer boiler finance?",
+        a: "Yes, we work with partners to offer flexible finance options, including 0% interest on selected models. Ask for details during your survey.",
+      },
     ],
   },
   {
@@ -71,8 +85,14 @@ export const SERVICES: Service[] = [
       "Workmanship & parts guaranteed in writing",
     ],
     faqs: [
-      { q: "How much is a boiler repair callout?", a: "Diagnostic visits start from £85 inc. VAT. If we recommend a repair you approve the fixed price before any parts are fitted." },
-      { q: "Do you repair boilers out of hours?", a: "Yes — we run 24/7 emergency cover for no heat, no hot water and gas concerns." },
+      {
+        q: "How much is a boiler repair callout?",
+        a: "Diagnostic visits start from £85 inc. VAT. If we recommend a repair you approve the fixed price before any parts are fitted.",
+      },
+      {
+        q: "Do you repair boilers out of hours?",
+        a: "Yes — we run 24/7 emergency cover for no heat, no hot water and gas concerns.",
+      },
     ],
   },
   {
@@ -94,8 +114,14 @@ export const SERVICES: Service[] = [
       "Reminder sent every 12 months — automatically",
     ],
     faqs: [
-      { q: "How often should a boiler be serviced?", a: "Every 12 months. Most manufacturer warranties become void if you skip a year." },
-      { q: "What's included in the service?", a: "Full appliance strip-down where required, gas inlet pressure test, combustion analysis, flue gas reading, casing seal check, condensate trap clean, system pressure, written report." },
+      {
+        q: "How often should a boiler be serviced?",
+        a: "Every 12 months. Most manufacturer warranties become void if you skip a year.",
+      },
+      {
+        q: "What's included in the service?",
+        a: "Full appliance strip-down where required, gas inlet pressure test, combustion analysis, flue gas reading, casing seal check, condensate trap clean, system pressure, written report.",
+      },
     ],
   },
   {
@@ -117,8 +143,14 @@ export const SERVICES: Service[] = [
       "Reminder service to keep you legally compliant",
     ],
     faqs: [
-      { q: "How much is a landlord gas safety certificate?", a: "From £60 for a single appliance property. £75 with boiler, hob & fire. Discounts for portfolios — ask about our agent rates." },
-      { q: "How long does a CP12 last?", a: "12 months from the date of inspection. We send free reminders 30 days before expiry." },
+      {
+        q: "How much is a landlord gas safety certificate?",
+        a: "From £60 for a single appliance property. £75 with boiler, hob & fire. Discounts for portfolios — ask about our agent rates.",
+      },
+      {
+        q: "How long does a CP12 last?",
+        a: "12 months from the date of inspection. We send free reminders 30 days before expiry.",
+      },
     ],
   },
   {
@@ -140,8 +172,14 @@ export const SERVICES: Service[] = [
       "Free reminder & re-booking service",
     ],
     faqs: [
-      { q: "What does the landlord package include?", a: "Annual CP12 gas safety inspection, full boiler service, priority emergency callout, digital certificate storage and free renewal reminders." },
-      { q: "Do you work directly with letting agents?", a: "Yes — we work with several Warwickshire agencies. We coordinate access with tenants and invoice the agent directly." },
+      {
+        q: "What does the landlord package include?",
+        a: "Annual CP12 gas safety inspection, full boiler service, priority emergency callout, digital certificate storage and free renewal reminders.",
+      },
+      {
+        q: "Do you work directly with letting agents?",
+        a: "Yes — we work with several Warwickshire agencies. We coordinate access with tenants and invoice the agent directly.",
+      },
     ],
   },
   {
@@ -230,19 +268,158 @@ export interface Area {
   postcodes: string[];
 }
 
+export const PRICING = [
+  {
+    name: "Boiler Service",
+    price: "£75",
+    unit: "per year",
+    popular: true,
+    features: [
+      "Full strip-down",
+      "Combustion analysis",
+      "Magnetic filter clean",
+      "Safety certificate",
+    ],
+  },
+  {
+    name: "Landlord CP12",
+    price: "£60",
+    unit: "per certificate",
+    features: [
+      "Up to 2 appliances",
+      "Digital copy same-day",
+      "Reminder service",
+      "Agency discounts",
+    ],
+  },
+  {
+    name: "Combi Swap",
+    price: "£1,895",
+    unit: "starting from",
+    features: ["A-rated boiler", "10yr+ warranty", "Filter & Flush", "Smart controls"],
+  },
+  {
+    name: "Power Flush",
+    price: "£395",
+    unit: "per system",
+    features: ["Restores efficiency", "Deep chemical clean", "Removes sludge", "System report"],
+  },
+];
+
+export const REVIEWS = [
+  {
+    name: "James T.",
+    area: "Rugby",
+    rating: 5,
+    text: "Just Imagine installed a new Worcester boiler for us. Fast, tidy, and a great price. Highly recommended.",
+    date: "2024-01-15",
+  },
+  {
+    name: "Sarah L.",
+    area: "Leamington Spa",
+    rating: 5,
+    text: "Emergency callout late on a Sunday. They arrived within 40 minutes and fixed the leak immediately. Lifesavers!",
+    date: "2024-02-02",
+  },
+  {
+    name: "David M.",
+    area: "Warwick",
+    rating: 5,
+    text: "Always use them for our annual service and CP12s. Professional and reliable every time.",
+    date: "2023-11-20",
+  },
+];
+
 export const AREAS: Area[] = [
-  { slug: "rugby", name: "Rugby", county: "Warwickshire", postcodes: ["CV21", "CV22", "CV23"], blurb: "Our home town. We cover every street from Bilton to Hillmorton, Cawston to Brownsover — usually same-day for emergencies." },
-  { slug: "leamington-spa", name: "Leamington Spa", county: "Warwickshire", postcodes: ["CV31", "CV32", "CV33"], blurb: "Regency homes, Victorian terraces and new-build estates — we install and service boilers across all of Royal Leamington Spa." },
-  { slug: "warwick", name: "Warwick", county: "Warwickshire", postcodes: ["CV34", "CV35"], blurb: "Gas Safe heating engineers covering Warwick town, Woodloes Park, Chase Meadow and Hatton." },
-  { slug: "kenilworth", name: "Kenilworth", county: "Warwickshire", postcodes: ["CV8"], blurb: "Trusted local engineers serving Kenilworth, Burton Green and the surrounding villages." },
-  { slug: "stratford-upon-avon", name: "Stratford-upon-Avon", county: "Warwickshire", postcodes: ["CV37"], blurb: "Boilers, plumbing and landlord certificates across Stratford-upon-Avon and the surrounding villages." },
-  { slug: "coventry", name: "Coventry", county: "West Midlands", postcodes: ["CV1", "CV2", "CV3", "CV4", "CV5", "CV6"], blurb: "Same-day boiler repair and installation across Coventry — Earlsdon, Cheylesmore, Stoke and Tile Hill." },
-  { slug: "nuneaton", name: "Nuneaton", county: "Warwickshire", postcodes: ["CV10", "CV11"], blurb: "Heating and gas engineers serving Nuneaton, Whitestone and Weddington." },
-  { slug: "bedworth", name: "Bedworth", county: "Warwickshire", postcodes: ["CV12"], blurb: "Local boiler installs, services and emergency callouts across Bedworth and Bulkington." },
-  { slug: "southam", name: "Southam", county: "Warwickshire", postcodes: ["CV47"], blurb: "Gas Safe engineers covering Southam, Long Itchington and Napton-on-the-Hill." },
-  { slug: "atherstone", name: "Atherstone", county: "Warwickshire", postcodes: ["CV9"], blurb: "Heating, plumbing and CP12 certificates across Atherstone, Mancetter and Hartshill." },
-  { slug: "alcester", name: "Alcester", county: "Warwickshire", postcodes: ["B49"], blurb: "Trusted boiler engineers serving Alcester and the Arden villages." },
-  { slug: "shipston-on-stour", name: "Shipston-on-Stour", county: "Warwickshire", postcodes: ["CV36"], blurb: "Gas Safe heating cover across Shipston-on-Stour and the south Warwickshire villages." },
+  {
+    slug: "rugby",
+    name: "Rugby",
+    county: "Warwickshire",
+    postcodes: ["CV21", "CV22", "CV23"],
+    blurb:
+      "Our home town. We cover every street from Bilton to Hillmorton, Cawston to Brownsover — usually same-day for emergencies.",
+  },
+  {
+    slug: "leamington-spa",
+    name: "Leamington Spa",
+    county: "Warwickshire",
+    postcodes: ["CV31", "CV32", "CV33"],
+    blurb:
+      "Regency homes, Victorian terraces and new-build estates — we install and service boilers across all of Royal Leamington Spa.",
+  },
+  {
+    slug: "warwick",
+    name: "Warwick",
+    county: "Warwickshire",
+    postcodes: ["CV34", "CV35"],
+    blurb:
+      "Gas Safe heating engineers covering Warwick town, Woodloes Park, Chase Meadow and Hatton.",
+  },
+  {
+    slug: "kenilworth",
+    name: "Kenilworth",
+    county: "Warwickshire",
+    postcodes: ["CV8"],
+    blurb: "Trusted local engineers serving Kenilworth, Burton Green and the surrounding villages.",
+  },
+  {
+    slug: "stratford-upon-avon",
+    name: "Stratford-upon-Avon",
+    county: "Warwickshire",
+    postcodes: ["CV37"],
+    blurb:
+      "Boilers, plumbing and landlord certificates across Stratford-upon-Avon and the surrounding villages.",
+  },
+  {
+    slug: "coventry",
+    name: "Coventry",
+    county: "West Midlands",
+    postcodes: ["CV1", "CV2", "CV3", "CV4", "CV5", "CV6"],
+    blurb:
+      "Same-day boiler repair and installation across Coventry — Earlsdon, Cheylesmore, Stoke and Tile Hill.",
+  },
+  {
+    slug: "nuneaton",
+    name: "Nuneaton",
+    county: "Warwickshire",
+    postcodes: ["CV10", "CV11"],
+    blurb: "Heating and gas engineers serving Nuneaton, Whitestone and Weddington.",
+  },
+  {
+    slug: "bedworth",
+    name: "Bedworth",
+    county: "Warwickshire",
+    postcodes: ["CV12"],
+    blurb: "Local boiler installs, services and emergency callouts across Bedworth and Bulkington.",
+  },
+  {
+    slug: "southam",
+    name: "Southam",
+    county: "Warwickshire",
+    postcodes: ["CV47"],
+    blurb: "Gas Safe engineers covering Southam, Long Itchington and Napton-on-the-Hill.",
+  },
+  {
+    slug: "atherstone",
+    name: "Atherstone",
+    county: "Warwickshire",
+    postcodes: ["CV9"],
+    blurb: "Heating, plumbing and CP12 certificates across Atherstone, Mancetter and Hartshill.",
+  },
+  {
+    slug: "alcester",
+    name: "Alcester",
+    county: "Warwickshire",
+    postcodes: ["B49"],
+    blurb: "Trusted boiler engineers serving Alcester and the Arden villages.",
+  },
+  {
+    slug: "shipston-on-stour",
+    name: "Shipston-on-Stour",
+    county: "Warwickshire",
+    postcodes: ["CV36"],
+    blurb: "Gas Safe heating cover across Shipston-on-Stour and the south Warwickshire villages.",
+  },
 ];
 
 export const BUSINESS = {

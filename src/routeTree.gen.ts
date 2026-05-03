@@ -9,12 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkRouteImport } from './routes/work'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SafetyRouteImport } from './routes/safety'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AreasIndexRouteImport } from './routes/areas.index'
+import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
+import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
+import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
 
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -23,6 +42,21 @@ const ServicesRoute = ServicesRouteImport.update({
 const SafetyRoute = SafetyRouteImport.update({
   id: '/safety',
   path: '/safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -40,47 +74,159 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AreasIndexRoute = AreasIndexRouteImport.update({
+  id: '/areas/',
+  path: '/areas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesServiceSlugRoute = ServicesServiceSlugRouteImport.update({
+  id: '/$serviceSlug',
+  path: '/$serviceSlug',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const AreasAreaSlugRoute = AreasAreaSlugRouteImport.update({
+  id: '/areas/$areaSlug',
+  path: '/areas/$areaSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesServiceSlugAreaSlugRoute =
+  ServicesServiceSlugAreaSlugRouteImport.update({
+    id: '/$areaSlug',
+    path: '/$areaSlug',
+    getParentRoute: () => ServicesServiceSlugRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/safety': typeof SafetyRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/terms': typeof TermsRoute
+  '/work': typeof WorkRoute
+  '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/areas/': typeof AreasIndexRoute
+  '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/safety': typeof SafetyRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/terms': typeof TermsRoute
+  '/work': typeof WorkRoute
+  '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/areas': typeof AreasIndexRoute
+  '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/safety': typeof SafetyRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/terms': typeof TermsRoute
+  '/work': typeof WorkRoute
+  '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/areas/': typeof AreasIndexRoute
+  '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/safety' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/reviews'
+    | '/safety'
+    | '/services'
+    | '/terms'
+    | '/work'
+    | '/areas/$areaSlug'
+    | '/services/$serviceSlug'
+    | '/areas/'
+    | '/services/$serviceSlug/$areaSlug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/safety' | '/services'
-  id: '__root__' | '/' | '/about' | '/contact' | '/safety' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/reviews'
+    | '/safety'
+    | '/services'
+    | '/terms'
+    | '/work'
+    | '/areas/$areaSlug'
+    | '/services/$serviceSlug'
+    | '/areas'
+    | '/services/$serviceSlug/$areaSlug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/reviews'
+    | '/safety'
+    | '/services'
+    | '/terms'
+    | '/work'
+    | '/areas/$areaSlug'
+    | '/services/$serviceSlug'
+    | '/areas/'
+    | '/services/$serviceSlug/$areaSlug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ReviewsRoute: typeof ReviewsRoute
   SafetyRoute: typeof SafetyRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
+  TermsRoute: typeof TermsRoute
+  WorkRoute: typeof WorkRoute
+  AreasAreaSlugRoute: typeof AreasAreaSlugRoute
+  AreasIndexRoute: typeof AreasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -93,6 +239,27 @@ declare module '@tanstack/react-router' {
       path: '/safety'
       fullPath: '/safety'
       preLoaderRoute: typeof SafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -116,15 +283,73 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/areas/': {
+      id: '/areas/'
+      path: '/areas'
+      fullPath: '/areas/'
+      preLoaderRoute: typeof AreasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$serviceSlug': {
+      id: '/services/$serviceSlug'
+      path: '/$serviceSlug'
+      fullPath: '/services/$serviceSlug'
+      preLoaderRoute: typeof ServicesServiceSlugRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/areas/$areaSlug': {
+      id: '/areas/$areaSlug'
+      path: '/areas/$areaSlug'
+      fullPath: '/areas/$areaSlug'
+      preLoaderRoute: typeof AreasAreaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/$serviceSlug/$areaSlug': {
+      id: '/services/$serviceSlug/$areaSlug'
+      path: '/$areaSlug'
+      fullPath: '/services/$serviceSlug/$areaSlug'
+      preLoaderRoute: typeof ServicesServiceSlugAreaSlugRouteImport
+      parentRoute: typeof ServicesServiceSlugRoute
+    }
   }
 }
+
+interface ServicesServiceSlugRouteChildren {
+  ServicesServiceSlugAreaSlugRoute: typeof ServicesServiceSlugAreaSlugRoute
+}
+
+const ServicesServiceSlugRouteChildren: ServicesServiceSlugRouteChildren = {
+  ServicesServiceSlugAreaSlugRoute: ServicesServiceSlugAreaSlugRoute,
+}
+
+const ServicesServiceSlugRouteWithChildren =
+  ServicesServiceSlugRoute._addFileChildren(ServicesServiceSlugRouteChildren)
+
+interface ServicesRouteChildren {
+  ServicesServiceSlugRoute: typeof ServicesServiceSlugRouteWithChildren
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesServiceSlugRoute: ServicesServiceSlugRouteWithChildren,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  ReviewsRoute: ReviewsRoute,
   SafetyRoute: SafetyRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
+  TermsRoute: TermsRoute,
+  WorkRoute: WorkRoute,
+  AreasAreaSlugRoute: AreasAreaSlugRoute,
+  AreasIndexRoute: AreasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

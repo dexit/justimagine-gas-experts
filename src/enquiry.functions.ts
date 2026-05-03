@@ -25,8 +25,10 @@ export const submitEnquiry = createServerFn({ method: "POST" })
     };
 
     if (targets.length === 0) {
-      // Fallback: log so the operator at least sees it in server logs.
-      console.warn("[enquiry] No ENQUIRY_WEBHOOK_URL/SMTP_WEBHOOK_URL configured. Payload:", payload);
+      console.warn(
+        "[enquiry] No ENQUIRY_WEBHOOK_URL/SMTP_WEBHOOK_URL configured. Payload:",
+        payload,
+      );
       return { ok: true as const, delivered: false };
     }
 

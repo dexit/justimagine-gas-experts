@@ -87,7 +87,12 @@
   --brand-navy-deep: oklch(0.2 0.06 250);
   --brand-amber: oklch(0.82 0.17 78);
   --brand-amber-deep: oklch(0.72 0.18 60);
-  --gradient-hero: linear-gradient(135deg, oklch(0.28 0.07 248) 0%, oklch(0.2 0.06 250) 60%, oklch(0.32 0.09 245) 100%);
+  --gradient-hero: linear-gradient(
+    135deg,
+    oklch(0.28 0.07 248) 0%,
+    oklch(0.2 0.06 250) 60%,
+    oklch(0.32 0.09 245) 100%
+  );
   --gradient-amber: linear-gradient(135deg, oklch(0.82 0.17 78), oklch(0.72 0.18 60));
   --shadow-elegant: 0 20px 50px -20px oklch(0.28 0.07 248 / 0.35);
   --shadow-amber: 0 12px 30px -10px oklch(0.78 0.16 75 / 0.5);
@@ -154,26 +159,40 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, .font-display {
-    font-family: 'Fraunces', Georgia, serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
     letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
-  .bg-gradient-hero { background: var(--gradient-hero); }
-  .bg-gradient-amber { background: var(--gradient-amber); }
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  .bg-gradient-amber {
+    background: var(--gradient-amber);
+  }
   .text-gradient-amber {
     background: var(--gradient-amber);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  .shadow-elegant { box-shadow: var(--shadow-elegant); }
-  .shadow-amber { box-shadow: var(--shadow-amber); }
-  .transition-smooth { transition: var(--transition-smooth); }
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  .shadow-amber {
+    box-shadow: var(--shadow-amber);
+  }
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
 }

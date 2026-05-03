@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 const nav = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
-  { to: "/safety", label: "Gas Safety" },
-  { to: "/about", label: "About" },
+  { to: "/pricing", label: "Pricing" },
+  { to: "/work", label: "Our Work" },
+  { to: "/reviews", label: "Reviews" },
+  { to: "/areas", label: "Areas" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -22,7 +24,9 @@ export function SiteHeader() {
           </div>
           <div className="leading-tight">
             <div className="font-display text-lg font-semibold tracking-tight">Just Imagine</div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Heating · Gas · Plumbing</div>
+            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+              Heating · Gas · Plumbing
+            </div>
           </div>
         </Link>
 
@@ -41,8 +45,16 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild variant="default" size="sm" className="hidden sm:inline-flex bg-gradient-amber text-accent-foreground hover:opacity-90 shadow-amber font-semibold">
-            <a href="tel:07774079152"><Phone className="h-4 w-4 mr-2" />07774 079152</a>
+          <Button
+            asChild
+            variant="default"
+            size="sm"
+            className="hidden sm:inline-flex bg-gradient-amber text-accent-foreground hover:opacity-90 shadow-amber font-semibold"
+          >
+            <a href="tel:07774079152">
+              <Phone className="h-4 w-4 mr-2" />
+              07774 079152
+            </a>
           </Button>
           <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -53,7 +65,12 @@ export function SiteHeader() {
         <div className="lg:hidden border-t border-border bg-background">
           <div className="px-5 py-3 flex flex-col">
             {nav.map((n) => (
-              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2.5 text-sm font-medium">
+              <Link
+                key={n.to}
+                to={n.to}
+                onClick={() => setOpen(false)}
+                className="py-2.5 text-sm font-medium"
+              >
                 {n.label}
               </Link>
             ))}

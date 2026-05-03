@@ -1,4 +1,4 @@
-import { BUSINESS } from "@/data/seo";
+import { BUSINESS, AREAS, SERVICES } from "@/data/seo";
 
 export const localBusinessJsonLd = () => ({
   "@context": "https://schema.org",
@@ -21,17 +21,38 @@ export const localBusinessJsonLd = () => ({
     addressCountry: BUSINESS.country,
   },
   geo: { "@type": "GeoCoordinates", latitude: BUSINESS.geo.lat, longitude: BUSINESS.geo.lng },
-  areaServed: ["Rugby", "Leamington Spa", "Warwick", "Kenilworth", "Stratford-upon-Avon", "Coventry", "Nuneaton", "Bedworth", "Warwickshire"].map((n) => ({ "@type": "City", name: n })),
+  areaServed: AREAS.map((a) => ({
+    "@type": "City",
+    name: a.name,
+    containsPlace: a.postcodes.map((p) => ({ "@type": "PostalCode", name: p })),
+  })),
   openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], opens: "07:00", closes: "20:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "00:00", closes: "23:59", description: "Emergency callouts only" },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "07:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "00:00",
+      closes: "23:59",
+      description: "Emergency callouts only",
+    },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Heating, Gas & Plumbing Services",
-    itemListElement: [
-      "Boiler Installation","Boiler Repair","Boiler Servicing","Gas Safety Certificate","Landlord Packages","Central Heating","Plumbing","Power Flushing","24/7 Emergency Callouts",
-    ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s } })),
+    itemListElement: SERVICES.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.name,
+        description: s.short,
+        areaServed: AREAS.map((a) => ({ "@type": "City", name: a.name })),
+      },
+    })),
   },
   aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "127" },
 });
@@ -39,22 +60,52 @@ export const localBusinessJsonLd = () => ({
 export const breadcrumbJsonLd = (items: { name: string; url: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: items.map((it, i) => ({ "@type": "ListItem", position: i + 1, name: it.name, item: it.url })),
+  itemListElement: items.map((it, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: it.name,
+    item: it.url,
+  })),
 });
 
-export const serviceJsonLd = (name: string, description: string, area?: string) => ({
+export const serviceJsonLd = (
+  name: string,
+  description: string,
+  area?: string,
+  price?: string,
+) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: name,
   provider: { "@id": `${BUSINESS.url}/#business` },
-  areaServed: area ? { "@type": "Place", name: area } : { "@type": "AdministrativeArea", name: "Warwickshire" },
+  areaServed: area
+    ? { "@type": "City", name: area }
+    : { "@type": "AdministrativeArea", name: "Warwickshire" },
   description,
+  ...(price
+    ? {
+        offers: {
+          "@type": "Offer",
+          price: price.replace(/[^0-9.]/g, ""),
+          priceCurrency: "GBP",
+        },
+      }
+    : {}),
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "127",
+  },
 });
 
 export const faqJsonLd = (faqs: { q: string; a: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 });
 
 export const jsonLdScript = (data: unknown) => ({

@@ -1,7 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronRight, Home } from "lucide-react";
 
-export interface Crumb { name: string; to?: string; }
+export interface Crumb {
+  name: string;
+  to?: string;
+}
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
@@ -16,7 +19,9 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
           <li key={i} className="flex items-center gap-1.5">
             <ChevronRight className="h-3 w-3 opacity-50" />
             {c.to && i < items.length - 1 ? (
-              <Link to={c.to} className="hover:text-accent">{c.name}</Link>
+              <Link to={c.to} className="hover:text-accent">
+                {c.name}
+              </Link>
             ) : (
               <span className="text-accent">{c.name}</span>
             )}

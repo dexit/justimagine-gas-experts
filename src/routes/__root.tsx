@@ -1,4 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { localBusinessJsonLd, jsonLdScript } from "@/lib/seo";
+import { BUSINESS } from "@/data/seo";
 
 import appCss from "../styles.css?url";
 
@@ -25,24 +27,59 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
-      { name: "description", content: "Gas Safe registered engineers. Boilers, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts." },
-      { property: "og:title", content: "Just Imagine Ltd — Heating & Gas Specialists" },
-      { property: "og:description", content: "Boilers · Servicing · Repairs · Gas Safety · 24/7" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" },
-    ],
-  }),
+  head: () => {
+    const url = BUSINESS.url;
+    const ogImage = `${url}/og-default.jpg`;
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
+        {
+          name: "description",
+          content:
+            "Gas Safe registered engineers. Boilers, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts.",
+        },
+        { property: "og:title", content: "Just Imagine Ltd — Heating & Gas Specialists" },
+        {
+          property: "og:description",
+          content: "Boilers · Servicing · Repairs · Gas Safety · 24/7",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
+        { property: "og:image", content: ogImage },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "Just Imagine Ltd — Heating & Gas Specialists" },
+        {
+          name: "twitter:description",
+          content:
+            "Gas Safe registered engineers. Boilers, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts.",
+        },
+        { name: "twitter:image", content: ogImage },
+        { name: "google-site-verification", content: "placeholder-verify" },
+      ],
+      links: [
+        { rel: "stylesheet", href: appCss },
+        { rel: "canonical", href: url },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
+        },
+      ],
+      scripts: [
+        jsonLdScript(localBusinessJsonLd()),
+        {
+          children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');`,
+        },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

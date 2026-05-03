@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useServerFn } from "@tanstack/react-start";
-import { submitEnquiry } from "@/server/enquiry.functions";
+import { submitEnquiry } from "@/enquiry.functions";
 import { toast } from "sonner";
 
-interface Props { defaultService?: string; defaultArea?: string; compact?: boolean; }
+interface Props {
+  defaultService?: string;
+  defaultArea?: string;
+  compact?: boolean;
+}
 
 export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: Props) {
   const submit = useServerFn(submitEnquiry);
@@ -40,24 +44,68 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
   };
 
   return (
-    <form onSubmit={onSubmit} className={`space-y-3 ${compact ? "" : "p-6 lg:p-8 bg-card border border-border rounded-2xl"}`}>
+    <form
+      onSubmit={onSubmit}
+      className={`space-y-3 ${compact ? "" : "p-6 lg:p-8 bg-card border border-border rounded-2xl"}`}
+    >
       <div className="grid sm:grid-cols-2 gap-3">
-        <input required name="name" placeholder="Your name" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent" />
-        <input required name="phone" placeholder="Phone *" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent" />
+        <input
+          required
+          name="name"
+          placeholder="Your name"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+        />
+        <input
+          required
+          name="phone"
+          placeholder="Phone *"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+        />
       </div>
       <div className="grid sm:grid-cols-2 gap-3">
-        <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent" />
-        <input name="postcode" placeholder="Postcode" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent" />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+        />
+        <input
+          name="postcode"
+          placeholder="Postcode"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+        />
       </div>
       <div className="grid sm:grid-cols-2 gap-3">
-        <input name="service" defaultValue={defaultService} placeholder="Service needed" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent" />
-        <input name="area" defaultValue={defaultArea} placeholder="Town / area" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent" />
+        <input
+          name="service"
+          defaultValue={defaultService}
+          placeholder="Service needed"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+        />
+        <input
+          name="area"
+          defaultValue={defaultArea}
+          placeholder="Town / area"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+        />
       </div>
-      <textarea name="message" rows={4} placeholder="Brief description of the job…" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent resize-none" />
-      <Button type="submit" disabled={loading} size="lg" className="w-full bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold shadow-amber">
+      <textarea
+        name="message"
+        rows={4}
+        placeholder="Brief description of the job…"
+        className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent resize-none"
+      />
+      <Button
+        type="submit"
+        disabled={loading}
+        size="lg"
+        className="w-full bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold shadow-amber"
+      >
         {loading ? "Sending…" : "Request a callback"}
       </Button>
-      <p className="text-[11px] text-muted-foreground text-center">By submitting you agree to be contacted about your enquiry. We never share your details.</p>
+      <p className="text-[11px] text-muted-foreground text-center">
+        By submitting you agree to be contacted about your enquiry. We never share your details.
+      </p>
     </form>
   );
 }

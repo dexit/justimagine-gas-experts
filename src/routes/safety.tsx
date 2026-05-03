@@ -4,12 +4,19 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/safety")({
-  head: () => ({
-    meta: [
-      { title: "Gas Safety Certificates & Audits | Just Imagine Ltd" },
-      { name: "description", content: "Landlord gas safety (CP12) certificates, gas leak detection, safety audits and compliance assessments by Gas Safe registered engineers." },
-    ],
-  }),
+  head: () => {
+    const url = "https://justimagine.ltd/safety";
+    const title = "Gas Safety Certificates (CP12) & Audits — Warwickshire | Just Imagine";
+    const desc = "Landlord CP12 gas safety certificates, gas leak detection, carbon monoxide checks and compliance audits across Rugby, Warwickshire & Coventry. Same-day issue.";
+    return {
+      meta: [
+        { title }, { name: "description", content: desc },
+        { property: "og:title", content: title }, { property: "og:description", content: desc },
+        { property: "og:url", content: url },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: SafetyPage,
 });
 
@@ -25,7 +32,7 @@ const warning = [
 function SafetyPage() {
   return (
     <PageShell>
-      <PageHero eyebrow="Gas Safety" title="Safety isn't optional. It's the whole job." subtitle="Carbon monoxide is silent and lethal. We make compliance simple — for landlords, homeowners and commercial premises." />
+      <PageHero eyebrow="Gas Safety" title="Safety isn't optional. It's the whole job." subtitle="Carbon monoxide is silent and lethal. We make compliance simple — for landlords, homeowners and commercial premises." crumbs={[{ name: "Gas Safety" }]} />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20 grid lg:grid-cols-3 gap-6">
         {[
           { icon: FileCheck, title: "Landlord CP12 Certificates", body: "Annual gas safety inspections required by law for all rented properties. Every gas appliance, flue and pipework checked, certificate issued the same day where possible." },

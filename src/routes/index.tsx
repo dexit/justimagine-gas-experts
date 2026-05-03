@@ -13,25 +13,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
 import heroImg from "@/assets/hero-engineer.jpg";
-import { BUSINESS } from "@/data/seo";
-import { jsonLdScript, localBusinessJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Boiler Installation, Repair & Gas Safety — Rugby & Warwickshire | Just Imagine Ltd" },
-      { name: "description", content: "Gas Safe heating engineers in Rugby & Warwickshire. New boilers from £1,895, same-day repair, CP12 landlord certificates from £60, plumbing & 24/7 emergency callouts." },
-      { name: "keywords", content: "boiler installation rugby, boiler repair warwickshire, gas safe engineer rugby, CP12 landlord certificate, plumber rugby, emergency heating engineer" },
-      { property: "og:title", content: "Just Imagine Ltd — Gas Safe Heating & Plumbing in Rugby & Warwickshire" },
-      { property: "og:description", content: "Boilers · Servicing · CP12 · Plumbing · 24/7 emergency response across Warwickshire." },
-      { property: "og:url", content: BUSINESS.url },
-      { property: "og:type", content: "website" },
+      { title: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
+      {
+        name: "description",
+        content:
+          "Gas Safe registered engineers covering boiler installs, servicing, repairs, gas safety certificates and 24/7 emergency heating & plumbing.",
+      },
+      { property: "og:title", content: "Just Imagine Ltd — Gas Safe Heating & Plumbing" },
+      {
+        property: "og:description",
+        content: "Boilers, gas safety, plumbing — honest, certified, 24/7.",
+      },
     ],
-    links: [
-      { rel: "canonical", href: BUSINESS.url },
-      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" } as never,
-    ],
-    scripts: [jsonLdScript(localBusinessJsonLd())],
   }),
   component: Home,
 });
@@ -129,7 +126,13 @@ function Home() {
           </div>
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-amber rounded-3xl opacity-20 blur-2xl" />
-            <img src={heroImg} alt="Gas Safe registered engineer servicing a domestic boiler in Rugby, Warwickshire" width={1600} height={1200} fetchPriority="high" decoding="async" className="relative rounded-2xl shadow-elegant w-full object-cover aspect-[4/3]" />
+            <img
+              src={heroImg}
+              alt="Gas Safe engineer servicing a boiler"
+              width={1600}
+              height={1200}
+              className="relative rounded-2xl shadow-elegant w-full object-cover aspect-[4/3]"
+            />
             <div className="absolute -bottom-6 -left-6 bg-card text-card-foreground rounded-xl p-4 shadow-elegant border border-border max-w-[220px]">
               <div className="flex gap-1 text-accent mb-1">
                 {[...Array(5)].map((_, i) => (

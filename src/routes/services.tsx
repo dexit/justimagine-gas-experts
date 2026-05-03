@@ -14,19 +14,16 @@ import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
-  head: () => {
-    const url = "https://justimagine.ltd/services";
-    const title = "Heating, Boiler & Plumbing Services in Rugby & Warwickshire | Just Imagine";
-    const desc = "Full Gas Safe service list — boiler installation, repair, servicing, CP12 landlord certificates, central heating, plumbing & 24/7 emergency callouts across Warwickshire.";
-    return {
-      meta: [
-        { title }, { name: "description", content: desc },
-        { property: "og:title", content: title }, { property: "og:description", content: desc },
-        { property: "og:url", content: url },
-      ],
-      links: [{ rel: "canonical", href: url }],
-    };
-  },
+  head: () => ({
+    meta: [
+      { title: "Services — Boilers, Gas, Heating & Plumbing | Just Imagine Ltd" },
+      {
+        name: "description",
+        content:
+          "Boiler installation & servicing, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts.",
+      },
+    ],
+  }),
   component: ServicesPage,
 });
 
@@ -116,7 +113,11 @@ const services = [
 function ServicesPage() {
   return (
     <PageShell>
-      <PageHero eyebrow="Services" title="Everything heating, gas & plumbing — under one roof." subtitle="From a quick washer change to a full boiler swap, we handle the lot. Properly certified, properly insured, properly finished." crumbs={[{ name: "Services" }]} />
+      <PageHero
+        eyebrow="Services"
+        title="Everything heating, gas & plumbing — under one roof."
+        subtitle="From a quick washer change to a full boiler swap, we handle the lot. Properly certified, properly insured, properly finished."
+      />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-5">
           {services.map((s) => (

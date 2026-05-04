@@ -742,6 +742,25 @@ export const GEOFENCE = {
  * News / blog content (file-driven, no CMS).
  * ---------------------------------------------------------------------------
  */
+export type NewsCategory =
+  | "Boilers"
+  | "Safety"
+  | "Landlords"
+  | "Pricing"
+  | "Local"
+  | "FAQ"
+  | "How-To"
+  | "Manual";
+
+export type NewsKind = "article" | "faq" | "howto" | "manual";
+
+export interface HowToStep {
+  name: string;
+  text: string;
+  /** Optional safety / warning note rendered next to the step. */
+  warning?: string;
+}
+
 export interface NewsPost {
   slug: string;
   title: string;
@@ -749,9 +768,21 @@ export interface NewsPost {
   body: string[];
   date: string; // ISO
   author: string;
-  category: "Boilers" | "Safety" | "Landlords" | "Pricing" | "Local";
+  category: NewsCategory;
+  kind: NewsKind;
   tags: string[];
   cover?: string;
+  /** For kind === "faq" */
+  faqs?: { q: string; a: string }[];
+  /** For kind === "howto" */
+  howto?: {
+    totalTime?: string; // ISO 8601 duration e.g. "PT5M"
+    tools?: string[];
+    supplies?: string[];
+    steps: HowToStep[];
+  };
+  /** For kind === "manual" — quick reference sections */
+  sections?: { heading: string; body: string[] }[];
 }
 
 export const NEWS: NewsPost[] = [
@@ -768,6 +799,7 @@ export const NEWS: NewsPost[] = [
     date: "2026-04-12",
     author: "Just Imagine Engineering Team",
     category: "Boilers",
+    kind: "article",
     tags: ["Boiler Upgrade Scheme", "Heat pumps", "Grants", "Warwickshire"],
   },
   {
@@ -783,6 +815,7 @@ export const NEWS: NewsPost[] = [
     date: "2026-03-02",
     author: "Just Imagine Engineering Team",
     category: "Landlords",
+    kind: "article",
     tags: ["CP12", "Landlord", "Compliance"],
   },
   {
@@ -791,15 +824,175 @@ export const NEWS: NewsPost[] = [
     excerpt:
       "Most boiler lockouts are resolved in under five minutes. Try these steps first — then call us if heating isn't restored.",
     body: [
-      "Check the system pressure on the front gauge. If it's below 1.0 bar, top up using the filling loop until it reads 1.2–1.5 bar cold.",
-      "Reset the boiler using the manufacturer's reset procedure (usually a button held for 5 seconds). Note any error code displayed.",
-      "Confirm the gas supply is on at the meter and the thermostat batteries are healthy. If pressure or codes return, call us — most local jobs are diagnosed on the first visit.",
+      "Most no-heat call-outs we attend in winter are resolved in minutes — low pressure, a tripped reset, or a flat thermostat battery. Work through the steps below before booking an engineer.",
     ],
     date: "2026-01-20",
     author: "Just Imagine Engineering Team",
-    category: "Safety",
+    category: "How-To",
+    kind: "howto",
     tags: ["Troubleshooting", "Boiler repair", "Winter"],
+    howto: {
+      totalTime: "PT5M",
+      tools: ["Towel", "Phone (for boiler manual)"],
+      supplies: [],
+      steps: [
+        {
+          name: "Check system pressure",
+          text: "Look at the pressure gauge on the boiler front. It should read 1.0–1.5 bar when cold. If it's below 1.0, top up via the filling loop until it reads 1.2 bar.",
+        },
+        {
+          name: "Reset the boiler",
+          text: "Hold the reset button for 5 seconds (or follow your manufacturer's reset procedure). Note any error code that appears.",
+        },
+        {
+          name: "Verify gas and thermostat",
+          text: "Confirm the gas isolator at the meter is on and other gas appliances work. Replace thermostat batteries if the screen is blank.",
+        },
+        {
+          name: "Bleed the radiators",
+          text: "If pressure is fine but rooms are cold, bleed each radiator with a key until water (not air) escapes, then re-check pressure.",
+          warning: "Turn the heating off and let radiators cool before bleeding to avoid scalds.",
+        },
+        {
+          name: "Call a Gas Safe engineer",
+          text: "If the fault returns, call 07774 079152. We diagnose every major brand on the first visit and quote a fixed price before any repair.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "boiler-pressure-faq",
+    title: "Boiler pressure FAQ — answers to the questions we get every winter",
+    excerpt:
+      "Why does pressure drop? When is it dangerous? When should you stop topping up and call us? Common boiler-pressure questions answered.",
+    body: [
+      "Pressure issues are by far the most common winter call we receive. These are the questions we answer most often — bookmark this page for next time the gauge starts misbehaving.",
+    ],
+    date: "2026-02-08",
+    author: "Just Imagine Engineering Team",
+    category: "FAQ",
+    kind: "faq",
+    tags: ["Boiler pressure", "FAQ", "Maintenance"],
+    faqs: [
+      {
+        q: "What is the correct boiler pressure?",
+        a: "When cold, most domestic combi boilers should read 1.0–1.5 bar. When hot, pressure can rise to ~2.0 bar — that's normal. Anything above 2.5 bar may indicate a faulty expansion vessel.",
+      },
+      {
+        q: "Why does my boiler pressure keep dropping?",
+        a: "The most common causes are a small leak somewhere in the system, a failed pressure relief valve, or air in the radiators. If you're topping up more than once a month, book a diagnostic visit.",
+      },
+      {
+        q: "Is it safe to keep topping up the pressure?",
+        a: "Topping up to 1.2 bar is safe and routine. However, if you have to top up weekly, the underlying issue should be diagnosed — repeated top-ups dilute system inhibitor and can cause sludge build-up.",
+      },
+      {
+        q: "Why is my boiler pressure too high?",
+        a: "Usually because the filling loop was left slightly open, or the expansion vessel has lost charge. We can re-pressurise the vessel and isolate the cause in one visit.",
+      },
+      {
+        q: "Will low pressure damage my boiler?",
+        a: "It won't damage the boiler immediately — modern boilers lock out and display a fault code instead. But persistent low pressure causes intermittent heating and short-cycling that can shorten component life.",
+      },
+    ],
+  },
+  {
+    slug: "annual-boiler-service-checklist",
+    title: "Annual boiler service — what a proper service actually includes",
+    excerpt:
+      "A reference guide for homeowners and landlords showing exactly what's checked, measured and recorded during a manufacturer-spec annual service.",
+    body: [
+      "This manual lists every check we carry out on a standard annual boiler service. It's the same procedure required by most manufacturers (Worcester Bosch, Vaillant, Ideal) to keep your warranty valid.",
+    ],
+    date: "2026-03-15",
+    author: "Just Imagine Engineering Team",
+    category: "Manual",
+    kind: "manual",
+    tags: ["Boiler service", "Manual", "Reference"],
+    sections: [
+      {
+        heading: "1. Visual inspection",
+        body: [
+          "External casing condition and seal integrity",
+          "Flue terminal location and clearances vs current Building Regs",
+          "Condensate pipe routing and frost protection",
+          "Gas and water pipework, supports and isolation valves",
+        ],
+      },
+      {
+        heading: "2. Combustion analysis",
+        body: [
+          "Calibrated flue gas analyser readings (CO, CO₂, ratio)",
+          "Comparison against manufacturer benchmark commissioning data",
+          "Adjustment of gas valve where the appliance permits it",
+        ],
+      },
+      {
+        heading: "3. Component checks",
+        body: [
+          "Condensate trap clean and refill",
+          "Magnetic system filter clean and inspection",
+          "Expansion vessel pre-charge pressure check",
+          "PRV (pressure relief valve) discharge test",
+        ],
+      },
+      {
+        heading: "4. Documentation issued",
+        body: [
+          "Service report and benchmark log update",
+          "Gas Safe service label fixed to the appliance",
+          "Digital copy emailed to homeowner / managing agent",
+          "Renewal reminder scheduled for 11 months",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "landlord-compliance-manual",
+    title: "Landlord gas-safety compliance — the complete reference manual",
+    excerpt:
+      "A landlord-friendly manual covering CP12 frequency, record-keeping, tenant access, and what happens if an inspection fails.",
+    body: [
+      "Use this manual as a quick reference for your statutory gas safety obligations as a landlord in England. It is not legal advice — but it is the procedure we follow with our agency partners across Warwickshire.",
+    ],
+    date: "2026-02-25",
+    author: "Just Imagine Engineering Team",
+    category: "Manual",
+    kind: "manual",
+    tags: ["Landlord", "CP12", "Compliance", "Manual"],
+    sections: [
+      {
+        heading: "Inspection frequency",
+        body: [
+          "Every gas appliance, fitting and flue must be checked at least every 12 months by a Gas Safe registered engineer.",
+          "A new CP12 must be issued before the previous one expires; backdating is not permitted.",
+        ],
+      },
+      {
+        heading: "Record-keeping",
+        body: [
+          "Keep CP12 records for at least 2 years.",
+          "Tenants must be given a copy within 28 days of inspection (or before move-in for new tenants).",
+        ],
+      },
+      {
+        heading: "Tenant access",
+        body: [
+          "Give 24 hours' written notice for routine inspections.",
+          "If access is repeatedly refused, document attempts in writing — these records are key evidence for HSE compliance.",
+        ],
+      },
+      {
+        heading: "If an appliance fails",
+        body: [
+          "Unsafe appliances are flagged At Risk (AR) or Immediately Dangerous (ID).",
+          "ID classification means the appliance is disconnected on-site with the tenant's knowledge and Gas Emergency Service notified where required.",
+          "Remedial work and a fresh CP12 must follow before the appliance is brought back into use.",
+        ],
+      },
+    ],
   },
 ];
 
 export const getNews = (slug: string) => NEWS.find((n) => n.slug === slug);
+

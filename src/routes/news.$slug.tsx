@@ -24,7 +24,7 @@ export const Route = createFileRoute("/news/$slug")({
         { property: "article:published_time", content: post.date },
         { property: "article:section", content: post.category },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: [{ rel: "canonical", to: url }],
       scripts: [
         jsonLdScript(newsArticleJsonLd(post)),
         jsonLdScript(
@@ -55,9 +55,9 @@ function NewsPostPage() {
         title={post.title}
         subtitle={post.excerpt}
         crumbs={[
-          { name: "Home", href: "/" },
-          { name: "News", href: "/news" },
-          { name: post.title, href: `/news/${post.slug}` },
+          { name: "Home", to: "/" },
+          { name: "News", to: "/news" },
+          { name: post.title, to: `/news/${post.slug}` },
         ]}
       />
       <article className="mx-auto max-w-3xl px-5 lg:px-8 py-16">

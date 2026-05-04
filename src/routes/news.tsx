@@ -19,7 +19,7 @@ export const Route = createFileRoute("/news")({
         content: "Boiler grants, CP12 changes, winter heating tips and local updates.",
       },
     ],
-    links: [{ rel: "canonical", href: `${BUSINESS.url}/news` }],
+    links: [{ rel: "canonical", to: `${BUSINESS.url}/news` }],
     scripts: [jsonLdScript(newsListJsonLd())],
   }),
   component: NewsLayout,
@@ -36,8 +36,8 @@ function NewsLayout() {
         title="Heating, boilers & landlord news from Warwickshire."
         subtitle="Practical updates for homeowners and landlords across Rugby, Leamington, Warwick and Coventry."
         crumbs={[
-          { name: "Home", href: "/" },
-          { name: "News", href: "/news" },
+          { name: "Home", to: "/" },
+          { name: "News", to: "/news" },
         ]}
       />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-16 md:py-20">

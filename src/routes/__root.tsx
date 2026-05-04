@@ -1,5 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts, ScriptOnce } from "@tanstack/react-router";
-import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd, jsonLdScript } from "@/lib/seo";
+import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd, serviceAreaJsonLd, jsonLdScript } from "@/lib/seo";
 import { BUSINESS, AREAS } from "@/data/seo";
 import { Phone, Flame, ArrowRight, Home, Wrench, AlertCircle, Building, MapPin } from "lucide-react";
 
@@ -135,6 +135,7 @@ export const Route = createRootRoute({
         jsonLdScript(localBusinessJsonLd()),
         jsonLdScript(organizationJsonLd()),
         jsonLdScript(websiteJsonLd()),
+        jsonLdScript(serviceAreaJsonLd()),
         {
           children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

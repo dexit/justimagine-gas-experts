@@ -245,7 +245,6 @@ export const localBusinessJsonLd = () => ({
   },
   geo: { "@type": "GeoCoordinates", latitude: BUSINESS.geo.lat, longitude: BUSINESS.geo.lng },
   hasMap: `https://www.google.com/maps/search/?api=1&query=${BUSINESS.geo.lat},${BUSINESS.geo.lng}`,
-  serviceArea: { "@id": `${BUSINESS.url}/#service-area` },
   areaServed: [
     geoCircleJsonLd(),
     ...AREAS.map((a) => ({

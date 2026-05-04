@@ -712,3 +712,94 @@ export const BUSINESS = {
 
 export const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);
 export const getArea = (slug: string) => AREAS.find((a) => a.slug === slug);
+
+/* ---------------------------------------------------------------------------
+ * Geofence — primary service area as a single polygon (rough convex hull
+ * around Rugby + Warwickshire towns) + GeoCircle for radius targeting.
+ * Used by JSON-LD areaServed and on the /areas page map embed.
+ * ---------------------------------------------------------------------------
+ */
+export const GEOFENCE = {
+  centre: { lat: 52.3204, lng: -1.5200 },
+  radiusKm: 35,
+  /** Closed polygon (lat,lng pairs, last point repeats first). */
+  polygon: [
+    [52.5790, -1.5470], // Atherstone
+    [52.5230, -1.4659], // Nuneaton
+    [52.4068, -1.5197], // Coventry
+    [52.3704, -1.2658], // Rugby
+    [52.2493, -1.3899], // Southam
+    [52.0625, -1.6258], // Shipston-on-Stour
+    [52.1917, -1.7083], // Stratford-upon-Avon
+    [52.2150, -1.8690], // Alcester
+    [52.2823, -1.5849], // Warwick
+    [52.3470, -1.5710], // Kenilworth
+    [52.5790, -1.5470], // close
+  ] as [number, number][],
+};
+
+/* ---------------------------------------------------------------------------
+ * News / blog content (file-driven, no CMS).
+ * ---------------------------------------------------------------------------
+ */
+export interface NewsPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  body: string[];
+  date: string; // ISO
+  author: string;
+  category: "Boilers" | "Safety" | "Landlords" | "Pricing" | "Local";
+  tags: string[];
+  cover?: string;
+}
+
+export const NEWS: NewsPost[] = [
+  {
+    slug: "boiler-upgrade-grants-warwickshire-2026",
+    title: "Boiler Upgrade Scheme 2026 — what Warwickshire homeowners need to know",
+    excerpt:
+      "The latest BUS grant changes mean larger contributions for heat pumps and clearer eligibility for Warwickshire homes. Here's the practical summary.",
+    body: [
+      "The Boiler Upgrade Scheme (BUS) continues to fund low-carbon heating across England. From early 2026 the standard grant for an air-source heat pump remains £7,500 — and qualifying Warwickshire homeowners can stack it with manufacturer rebates.",
+      "Eligibility still rests on EPC validity, an existing wet heating system and Microgeneration Certification Scheme installation. We can survey your property and confirm in one visit.",
+      "If a heat pump is not the right fit, A-rated condensing combi boilers from Worcester Bosch, Vaillant and Ideal remain the most cost-effective like-for-like upgrade.",
+    ],
+    date: "2026-04-12",
+    author: "Just Imagine Engineering Team",
+    category: "Boilers",
+    tags: ["Boiler Upgrade Scheme", "Heat pumps", "Grants", "Warwickshire"],
+  },
+  {
+    slug: "landlord-cp12-changes-2026",
+    title: "Landlord CP12 changes 2026 — what's new for Rugby & Coventry agents",
+    excerpt:
+      "Tightened record-keeping rules and digital certificate expectations are reshaping landlord compliance. Here's how to stay ahead.",
+    body: [
+      "Letting agents across Rugby, Leamington and Coventry are reporting more local-authority audits this year. A valid CP12 is now expected to be supplied digitally within 28 days of inspection.",
+      "Our portfolio packages already include same-day digital issue, secure storage and renewal reminders — keeping you compliant without admin overhead.",
+      "Bundling CP12 with an annual boiler service typically saves landlords ~£25 per property and reduces emergency callouts the following winter.",
+    ],
+    date: "2026-03-02",
+    author: "Just Imagine Engineering Team",
+    category: "Landlords",
+    tags: ["CP12", "Landlord", "Compliance"],
+  },
+  {
+    slug: "winter-no-heat-checklist",
+    title: "No heat? A 5-minute checklist before you call an engineer",
+    excerpt:
+      "Most boiler lockouts are resolved in under five minutes. Try these steps first — then call us if heating isn't restored.",
+    body: [
+      "Check the system pressure on the front gauge. If it's below 1.0 bar, top up using the filling loop until it reads 1.2–1.5 bar cold.",
+      "Reset the boiler using the manufacturer's reset procedure (usually a button held for 5 seconds). Note any error code displayed.",
+      "Confirm the gas supply is on at the meter and the thermostat batteries are healthy. If pressure or codes return, call us — most local jobs are diagnosed on the first visit.",
+    ],
+    date: "2026-01-20",
+    author: "Just Imagine Engineering Team",
+    category: "Safety",
+    tags: ["Troubleshooting", "Boiler repair", "Winter"],
+  },
+];
+
+export const getNews = (slug: string) => NEWS.find((n) => n.slug === slug);

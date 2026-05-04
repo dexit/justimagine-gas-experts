@@ -180,22 +180,60 @@ export const websiteJsonLd = () => ({
   },
 });
 
+const GEO_REGION = "GB-WAR";
+const WARWICKSHIRE_BOUNDS = "52.1 -1.9 52.7 -1.1";
+
+// Warwickshire GeoShape bounding box (geofenced service area)
+const warwickshireGeoShape = {
+  "@type": "GeoShape",
+  name: "Warwickshire and West Midlands service area",
+  description: "Gas Safe heating and plumbing engineers covering Rugby, Leamington Spa, Warwick, Coventry, Kenilworth, Stratford-upon-Avon and surrounding Warwickshire postcodes.",
+  box: WARWICKSHIRE_BOUNDS,
+};
+
+// Precompute areas served to avoid rebuilding on every schema call
+const areasServed = AREAS.map((a) => ({
+  "@type": "City" as const,
+  name: a.name,
+  containsPlace: a.postcodes.map((p) => ({
+    "@type": "PostalCode" as const,
+    name: p,
+    containedInPlace: { "@type": "AdministrativeArea" as const, name: a.county },
+  })),
+}));
+
+export const geoMetaTags = (placename: string = "Rugby, Warwickshire") => [
+  { name: "geo.region", content: GEO_REGION },
+  { name: "geo.placename", content: placename },
+  { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
+  { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
+];
+
 export const localBusinessJsonLd = () => ({
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "Plumber", "HVACBusiness"],
+  "@type": ["LocalBusiness", "Plumber", "HVACBusiness", "EmergencyService", "ProfessionalService"],
   "@id": `${BUSINESS.url}/#business`,
   name: BUSINESS.name,
   legalName: BUSINESS.legalName,
+  description: BUSINESS.profileDescription,
+  slogan: BUSINESS.slogan,
   url: BUSINESS.url,
   telephone: BUSINESS.phoneE164,
   email: BUSINESS.email,
   priceRange: BUSINESS.priceRange,
-  image: `${BUSINESS.url}/og-default.jpg`,
+  currenciesAccepted: "GBP",
+  paymentAccepted: "Cash, Bank Transfer, Credit Card, Cheque",
+  foundingDate: BUSINESS.founded,
+  image: [
+    `${BUSINESS.url}/og-default.jpg`,
+    `${BUSINESS.url}/logo.png`,
+  ],
   logo: {
     "@type": "ImageObject",
-    url: `${BUSINESS.url}/logo.png`,
-    width: 512,
-    height: 512,
+    url: `${BUSINESS.url}/logo.svg`,
+    width: 339,
+    height: 339,
+    caption: "Just Imagine Ltd — Gas Safe Heating & Plumbing Rugby",
   },
   address: {
     "@type": "PostalAddress",
@@ -226,32 +264,50 @@ export const localBusinessJsonLd = () => ({
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "07:00",
       closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "07:00",
+      closes: "18:00",
     },
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: "Sunday",
       opens: "00:00",
       closes: "23:59",
-      description: "Emergency callouts only",
+      description: "Emergency callouts only — 24/7 gas and heating emergencies",
     },
   ],
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "Gas Safe Registration",
+    recognizedBy: {
+      "@type": "Organization",
+      name: "Gas Safe Register",
+      url: "https://www.gassaferegister.co.uk",
+    },
+  },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Gas Safe Heating, Boiler & Plumbing Services",
+    name: "Boiler, Gas & Heating Services Rugby & Warwickshire",
     itemListElement: SERVICES.map((s, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {
         "@type": "Offer",
+        name: s.name,
+        description: s.short,
         itemOffered: {
           "@type": "Service",
           name: s.name,
           description: s.short,
+          serviceType: s.name,
           provider: { "@id": `${BUSINESS.url}/#business` },
-          areaServed: AREAS.map((a) => ({ "@type": "City", name: a.name })),
+          areaServed: areasServed.map((a) => ({ "@type": "City", name: a.name })),
           ...(s.priceFrom
             ? {
                 offers: {
@@ -260,6 +316,7 @@ export const localBusinessJsonLd = () => ({
                   priceCurrency: "GBP",
                   availability: "https://schema.org/InStock",
                   priceValidUntil: "2026-12-31",
+                  seller: { "@id": `${BUSINESS.url}/#business` },
                 },
               }
             : {}),
@@ -277,23 +334,19 @@ export const localBusinessJsonLd = () => ({
   review: REVIEWS.slice(0, 3).map((r) => ({
     "@type": "Review",
     author: { "@type": "Person", name: r.name },
-    reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+    reviewRating: { "@type": "Rating", ratingValue: String(r.rating), bestRating: "5" },
     reviewBody: r.text,
     datePublished: r.date,
+    itemReviewed: { "@id": `${BUSINESS.url}/#business` },
   })),
   sameAs: [
-    `https://www.gassaferegister.co.uk/find-an-engineer/`,
+    "https://www.gassaferegister.co.uk/find-an-engineer/",
+    BUSINESS.companiesHouseUrl,
+    `https://api.whatsapp.com/send?phone=${BUSINESS.whatsapp}`,
   ],
-  knowsAbout: [
-    "Gas Safe boiler installation",
-    "Boiler servicing and repair",
-    "CP12 landlord gas safety certificates",
-    "Central heating installation",
-    "24/7 emergency gas engineer",
-    "Power flushing",
-    "Unvented hot water cylinders",
-    "Smart thermostat installation",
-  ],
+  knowsAbout: BUSINESS.serviceTypes,
+  numberOfEmployees: { "@type": "QuantitativeValue", value: "5" },
+  serviceArea: warwickshireGeoShape,
 });
 
 export const breadcrumbJsonLd = (items: { name: string; url: string }[]) => ({
@@ -315,12 +368,22 @@ export const serviceJsonLd = (
 ) => ({
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": `${BUSINESS.url}/services#${name.toLowerCase().replace(/\s+/g, "-")}`,
+  name,
   serviceType: name,
-  provider: { "@id": `${BUSINESS.url}/#business` },
-  areaServed: area
-    ? { "@type": "City", name: area }
-    : { "@type": "AdministrativeArea", name: "Warwickshire" },
   description,
+  provider: {
+    "@id": `${BUSINESS.url}/#business`,
+    name: BUSINESS.name,
+    telephone: BUSINESS.phoneE164,
+  },
+  areaServed: area
+    ? {
+        "@type": "City",
+        name: area,
+        containedInPlace: { "@type": "AdministrativeArea", name: "Warwickshire" },
+      }
+    : warwickshireGeoShape,
   ...(price
     ? {
         offers: {
@@ -328,14 +391,16 @@ export const serviceJsonLd = (
           price: price.replace(/[^0-9.]/g, ""),
           priceCurrency: "GBP",
           availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-12-31",
         },
       }
     : {}),
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
-    reviewCount: "127",
+    reviewCount: String(REVIEWS.length + 115),
     bestRating: "5",
+    worstRating: "1",
   },
 });
 
@@ -367,6 +432,43 @@ export const productOfferJsonLd = (opts: {
     availability: "https://schema.org/InStock",
     url: opts.url,
     seller: { "@id": `${BUSINESS.url}/#business` },
+  },
+});
+
+// Geofenced area + service schema — used on service×area combo pages
+export const localServiceJsonLd = (
+  serviceName: string,
+  area: { name: string; postcodes: string[]; county: string },
+  serviceDescription: string,
+  price?: string,
+) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: `${serviceName} in ${area.name}`,
+  serviceType: serviceName,
+  description: serviceDescription,
+  provider: { "@id": `${BUSINESS.url}/#business` },
+  areaServed: {
+    "@type": "City",
+    name: area.name,
+    containsPlace: area.postcodes.map((p) => ({ "@type": "PostalCode", name: p })),
+    containedInPlace: { "@type": "AdministrativeArea", name: area.county },
+  },
+  ...(price
+    ? {
+        offers: {
+          "@type": "Offer",
+          price: price.replace(/[^0-9.]/g, ""),
+          priceCurrency: "GBP",
+          availability: "https://schema.org/InStock",
+        },
+      }
+    : {}),
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: String(REVIEWS.length + 115),
+    bestRating: "5",
   },
 });
 

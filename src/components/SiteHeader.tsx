@@ -27,9 +27,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="h-9 w-9 rounded-full bg-gradient-hero flex items-center justify-center shadow-elegant">
-            <Flame className="h-4.5 w-4.5 text-accent" strokeWidth={2.5} />
-          </div>
+          <img src="/logo.svg" alt="Just Imagine Ltd" className="h-9 w-9 rounded-full" />
           <div className="leading-tight">
             <div className="font-display text-lg font-semibold tracking-tight">Just Imagine</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -98,7 +96,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border bg-background">
+        <div className="lg:hidden border-t border-border bg-background max-h-[calc(100vh-64px)] overflow-y-auto">
           <div className="px-5 py-3 flex flex-col">
             {nav.map((n) =>
               n.kind === "link" ? (
@@ -169,14 +167,14 @@ export function SiteHeader() {
             <Link
               to="/emergency"
               onClick={() => setOpen(false)}
-              className="py-2.5 text-sm font-semibold text-destructive flex items-center gap-2"
+              className="py-2.5 text-sm font-semibold text-destructive flex items-center gap-2 hover:text-destructive/80 transition-smooth"
             >
               <AlertCircle className="h-4 w-4" />
               Emergency 24/7
             </Link>
             <a
               href="tel:07774079152"
-              className="mt-3 py-2.5 px-4 rounded-lg bg-gradient-amber text-center font-semibold text-sm text-accent-foreground"
+              className="mt-3 py-2.5 px-4 rounded-lg bg-gradient-amber text-center font-semibold text-sm text-accent-foreground hover:opacity-90 transition-smooth"
             >
               Call 07774 079152
             </a>

@@ -2,15 +2,23 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ShieldCheck, AlertTriangle, FileCheck, Phone } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
+import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/safety")({
   head: () => ({
     meta: [
-      { title: "Gas Safety Certificates & Audits | Just Imagine Ltd" },
+      { title: "Gas Safety Certificates Rugby & Warwickshire | Just Imagine" },
       {
         name: "description",
         content:
-          "Landlord gas safety (CP12) certificates, gas leak detection, safety audits and compliance assessments by Gas Safe registered engineers.",
+          "CP12 landlord gas safety certificates from £60 in Rugby & Warwickshire. Gas Safe registered engineers. Same-day digital issue, carbon monoxide testing, safety audits for landlords.",
+      },
+      ...geoMetaTags(),
+      { property: "og:title", content: "Gas Safety Certificates Rugby, Warwickshire | Just Imagine" },
+      {
+        property: "og:description",
+        content:
+          "Landlord CP12 certificates from £60. Same-day issue, Gas Safe registered, Warwickshire-wide coverage. Free reminders when due for renewal.",
       },
     ],
   }),

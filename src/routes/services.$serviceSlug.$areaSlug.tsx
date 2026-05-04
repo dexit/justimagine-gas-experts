@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, getService, getArea, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, serviceJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, localServiceJsonLd, geoMetaTags } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, Check } from "lucide-react";
@@ -26,12 +26,11 @@ export const Route = createFileRoute("/services/$serviceSlug/$areaSlug")({
         { property: "og:title", content: s.metaTitle(a.name) },
         { property: "og:description", content: s.metaDesc(a.name) },
         { property: "og:url", content: url },
+        ...geoMetaTags(a.name),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
-        jsonLdScript(
-          serviceJsonLd(`${s.name} in ${a.name}`, s.metaDesc(a.name), a.name, s.priceFrom),
-        ),
+        jsonLdScript(localServiceJsonLd(s.name, a, s.metaDesc(a.name), s.priceFrom)),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", url: BUSINESS.url },

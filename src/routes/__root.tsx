@@ -1,5 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts, ScriptOnce } from "@tanstack/react-router";
-import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd, serviceAreaJsonLd, jsonLdScript } from "@/lib/seo";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { localBusinessJsonLd, jsonLdScript } from "@/lib/seo";
 import { BUSINESS, AREAS } from "@/data/seo";
 import { Phone, Flame, ArrowRight, Home, Wrench, AlertCircle, Building, MapPin } from "lucide-react";
 
@@ -95,7 +95,7 @@ export const Route = createRootRoute({
           content:
             "Gas Safe registered engineers. Boilers, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts.",
         },
-        { property: "og:title", content: "Just Imagine Ltd — Heating & Gas Specialists" },
+        { property: "og:title", content: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
         {
           property: "og:description",
           content: "Boilers · Servicing · Repairs · Gas Safety · 24/7",
@@ -104,7 +104,7 @@ export const Route = createRootRoute({
         { property: "og:url", content: url },
         { property: "og:image", content: ogImage },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Just Imagine Ltd — Heating & Gas Specialists" },
+        { name: "twitter:title", content: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
         {
           name: "twitter:description",
           content:
@@ -112,6 +112,11 @@ export const Route = createRootRoute({
         },
         { name: "twitter:image", content: ogImage },
         { name: "google-site-verification", content: "placeholder-verify" },
+        { name: "description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
+        { property: "og:description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
+        { name: "twitter:description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
+        { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e80d17e4-7f28-401a-a1d2-af2085524c36/id-preview-56efb06a--7fb4e725-0c36-44e2-9a03-c32bfefb2a69.lovable.app-1777856771520.png" },
+        { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e80d17e4-7f28-401a-a1d2-af2085524c36/id-preview-56efb06a--7fb4e725-0c36-44e2-9a03-c32bfefb2a69.lovable.app-1777856771520.png" },
       ],
       links: [
         { rel: "stylesheet", href: appCss },
@@ -133,9 +138,6 @@ export const Route = createRootRoute({
       ],
       scripts: [
         jsonLdScript(localBusinessJsonLd()),
-        jsonLdScript(organizationJsonLd()),
-        jsonLdScript(websiteJsonLd()),
-        jsonLdScript(serviceAreaJsonLd()),
         {
           children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -151,16 +153,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   notFoundComponent: NotFoundComponent,
 });
 
-const themeBoot = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`;
-
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <ScriptOnce>{themeBoot}</ScriptOnce>
         {children}
         <Scripts />
       </body>

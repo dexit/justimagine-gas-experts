@@ -115,7 +115,7 @@ export const Route = createRootRoute({
         { property: "og:site_name", content: "Just Imagine Ltd" },
         { property: "og:locale", content: "en_GB" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Just Imagine Ltd | Gas Safe Boiler Engineers Rugby" },
+        { name: "twitter:title", content: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
         {
           name: "twitter:description",
           content:
@@ -123,6 +123,11 @@ export const Route = createRootRoute({
         },
         { name: "twitter:image", content: ogImage },
         { name: "google-site-verification", content: "placeholder-verify" },
+        { name: "description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
+        { property: "og:description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
+        { name: "twitter:description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
+        { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e80d17e4-7f28-401a-a1d2-af2085524c36/id-preview-56efb06a--7fb4e725-0c36-44e2-9a03-c32bfefb2a69.lovable.app-1777856771520.png" },
+        { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e80d17e4-7f28-401a-a1d2-af2085524c36/id-preview-56efb06a--7fb4e725-0c36-44e2-9a03-c32bfefb2a69.lovable.app-1777856771520.png" },
       ],
       links: [
         { rel: "stylesheet", href: appCss },

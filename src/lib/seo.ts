@@ -1,4 +1,184 @@
-import { BUSINESS, AREAS, SERVICES, REVIEWS } from "@/data/seo";
+import { BUSINESS, AREAS, SERVICES, REVIEWS, GEOFENCE, NEWS, type NewsPost } from "@/data/seo";
+
+/* ----------------- Geo helpers (geofencing JSON-LD) ----------------- */
+
+export const geoCircleJsonLd = () => ({
+  "@type": "GeoCircle",
+  geoMidpoint: {
+    "@type": "GeoCoordinates",
+    latitude: GEOFENCE.centre.lat,
+    longitude: GEOFENCE.centre.lng,
+  },
+  geoRadius: `${GEOFENCE.radiusKm * 1000}`, // metres
+});
+
+export const geoShapeJsonLd = () => ({
+  "@type": "GeoShape",
+  polygon: GEOFENCE.polygon.map(([lat, lng]) => `${lat} ${lng}`).join(" "),
+});
+
+/** Per-area Place node — used inside areaServed and on /areas/[slug]. */
+export const areaPlaceJsonLd = (slug: string) => {
+  const a = AREAS.find((x) => x.slug === slug);
+  if (!a) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    name: `${a.name}, ${a.county}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: a.name,
+      addressRegion: a.county,
+      addressCountry: "GB",
+      postalCode: a.postcodes[0],
+    },
+    ...(a.geo && {
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: a.geo.lat,
+        longitude: a.geo.lng,
+      },
+    }),
+    ...(a.geo && a.radiusKm && {
+      hasMap: `https://www.google.com/maps/search/?api=1&query=${a.geo.lat},${a.geo.lng}`,
+    }),
+  };
+};
+
+/** A ServiceArea Place describing the entire geofenced coverage zone. */
+export const serviceAreaJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "@id": `${BUSINESS.url}/#service-area`,
+  name: `${BUSINESS.name} — Service Area`,
+  geo: geoCircleJsonLd(),
+  additionalProperty: {
+    "@type": "PropertyValue",
+    name: "Coverage polygon",
+    value: geoShapeJsonLd(),
+  },
+});
+
+/* ----------------- News helpers ----------------- */
+
+export const newsArticleJsonLd = (post: NewsPost) => {
+  const url = `${BUSINESS.url}/news/${post.slug}`;
+  const base: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Organization", name: post.author },
+    publisher: { "@id": `${BUSINESS.url}/#organization` },
+    mainEntityOfPage: url,
+    description: post.excerpt,
+    articleSection: post.category,
+    keywords: post.tags.join(", "),
+    ...(post.cover && { image: post.cover }),
+  };
+  if (post.kind === "faq" && post.faqs) {
+    return {
+      ...base,
+      "@type": "FAQPage",
+      mainEntity: post.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    };
+  }
+  if (post.kind === "howto" && post.howto) {
+    return {
+      ...base,
+      "@type": "HowTo",
+      name: post.title,
+      ...(post.howto.totalTime && { totalTime: post.howto.totalTime }),
+      ...(post.howto.tools && post.howto.tools.length
+        ? { tool: post.howto.tools.map((t) => ({ "@type": "HowToTool", name: t })) }
+        : {}),
+      ...(post.howto.supplies && post.howto.supplies.length
+        ? { supply: post.howto.supplies.map((s) => ({ "@type": "HowToSupply", name: s })) }
+        : {}),
+      step: post.howto.steps.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.name,
+        text: s.text,
+        url: `${url}#step-${i + 1}`,
+      })),
+    };
+  }
+  if (post.kind === "manual" && post.sections) {
+    return {
+      ...base,
+      "@type": "TechArticle",
+      proficiencyLevel: "Beginner",
+      hasPart: post.sections.map((sec) => ({
+        "@type": "WebPageElement",
+        name: sec.heading,
+        text: sec.body.join(" "),
+      })),
+    };
+  }
+  return { ...base, "@type": "NewsArticle" };
+};
+
+export const newsListJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `${BUSINESS.name} — News & Insights`,
+  itemListElement: NEWS.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: `${BUSINESS.url}/news/${p.slug}`,
+    name: p.title,
+  })),
+});
+
+/* ----------------- Original helpers ----------------- */
+
+
+export const organizationJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${BUSINESS.url}/#organization`,
+  name: BUSINESS.name,
+  legalName: BUSINESS.legalName,
+  url: BUSINESS.url,
+  logo: `${BUSINESS.url}/logo.png`,
+  email: BUSINESS.email,
+  telephone: BUSINESS.phoneE164,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: BUSINESS.phoneE164,
+      contactType: "customer service",
+      areaServed: "GB",
+      availableLanguage: ["en"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: BUSINESS.phoneE164,
+      contactType: "emergency",
+      areaServed: "GB",
+      hoursAvailable: "Mo-Su 00:00-23:59",
+    },
+  ],
+});
+
+export const websiteJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${BUSINESS.url}/#website`,
+  url: BUSINESS.url,
+  name: BUSINESS.name,
+  publisher: { "@id": `${BUSINESS.url}/#organization` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${BUSINESS.url}/services?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+});
 
 const GEO_REGION = "GB-WAR";
 const WARWICKSHIRE_BOUNDS = "52.1 -1.9 52.7 -1.1";
@@ -63,13 +243,24 @@ export const localBusinessJsonLd = () => ({
     postalCode: BUSINESS.postcode,
     addressCountry: BUSINESS.country,
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: BUSINESS.geo.lat,
-    longitude: BUSINESS.geo.lng,
-    name: "Just Imagine Ltd — Rugby, Warwickshire",
-  },
-  areaServed: [warwickshireGeoShape, ...areasServed],
+  geo: { "@type": "GeoCoordinates", latitude: BUSINESS.geo.lat, longitude: BUSINESS.geo.lng },
+  hasMap: `https://www.google.com/maps/search/?api=1&query=${BUSINESS.geo.lat},${BUSINESS.geo.lng}`,
+  serviceArea: { "@id": `${BUSINESS.url}/#service-area` },
+  areaServed: [
+    geoCircleJsonLd(),
+    ...AREAS.map((a) => ({
+      "@type": "City",
+      name: a.name,
+      ...(a.geo && {
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: a.geo.lat,
+          longitude: a.geo.lng,
+        },
+      }),
+      containsPlace: a.postcodes.map((p) => ({ "@type": "PostalCode", name: p })),
+    })),
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

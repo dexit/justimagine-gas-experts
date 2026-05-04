@@ -1,15 +1,23 @@
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { WhatsAppFab } from "./WhatsAppFab";
+import { BackToTop } from "./BackToTop";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-md focus:bg-primary focus:text-primary-foreground focus:shadow-elegant"
+      >
+        Skip to content
+      </a>
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main id="main" className="flex-1 focus:outline-none">{children}</main>
       <SiteFooter />
       <WhatsAppFab />
+      <BackToTop />
     </div>
   );
 }

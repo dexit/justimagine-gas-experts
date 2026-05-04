@@ -369,6 +369,10 @@ export interface Area {
   postcodes: string[];
   landmarks?: string[];
   referralNote?: string;
+  /** Approximate centroid for geofencing / Google Maps schema. */
+  geo?: { lat: number; lng: number };
+  /** Effective service radius in km from the centroid. */
+  radiusKm?: number;
 }
 
 export const PRICING = [
@@ -545,6 +549,8 @@ export const AREAS: Area[] = [
       "Our home town. We cover every street from Bilton to Hillmorton, Cawston to Brownsover — usually same-day for emergencies.",
     referralNote:
       "Based in Rugby ourselves, we typically arrive within 60 minutes for emergency callouts across all Rugby postcodes.",
+    geo: { lat: 52.3704, lng: -1.2658 },
+    radiusKm: 12,
   },
   {
     slug: "leamington-spa",
@@ -556,6 +562,8 @@ export const AREAS: Area[] = [
       "Regency homes, Victorian terraces and new-build estates — we install and service boilers across all of Royal Leamington Spa.",
     referralNote:
       "We're regulars in Leamington Spa — from the Victorian terraces of Lillington to the new-builds in Whitnash, we know the heating challenges of every era of property here.",
+    geo: { lat: 52.2852, lng: -1.52 },
+    radiusKm: 10,
   },
   {
     slug: "warwick",
@@ -567,6 +575,8 @@ export const AREAS: Area[] = [
       "Gas Safe heating engineers covering Warwick town, Woodloes Park, Chase Meadow and Hatton.",
     referralNote:
       "Warwick's mix of older period properties and modern estates means we regularly work on everything from original gas fires to cutting-edge combi systems here.",
+    geo: { lat: 52.2823, lng: -1.5849 },
+    radiusKm: 10,
   },
   {
     slug: "kenilworth",
@@ -577,6 +587,8 @@ export const AREAS: Area[] = [
     blurb: "Trusted local engineers serving Kenilworth, Burton Green and the surrounding villages.",
     referralNote:
       "Kenilworth's affluent detached homes often feature system boilers and larger radiator circuits — we're well-equipped to handle the full range.",
+    geo: { lat: 52.347, lng: -1.571 },
+    radiusKm: 10,
   },
   {
     slug: "stratford-upon-avon",
@@ -588,6 +600,8 @@ export const AREAS: Area[] = [
       "Boilers, plumbing and landlord certificates across Stratford-upon-Avon and the surrounding villages.",
     referralNote:
       "We work with several holiday let and rental landlords in Stratford — keeping their properties compliant and guests warm year-round.",
+    geo: { lat: 52.1917, lng: -1.7083 },
+    radiusKm: 14,
   },
   {
     slug: "coventry",
@@ -599,6 +613,8 @@ export const AREAS: Area[] = [
       "Same-day boiler repair and installation across Coventry — Earlsdon, Cheylesmore, Stoke and Tile Hill.",
     referralNote:
       "Coventry's large student and rental market means CP12 certificates and landlord packages are in constant demand — we handle dozens of Coventry properties every month.",
+    geo: { lat: 52.4068, lng: -1.5197 },
+    radiusKm: 12,
   },
   {
     slug: "nuneaton",
@@ -609,6 +625,8 @@ export const AREAS: Area[] = [
     blurb: "Heating and gas engineers serving Nuneaton, Whitestone and Weddington.",
     referralNote:
       "We cover Nuneaton's mix of ex-council and private housing — reliable, practical heating work at fair prices.",
+    geo: { lat: 52.523, lng: -1.4659 },
+    radiusKm: 10,
   },
   {
     slug: "bedworth",
@@ -619,6 +637,8 @@ export const AREAS: Area[] = [
     blurb: "Local boiler installs, services and emergency callouts across Bedworth and Bulkington.",
     referralNote:
       "Bedworth's compact geography means we're usually on-site quickly — a bonus when you have a heating emergency.",
+    geo: { lat: 52.479, lng: -1.472 },
+    radiusKm: 8,
   },
   {
     slug: "southam",
@@ -629,6 +649,8 @@ export const AREAS: Area[] = [
     blurb: "Gas Safe engineers covering Southam, Long Itchington and Napton-on-the-Hill.",
     referralNote:
       "Rural Southam properties often have older systems and oil conversions — we're experienced with the full spectrum.",
+    geo: { lat: 52.2493, lng: -1.3899 },
+    radiusKm: 10,
   },
   {
     slug: "atherstone",
@@ -639,6 +661,8 @@ export const AREAS: Area[] = [
     blurb: "Heating, plumbing and CP12 certificates across Atherstone, Mancetter and Hartshill.",
     referralNote:
       "We cover the north Warwickshire corridor reliably — including the villages around Atherstone.",
+    geo: { lat: 52.579, lng: -1.547 },
+    radiusKm: 10,
   },
   {
     slug: "alcester",
@@ -649,6 +673,8 @@ export const AREAS: Area[] = [
     blurb: "Trusted boiler engineers serving Alcester and the Arden villages.",
     referralNote:
       "The Forest of Arden villages around Alcester mix old and new — we're equally comfortable with period cottages and modern new-builds.",
+    geo: { lat: 52.215, lng: -1.869 },
+    radiusKm: 10,
   },
   {
     slug: "shipston-on-stour",
@@ -659,6 +685,8 @@ export const AREAS: Area[] = [
     blurb: "Gas Safe heating cover across Shipston-on-Stour and the south Warwickshire villages.",
     referralNote:
       "South Warwickshire's rural character means we travel further — but we're committed to covering every corner of the county.",
+    geo: { lat: 52.0625, lng: -1.6258 },
+    radiusKm: 12,
   },
 ];
 
@@ -706,3 +734,287 @@ export const BUSINESS = {
 
 export const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);
 export const getArea = (slug: string) => AREAS.find((a) => a.slug === slug);
+
+/* ---------------------------------------------------------------------------
+ * Geofence — primary service area as a single polygon (rough convex hull
+ * around Rugby + Warwickshire towns) + GeoCircle for radius targeting.
+ * Used by JSON-LD areaServed and on the /areas page map embed.
+ * ---------------------------------------------------------------------------
+ */
+export const GEOFENCE = {
+  centre: { lat: 52.3204, lng: -1.5200 },
+  radiusKm: 35,
+  /** Closed polygon (lat,lng pairs, last point repeats first). */
+  polygon: [
+    [52.5790, -1.5470], // Atherstone
+    [52.5230, -1.4659], // Nuneaton
+    [52.4068, -1.5197], // Coventry
+    [52.3704, -1.2658], // Rugby
+    [52.2493, -1.3899], // Southam
+    [52.0625, -1.6258], // Shipston-on-Stour
+    [52.1917, -1.7083], // Stratford-upon-Avon
+    [52.2150, -1.8690], // Alcester
+    [52.2823, -1.5849], // Warwick
+    [52.3470, -1.5710], // Kenilworth
+    [52.5790, -1.5470], // close
+  ] as [number, number][],
+};
+
+/* ---------------------------------------------------------------------------
+ * News / blog content (file-driven, no CMS).
+ * ---------------------------------------------------------------------------
+ */
+export type NewsCategory =
+  | "Boilers"
+  | "Safety"
+  | "Landlords"
+  | "Pricing"
+  | "Local"
+  | "FAQ"
+  | "How-To"
+  | "Manual";
+
+export type NewsKind = "article" | "faq" | "howto" | "manual";
+
+export interface HowToStep {
+  name: string;
+  text: string;
+  /** Optional safety / warning note rendered next to the step. */
+  warning?: string;
+}
+
+export interface NewsPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  body: string[];
+  date: string; // ISO
+  author: string;
+  category: NewsCategory;
+  kind: NewsKind;
+  tags: string[];
+  cover?: string;
+  /** For kind === "faq" */
+  faqs?: { q: string; a: string }[];
+  /** For kind === "howto" */
+  howto?: {
+    totalTime?: string; // ISO 8601 duration e.g. "PT5M"
+    tools?: string[];
+    supplies?: string[];
+    steps: HowToStep[];
+  };
+  /** For kind === "manual" — quick reference sections */
+  sections?: { heading: string; body: string[] }[];
+}
+
+export const NEWS: NewsPost[] = [
+  {
+    slug: "boiler-upgrade-grants-warwickshire-2026",
+    title: "Boiler Upgrade Scheme 2026 — what Warwickshire homeowners need to know",
+    excerpt:
+      "The latest BUS grant changes mean larger contributions for heat pumps and clearer eligibility for Warwickshire homes. Here's the practical summary.",
+    body: [
+      "The Boiler Upgrade Scheme (BUS) continues to fund low-carbon heating across England. From early 2026 the standard grant for an air-source heat pump remains £7,500 — and qualifying Warwickshire homeowners can stack it with manufacturer rebates.",
+      "Eligibility still rests on EPC validity, an existing wet heating system and Microgeneration Certification Scheme installation. We can survey your property and confirm in one visit.",
+      "If a heat pump is not the right fit, A-rated condensing combi boilers from Worcester Bosch, Vaillant and Ideal remain the most cost-effective like-for-like upgrade.",
+    ],
+    date: "2026-04-12",
+    author: "Just Imagine Engineering Team",
+    category: "Boilers",
+    kind: "article",
+    tags: ["Boiler Upgrade Scheme", "Heat pumps", "Grants", "Warwickshire"],
+  },
+  {
+    slug: "landlord-cp12-changes-2026",
+    title: "Landlord CP12 changes 2026 — what's new for Rugby & Coventry agents",
+    excerpt:
+      "Tightened record-keeping rules and digital certificate expectations are reshaping landlord compliance. Here's how to stay ahead.",
+    body: [
+      "Letting agents across Rugby, Leamington and Coventry are reporting more local-authority audits this year. A valid CP12 is now expected to be supplied digitally within 28 days of inspection.",
+      "Our portfolio packages already include same-day digital issue, secure storage and renewal reminders — keeping you compliant without admin overhead.",
+      "Bundling CP12 with an annual boiler service typically saves landlords ~£25 per property and reduces emergency callouts the following winter.",
+    ],
+    date: "2026-03-02",
+    author: "Just Imagine Engineering Team",
+    category: "Landlords",
+    kind: "article",
+    tags: ["CP12", "Landlord", "Compliance"],
+  },
+  {
+    slug: "winter-no-heat-checklist",
+    title: "No heat? A 5-minute checklist before you call an engineer",
+    excerpt:
+      "Most boiler lockouts are resolved in under five minutes. Try these steps first — then call us if heating isn't restored.",
+    body: [
+      "Most no-heat call-outs we attend in winter are resolved in minutes — low pressure, a tripped reset, or a flat thermostat battery. Work through the steps below before booking an engineer.",
+    ],
+    date: "2026-01-20",
+    author: "Just Imagine Engineering Team",
+    category: "How-To",
+    kind: "howto",
+    tags: ["Troubleshooting", "Boiler repair", "Winter"],
+    howto: {
+      totalTime: "PT5M",
+      tools: ["Towel", "Phone (for boiler manual)"],
+      supplies: [],
+      steps: [
+        {
+          name: "Check system pressure",
+          text: "Look at the pressure gauge on the boiler front. It should read 1.0–1.5 bar when cold. If it's below 1.0, top up via the filling loop until it reads 1.2 bar.",
+        },
+        {
+          name: "Reset the boiler",
+          text: "Hold the reset button for 5 seconds (or follow your manufacturer's reset procedure). Note any error code that appears.",
+        },
+        {
+          name: "Verify gas and thermostat",
+          text: "Confirm the gas isolator at the meter is on and other gas appliances work. Replace thermostat batteries if the screen is blank.",
+        },
+        {
+          name: "Bleed the radiators",
+          text: "If pressure is fine but rooms are cold, bleed each radiator with a key until water (not air) escapes, then re-check pressure.",
+          warning: "Turn the heating off and let radiators cool before bleeding to avoid scalds.",
+        },
+        {
+          name: "Call a Gas Safe engineer",
+          text: "If the fault returns, call 07774 079152. We diagnose every major brand on the first visit and quote a fixed price before any repair.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "boiler-pressure-faq",
+    title: "Boiler pressure FAQ — answers to the questions we get every winter",
+    excerpt:
+      "Why does pressure drop? When is it dangerous? When should you stop topping up and call us? Common boiler-pressure questions answered.",
+    body: [
+      "Pressure issues are by far the most common winter call we receive. These are the questions we answer most often — bookmark this page for next time the gauge starts misbehaving.",
+    ],
+    date: "2026-02-08",
+    author: "Just Imagine Engineering Team",
+    category: "FAQ",
+    kind: "faq",
+    tags: ["Boiler pressure", "FAQ", "Maintenance"],
+    faqs: [
+      {
+        q: "What is the correct boiler pressure?",
+        a: "When cold, most domestic combi boilers should read 1.0–1.5 bar. When hot, pressure can rise to ~2.0 bar — that's normal. Anything above 2.5 bar may indicate a faulty expansion vessel.",
+      },
+      {
+        q: "Why does my boiler pressure keep dropping?",
+        a: "The most common causes are a small leak somewhere in the system, a failed pressure relief valve, or air in the radiators. If you're topping up more than once a month, book a diagnostic visit.",
+      },
+      {
+        q: "Is it safe to keep topping up the pressure?",
+        a: "Topping up to 1.2 bar is safe and routine. However, if you have to top up weekly, the underlying issue should be diagnosed — repeated top-ups dilute system inhibitor and can cause sludge build-up.",
+      },
+      {
+        q: "Why is my boiler pressure too high?",
+        a: "Usually because the filling loop was left slightly open, or the expansion vessel has lost charge. We can re-pressurise the vessel and isolate the cause in one visit.",
+      },
+      {
+        q: "Will low pressure damage my boiler?",
+        a: "It won't damage the boiler immediately — modern boilers lock out and display a fault code instead. But persistent low pressure causes intermittent heating and short-cycling that can shorten component life.",
+      },
+    ],
+  },
+  {
+    slug: "annual-boiler-service-checklist",
+    title: "Annual boiler service — what a proper service actually includes",
+    excerpt:
+      "A reference guide for homeowners and landlords showing exactly what's checked, measured and recorded during a manufacturer-spec annual service.",
+    body: [
+      "This manual lists every check we carry out on a standard annual boiler service. It's the same procedure required by most manufacturers (Worcester Bosch, Vaillant, Ideal) to keep your warranty valid.",
+    ],
+    date: "2026-03-15",
+    author: "Just Imagine Engineering Team",
+    category: "Manual",
+    kind: "manual",
+    tags: ["Boiler service", "Manual", "Reference"],
+    sections: [
+      {
+        heading: "1. Visual inspection",
+        body: [
+          "External casing condition and seal integrity",
+          "Flue terminal location and clearances vs current Building Regs",
+          "Condensate pipe routing and frost protection",
+          "Gas and water pipework, supports and isolation valves",
+        ],
+      },
+      {
+        heading: "2. Combustion analysis",
+        body: [
+          "Calibrated flue gas analyser readings (CO, CO₂, ratio)",
+          "Comparison against manufacturer benchmark commissioning data",
+          "Adjustment of gas valve where the appliance permits it",
+        ],
+      },
+      {
+        heading: "3. Component checks",
+        body: [
+          "Condensate trap clean and refill",
+          "Magnetic system filter clean and inspection",
+          "Expansion vessel pre-charge pressure check",
+          "PRV (pressure relief valve) discharge test",
+        ],
+      },
+      {
+        heading: "4. Documentation issued",
+        body: [
+          "Service report and benchmark log update",
+          "Gas Safe service label fixed to the appliance",
+          "Digital copy emailed to homeowner / managing agent",
+          "Renewal reminder scheduled for 11 months",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "landlord-compliance-manual",
+    title: "Landlord gas-safety compliance — the complete reference manual",
+    excerpt:
+      "A landlord-friendly manual covering CP12 frequency, record-keeping, tenant access, and what happens if an inspection fails.",
+    body: [
+      "Use this manual as a quick reference for your statutory gas safety obligations as a landlord in England. It is not legal advice — but it is the procedure we follow with our agency partners across Warwickshire.",
+    ],
+    date: "2026-02-25",
+    author: "Just Imagine Engineering Team",
+    category: "Manual",
+    kind: "manual",
+    tags: ["Landlord", "CP12", "Compliance", "Manual"],
+    sections: [
+      {
+        heading: "Inspection frequency",
+        body: [
+          "Every gas appliance, fitting and flue must be checked at least every 12 months by a Gas Safe registered engineer.",
+          "A new CP12 must be issued before the previous one expires; backdating is not permitted.",
+        ],
+      },
+      {
+        heading: "Record-keeping",
+        body: [
+          "Keep CP12 records for at least 2 years.",
+          "Tenants must be given a copy within 28 days of inspection (or before move-in for new tenants).",
+        ],
+      },
+      {
+        heading: "Tenant access",
+        body: [
+          "Give 24 hours' written notice for routine inspections.",
+          "If access is repeatedly refused, document attempts in writing — these records are key evidence for HSE compliance.",
+        ],
+      },
+      {
+        heading: "If an appliance fails",
+        body: [
+          "Unsafe appliances are flagged At Risk (AR) or Immediately Dangerous (ID).",
+          "ID classification means the appliance is disconnected on-site with the tenant's knowledge and Gas Emergency Service notified where required.",
+          "Remedial work and a fresh CP12 must follow before the appliance is brought back into use.",
+        ],
+      },
+    ],
+  },
+];
+
+export const getNews = (slug: string) => NEWS.find((n) => n.slug === slug);
+

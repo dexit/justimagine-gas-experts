@@ -27,10 +27,6 @@
       "destination": "/assets/:path*"
     },
     {
-      "source": "/:path*\\.(?:png|jpg|jpeg|gif|webp|ico|svg|css|js)",
-      "destination": "/:path*"
-    },
-    {
       "source": "/(.*)",
       "destination": "/api/handler"
     }

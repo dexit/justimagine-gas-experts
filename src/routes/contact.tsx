@@ -6,11 +6,19 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Just Imagine Ltd — Book a Heating Engineer" },
+      { title: "Contact Just Imagine Ltd | Book a Gas Engineer Rugby" },
       {
         name: "description",
         content:
-          "Call 07774 079152 or email justimagineheating@gmail.com to book a Gas Safe engineer. 24/7 emergency callouts.",
+          "Call 07774 079152 to book a Gas Safe engineer in Rugby or Warwickshire. Boiler servicing, CP12 certificates, installations & 24/7 emergency callouts. Fast response guaranteed.",
+      },
+      { name: "geo.region", content: "GB-WAR" },
+      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      { property: "og:title", content: "Contact Just Imagine Ltd | Book a Gas Engineer Rugby" },
+      {
+        property: "og:description",
+        content:
+          "Get a free, fixed-price quote from Gas Safe engineers in Rugby. Call 07774 079152, WhatsApp or use our online enquiry form. Same-day response.",
       },
     ],
   }),

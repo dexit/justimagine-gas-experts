@@ -89,26 +89,37 @@ export const Route = createRootRoute({
       meta: [
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { title: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
+        { title: "Just Imagine Ltd | Gas Safe Boiler & Heating Engineers Rugby" },
         {
           name: "description",
           content:
-            "Gas Safe registered engineers. Boilers, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts.",
+            "Gas Safe boiler installation, servicing & repair in Rugby & Warwickshire. CP12 certificates, central heating, emergency callouts 24/7. Call 07774 079152.",
         },
-        { property: "og:title", content: "Just Imagine Ltd — Heating & Gas Specialists" },
+        { name: "robots", content: "index, follow, max-image-preview:large" },
+        { name: "author", content: BUSINESS.name },
+        { name: "geo.region", content: "GB-WAR" },
+        { name: "geo.placename", content: "Rugby, Warwickshire" },
+        { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
+        { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
+        { property: "og:title", content: "Just Imagine Ltd | Gas Safe Boiler & Heating — Rugby" },
         {
           property: "og:description",
-          content: "Boilers · Servicing · Repairs · Gas Safety · 24/7",
+          content:
+            "Professional boiler installation, gas safety certificates & 24/7 emergency cover in Rugby & Warwickshire. Gas Safe registered. Free quotes.",
         },
         { property: "og:type", content: "website" },
         { property: "og:url", content: url },
         { property: "og:image", content: ogImage },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:site_name", content: "Just Imagine Ltd" },
+        { property: "og:locale", content: "en_GB" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Just Imagine Ltd — Heating & Gas Specialists" },
+        { name: "twitter:title", content: "Just Imagine Ltd | Gas Safe Boiler Engineers Rugby" },
         {
           name: "twitter:description",
           content:
-            "Gas Safe registered engineers. Boilers, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts.",
+            "Boiler installation, CP12 certificates & 24/7 emergency engineers in Rugby & Warwickshire. Call 07774 079152.",
         },
         { name: "twitter:image", content: ogImage },
         { name: "google-site-verification", content: "placeholder-verify" },
@@ -116,6 +127,7 @@ export const Route = createRootRoute({
       links: [
         { rel: "stylesheet", href: appCss },
         { rel: "canonical", href: url },
+        { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
         { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },

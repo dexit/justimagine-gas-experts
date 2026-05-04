@@ -8,18 +8,23 @@ import { breadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Customer Reviews & Testimonials | Just Imagine Ltd" },
+      { title: "Customer Reviews — Gas Engineers Rugby & Warwickshire | Just Imagine" },
       {
         name: "description",
-        content: `Read ${REVIEWS.length}+ verified customer reviews from homeowners and landlords across Warwickshire. 4.9/5 average rating for boiler installations, repairs, gas safety and plumbing.`,
+        content: `Gas Safe engineer Rugby rated 4.9/5 by ${REVIEWS.length}+ verified customers. Boiler installs, servicing, CP12 certificates & emergency callouts across Warwickshire.`,
       },
-      { property: "og:title", content: "Customer Reviews | Just Imagine Ltd — 4.9/5" },
+      { property: "og:title", content: "Customer Reviews 4.9/5 | Just Imagine Ltd — Rugby" },
       {
         property: "og:description",
-        content: `${REVIEWS.length}+ reviews. 4.9/5 average rating. Trusted gas engineers across Warwickshire.`,
+        content: `${REVIEWS.length}+ verified reviews. 4.9/5 average. Trusted Gas Safe boiler and heating engineers across Rugby & Warwickshire.`,
       },
       { property: "og:image", content: `${BUSINESS.url}/og-default.jpg` },
+      { name: "geo.region", content: "GB-WAR" },
+      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
+      { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
     ],
+    links: [{ rel: "canonical", href: `${BUSINESS.url}/reviews` }],
     scripts: [
       jsonLdScript(
         breadcrumbJsonLd([

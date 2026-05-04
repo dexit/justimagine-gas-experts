@@ -16,11 +16,11 @@ import { Phone } from "lucide-react";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Boilers, Gas, Heating & Plumbing | Just Imagine Ltd" },
+      { title: "Gas & Boiler Services Rugby, Warwickshire | Just Imagine" },
       {
         name: "description",
         content:
-          "Boiler installation & servicing, gas safety certificates, heating, plumbing, repairs and 24/7 emergency callouts.",
+          "Boiler installation, servicing & repair, CP12 gas safety certificates, central heating, power flushing and 24/7 emergency callouts across Rugby & Warwickshire. Gas Safe registered.",
       },
     ],
   }),

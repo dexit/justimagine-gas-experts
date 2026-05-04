@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Menu, X, Flame, AlertCircle } from "lucide-react";
+import { Phone, Menu, X, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -20,9 +20,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="h-9 w-9 rounded-full bg-gradient-hero flex items-center justify-center shadow-elegant">
-            <Flame className="h-4.5 w-4.5 text-accent" strokeWidth={2.5} />
-          </div>
+          <img src="/logo.svg" alt="Just Imagine Ltd" className="h-9 w-9 rounded-full" />
           <div className="leading-tight">
             <div className="font-display text-lg font-semibold tracking-tight">Just Imagine</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">

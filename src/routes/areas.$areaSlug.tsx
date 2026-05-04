@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, AREAS, REVIEWS, getArea, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, serviceJsonLd, jsonLdScript } from "@/lib/seo";
+import { breadcrumbJsonLd, localServiceJsonLd, jsonLdScript } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, MapPin, Star, ArrowRight } from "lucide-react";
@@ -28,6 +28,10 @@ export const Route = createFileRoute("/areas/$areaSlug")({
         { property: "og:description", content: desc },
         { property: "og:url", content: url },
         { property: "og:image", content: `${BUSINESS.url}/og-default.jpg` },
+        { name: "geo.region", content: "GB-WAR" },
+        { name: "geo.placename", content: a.name },
+        { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
+        { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -39,11 +43,13 @@ export const Route = createFileRoute("/areas/$areaSlug")({
           ]),
         ),
         jsonLdScript(
-          serviceJsonLd(
-            `Heating & Gas Engineers in ${a.name}`,
-            desc,
-            a.name,
-          ),
+          localServiceJsonLd({
+            serviceName: "Boiler Installation, Gas & Heating Services",
+            serviceDescription: desc,
+            areaName: a.name,
+            areaPostcodes: a.postcodes,
+            county: a.county,
+          }),
         ),
       ],
     };

@@ -665,6 +665,8 @@ export const AREAS: Area[] = [
 export const BUSINESS = {
   name: "Just Imagine Ltd",
   legalName: "Just Imagine Ltd",
+  companyNumber: "15441163",
+  companiesHouseUrl: "https://find-and-update.company-information.service.gov.uk/company/15441163",
   phone: "07774 079152",
   phoneE164: "+447774079152",
   whatsapp: "447774079152",
@@ -678,8 +680,28 @@ export const BUSINESS = {
   geo: { lat: 52.3704, lng: -1.2658 },
   priceRange: "££",
   openingHours: "Mo-Sa 07:00-20:00",
+  emergencyHours: "24/7",
   gasSafeNumber: "—",
   founded: "2010",
+  // Canonical service categories for schema + keyword use
+  serviceTypes: [
+    "Boiler Installation",
+    "Boiler Servicing",
+    "Boiler Repair",
+    "Gas Cooker Installation",
+    "Gas Pipework",
+    "Gas Fire Servicing",
+    "Radiator Installation",
+    "Central Heating",
+    "Emergency Call Outs",
+    "CP12 Gas Safety Certificates",
+    "Power Flushing",
+    "Plumbing",
+  ],
+  // Google Business Profile description
+  profileDescription:
+    "Professional Plumber for Boiler & Central Heating Services in Rugby. Whether you require a reliable Plumber in Rugby or find yourself in need of an Emergency Plumber in Rugby, we've got you covered. Our plumbing services near Rugby ensure you receive top-notch solutions for any plumbing issue, be it big or small. Trust in our long-standing reputation for quality and service.",
+  slogan: "Heating you can trust. Prices that make sense.",
 };
 
 export const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);

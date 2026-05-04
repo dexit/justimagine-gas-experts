@@ -9,11 +9,19 @@ export const Route = createFileRoute("/areas/")({
     const url = `${BUSINESS.url}/areas`;
     return {
       meta: [
-        { title: "Areas We Cover — Rugby, Warwickshire & Coventry | Just Imagine" },
+        { title: "Gas Engineers Near You — Rugby & Warwickshire | Just Imagine" },
         {
           name: "description",
           content:
-            "Gas Safe heating, boiler & plumbing engineers covering Rugby, Leamington Spa, Warwick, Kenilworth, Stratford, Coventry, Nuneaton and all of Warwickshire.",
+            "Gas Safe boiler and heating engineers covering Rugby, Leamington Spa, Warwick, Kenilworth, Stratford-upon-Avon, Coventry & across Warwickshire. Same-day emergency cover available.",
+        },
+        { name: "geo.region", content: "GB-WAR" },
+        { name: "geo.placename", content: "Warwickshire" },
+        { property: "og:title", content: "Gas Engineers Near You — Rugby & Warwickshire | Just Imagine" },
+        {
+          property: "og:description",
+          content:
+            "Find your local Gas Safe heating engineer across Rugby, Leamington, Warwick, Coventry and Warwickshire. Boilers, CP12 certificates, 24/7 emergency cover.",
         },
         { property: "og:url", content: url },
       ],

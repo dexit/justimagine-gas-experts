@@ -6,11 +6,19 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/safety")({
   head: () => ({
     meta: [
-      { title: "Gas Safety Certificates & Audits | Just Imagine Ltd" },
+      { title: "Gas Safety Certificates Rugby & Warwickshire | Just Imagine" },
       {
         name: "description",
         content:
-          "Landlord gas safety (CP12) certificates, gas leak detection, safety audits and compliance assessments by Gas Safe registered engineers.",
+          "CP12 landlord gas safety certificates from £60 in Rugby & Warwickshire. Gas Safe registered engineers. Same-day digital issue, carbon monoxide testing, safety audits for landlords.",
+      },
+      { name: "geo.region", content: "GB-WAR" },
+      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      { property: "og:title", content: "Gas Safety Certificates Rugby, Warwickshire | Just Imagine" },
+      {
+        property: "og:description",
+        content:
+          "Landlord CP12 certificates from £60. Same-day issue, Gas Safe registered, Warwickshire-wide coverage. Free reminders when due for renewal.",
       },
     ],
   }),

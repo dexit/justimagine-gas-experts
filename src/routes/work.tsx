@@ -5,11 +5,19 @@ import { Hammer, Camera, MapPin, Calendar } from "lucide-react";
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
-      { title: "Our Latest Work — Recent Boiler Installs & Repairs | Just Imagine" },
+      { title: "Recent Boiler & Heating Work in Warwickshire | Just Imagine" },
       {
         name: "description",
         content:
-          "View our recent heating and plumbing projects across Rugby, Leamington, and Warwickshire.",
+          "Recent boiler installations, system upgrades, power flushes and landlord compliance work by Just Imagine Ltd across Rugby, Leamington Spa, Warwick and Warwickshire.",
+      },
+      { name: "geo.region", content: "GB-WAR" },
+      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      { property: "og:title", content: "Recent Boiler & Heating Work Warwickshire | Just Imagine" },
+      {
+        property: "og:description",
+        content:
+          "See our latest boiler installs, heating upgrades and gas safety work across Rugby and Warwickshire. Real jobs, real results.",
       },
     ],
   }),

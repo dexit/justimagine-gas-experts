@@ -23,23 +23,27 @@ const url = `${BUSINESS.url}/landlord`;
 export const Route = createFileRoute("/landlord")({
   head: () => ({
     meta: [
-      { title: "Landlord Gas Safety Packages — CP12, Boiler Service & Compliance | Just Imagine" },
+      { title: "Landlord CP12 & Gas Safety Rugby, Warwickshire | Just Imagine" },
       {
         name: "description",
         content:
-          "Annual CP12 gas safety certificates, boiler servicing and priority emergency cover for landlords and letting agents across Warwickshire. Portfolio discounts. Same-day certificates.",
+          "CP12 gas safety certificates from £60, boiler servicing & priority emergency cover for landlords across Rugby & Warwickshire. Portfolio discounts. Same-day digital issue.",
       },
       {
         property: "og:title",
-        content: "Landlord Gas Safety Packages — CP12 & Boiler Service | Just Imagine",
+        content: "Landlord CP12 & Gas Safety Rugby, Warwickshire | Just Imagine",
       },
       {
         property: "og:description",
         content:
-          "Compliant, affordable landlord gas safety packages. CP12 from £60, bundle deals, portfolio discounts, agent invoicing.",
+          "Landlord gas safety packages from £60. CP12 certificates, boiler servicing, portfolio discounts and direct agent invoicing across Warwickshire.",
       },
       { property: "og:url", content: url },
       { property: "og:image", content: `${BUSINESS.url}/og-default.jpg` },
+      { name: "geo.region", content: "GB-WAR" },
+      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
+      { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: [

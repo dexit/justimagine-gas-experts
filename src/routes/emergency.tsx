@@ -22,23 +22,25 @@ const url = `${BUSINESS.url}/emergency`;
 export const Route = createFileRoute("/emergency")({
   head: () => ({
     meta: [
-      {
-        title: `24/7 Emergency Gas Engineer — No Heat, Gas Leaks & Burst Pipes | ${BUSINESS.phone}`,
-      },
+      { title: "24/7 Emergency Gas Engineer Rugby & Warwickshire | Just Imagine" },
       {
         name: "description",
-        content: `Gas Safe emergency engineers on call 24/7. No heat, no hot water, gas smell, burst pipe — call ${BUSINESS.phone} now. Rapid response across Warwickshire.`,
+        content: `Gas Safe emergency engineers on call 24/7 across Rugby & Warwickshire. No heat, no hot water, gas smell or burst pipe — call ${BUSINESS.phone} now for rapid response.`,
       },
       {
         property: "og:title",
-        content: "24/7 Emergency Gas Engineer | Just Imagine Ltd",
+        content: "24/7 Emergency Gas Engineer Rugby & Warwickshire | Just Imagine",
       },
       {
         property: "og:description",
-        content: `Gas Safe engineers on call day and night. Call ${BUSINESS.phone} for emergency heating, gas leaks and burst pipes.`,
+        content: `Gas Safe engineers on call day and night. Call ${BUSINESS.phone} for emergency boiler repairs, gas leaks and burst pipes across Rugby & Warwickshire.`,
       },
       { property: "og:url", content: url },
       { property: "og:image", content: `${BUSINESS.url}/og-default.jpg` },
+      { name: "geo.region", content: "GB-WAR" },
+      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
+      { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: [

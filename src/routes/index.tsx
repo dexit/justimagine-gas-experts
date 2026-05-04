@@ -324,6 +324,30 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Enquiry */}
+      <section id="quote" className="mx-auto max-w-7xl px-5 lg:px-8 py-20 md:py-28">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-3">
+              Get a quote
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight">
+              Tell us about the job — we'll come back fast.
+            </h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed max-w-lg">
+              Most enquiries get a response within 30 minutes during working hours. For
+              emergencies, please call <a className="text-accent font-semibold" href="tel:07774079152">07774 079152</a>.
+            </p>
+            <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
+              <li className="flex gap-2"><span className="text-accent">›</span> Free quotes on installs</li>
+              <li className="flex gap-2"><span className="text-accent">›</span> Same-day landlord CP12s</li>
+              <li className="flex gap-2"><span className="text-accent">›</span> 24/7 emergency cover across Warwickshire</li>
+            </ul>
+          </div>
+          <EnquiryForm />
+        </div>
+      </section>
     </PageShell>
   );
 }

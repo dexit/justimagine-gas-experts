@@ -1,10 +1,33 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
+  "env": {
+    "NODE_OPTIONS": "--experimental-modules"
+  },
   "github": {
     "enabled": false
   },
   "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/favicon.ico"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/:path*\\.(?:png|jpg|jpeg|gif|webp|ico|svg|css|js)",
+      "destination": "/:path*"
+    },
     {
       "source": "/(.*)",
       "destination": "/api/handler"

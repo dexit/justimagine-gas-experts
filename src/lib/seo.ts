@@ -1,5 +1,47 @@
 import { BUSINESS, AREAS, SERVICES, REVIEWS } from "@/data/seo";
 
+export const organizationJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${BUSINESS.url}/#organization`,
+  name: BUSINESS.name,
+  legalName: BUSINESS.legalName,
+  url: BUSINESS.url,
+  logo: `${BUSINESS.url}/logo.png`,
+  email: BUSINESS.email,
+  telephone: BUSINESS.phoneE164,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: BUSINESS.phoneE164,
+      contactType: "customer service",
+      areaServed: "GB",
+      availableLanguage: ["en"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: BUSINESS.phoneE164,
+      contactType: "emergency",
+      areaServed: "GB",
+      hoursAvailable: "Mo-Su 00:00-23:59",
+    },
+  ],
+});
+
+export const websiteJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${BUSINESS.url}/#website`,
+  url: BUSINESS.url,
+  name: BUSINESS.name,
+  publisher: { "@id": `${BUSINESS.url}/#organization` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${BUSINESS.url}/services?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+});
+
 export const localBusinessJsonLd = () => ({
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "Plumber", "HVACBusiness"],

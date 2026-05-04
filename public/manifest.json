@@ -1,26 +1,60 @@
 {
-  "name": "Just Imagine Heating",
+  "name": "Just Imagine Ltd — Gas Safe Heating & Plumbing",
   "short_name": "Just Imagine",
-  "description": "Expert Heating & Plumbing Services in Warwickshire",
+  "description": "Gas Safe registered heating engineers. Boilers, CP12 certificates, 24/7 emergency cover across Warwickshire.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0f172a",
+  "background_color": "#14181f",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["utilities", "home"],
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "apple touch icon"
+    },
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
       "src": "/logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "512x512",
+      "purpose": "maskable any"
     },
     {
-      "src": "/logo.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/logo.webp",
+      "type": "image/webp",
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Call Now",
+      "url": "tel:07774079152",
+      "description": "Call our emergency line"
+    },
+    {
+      "name": "Get a Quote",
+      "url": "/contact",
+      "description": "Send an enquiry"
     }
   ]
 }

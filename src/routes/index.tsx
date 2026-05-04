@@ -12,21 +12,27 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
+import { geoMetaTags } from "@/lib/seo";
+import { OptimizedImage } from "@/components/OptimizedImage";
+import { BrandLogos } from "@/components/BrandLogos";
+import { EnquiryForm } from "@/components/EnquiryForm";
 import heroImg from "@/assets/hero-engineer.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
+      { title: "Just Imagine Ltd | Gas Safe Boiler & Plumbing Engineers Rugby" },
       {
         name: "description",
         content:
-          "Gas Safe registered engineers covering boiler installs, servicing, repairs, gas safety certificates and 24/7 emergency heating & plumbing.",
+          "Gas Safe boiler engineers in Rugby & Warwickshire. New boiler installation, annual servicing, CP12 landlord certificates & 24/7 emergency callouts. Free fixed-price quotes.",
       },
-      { property: "og:title", content: "Just Imagine Ltd — Gas Safe Heating & Plumbing" },
+      ...geoMetaTags(),
+      { property: "og:title", content: "Just Imagine Ltd | Gas Safe Boiler & Plumbing — Rugby" },
       {
         property: "og:description",
-        content: "Boilers, gas safety, plumbing — honest, certified, 24/7.",
+        content:
+          "Professional boiler installation, CP12 certificates & 24/7 emergency cover in Rugby, Warwickshire. Gas Safe registered. Free quotes — 07774 079152.",
       },
     ],
   }),
@@ -126,12 +132,14 @@ function Home() {
           </div>
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-amber rounded-3xl opacity-20 blur-2xl" />
-            <img
+            <OptimizedImage
               src={heroImg}
               alt="Gas Safe engineer servicing a boiler"
               width={1600}
               height={1200}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
               className="relative rounded-2xl shadow-elegant w-full object-cover aspect-[4/3]"
+              lazy={false}
             />
             <div className="absolute -bottom-6 -left-6 bg-card text-card-foreground rounded-xl p-4 shadow-elegant border border-border max-w-[220px]">
               <div className="flex gap-1 text-accent mb-1">
@@ -154,13 +162,7 @@ function Home() {
           <p className="text-center text-xs uppercase tracking-widest text-muted-foreground mb-8 font-semibold">
             We Install & Service All Leading Brands
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-smooth">
-            <span className="text-2xl font-display font-bold">Worcester Bosch</span>
-            <span className="text-2xl font-display font-bold">Vaillant</span>
-            <span className="text-2xl font-display font-bold">Ideal</span>
-            <span className="text-2xl font-display font-bold">Baxi</span>
-            <span className="text-2xl font-display font-bold">Glow-worm</span>
-          </div>
+          <BrandLogos />
         </div>
       </section>
 
@@ -323,6 +325,30 @@ function Home() {
               </table>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Enquiry */}
+      <section id="quote" className="mx-auto max-w-7xl px-5 lg:px-8 py-20 md:py-28">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-3">
+              Get a quote
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight">
+              Tell us about the job — we'll come back fast.
+            </h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed max-w-lg">
+              Most enquiries get a response within 30 minutes during working hours. For
+              emergencies, please call <a className="text-accent font-semibold" href="tel:07774079152">07774 079152</a>.
+            </p>
+            <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
+              <li className="flex gap-2"><span className="text-accent">›</span> Free quotes on installs</li>
+              <li className="flex gap-2"><span className="text-accent">›</span> Same-day landlord CP12s</li>
+              <li className="flex gap-2"><span className="text-accent">›</span> 24/7 emergency cover across Warwickshire</li>
+            </ul>
+          </div>
+          <EnquiryForm />
         </div>
       </section>
     </PageShell>

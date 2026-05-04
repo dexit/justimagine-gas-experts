@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, ShieldCheck, Flame } from "lucide-react";
+import { Phone, Mail, ShieldCheck, Flame, AlertCircle } from "lucide-react";
+import { BUSINESS } from "@/data/seo";
 
 export function SiteFooter() {
   return (
@@ -13,11 +14,16 @@ export function SiteFooter() {
             <span className="font-display text-2xl font-semibold">Just Imagine Ltd</span>
           </div>
           <p className="text-primary-foreground/70 max-w-md leading-relaxed">
-            Gas Safe registered heating & plumbing engineers. Honest work, safety-first, available
-            24/7 for emergencies.
+            Gas Safe registered heating & plumbing engineers covering Rugby, Leamington Spa,
+            Warwick, Coventry and across Warwickshire. Honest work, safety-first, available 24/7.
           </p>
-          <div className="mt-6 inline-flex items-center gap-2 text-sm text-accent">
-            <ShieldCheck className="h-4 w-4" /> Gas Safe Registered Engineers
+          <div className="mt-5 flex flex-wrap gap-3">
+            <div className="inline-flex items-center gap-2 text-sm text-accent border border-accent/30 rounded-full px-3 py-1">
+              <ShieldCheck className="h-3.5 w-3.5" /> Gas Safe Registered
+            </div>
+            <div className="inline-flex items-center gap-2 text-sm text-primary-foreground/60 border border-primary-foreground/20 rounded-full px-3 py-1">
+              Est. {BUSINESS.founded}
+            </div>
           </div>
         </div>
 
@@ -26,21 +32,25 @@ export function SiteFooter() {
           <ul className="space-y-3 text-sm text-primary-foreground/80">
             <li>
               <a
-                href="tel:07774079152"
+                href={`tel:${BUSINESS.phoneE164}`}
                 className="flex items-center gap-2 hover:text-accent transition-smooth"
               >
                 <Phone className="h-4 w-4" />
-                07774 079152
+                {BUSINESS.phone}
               </a>
             </li>
             <li>
               <a
-                href="mailto:justimagineheating@gmail.com"
+                href={`mailto:${BUSINESS.email}`}
                 className="flex items-center gap-2 hover:text-accent transition-smooth"
               >
                 <Mail className="h-4 w-4" />
-                justimagineheating@gmail.com
+                {BUSINESS.email}
               </a>
+            </li>
+            <li className="text-primary-foreground/50 text-xs pt-1">
+              Mon–Sat 7am–8pm<br />
+              <span className="text-destructive/80">Sun: Emergency callouts only</span>
             </li>
           </ul>
         </div>
@@ -51,6 +61,20 @@ export function SiteFooter() {
             <li>
               <Link to="/services" className="hover:text-accent transition-smooth">
                 All Services
+              </Link>
+            </li>
+            <li>
+              <Link to="/landlord" className="hover:text-accent transition-smooth">
+                Landlord Packages
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/emergency"
+                className="hover:text-accent transition-smooth flex items-center gap-1.5"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-destructive/80 animate-pulse" />
+                24/7 Emergency
               </Link>
             </li>
             <li>
@@ -73,13 +97,24 @@ export function SiteFooter() {
                 Areas We Cover
               </Link>
             </li>
+            <li>
+              <Link to="/safety" className="hover:text-accent transition-smooth">
+                Gas Safety
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-accent transition-smooth">
+                Contact & Enquiry
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-6 text-xs text-primary-foreground/60 flex flex-wrap justify-between gap-3">
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             <span>© {new Date().getFullYear()} Just Imagine Ltd.</span>
+            <span>Gas Safe Registered · Rugby, Warwickshire</span>
             <Link to="/privacy" className="hover:text-accent">
               Privacy Policy
             </Link>
@@ -87,7 +122,7 @@ export function SiteFooter() {
               Terms of Service
             </Link>
           </div>
-          <span>Gas · Heating · Plumbing · Safety Audits</span>
+          <span>Boilers · Gas Safety · Heating · Plumbing · Emergencies</span>
         </div>
       </div>
     </footer>

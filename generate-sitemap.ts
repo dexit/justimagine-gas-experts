@@ -3,42 +3,65 @@ import { SERVICES, AREAS, BUSINESS } from './src/data/seo.ts';
 import fs from 'fs';
 
 const baseUrl = BUSINESS.url;
-const pages = [
-  '',
-  '/about',
-  '/services',
-  '/contact',
-  '/pricing',
-  '/reviews',
-  '/work',
-  '/privacy',
-  '/terms',
-  '/safety',
-  '/areas',
+const today = new Date().toISOString().split('T')[0];
+
+interface SitemapEntry {
+  path: string;
+  priority: string;
+  changefreq: string;
+}
+
+const staticPages: SitemapEntry[] = [
+  { path: '', priority: '1.0', changefreq: 'daily' },
+  { path: '/services', priority: '0.9', changefreq: 'weekly' },
+  { path: '/landlord', priority: '0.9', changefreq: 'weekly' },
+  { path: '/emergency', priority: '0.9', changefreq: 'weekly' },
+  { path: '/areas', priority: '0.8', changefreq: 'weekly' },
+  { path: '/pricing', priority: '0.7', changefreq: 'monthly' },
+  { path: '/reviews', priority: '0.7', changefreq: 'weekly' },
+  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
+  { path: '/about', priority: '0.6', changefreq: 'monthly' },
+  { path: '/work', priority: '0.6', changefreq: 'monthly' },
+  { path: '/safety', priority: '0.7', changefreq: 'monthly' },
+  { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+  { path: '/terms', priority: '0.3', changefreq: 'yearly' },
 ];
 
-const servicePages = SERVICES.map((s) => `/services/${s.slug}`);
-const areaPages = AREAS.map((a) => `/areas/${a.slug}`);
-const combinedPages = SERVICES.flatMap((s) =>
-  AREAS.map((a) => `/services/${s.slug}/${a.slug}`)
+const servicePages: SitemapEntry[] = SERVICES.map((s) => ({
+  path: `/services/${s.slug}`,
+  priority: '0.8',
+  changefreq: 'monthly',
+}));
+
+const areaPages: SitemapEntry[] = AREAS.map((a) => ({
+  path: `/areas/${a.slug}`,
+  priority: '0.8',
+  changefreq: 'monthly',
+}));
+
+const combinedPages: SitemapEntry[] = SERVICES.flatMap((s) =>
+  AREAS.map((a) => ({
+    path: `/services/${s.slug}/${a.slug}`,
+    priority: '0.7',
+    changefreq: 'monthly',
+  }))
 );
 
-const allPaths = [...pages, ...servicePages, ...areaPages, ...combinedPages];
+const allEntries = [...staticPages, ...servicePages, ...areaPages, ...combinedPages];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${allPaths
+  ${allEntries
     .map(
-      (path) => `
-  <url>
+      ({ path, priority, changefreq }) => `<url>
     <loc>${baseUrl}${path}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>${path === '' ? 'daily' : 'monthly'}</changefreq>
-    <priority>${path === '' ? '1.0' : '0.7'}</priority>
+    <lastmod>${today}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
   </url>`
     )
-    .join('')}
+    .join('\n  ')}
 </urlset>`;
 
 fs.writeFileSync('public/sitemap.xml', sitemap);
-console.log('Sitemap generated successfully in public/sitemap.xml');
+console.log(`Sitemap generated: ${allEntries.length} URLs`);

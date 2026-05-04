@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import heroImg from "@/assets/hero-engineer.jpg";
 
 export const Route = createFileRoute("/")({
@@ -126,12 +127,14 @@ function Home() {
           </div>
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-amber rounded-3xl opacity-20 blur-2xl" />
-            <img
+            <OptimizedImage
               src={heroImg}
               alt="Gas Safe engineer servicing a boiler"
               width={1600}
               height={1200}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
               className="relative rounded-2xl shadow-elegant w-full object-cover aspect-[4/3]"
+              lazy={false}
             />
             <div className="absolute -bottom-6 -left-6 bg-card text-card-foreground rounded-xl p-4 shadow-elegant border border-border max-w-[220px]">
               <div className="flex gap-1 text-accent mb-1">

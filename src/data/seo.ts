@@ -369,6 +369,10 @@ export interface Area {
   postcodes: string[];
   landmarks?: string[];
   referralNote?: string;
+  /** Approximate centroid for geofencing / Google Maps schema. */
+  geo?: { lat: number; lng: number };
+  /** Effective service radius in km from the centroid. */
+  radiusKm?: number;
 }
 
 export const PRICING = [

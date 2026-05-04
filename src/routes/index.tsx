@@ -13,6 +13,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
 import { OptimizedImage } from "@/components/OptimizedImage";
+import { BrandLogos } from "@/components/BrandLogos";
+import { EnquiryForm } from "@/components/EnquiryForm";
 import heroImg from "@/assets/hero-engineer.jpg";
 
 export const Route = createFileRoute("/")({
@@ -157,13 +159,7 @@ function Home() {
           <p className="text-center text-xs uppercase tracking-widest text-muted-foreground mb-8 font-semibold">
             We Install & Service All Leading Brands
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-smooth">
-            <span className="text-2xl font-display font-bold">Worcester Bosch</span>
-            <span className="text-2xl font-display font-bold">Vaillant</span>
-            <span className="text-2xl font-display font-bold">Ideal</span>
-            <span className="text-2xl font-display font-bold">Baxi</span>
-            <span className="text-2xl font-display font-bold">Glow-worm</span>
-          </div>
+          <BrandLogos />
         </div>
       </section>
 

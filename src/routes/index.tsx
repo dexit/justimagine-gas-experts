@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
+import { geoMetaTags } from "@/lib/seo";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import heroImg from "@/assets/hero-engineer.jpg";
 
@@ -24,8 +25,7 @@ export const Route = createFileRoute("/")({
         content:
           "Gas Safe boiler engineers in Rugby & Warwickshire. New boiler installation, annual servicing, CP12 landlord certificates & 24/7 emergency callouts. Free fixed-price quotes.",
       },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      ...geoMetaTags(),
       { property: "og:title", content: "Just Imagine Ltd | Gas Safe Boiler & Plumbing — Rugby" },
       {
         property: "og:description",

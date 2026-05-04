@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { AREAS, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
+import { breadcrumbJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 import { MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/areas/")({
@@ -15,8 +15,7 @@ export const Route = createFileRoute("/areas/")({
           content:
             "Gas Safe boiler and heating engineers covering Rugby, Leamington Spa, Warwick, Kenilworth, Stratford-upon-Avon, Coventry & across Warwickshire. Same-day emergency cover available.",
         },
-        { name: "geo.region", content: "GB-WAR" },
-        { name: "geo.placename", content: "Warwickshire" },
+        ...geoMetaTags("Warwickshire"),
         { property: "og:title", content: "Gas Engineers Near You — Rugby & Warwickshire | Just Imagine" },
         {
           property: "og:description",

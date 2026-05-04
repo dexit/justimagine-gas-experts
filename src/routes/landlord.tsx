@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { BUSINESS, REVIEWS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 
 const url = `${BUSINESS.url}/landlord`;
 
@@ -40,10 +40,7 @@ export const Route = createFileRoute("/landlord")({
       },
       { property: "og:url", content: url },
       { property: "og:image", content: `${BUSINESS.url}/og-default.jpg` },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
-      { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
-      { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
+      ...geoMetaTags(),
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: [

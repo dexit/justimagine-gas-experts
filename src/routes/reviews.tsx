@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { REVIEWS, BUSINESS } from "@/data/seo";
 import { Star, Quote } from "lucide-react";
-import { breadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
+import { breadcrumbJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/reviews")({
   head: () => ({
@@ -19,10 +19,7 @@ export const Route = createFileRoute("/reviews")({
         content: `${REVIEWS.length}+ verified reviews. 4.9/5 average. Trusted Gas Safe boiler and heating engineers across Rugby & Warwickshire.`,
       },
       { property: "og:image", content: `${BUSINESS.url}/og-default.jpg` },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
-      { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
-      { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
+      ...geoMetaTags(),
     ],
     links: [{ rel: "canonical", href: `${BUSINESS.url}/reviews` }],
     scripts: [

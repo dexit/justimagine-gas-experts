@@ -12,6 +12,7 @@ import {
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
+import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/services")({
         content:
           "Boiler installation, servicing & repair, CP12 gas safety certificates, central heating, power flushing and 24/7 emergency callouts across Rugby & Warwickshire. Gas Safe registered.",
       },
+      ...geoMetaTags(),
     ],
   }),
   component: ServicesPage,

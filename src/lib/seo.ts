@@ -1,12 +1,33 @@
 import { BUSINESS, AREAS, SERVICES, REVIEWS } from "@/data/seo";
 
+const GEO_REGION = "GB-WAR";
+const WARWICKSHIRE_BOUNDS = "52.1 -1.9 52.7 -1.1";
+
 // Warwickshire GeoShape bounding box (geofenced service area)
 const warwickshireGeoShape = {
   "@type": "GeoShape",
   name: "Warwickshire and West Midlands service area",
   description: "Gas Safe heating and plumbing engineers covering Rugby, Leamington Spa, Warwick, Coventry, Kenilworth, Stratford-upon-Avon and surrounding Warwickshire postcodes.",
-  box: "52.1 -1.9 52.7 -1.1", // SW lat/lng NE lat/lng bounding Warwickshire
+  box: WARWICKSHIRE_BOUNDS,
 };
+
+// Precompute areas served to avoid rebuilding on every schema call
+const areasServed = AREAS.map((a) => ({
+  "@type": "City" as const,
+  name: a.name,
+  containsPlace: a.postcodes.map((p) => ({
+    "@type": "PostalCode" as const,
+    name: p,
+    containedInPlace: { "@type": "AdministrativeArea" as const, name: a.county },
+  })),
+}));
+
+export const geoMetaTags = (placename: string = "Rugby, Warwickshire") => [
+  { name: "geo.region", content: GEO_REGION },
+  { name: "geo.placename", content: placename },
+  { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
+  { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
+];
 
 export const localBusinessJsonLd = () => ({
   "@context": "https://schema.org",
@@ -48,18 +69,7 @@ export const localBusinessJsonLd = () => ({
     longitude: BUSINESS.geo.lng,
     name: "Just Imagine Ltd — Rugby, Warwickshire",
   },
-  areaServed: [
-    warwickshireGeoShape,
-    ...AREAS.map((a) => ({
-      "@type": "City",
-      name: a.name,
-      containsPlace: a.postcodes.map((p) => ({
-        "@type": "PostalCode",
-        name: p,
-        containedInPlace: { "@type": "AdministrativeArea", name: a.county },
-      })),
-    })),
-  ],
+  areaServed: [warwickshireGeoShape, ...areasServed],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -106,7 +116,7 @@ export const localBusinessJsonLd = () => ({
           description: s.short,
           serviceType: s.name,
           provider: { "@id": `${BUSINESS.url}/#business` },
-          areaServed: AREAS.map((a) => ({ "@type": "City", name: a.name })),
+          areaServed: areasServed.map((a) => ({ "@type": "City", name: a.name })),
           ...(s.priceFrom
             ? {
                 offers: {
@@ -235,31 +245,29 @@ export const productOfferJsonLd = (opts: {
 });
 
 // Geofenced area + service schema — used on service×area combo pages
-export const localServiceJsonLd = (opts: {
-  serviceName: string;
-  serviceDescription: string;
-  areaName: string;
-  areaPostcodes: string[];
-  county: string;
-  price?: string;
-}) => ({
+export const localServiceJsonLd = (
+  serviceName: string,
+  area: { name: string; postcodes: string[]; county: string },
+  serviceDescription: string,
+  price?: string,
+) => ({
   "@context": "https://schema.org",
   "@type": "Service",
-  name: `${opts.serviceName} in ${opts.areaName}`,
-  serviceType: opts.serviceName,
-  description: opts.serviceDescription,
+  name: `${serviceName} in ${area.name}`,
+  serviceType: serviceName,
+  description: serviceDescription,
   provider: { "@id": `${BUSINESS.url}/#business` },
   areaServed: {
     "@type": "City",
-    name: opts.areaName,
-    containsPlace: opts.areaPostcodes.map((p) => ({ "@type": "PostalCode", name: p })),
-    containedInPlace: { "@type": "AdministrativeArea", name: opts.county },
+    name: area.name,
+    containsPlace: area.postcodes.map((p) => ({ "@type": "PostalCode", name: p })),
+    containedInPlace: { "@type": "AdministrativeArea", name: area.county },
   },
-  ...(opts.price
+  ...(price
     ? {
         offers: {
           "@type": "Offer",
-          price: opts.price.replace(/[^0-9.]/g, ""),
+          price: price.replace(/[^0-9.]/g, ""),
           priceCurrency: "GBP",
           availability: "https://schema.org/InStock",
         },

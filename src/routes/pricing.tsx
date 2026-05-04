@@ -3,6 +3,7 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { PRICING, BUSINESS } from "@/data/seo";
 import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -13,8 +14,7 @@ export const Route = createFileRoute("/pricing")({
         content:
           "Transparent fixed prices: boiler servicing from £75, CP12 landlord certificates from £60, new boiler installation from £1,895. No hidden fees. Free quotes for Rugby & Warwickshire.",
       },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      ...geoMetaTags(),
       { property: "og:title", content: "Boiler & Gas Pricing Rugby, Warwickshire | Just Imagine" },
       {
         property: "og:description",

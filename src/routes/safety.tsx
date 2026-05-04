@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ShieldCheck, AlertTriangle, FileCheck, Phone } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
+import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/safety")({
   head: () => ({
@@ -12,8 +13,7 @@ export const Route = createFileRoute("/safety")({
         content:
           "CP12 landlord gas safety certificates from £60 in Rugby & Warwickshire. Gas Safe registered engineers. Same-day digital issue, carbon monoxide testing, safety audits for landlords.",
       },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      ...geoMetaTags(),
       { property: "og:title", content: "Gas Safety Certificates Rugby, Warwickshire | Just Imagine" },
       {
         property: "og:description",

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Hammer, Camera, MapPin, Calendar } from "lucide-react";
+import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -11,8 +12,7 @@ export const Route = createFileRoute("/work")({
         content:
           "Recent boiler installations, system upgrades, power flushes and landlord compliance work by Just Imagine Ltd across Rugby, Leamington Spa, Warwick and Warwickshire.",
       },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      ...geoMetaTags(),
       { property: "og:title", content: "Recent Boiler & Heating Work Warwickshire | Just Imagine" },
       {
         property: "og:description",

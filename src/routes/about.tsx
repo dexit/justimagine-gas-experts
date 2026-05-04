@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ShieldCheck, Award, Users, Heart } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
+import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -11,8 +12,7 @@ export const Route = createFileRoute("/about")({
         content:
           "Gas Safe registered boiler and heating engineers based in Rugby, Warwickshire. 15+ years experience, 1,200+ jobs, manufacturer-trained on Worcester, Vaillant & Ideal. 24/7 emergency cover.",
       },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      ...geoMetaTags(),
       { property: "og:title", content: "About Just Imagine Ltd | Gas Safe Heating Engineers Rugby" },
       {
         property: "og:description",

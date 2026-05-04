@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -12,8 +13,7 @@ export const Route = createFileRoute("/contact")({
         content:
           "Call 07774 079152 to book a Gas Safe engineer in Rugby or Warwickshire. Boiler servicing, CP12 certificates, installations & 24/7 emergency callouts. Fast response guaranteed.",
       },
-      { name: "geo.region", content: "GB-WAR" },
-      { name: "geo.placename", content: "Rugby, Warwickshire" },
+      ...geoMetaTags(),
       { property: "og:title", content: "Contact Just Imagine Ltd | Book a Gas Engineer Rugby" },
       {
         property: "og:description",

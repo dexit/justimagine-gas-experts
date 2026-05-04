@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, AREAS, REVIEWS, getArea, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, localServiceJsonLd, jsonLdScript } from "@/lib/seo";
+import { breadcrumbJsonLd, localServiceJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, MapPin, Star, ArrowRight } from "lucide-react";
@@ -28,10 +28,7 @@ export const Route = createFileRoute("/areas/$areaSlug")({
         { property: "og:description", content: desc },
         { property: "og:url", content: url },
         { property: "og:image", content: `${BUSINESS.url}/og-default.jpg` },
-        { name: "geo.region", content: "GB-WAR" },
-        { name: "geo.placename", content: a.name },
-        { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
-        { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
+        ...geoMetaTags(a.name),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [

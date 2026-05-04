@@ -369,6 +369,10 @@ export interface Area {
   postcodes: string[];
   landmarks?: string[];
   referralNote?: string;
+  /** Approximate centroid for geofencing / Google Maps schema. */
+  geo?: { lat: number; lng: number };
+  /** Effective service radius in km from the centroid. */
+  radiusKm?: number;
 }
 
 export const PRICING = [
@@ -545,6 +549,8 @@ export const AREAS: Area[] = [
       "Our home town. We cover every street from Bilton to Hillmorton, Cawston to Brownsover — usually same-day for emergencies.",
     referralNote:
       "Based in Rugby ourselves, we typically arrive within 60 minutes for emergency callouts across all Rugby postcodes.",
+    geo: { lat: 52.3704, lng: -1.2658 },
+    radiusKm: 12,
   },
   {
     slug: "leamington-spa",
@@ -556,6 +562,8 @@ export const AREAS: Area[] = [
       "Regency homes, Victorian terraces and new-build estates — we install and service boilers across all of Royal Leamington Spa.",
     referralNote:
       "We're regulars in Leamington Spa — from the Victorian terraces of Lillington to the new-builds in Whitnash, we know the heating challenges of every era of property here.",
+    geo: { lat: 52.2852, lng: -1.52 },
+    radiusKm: 10,
   },
   {
     slug: "warwick",
@@ -567,6 +575,8 @@ export const AREAS: Area[] = [
       "Gas Safe heating engineers covering Warwick town, Woodloes Park, Chase Meadow and Hatton.",
     referralNote:
       "Warwick's mix of older period properties and modern estates means we regularly work on everything from original gas fires to cutting-edge combi systems here.",
+    geo: { lat: 52.2823, lng: -1.5849 },
+    radiusKm: 10,
   },
   {
     slug: "kenilworth",
@@ -577,6 +587,8 @@ export const AREAS: Area[] = [
     blurb: "Trusted local engineers serving Kenilworth, Burton Green and the surrounding villages.",
     referralNote:
       "Kenilworth's affluent detached homes often feature system boilers and larger radiator circuits — we're well-equipped to handle the full range.",
+    geo: { lat: 52.347, lng: -1.571 },
+    radiusKm: 10,
   },
   {
     slug: "stratford-upon-avon",
@@ -588,6 +600,8 @@ export const AREAS: Area[] = [
       "Boilers, plumbing and landlord certificates across Stratford-upon-Avon and the surrounding villages.",
     referralNote:
       "We work with several holiday let and rental landlords in Stratford — keeping their properties compliant and guests warm year-round.",
+    geo: { lat: 52.1917, lng: -1.7083 },
+    radiusKm: 14,
   },
   {
     slug: "coventry",
@@ -599,6 +613,8 @@ export const AREAS: Area[] = [
       "Same-day boiler repair and installation across Coventry — Earlsdon, Cheylesmore, Stoke and Tile Hill.",
     referralNote:
       "Coventry's large student and rental market means CP12 certificates and landlord packages are in constant demand — we handle dozens of Coventry properties every month.",
+    geo: { lat: 52.4068, lng: -1.5197 },
+    radiusKm: 12,
   },
   {
     slug: "nuneaton",
@@ -609,6 +625,8 @@ export const AREAS: Area[] = [
     blurb: "Heating and gas engineers serving Nuneaton, Whitestone and Weddington.",
     referralNote:
       "We cover Nuneaton's mix of ex-council and private housing — reliable, practical heating work at fair prices.",
+    geo: { lat: 52.523, lng: -1.4659 },
+    radiusKm: 10,
   },
   {
     slug: "bedworth",
@@ -619,6 +637,8 @@ export const AREAS: Area[] = [
     blurb: "Local boiler installs, services and emergency callouts across Bedworth and Bulkington.",
     referralNote:
       "Bedworth's compact geography means we're usually on-site quickly — a bonus when you have a heating emergency.",
+    geo: { lat: 52.479, lng: -1.472 },
+    radiusKm: 8,
   },
   {
     slug: "southam",
@@ -629,6 +649,8 @@ export const AREAS: Area[] = [
     blurb: "Gas Safe engineers covering Southam, Long Itchington and Napton-on-the-Hill.",
     referralNote:
       "Rural Southam properties often have older systems and oil conversions — we're experienced with the full spectrum.",
+    geo: { lat: 52.2493, lng: -1.3899 },
+    radiusKm: 10,
   },
   {
     slug: "atherstone",
@@ -639,6 +661,8 @@ export const AREAS: Area[] = [
     blurb: "Heating, plumbing and CP12 certificates across Atherstone, Mancetter and Hartshill.",
     referralNote:
       "We cover the north Warwickshire corridor reliably — including the villages around Atherstone.",
+    geo: { lat: 52.579, lng: -1.547 },
+    radiusKm: 10,
   },
   {
     slug: "alcester",
@@ -649,6 +673,8 @@ export const AREAS: Area[] = [
     blurb: "Trusted boiler engineers serving Alcester and the Arden villages.",
     referralNote:
       "The Forest of Arden villages around Alcester mix old and new — we're equally comfortable with period cottages and modern new-builds.",
+    geo: { lat: 52.215, lng: -1.869 },
+    radiusKm: 10,
   },
   {
     slug: "shipston-on-stour",
@@ -659,6 +685,8 @@ export const AREAS: Area[] = [
     blurb: "Gas Safe heating cover across Shipston-on-Stour and the south Warwickshire villages.",
     referralNote:
       "South Warwickshire's rural character means we travel further — but we're committed to covering every corner of the county.",
+    geo: { lat: 52.0625, lng: -1.6258 },
+    radiusKm: 12,
   },
 ];
 
@@ -684,3 +712,94 @@ export const BUSINESS = {
 
 export const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);
 export const getArea = (slug: string) => AREAS.find((a) => a.slug === slug);
+
+/* ---------------------------------------------------------------------------
+ * Geofence — primary service area as a single polygon (rough convex hull
+ * around Rugby + Warwickshire towns) + GeoCircle for radius targeting.
+ * Used by JSON-LD areaServed and on the /areas page map embed.
+ * ---------------------------------------------------------------------------
+ */
+export const GEOFENCE = {
+  centre: { lat: 52.3204, lng: -1.5200 },
+  radiusKm: 35,
+  /** Closed polygon (lat,lng pairs, last point repeats first). */
+  polygon: [
+    [52.5790, -1.5470], // Atherstone
+    [52.5230, -1.4659], // Nuneaton
+    [52.4068, -1.5197], // Coventry
+    [52.3704, -1.2658], // Rugby
+    [52.2493, -1.3899], // Southam
+    [52.0625, -1.6258], // Shipston-on-Stour
+    [52.1917, -1.7083], // Stratford-upon-Avon
+    [52.2150, -1.8690], // Alcester
+    [52.2823, -1.5849], // Warwick
+    [52.3470, -1.5710], // Kenilworth
+    [52.5790, -1.5470], // close
+  ] as [number, number][],
+};
+
+/* ---------------------------------------------------------------------------
+ * News / blog content (file-driven, no CMS).
+ * ---------------------------------------------------------------------------
+ */
+export interface NewsPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  body: string[];
+  date: string; // ISO
+  author: string;
+  category: "Boilers" | "Safety" | "Landlords" | "Pricing" | "Local";
+  tags: string[];
+  cover?: string;
+}
+
+export const NEWS: NewsPost[] = [
+  {
+    slug: "boiler-upgrade-grants-warwickshire-2026",
+    title: "Boiler Upgrade Scheme 2026 — what Warwickshire homeowners need to know",
+    excerpt:
+      "The latest BUS grant changes mean larger contributions for heat pumps and clearer eligibility for Warwickshire homes. Here's the practical summary.",
+    body: [
+      "The Boiler Upgrade Scheme (BUS) continues to fund low-carbon heating across England. From early 2026 the standard grant for an air-source heat pump remains £7,500 — and qualifying Warwickshire homeowners can stack it with manufacturer rebates.",
+      "Eligibility still rests on EPC validity, an existing wet heating system and Microgeneration Certification Scheme installation. We can survey your property and confirm in one visit.",
+      "If a heat pump is not the right fit, A-rated condensing combi boilers from Worcester Bosch, Vaillant and Ideal remain the most cost-effective like-for-like upgrade.",
+    ],
+    date: "2026-04-12",
+    author: "Just Imagine Engineering Team",
+    category: "Boilers",
+    tags: ["Boiler Upgrade Scheme", "Heat pumps", "Grants", "Warwickshire"],
+  },
+  {
+    slug: "landlord-cp12-changes-2026",
+    title: "Landlord CP12 changes 2026 — what's new for Rugby & Coventry agents",
+    excerpt:
+      "Tightened record-keeping rules and digital certificate expectations are reshaping landlord compliance. Here's how to stay ahead.",
+    body: [
+      "Letting agents across Rugby, Leamington and Coventry are reporting more local-authority audits this year. A valid CP12 is now expected to be supplied digitally within 28 days of inspection.",
+      "Our portfolio packages already include same-day digital issue, secure storage and renewal reminders — keeping you compliant without admin overhead.",
+      "Bundling CP12 with an annual boiler service typically saves landlords ~£25 per property and reduces emergency callouts the following winter.",
+    ],
+    date: "2026-03-02",
+    author: "Just Imagine Engineering Team",
+    category: "Landlords",
+    tags: ["CP12", "Landlord", "Compliance"],
+  },
+  {
+    slug: "winter-no-heat-checklist",
+    title: "No heat? A 5-minute checklist before you call an engineer",
+    excerpt:
+      "Most boiler lockouts are resolved in under five minutes. Try these steps first — then call us if heating isn't restored.",
+    body: [
+      "Check the system pressure on the front gauge. If it's below 1.0 bar, top up using the filling loop until it reads 1.2–1.5 bar cold.",
+      "Reset the boiler using the manufacturer's reset procedure (usually a button held for 5 seconds). Note any error code displayed.",
+      "Confirm the gas supply is on at the meter and the thermostat batteries are healthy. If pressure or codes return, call us — most local jobs are diagnosed on the first visit.",
+    ],
+    date: "2026-01-20",
+    author: "Just Imagine Engineering Team",
+    category: "Safety",
+    tags: ["Troubleshooting", "Boiler repair", "Winter"],
+  },
+];
+
+export const getNews = (slug: string) => NEWS.find((n) => n.slug === slug);

@@ -1,0 +1,40 @@
+name = "just-imagine"
+type = "javascript"
+main = "dist/server/index.js"
+compatibility_date = "2025-01-01"
+
+[build]
+command = "npm run build"
+cwd = "./"
+watch_paths = ["src/**/*.ts", "src/**/*.tsx"]
+
+[build.upload]
+format = "service-worker"
+
+[env.production]
+name = "just-imagine-production"
+account_id = ""
+workers_dev = false
+route = "justimagine.ltd/*"
+zone_id = ""
+
+[env.staging]
+name = "just-imagine-staging"
+workers_dev = true
+
+# Define triggers for Cloudflare Pages
+[triggers.crons]
+# Optional: Sitemap refresh every 24 hours
+# crons = ["0 0 * * *"]
+
+# KV Namespace bindings (optional, for future features)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = ""
+# preview_id = ""
+
+# D1 Database bindings (optional, for future database features)
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "just_imagine_db"
+# database_id = ""

@@ -199,6 +199,30 @@ function Home() {
         </div>
       </section>
 
+      {/* Special Offer */}
+      <section className="mx-auto max-w-7xl px-5 lg:px-8 py-12">
+        <div className="bg-accent/10 border border-accent/20 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded-full mb-4">
+              Limited Time Offer
+            </div>
+            <h2 className="font-display text-3xl font-semibold mb-4">
+              £15 Off Your First Boiler Service
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              New customer? Mention this website offer when booking your first annual boiler service
+              to receive an immediate £15 discount. Valid for all residents in Warwickshire.
+            </p>
+          </div>
+          <Button
+            asChild
+            size="lg"
+            className="bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold shadow-amber whitespace-nowrap"
+          >
+            <a href="tel:07774079152">Claim Offer Now</a>
+          </Button>
+        </div>
+      </section>
       {/* Why us */}
       <section className="bg-secondary/60 border-y border-border">
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-20 md:py-28">

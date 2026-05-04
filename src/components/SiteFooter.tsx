@@ -80,6 +80,9 @@ export function SiteFooter() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-6 text-xs text-primary-foreground/60 flex flex-wrap justify-between gap-3">
           <div className="flex gap-4">
             <span>© {new Date().getFullYear()} Just Imagine Ltd.</span>
+            <Link to="/cookies" className="hover:text-accent ml-4">
+              Cookie Policy
+            </Link>
             <Link to="/privacy" className="hover:text-accent">
               Privacy Policy
             </Link>

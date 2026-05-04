@@ -1,3 +1,4 @@
+import { BackToTop } from "./BackToTop";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { WhatsAppFab } from "./WhatsAppFab";
@@ -10,6 +11,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <main className="flex-1">{children}</main>
       <SiteFooter />
       <WhatsAppFab />
+      <BackToTop />
     </div>
   );
 }

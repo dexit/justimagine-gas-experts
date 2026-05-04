@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/assets/(.*)",
+      "destination": "/dist/client/assets/$1"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/dist/client/favicon.ico"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/dist/client/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/dist/client/robots.txt"
+    },
+    {
+      "source": "/manifest.json",
+      "destination": "/dist/client/manifest.json"
+    },
+    {
+      "source": "/og-default.jpg",
+      "destination": "/dist/client/og-default.jpg"
+    },
+    {
+      "source": "/logo.png",
+      "destination": "/dist/client/logo.png"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/dist/server/server.js"
+    }
+  ]
+}

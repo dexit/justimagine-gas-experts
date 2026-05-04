@@ -1,6 +1,6 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, ScriptOnce } from "@tanstack/react-router";
 import { localBusinessJsonLd, jsonLdScript } from "@/lib/seo";
-import { BUSINESS, AREAS } from "@/data/seo";
+import { BUSINESS } from "@/data/seo";
 import { Phone, Flame, ArrowRight, Home, Wrench, AlertCircle, Building, MapPin } from "lucide-react";
 
 import appCss from "../styles.css?url";

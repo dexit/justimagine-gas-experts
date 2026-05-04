@@ -78,6 +78,82 @@ function NewsPostPage() {
             </p>
           ))}
         </div>
+
+        {post.kind === "faq" && post.faqs && (
+          <div className="mt-8 space-y-3">
+            {post.faqs.map((f, i) => (
+              <details
+                key={i}
+                className="group rounded-xl border border-border bg-card p-5 open:shadow-elegant focus-within:ring-2 focus-within:ring-ring"
+              >
+                <summary className="cursor-pointer list-none font-semibold text-base flex items-start justify-between gap-4">
+                  <span>{f.q}</span>
+                  <span className="text-accent text-xl leading-none transition-transform group-open:rotate-45 motion-reduce:transition-none">+</span>
+                </summary>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        )}
+
+        {post.kind === "howto" && post.howto && (
+          <div className="mt-8">
+            {(post.howto.tools?.length || post.howto.totalTime) && (
+              <div className="rounded-xl border border-border bg-secondary/50 p-5 mb-8 text-sm">
+                {post.howto.totalTime && (
+                  <div>
+                    <strong className="font-semibold">Time:</strong>{" "}
+                    {post.howto.totalTime.replace("PT", "").replace("M", " minutes")}
+                  </div>
+                )}
+                {post.howto.tools && post.howto.tools.length > 0 && (
+                  <div className="mt-1">
+                    <strong className="font-semibold">You'll need:</strong>{" "}
+                    {post.howto.tools.join(", ")}
+                  </div>
+                )}
+              </div>
+            )}
+            <ol className="space-y-5">
+              {post.howto.steps.map((s, i) => (
+                <li
+                  key={i}
+                  id={`step-${i + 1}`}
+                  className="flex gap-4 p-5 rounded-xl border border-border bg-card"
+                >
+                  <span className="flex-shrink-0 h-8 w-8 rounded-full bg-gradient-amber text-accent-foreground font-display font-bold text-sm flex items-center justify-center shadow-amber">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold mb-1">{s.name}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.text}</p>
+                    {s.warning && (
+                      <p className="mt-2 text-xs text-destructive font-medium">⚠ {s.warning}</p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        {post.kind === "manual" && post.sections && (
+          <div className="mt-8 space-y-6">
+            {post.sections.map((sec, i) => (
+              <section key={i} className="p-6 rounded-xl border border-border bg-card">
+                <h2 className="font-display text-xl font-semibold mb-3">{sec.heading}</h2>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {sec.body.map((b, j) => (
+                    <li key={j} className="flex gap-2">
+                      <span className="text-accent">›</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        )}
         <div className="mt-10 pt-8 border-t border-border">
           <Link
             to="/news"

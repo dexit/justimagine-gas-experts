@@ -61,20 +61,67 @@ export const serviceAreaJsonLd = () => ({
 
 /* ----------------- News helpers ----------------- */
 
-export const newsArticleJsonLd = (post: NewsPost) => ({
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  headline: post.title,
-  datePublished: post.date,
-  dateModified: post.date,
-  author: { "@type": "Organization", name: post.author },
-  publisher: { "@id": `${BUSINESS.url}/#organization` },
-  mainEntityOfPage: `${BUSINESS.url}/news/${post.slug}`,
-  description: post.excerpt,
-  articleSection: post.category,
-  keywords: post.tags.join(", "),
-  ...(post.cover && { image: post.cover }),
-});
+export const newsArticleJsonLd = (post: NewsPost) => {
+  const url = `${BUSINESS.url}/news/${post.slug}`;
+  const base: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Organization", name: post.author },
+    publisher: { "@id": `${BUSINESS.url}/#organization` },
+    mainEntityOfPage: url,
+    description: post.excerpt,
+    articleSection: post.category,
+    keywords: post.tags.join(", "),
+    ...(post.cover && { image: post.cover }),
+  };
+  if (post.kind === "faq" && post.faqs) {
+    return {
+      ...base,
+      "@type": "FAQPage",
+      mainEntity: post.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    };
+  }
+  if (post.kind === "howto" && post.howto) {
+    return {
+      ...base,
+      "@type": "HowTo",
+      name: post.title,
+      ...(post.howto.totalTime && { totalTime: post.howto.totalTime }),
+      ...(post.howto.tools && post.howto.tools.length
+        ? { tool: post.howto.tools.map((t) => ({ "@type": "HowToTool", name: t })) }
+        : {}),
+      ...(post.howto.supplies && post.howto.supplies.length
+        ? { supply: post.howto.supplies.map((s) => ({ "@type": "HowToSupply", name: s })) }
+        : {}),
+      step: post.howto.steps.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.name,
+        text: s.text,
+        url: `${url}#step-${i + 1}`,
+      })),
+    };
+  }
+  if (post.kind === "manual" && post.sections) {
+    return {
+      ...base,
+      "@type": "TechArticle",
+      proficiencyLevel: "Beginner",
+      hasPart: post.sections.map((sec) => ({
+        "@type": "WebPageElement",
+        name: sec.heading,
+        text: sec.body.join(" "),
+      })),
+    };
+  }
+  return { ...base, "@type": "NewsArticle" };
+};
 
 export const newsListJsonLd = () => ({
   "@context": "https://schema.org",

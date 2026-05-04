@@ -1,16 +1,17 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Menu, X, Flame } from "lucide-react";
+import { Phone, Menu, X, Flame, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/pricing", label: "Pricing" },
-  { to: "/work", label: "Our Work" },
-  { to: "/reviews", label: "Reviews" },
-  { to: "/areas", label: "Areas" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Home", exact: true },
+  { to: "/services", label: "Services", exact: false },
+  { to: "/landlord", label: "Landlords", exact: false },
+  { to: "/pricing", label: "Pricing", exact: false },
+  { to: "/work", label: "Our Work", exact: false },
+  { to: "/reviews", label: "Reviews", exact: false },
+  { to: "/areas", label: "Areas", exact: false },
+  { to: "/contact", label: "Contact", exact: false },
 ] as const;
 
 export function SiteHeader() {
@@ -35,13 +36,21 @@ export function SiteHeader() {
             <Link
               key={n.to}
               to={n.to}
-              className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-smooth"
-              activeProps={{ className: "px-4 py-2 text-sm font-semibold text-foreground" }}
-              activeOptions={{ exact: n.to === "/" }}
+              className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-smooth"
+              activeProps={{ className: "px-3 py-2 text-sm font-semibold text-foreground" }}
+              activeOptions={{ exact: n.exact }}
             >
               {n.label}
             </Link>
           ))}
+          <Link
+            to="/emergency"
+            className="ml-1 px-3 py-1.5 text-sm font-semibold text-destructive-foreground bg-destructive/10 hover:bg-destructive/20 border border-destructive/30 rounded-full flex items-center gap-1.5 transition-smooth"
+            activeProps={{ className: "ml-1 px-3 py-1.5 text-sm font-semibold text-destructive bg-destructive/20 border border-destructive/40 rounded-full flex items-center gap-1.5" }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-destructive animate-pulse" />
+            Emergency
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -74,6 +83,20 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ))}
+            <Link
+              to="/emergency"
+              onClick={() => setOpen(false)}
+              className="py-2.5 text-sm font-semibold text-destructive flex items-center gap-2"
+            >
+              <AlertCircle className="h-4 w-4" />
+              Emergency 24/7
+            </Link>
+            <a
+              href="tel:07774079152"
+              className="mt-3 py-2.5 px-4 rounded-lg bg-gradient-amber text-center font-semibold text-sm text-accent-foreground"
+            >
+              Call 07774 079152
+            </a>
           </div>
         </div>
       )}

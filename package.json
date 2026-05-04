@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "bun optimize-images.ts && bun generate-og-image.ts && vite build && bun generate-sitemap.ts",
+    "build": "bun generate-favicons.ts && bun optimize-images.ts && bun generate-og-image.ts && vite build && bun generate-sitemap.ts",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",

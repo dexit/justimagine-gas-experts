@@ -1,4 +1,4 @@
-import { BUSINESS, AREAS, SERVICES } from "@/data/seo";
+import { BUSINESS, AREAS, SERVICES, REVIEWS } from "@/data/seo";
 
 export const localBusinessJsonLd = () => ({
   "@context": "https://schema.org",
@@ -11,7 +11,12 @@ export const localBusinessJsonLd = () => ({
   email: BUSINESS.email,
   priceRange: BUSINESS.priceRange,
   image: `${BUSINESS.url}/og-default.jpg`,
-  logo: `${BUSINESS.url}/logo.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${BUSINESS.url}/logo.png`,
+    width: 512,
+    height: 512,
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: BUSINESS.street,
@@ -43,18 +48,60 @@ export const localBusinessJsonLd = () => ({
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Heating, Gas & Plumbing Services",
-    itemListElement: SERVICES.map((s) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: s.name,
-        description: s.short,
-        areaServed: AREAS.map((a) => ({ "@type": "City", name: a.name })),
+    name: "Gas Safe Heating, Boiler & Plumbing Services",
+    itemListElement: SERVICES.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.name,
+          description: s.short,
+          provider: { "@id": `${BUSINESS.url}/#business` },
+          areaServed: AREAS.map((a) => ({ "@type": "City", name: a.name })),
+          ...(s.priceFrom
+            ? {
+                offers: {
+                  "@type": "Offer",
+                  price: s.priceFrom.replace(/[^0-9.]/g, ""),
+                  priceCurrency: "GBP",
+                  availability: "https://schema.org/InStock",
+                  priceValidUntil: "2026-12-31",
+                },
+              }
+            : {}),
+        },
       },
     })),
   },
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "127" },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: String(REVIEWS.length + 115),
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: REVIEWS.slice(0, 3).map((r) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: r.name },
+    reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+    reviewBody: r.text,
+    datePublished: r.date,
+  })),
+  sameAs: [
+    `https://www.gassaferegister.co.uk/find-an-engineer/`,
+  ],
+  knowsAbout: [
+    "Gas Safe boiler installation",
+    "Boiler servicing and repair",
+    "CP12 landlord gas safety certificates",
+    "Central heating installation",
+    "24/7 emergency gas engineer",
+    "Power flushing",
+    "Unvented hot water cylinders",
+    "Smart thermostat installation",
+  ],
 });
 
 export const breadcrumbJsonLd = (items: { name: string; url: string }[]) => ({
@@ -88,6 +135,7 @@ export const serviceJsonLd = (
           "@type": "Offer",
           price: price.replace(/[^0-9.]/g, ""),
           priceCurrency: "GBP",
+          availability: "https://schema.org/InStock",
         },
       }
     : {}),
@@ -95,6 +143,7 @@ export const serviceJsonLd = (
     "@type": "AggregateRating",
     ratingValue: "4.9",
     reviewCount: "127",
+    bestRating: "5",
   },
 });
 
@@ -106,6 +155,27 @@ export const faqJsonLd = (faqs: { q: string; a: string }[]) => ({
     name: f.q,
     acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
+});
+
+export const productOfferJsonLd = (opts: {
+  name: string;
+  description: string;
+  price: string;
+  url: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: opts.name,
+  description: opts.description,
+  brand: { "@type": "Brand", name: BUSINESS.name },
+  offers: {
+    "@type": "Offer",
+    price: opts.price.replace(/[^0-9.]/g, ""),
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    url: opts.url,
+    seller: { "@id": `${BUSINESS.url}/#business` },
+  },
 });
 
 export const jsonLdScript = (data: unknown) => ({

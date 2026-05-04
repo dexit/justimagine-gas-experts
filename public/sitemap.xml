@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
   <url>
     <loc>https://justimagine.ltd</loc>
     <lastmod>2026-05-04</lastmod>
@@ -8,22 +7,28 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/about</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://justimagine.ltd/services</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/contact</loc>
+    <loc>https://justimagine.ltd/landlord</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/emergency</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/areas</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/pricing</loc>
@@ -34,26 +39,26 @@
   <url>
     <loc>https://justimagine.ltd/reviews</loc>
     <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/contact</loc>
+    <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/about</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/work</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://justimagine.ltd/privacy</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://justimagine.ltd/terms</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/safety</loc>
@@ -62,136 +67,142 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas</loc>
+    <loc>https://justimagine.ltd/privacy</loc>
     <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/terms</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/boiler-installation</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/boiler-repair</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/boiler-servicing</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/gas-safety-certificate</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/landlord-gas-safety</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/central-heating</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/plumbing</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/power-flushing</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/emergency-callout</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/rugby</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/leamington-spa</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/warwick</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/kenilworth</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/stratford-upon-avon</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/coventry</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/nuneaton</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/bedworth</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/southam</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/atherstone</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/alcester</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/areas/shipston-on-stour</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://justimagine.ltd/services/boiler-installation/rugby</loc>

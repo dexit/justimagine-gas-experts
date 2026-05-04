@@ -16,6 +16,8 @@ import { Route as SafetyRouteImport } from './routes/safety'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as LandlordRouteImport } from './routes/landlord'
+import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -59,6 +61,16 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LandlordRoute = LandlordRouteImport.update({
+  id: '/landlord',
+  path: '/landlord',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -100,6 +112,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/landlord': typeof LandlordRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
@@ -116,6 +130,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/landlord': typeof LandlordRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
@@ -133,6 +149,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/landlord': typeof LandlordRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
@@ -151,6 +169,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/emergency'
+    | '/landlord'
     | '/pricing'
     | '/privacy'
     | '/reviews'
@@ -167,6 +187,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/emergency'
+    | '/landlord'
     | '/pricing'
     | '/privacy'
     | '/reviews'
@@ -183,6 +205,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/emergency'
+    | '/landlord'
     | '/pricing'
     | '/privacy'
     | '/reviews'
@@ -200,6 +224,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  EmergencyRoute: typeof EmergencyRoute
+  LandlordRoute: typeof LandlordRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -260,6 +286,20 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landlord': {
+      id: '/landlord'
+      path: '/landlord'
+      fullPath: '/landlord'
+      preLoaderRoute: typeof LandlordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -341,6 +381,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  EmergencyRoute: EmergencyRoute,
+  LandlordRoute: LandlordRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRoute,

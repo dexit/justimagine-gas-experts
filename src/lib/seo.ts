@@ -145,7 +145,7 @@ export const organizationJsonLd = () => ({
   name: BUSINESS.name,
   legalName: BUSINESS.legalName,
   url: BUSINESS.url,
-  logo: `${BUSINESS.url}/logo.png`,
+  logo: `${BUSINESS.url}/logo.svg`,
   email: BUSINESS.email,
   telephone: BUSINESS.phoneE164,
   contactPoint: [
@@ -226,7 +226,7 @@ export const localBusinessJsonLd = () => ({
   foundingDate: BUSINESS.founded,
   image: [
     `${BUSINESS.url}/og-default.jpg`,
-    `${BUSINESS.url}/logo.png`,
+    `${BUSINESS.url}/logo.svg`,
   ],
   logo: {
     "@type": "ImageObject",

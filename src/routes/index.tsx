@@ -16,7 +16,7 @@ import { geoMetaTags } from "@/lib/seo";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { BrandLogos } from "@/components/BrandLogos";
 import { EnquiryForm } from "@/components/EnquiryForm";
-import heroImg from "@/assets/hero-engineer.jpg";
+import heroImg from "@/assets/hero-engineer.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({

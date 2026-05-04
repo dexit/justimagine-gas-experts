@@ -5,7 +5,9 @@
     "NODE_OPTIONS": "--experimental-modules"
   },
   "github": {
-    "enabled": false
+    "enabled": true,
+    "autoAlias": true,
+    "autoJobCancelation": true
   },
   "rewrites": [
     {
@@ -23,10 +25,6 @@
     {
       "source": "/assets/:path*",
       "destination": "/assets/:path*"
-    },
-    {
-      "source": "/:path*\\.(?:png|jpg|jpeg|gif|webp|ico|svg|css|js)",
-      "destination": "/:path*"
     },
     {
       "source": "/(.*)",

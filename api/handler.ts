@@ -1,9 +1,14 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+// @ts-ignore - server module is built at runtime
 import serverModule from "../dist/server/index.js";
+
+interface ServerHandler {
+  fetch: (request: Request) => Promise<Response>;
+}
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   try {
-    const handler = serverModule.default || serverModule;
+    const handler: ServerHandler = serverModule.default || serverModule;
 
     // Get the original path from x-forwarded-path (from rewrites) or fallback to req.url
     const originalPath =
@@ -32,7 +37,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
     // Set response status and headers
     res.status(response.status);
-    response.headers.forEach((value, key) => {
+    response.headers.forEach((value: string, key: string) => {
       res.setHeader(key, value);
     });
 

@@ -145,7 +145,7 @@ export const organizationJsonLd = () => ({
   name: BUSINESS.name,
   legalName: BUSINESS.legalName,
   url: BUSINESS.url,
-  logo: `${BUSINESS.url}/logo.png`,
+  logo: `${BUSINESS.url}/logo.webp`,
   email: BUSINESS.email,
   telephone: BUSINESS.phoneE164,
   contactPoint: [

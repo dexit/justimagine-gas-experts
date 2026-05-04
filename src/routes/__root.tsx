@@ -1,5 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import { localBusinessJsonLd, jsonLdScript } from "@/lib/seo";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, ScriptOnce } from "@tanstack/react-router";
+import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd, jsonLdScript } from "@/lib/seo";
 import { BUSINESS, AREAS } from "@/data/seo";
 import { Phone, Flame, ArrowRight, Home, Wrench, AlertCircle, Building, MapPin } from "lucide-react";
 
@@ -133,6 +133,8 @@ export const Route = createRootRoute({
       ],
       scripts: [
         jsonLdScript(localBusinessJsonLd()),
+        jsonLdScript(organizationJsonLd()),
+        jsonLdScript(websiteJsonLd()),
         {
           children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -148,13 +150,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   notFoundComponent: NotFoundComponent,
 });
 
+const themeBoot = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`;
+
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
+        <ScriptOnce>{themeBoot}</ScriptOnce>
         {children}
         <Scripts />
       </body>

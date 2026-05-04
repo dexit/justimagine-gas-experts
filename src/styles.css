@@ -113,25 +113,33 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  /* Dark mode tuned to Just Imagine brand: deep navy + amber */
+  --background: oklch(0.16 0.04 250);
+  --foreground: oklch(0.97 0.01 90);
+  --card: oklch(0.21 0.05 250);
+  --card-foreground: oklch(0.97 0.01 90);
+  --popover: oklch(0.21 0.05 250);
+  --popover-foreground: oklch(0.97 0.01 90);
+  --primary: oklch(0.78 0.16 75);
+  --primary-foreground: oklch(0.18 0.05 250);
+  --secondary: oklch(0.24 0.05 250);
+  --secondary-foreground: oklch(0.97 0.01 90);
+  --muted: oklch(0.24 0.05 250);
+  --muted-foreground: oklch(0.72 0.03 240);
+  --accent: oklch(0.82 0.17 78);
+  --accent-foreground: oklch(0.18 0.05 250);
+  --destructive: oklch(0.65 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 90);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.82 0.17 78);
+  --gradient-hero: linear-gradient(
+    135deg,
+    oklch(0.2 0.06 250) 0%,
+    oklch(0.14 0.05 252) 60%,
+    oklch(0.22 0.07 245) 100%
+  );
+  --shadow-elegant: 0 20px 50px -20px oklch(0 0 0 / 0.6);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);

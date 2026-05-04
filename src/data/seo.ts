@@ -549,6 +549,8 @@ export const AREAS: Area[] = [
       "Our home town. We cover every street from Bilton to Hillmorton, Cawston to Brownsover — usually same-day for emergencies.",
     referralNote:
       "Based in Rugby ourselves, we typically arrive within 60 minutes for emergency callouts across all Rugby postcodes.",
+    geo: { lat: 52.3704, lng: -1.2658 },
+    radiusKm: 12,
   },
   {
     slug: "leamington-spa",
@@ -560,6 +562,8 @@ export const AREAS: Area[] = [
       "Regency homes, Victorian terraces and new-build estates — we install and service boilers across all of Royal Leamington Spa.",
     referralNote:
       "We're regulars in Leamington Spa — from the Victorian terraces of Lillington to the new-builds in Whitnash, we know the heating challenges of every era of property here.",
+    geo: { lat: 52.2852, lng: -1.52 },
+    radiusKm: 10,
   },
   {
     slug: "warwick",
@@ -571,6 +575,8 @@ export const AREAS: Area[] = [
       "Gas Safe heating engineers covering Warwick town, Woodloes Park, Chase Meadow and Hatton.",
     referralNote:
       "Warwick's mix of older period properties and modern estates means we regularly work on everything from original gas fires to cutting-edge combi systems here.",
+    geo: { lat: 52.2823, lng: -1.5849 },
+    radiusKm: 10,
   },
   {
     slug: "kenilworth",
@@ -581,6 +587,8 @@ export const AREAS: Area[] = [
     blurb: "Trusted local engineers serving Kenilworth, Burton Green and the surrounding villages.",
     referralNote:
       "Kenilworth's affluent detached homes often feature system boilers and larger radiator circuits — we're well-equipped to handle the full range.",
+    geo: { lat: 52.347, lng: -1.571 },
+    radiusKm: 10,
   },
   {
     slug: "stratford-upon-avon",
@@ -592,6 +600,8 @@ export const AREAS: Area[] = [
       "Boilers, plumbing and landlord certificates across Stratford-upon-Avon and the surrounding villages.",
     referralNote:
       "We work with several holiday let and rental landlords in Stratford — keeping their properties compliant and guests warm year-round.",
+    geo: { lat: 52.1917, lng: -1.7083 },
+    radiusKm: 14,
   },
   {
     slug: "coventry",
@@ -603,6 +613,8 @@ export const AREAS: Area[] = [
       "Same-day boiler repair and installation across Coventry — Earlsdon, Cheylesmore, Stoke and Tile Hill.",
     referralNote:
       "Coventry's large student and rental market means CP12 certificates and landlord packages are in constant demand — we handle dozens of Coventry properties every month.",
+    geo: { lat: 52.4068, lng: -1.5197 },
+    radiusKm: 12,
   },
   {
     slug: "nuneaton",
@@ -613,6 +625,8 @@ export const AREAS: Area[] = [
     blurb: "Heating and gas engineers serving Nuneaton, Whitestone and Weddington.",
     referralNote:
       "We cover Nuneaton's mix of ex-council and private housing — reliable, practical heating work at fair prices.",
+    geo: { lat: 52.523, lng: -1.4659 },
+    radiusKm: 10,
   },
   {
     slug: "bedworth",
@@ -623,6 +637,8 @@ export const AREAS: Area[] = [
     blurb: "Local boiler installs, services and emergency callouts across Bedworth and Bulkington.",
     referralNote:
       "Bedworth's compact geography means we're usually on-site quickly — a bonus when you have a heating emergency.",
+    geo: { lat: 52.479, lng: -1.472 },
+    radiusKm: 8,
   },
   {
     slug: "southam",
@@ -633,6 +649,8 @@ export const AREAS: Area[] = [
     blurb: "Gas Safe engineers covering Southam, Long Itchington and Napton-on-the-Hill.",
     referralNote:
       "Rural Southam properties often have older systems and oil conversions — we're experienced with the full spectrum.",
+    geo: { lat: 52.2493, lng: -1.3899 },
+    radiusKm: 10,
   },
   {
     slug: "atherstone",
@@ -643,6 +661,8 @@ export const AREAS: Area[] = [
     blurb: "Heating, plumbing and CP12 certificates across Atherstone, Mancetter and Hartshill.",
     referralNote:
       "We cover the north Warwickshire corridor reliably — including the villages around Atherstone.",
+    geo: { lat: 52.579, lng: -1.547 },
+    radiusKm: 10,
   },
   {
     slug: "alcester",
@@ -653,6 +673,8 @@ export const AREAS: Area[] = [
     blurb: "Trusted boiler engineers serving Alcester and the Arden villages.",
     referralNote:
       "The Forest of Arden villages around Alcester mix old and new — we're equally comfortable with period cottages and modern new-builds.",
+    geo: { lat: 52.215, lng: -1.869 },
+    radiusKm: 10,
   },
   {
     slug: "shipston-on-stour",
@@ -663,6 +685,8 @@ export const AREAS: Area[] = [
     blurb: "Gas Safe heating cover across Shipston-on-Stour and the south Warwickshire villages.",
     referralNote:
       "South Warwickshire's rural character means we travel further — but we're committed to covering every corner of the county.",
+    geo: { lat: 52.0625, lng: -1.6258 },
+    radiusKm: 12,
   },
 ];
 

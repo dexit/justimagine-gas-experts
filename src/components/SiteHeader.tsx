@@ -69,14 +69,14 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <div className="lg:hidden border-t border-border bg-background">
+        <div className="lg:hidden border-t border-border bg-background max-h-[calc(100vh-64px)] overflow-y-auto">
           <div className="px-5 py-3 flex flex-col">
             {nav.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="py-2.5 text-sm font-medium"
+                className="py-2.5 text-sm font-medium hover:text-accent transition-smooth"
               >
                 {n.label}
               </Link>
@@ -84,14 +84,14 @@ export function SiteHeader() {
             <Link
               to="/emergency"
               onClick={() => setOpen(false)}
-              className="py-2.5 text-sm font-semibold text-destructive flex items-center gap-2"
+              className="py-2.5 text-sm font-semibold text-destructive flex items-center gap-2 hover:text-destructive/80 transition-smooth"
             >
               <AlertCircle className="h-4 w-4" />
               Emergency 24/7
             </Link>
             <a
               href="tel:07774079152"
-              className="mt-3 py-2.5 px-4 rounded-lg bg-gradient-amber text-center font-semibold text-sm text-accent-foreground"
+              className="mt-3 py-2.5 px-4 rounded-lg bg-gradient-amber text-center font-semibold text-sm text-accent-foreground hover:opacity-90 transition-smooth"
             >
               Call 07774 079152
             </a>

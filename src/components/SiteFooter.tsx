@@ -1,16 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, ShieldCheck, Flame, AlertCircle } from "lucide-react";
+import { Phone, Mail, ShieldCheck, AlertCircle } from "lucide-react";
 import { BUSINESS } from "@/data/seo";
 
 export function SiteFooter() {
   return (
     <footer className="bg-gradient-hero text-primary-foreground mt-24">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8 py-16 grid gap-12 md:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8 py-12 md:py-16 grid gap-8 md:gap-12 sm:grid-cols-2 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2.5 mb-4">
-            <div className="h-10 w-10 rounded-full bg-accent/20 backdrop-blur flex items-center justify-center">
-              <Flame className="h-5 w-5 text-accent" />
-            </div>
+            <img src="/logo.svg" alt="Just Imagine Ltd" className="h-10 w-10 rounded-full" />
             <span className="font-display text-2xl font-semibold">Just Imagine Ltd</span>
           </div>
           <p className="text-primary-foreground/70 max-w-md leading-relaxed">
@@ -111,10 +109,12 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 py-6 text-xs text-primary-foreground/60 flex flex-wrap justify-between gap-3">
-          <div className="flex gap-4 flex-wrap">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8 py-6 text-xs text-primary-foreground/60 flex flex-col sm:flex-row flex-wrap justify-between gap-4">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 flex-wrap">
             <span>© {new Date().getFullYear()} Just Imagine Ltd.</span>
-            <span>Gas Safe Registered · Rugby, Warwickshire</span>
+            <span className="hidden sm:inline">Gas Safe Registered · Rugby, Warwickshire</span>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 flex-wrap">
             <Link to="/privacy" className="hover:text-accent">
               Privacy Policy
             </Link>
@@ -122,7 +122,7 @@ export function SiteFooter() {
               Terms of Service
             </Link>
           </div>
-          <span>Boilers · Gas Safety · Heating · Plumbing · Emergencies</span>
+          <span className="hidden md:inline">Boilers · Gas Safety · Heating · Plumbing · Emergencies</span>
         </div>
       </div>
     </footer>

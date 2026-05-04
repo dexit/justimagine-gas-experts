@@ -59,6 +59,9 @@ function NewsLayout() {
                 <span className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground font-medium">
                   {p.category}
                 </span>
+                <span className="px-2 py-0.5 rounded-full border border-accent/40 text-accent font-medium uppercase tracking-wider text-[10px]">
+                  {p.kind === "faq" ? "FAQ" : p.kind === "howto" ? "How-To" : p.kind === "manual" ? "Manual" : "Article"}
+                </span>
               </div>
               <h2 className="font-display text-xl font-semibold leading-snug mb-3 group-hover:text-accent transition-smooth">
                 <Link to="/news/$slug" params={{ slug: p.slug }}>

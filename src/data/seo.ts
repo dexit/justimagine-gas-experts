@@ -688,6 +688,54 @@ export const AREAS: Area[] = [
     geo: { lat: 52.0625, lng: -1.6258 },
     radiusKm: 12,
   },
+  {
+    slug: "leicester",
+    name: "Leicester",
+    county: "Leicestershire",
+    postcodes: ["LE1", "LE2", "LE3", "LE4", "LE5"],
+    landmarks: ["Leicester city centre", "Narborough", "Braunstone", "Oadby", "Wigston", "Glenfield"],
+    blurb: "Professional boiler installation and repair across Leicester — one hour from Rugby. We serve the entire city and surrounding suburbs.",
+    referralNote:
+      "We're regular fixtures in Leicester's diverse housing stock — from Victorian terraced homes in Belgrave to modern estates in Glenfield. Same-day emergency response available.",
+    geo: { lat: 52.6369, lng: -1.1398 },
+    radiusKm: 15,
+  },
+  {
+    slug: "northampton",
+    name: "Northampton",
+    county: "Northamptonshire",
+    postcodes: ["NN1", "NN2", "NN3", "NN4", "NN5"],
+    landmarks: ["Northampton town centre", "Wellingborough", "Kingsthorpe", "Duston", "Abington", "Upton"],
+    blurb: "Boiler services, repairs and installations across Northampton and surrounding areas — within our one-hour service radius.",
+    referralNote:
+      "Northampton's mix of Victorian properties and modern residential developments means we're experienced with every heating system type. Quick turnaround on diagnostics and repairs.",
+    geo: { lat: 52.2411, lng: -0.8812 },
+    radiusKm: 14,
+  },
+  {
+    slug: "corby",
+    name: "Corby",
+    county: "Northamptonshire",
+    postcodes: ["NN17", "NN18"],
+    landmarks: ["Corby town centre", "Kettering", "Desborough", "East Carlton", "Welland", "Rockingham"],
+    blurb: "Gas Safe engineers providing boiler repairs and installations across Corby and North Northamptonshire.",
+    referralNote:
+      "Corby's post-industrial landscape features both older properties and newer builds. We handle commercial and residential heating with equal expertise.",
+    geo: { lat: 52.4907, lng: -0.7498 },
+    radiusKm: 13,
+  },
+  {
+    slug: "banbury",
+    name: "Banbury",
+    county: "Oxfordshire",
+    postcodes: ["OX16", "OX17"],
+    landmarks: ["Banbury town centre", "Kidlington", "Deddington", "Adderbury", "Wroxton", "Bloxham"],
+    blurb: "Trusted boiler engineers serving Banbury and the North Oxfordshire villages within our service radius.",
+    referralNote:
+      "We regularly work across Banbury's historic market town properties and the stone-built cottages of surrounding villages. Professional, reliable heating solutions tailored to period homes.",
+    geo: { lat: 52.0598, lng: -1.3381 },
+    radiusKm: 13,
+  },
 ];
 
 export const BUSINESS = {

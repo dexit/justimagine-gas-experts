@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, ShieldCheck, AlertCircle } from "lucide-react";
-import { BUSINESS } from "@/data/seo";
+import { Phone, Mail, ShieldCheck, MapPin } from "lucide-react";
+import { BUSINESS, AREAS } from "@/data/seo";
 
 export function SiteFooter() {
   return (
     <footer className="bg-gradient-hero text-primary-foreground mt-24">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8 py-12 md:py-16 grid gap-8 md:gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <div className="md:col-span-2">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8 py-12 md:py-16 grid gap-8 md:gap-12 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="lg:col-span-2">
           <div className="flex items-center gap-2.5 mb-4">
             <img src="/logo.svg" alt="Just Imagine Ltd" className="h-10 w-10 rounded-full" />
             <span className="font-display text-2xl font-semibold">Just Imagine Ltd</span>
@@ -81,11 +81,6 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/work" className="hover:text-accent transition-smooth">
-                Our Latest Work
-              </Link>
-            </li>
-            <li>
               <Link to="/reviews" className="hover:text-accent transition-smooth">
                 Customer Reviews
               </Link>
@@ -100,12 +95,23 @@ export function SiteFooter() {
                 Gas Safety
               </Link>
             </li>
-            <li>
-              <Link to="/contact" className="hover:text-accent transition-smooth">
-                Contact & Enquiry
-              </Link>
-            </li>
           </ul>
+        </div>
+
+        <div className="lg:col-span-2">
+          <h4 className="font-display text-base mb-4 text-accent">Areas We Serve</h4>
+          <div className="grid grid-cols-2 gap-2 text-sm text-primary-foreground/80">
+            {AREAS.map((area) => (
+              <Link
+                key={area.slug}
+                to={`/areas/${area.slug}`}
+                className="hover:text-accent transition-smooth flex items-start gap-1.5"
+              >
+                <MapPin className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-accent/60" />
+                <span>{area.name}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">
@@ -120,6 +126,9 @@ export function SiteFooter() {
             </Link>
             <Link to="/terms" className="hover:text-accent">
               Terms of Service
+            </Link>
+            <Link to="/cookies" className="hover:text-accent">
+              Cookies Policy
             </Link>
           </div>
           <span className="hidden md:inline">Boilers · Gas Safety · Heating · Plumbing · Emergencies</span>

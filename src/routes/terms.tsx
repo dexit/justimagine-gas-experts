@@ -1,12 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
+import { BUSINESS } from "@/data/seo";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Service | Just Imagine Ltd" },
+      { title: "Terms of Service | Just Imagine Ltd — Heating & Gas" },
+      { name: "description", content: "Our terms of service outline our commitment to fixed-price quotes, transparent pricing, and 12-month workmanship guarantees on all heating and gas work." },
       { name: "robots", content: "noindex" },
+      { property: "og:title", content: "Terms of Service | Just Imagine Ltd" },
+      { property: "og:description", content: "Learn our commitment to transparent pricing, fixed quotes, and quality workmanship guarantees." },
     ],
+    links: [{ rel: "canonical", href: `${BUSINESS.url}/terms` }],
   }),
   component: TermsPage,
 });

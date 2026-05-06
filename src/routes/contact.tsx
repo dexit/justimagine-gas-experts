@@ -22,6 +22,7 @@ export const Route = createFileRoute("/contact")({
           "Get a free, fixed-price quote from Gas Safe engineers in Rugby. Call 07774 079152, WhatsApp or use our online enquiry form. Same-day response.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://justimagine.ltd/contact" }],
   }),
   component: ContactPage,
 });

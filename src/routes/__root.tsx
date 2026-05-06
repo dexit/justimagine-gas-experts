@@ -138,7 +138,8 @@ export const Route = createRootRoute({
         { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
         { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/manifest.json" },
-        /* Preload critical fonts for LCP optimization */
+        /* Preload critical assets for performance */
+        { rel: "preload", as: "image", href: "/hero-engineer.webp", type: "image/webp" },
         { rel: "preload", as: "font", href: "/fonts/inter-400.woff2", type: "font/woff2", crossOrigin: "anonymous" },
         { rel: "preload", as: "font", href: "/fonts/inter-600.woff2", type: "font/woff2", crossOrigin: "anonymous" },
         { rel: "preload", as: "font", href: "/fonts/fraunces-variable.woff2", type: "font/woff2", crossOrigin: "anonymous" },

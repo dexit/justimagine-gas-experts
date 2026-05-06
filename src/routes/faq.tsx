@@ -120,12 +120,12 @@ export const Route = createFileRoute("/faq")({
     const url = `${BUSINESS.url}/faq`;
     return {
       meta: [
-        { title: "FAQ - Just Imagine Ltd" },
-        { name: "description", content: "Frequently asked questions about boiler installation, repairs, gas safety, and heating services in Rugby and Warwickshire." },
+        { title: "Boiler Installation & Heating FAQ | Just Imagine Ltd — Rugby" },
+        { name: "description", content: "Frequently asked questions about boiler installation, repairs, gas safety, and heating services in Rugby and Warwickshire. Get expert answers now." },
         { property: "og:title", content: "Frequently Asked Questions | Just Imagine Ltd" },
-        { property: "og:description", content: "Find answers to common questions about our heating, boiler, and plumbing services." },
+        { property: "og:description", content: "Find answers to common questions about our heating, boiler, plumbing, pricing, and emergency services." },
       ],
-      links: [{ rel: "canonical", to: url }],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         jsonLdScript(
           breadcrumbJsonLd([

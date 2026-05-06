@@ -23,6 +23,7 @@ export const Route = createFileRoute("/pricing")({
           "Fixed-price boiler services in Rugby. Servicing from £75, CP12 from £60, new boiler from £1,895. Landlord bundle deals available.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://justimagine.ltd/pricing" }],
   }),
   component: PricingPage,
 });

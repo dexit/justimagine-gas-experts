@@ -373,12 +373,14 @@ export interface Area {
   geo?: { lat: number; lng: number };
   /** Effective service radius in km from the centroid. */
   radiusKm?: number;
+  /** Service tier: "both" = 1h repairs + 2h installs, "installs-only" = 2h installs only, "call-for-quote" = outside service area */
+  serviceTier?: "both" | "installs-only" | "call-for-quote";
 }
 
 export const PRICING = [
   {
     name: "Boiler Service",
-    price: "£75",
+    price: "£100",
     unit: "per year",
     popular: true,
     features: [
@@ -390,8 +392,20 @@ export const PRICING = [
     ],
   },
   {
+    name: "Boiler Repair",
+    price: "£100",
+    unit: "from",
+    features: [
+      "Same-day diagnostics on all major brands",
+      "Genuine OEM parts guaranteed",
+      "Fixed price after assessment",
+      "Workmanship warranty included",
+      "All brands covered",
+    ],
+  },
+  {
     name: "Landlord CP12",
-    price: "£60",
+    price: "£120",
     unit: "per certificate",
     features: [
       "Up to 2 gas appliances",
@@ -410,14 +424,13 @@ export const PRICING = [
     features: [
       "Annual CP12 included",
       "Full boiler service included",
-      "Save ~£25 vs booking separately",
       "Priority emergency response",
       "Single invoice to agent or landlord",
     ],
   },
   {
-    name: "Combi Swap",
-    price: "£1,895",
+    name: "Boiler Installation",
+    price: "£2,500",
     unit: "starting from",
     features: [
       "A-rated boiler supplied & fitted",
@@ -428,19 +441,74 @@ export const PRICING = [
     ],
   },
   {
-    name: "Power Flush",
-    price: "£395",
-    unit: "per system",
+    name: "System Conversion",
+    price: "£3,200",
+    unit: "starting from",
     features: [
-      "High-velocity chemical flush",
-      "Heat output tested before & after",
-      "Inhibitor dose & filter fitted",
-      "Written system report provided",
+      "Full heating system upgrade",
+      "Pipework reconfiguration included",
+      "New radiators and controls",
+      "Building Regs certification",
+      "Commissioning and balancing",
+    ],
+  },
+  {
+    name: "Radiator Installation",
+    price: "£100",
+    unit: "horizontal from",
+    features: [
+      "Horizontal radiator replacement or installation",
+      "Pressure tested and balanced",
+      "TRV valves fitted",
+      "Magnetic filter optional",
+    ],
+  },
+  {
+    name: "Vertical Radiator",
+    price: "£150",
+    unit: "from",
+    features: [
+      "Vertical radiator replacement or installation",
+      "Modern designer options available",
+      "Balanced and tested",
+      "Aesthetically integrated",
+    ],
+  },
+  {
+    name: "Gas Hob/Cooker Installation",
+    price: "£120",
+    unit: "from",
+    features: [
+      "Gas hob or cooker installation",
+      "Safe connection and certification",
+      "All brands supported",
+      "Gas Safe certificate provided",
+    ],
+  },
+  {
+    name: "Unvented Cylinder",
+    price: "£1,200",
+    unit: "fit & supply",
+    features: [
+      "Unvented cylinder replacement or installation",
+      "Full fitting service included",
+      "Building Regs certification",
+      "Pressure and temperature relief included",
+    ],
+  },
+  {
+    name: "Disconnecting Appliances",
+    price: "£80",
+    unit: "per appliance",
+    features: [
+      "Safe disconnection of existing appliances",
+      "Capped off properly",
+      "Certificate provided",
     ],
   },
   {
     name: "Emergency Callout",
-    price: "£85",
+    price: "£120",
     unit: "diagnostic fee",
     features: [
       "24/7 response — day & night",
@@ -551,6 +619,7 @@ export const AREAS: Area[] = [
       "Based in Rugby ourselves, we typically arrive within 60 minutes for emergency callouts across all Rugby postcodes.",
     geo: { lat: 52.3704, lng: -1.2658 },
     radiusKm: 12,
+    serviceTier: "both",
   },
   {
     slug: "leamington-spa",
@@ -564,6 +633,7 @@ export const AREAS: Area[] = [
       "We're regulars in Leamington Spa — from the Victorian terraces of Lillington to the new-builds in Whitnash, we know the heating challenges of every era of property here.",
     geo: { lat: 52.2852, lng: -1.52 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "warwick",
@@ -577,6 +647,7 @@ export const AREAS: Area[] = [
       "Warwick's mix of older period properties and modern estates means we regularly work on everything from original gas fires to cutting-edge combi systems here.",
     geo: { lat: 52.2823, lng: -1.5849 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "kenilworth",
@@ -589,6 +660,7 @@ export const AREAS: Area[] = [
       "Kenilworth's affluent detached homes often feature system boilers and larger radiator circuits — we're well-equipped to handle the full range.",
     geo: { lat: 52.347, lng: -1.571 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "stratford-upon-avon",
@@ -602,6 +674,7 @@ export const AREAS: Area[] = [
       "We work with several holiday let and rental landlords in Stratford — keeping their properties compliant and guests warm year-round.",
     geo: { lat: 52.1917, lng: -1.7083 },
     radiusKm: 14,
+    serviceTier: "both",
   },
   {
     slug: "coventry",
@@ -615,6 +688,7 @@ export const AREAS: Area[] = [
       "Coventry's large student and rental market means CP12 certificates and landlord packages are in constant demand — we handle dozens of Coventry properties every month.",
     geo: { lat: 52.4068, lng: -1.5197 },
     radiusKm: 12,
+    serviceTier: "both",
   },
   {
     slug: "nuneaton",
@@ -627,6 +701,7 @@ export const AREAS: Area[] = [
       "We cover Nuneaton's mix of ex-council and private housing — reliable, practical heating work at fair prices.",
     geo: { lat: 52.523, lng: -1.4659 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "bedworth",
@@ -639,6 +714,7 @@ export const AREAS: Area[] = [
       "Bedworth's compact geography means we're usually on-site quickly — a bonus when you have a heating emergency.",
     geo: { lat: 52.479, lng: -1.472 },
     radiusKm: 8,
+    serviceTier: "both",
   },
   {
     slug: "southam",
@@ -651,6 +727,7 @@ export const AREAS: Area[] = [
       "Rural Southam properties often have older systems and oil conversions — we're experienced with the full spectrum.",
     geo: { lat: 52.2493, lng: -1.3899 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "atherstone",
@@ -663,6 +740,7 @@ export const AREAS: Area[] = [
       "We cover the north Warwickshire corridor reliably — including the villages around Atherstone.",
     geo: { lat: 52.579, lng: -1.547 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "alcester",
@@ -675,6 +753,7 @@ export const AREAS: Area[] = [
       "The Forest of Arden villages around Alcester mix old and new — we're equally comfortable with period cottages and modern new-builds.",
     geo: { lat: 52.215, lng: -1.869 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "shipston-on-stour",
@@ -687,6 +766,7 @@ export const AREAS: Area[] = [
       "South Warwickshire's rural character means we travel further — but we're committed to covering every corner of the county.",
     geo: { lat: 52.0625, lng: -1.6258 },
     radiusKm: 12,
+    serviceTier: "both",
   },
   {
     slug: "leicester",
@@ -699,6 +779,7 @@ export const AREAS: Area[] = [
       "We're regular fixtures in Leicester's diverse housing stock — from Victorian terraced homes in Belgrave to modern estates in Glenfield. Same-day emergency response available.",
     geo: { lat: 52.6369, lng: -1.1398 },
     radiusKm: 15,
+    serviceTier: "both",
   },
   {
     slug: "northampton",
@@ -711,6 +792,7 @@ export const AREAS: Area[] = [
       "Northampton's mix of Victorian properties and modern residential developments means we're experienced with every heating system type. Quick turnaround on diagnostics and repairs.",
     geo: { lat: 52.2411, lng: -0.8812 },
     radiusKm: 14,
+    serviceTier: "both",
   },
   {
     slug: "corby",
@@ -723,6 +805,7 @@ export const AREAS: Area[] = [
       "Corby's post-industrial landscape features both older properties and newer builds. We handle commercial and residential heating with equal expertise.",
     geo: { lat: 52.4907, lng: -0.7498 },
     radiusKm: 13,
+    serviceTier: "both",
   },
   {
     slug: "banbury",
@@ -735,6 +818,7 @@ export const AREAS: Area[] = [
       "We regularly work across Banbury's historic market town properties and the stone-built cottages of surrounding villages. Professional, reliable heating solutions tailored to period homes.",
     geo: { lat: 52.0598, lng: -1.3381 },
     radiusKm: 13,
+    serviceTier: "both",
   },
 ];
 

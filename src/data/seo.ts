@@ -39,7 +39,7 @@ export const SERVICES: Service[] = [
     short: "New boilers from Worcester, Vaillant and Ideal — fitted by Gas Safe engineers with up to 12-year warranty.",
     category: "installation",
     icon: "flame",
-    priceFrom: "£1,895",
+    priceFrom: "£2,500",
     priceUnit: "fully installed",
     h1: (a) => `New Boiler Installation${local(a)}`,
     metaTitle: (a) => `New Boiler Installation${local(a)} | Gas Safe Fitters | Just Imagine`,
@@ -60,7 +60,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "How much does a new boiler cost?",
-        a: "A typical combi swap starts at £1,895 fully fitted. Prices vary based on the boiler model, flue requirements, and whether you're converting from a regular to a combi system. We always provide a fixed written quote before any work begins.",
+        a: "A typical combi swap starts at £2,500 fully fitted. Prices vary based on the boiler model, flue requirements, and whether you're converting from a regular to a combi system. We always provide a fixed written quote before any work begins.",
       },
       {
         q: "How long does a boiler installation take?",
@@ -86,6 +86,8 @@ export const SERVICES: Service[] = [
     short: "Same-day boiler repair on all major makes — diagnostics, genuine parts, fixed price after assessment.",
     category: "maintenance",
     icon: "wrench",
+    priceFrom: "£100",
+    priceUnit: "from",
     h1: (a) => `Boiler Repair${local(a)} — Same Day Where Possible`,
     metaTitle: (a) => `Boiler Repair${local(a)} | Same-Day Gas Safe Engineers`,
     metaDesc: (a) =>
@@ -103,7 +105,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "How much is a boiler repair callout?",
-        a: "Diagnostic visits start from £85 inc. VAT. If we recommend a repair, you approve the fixed price before any parts are fitted. No surprise invoices.",
+        a: "Diagnostic visits start from £100 inc. VAT. If we recommend a repair, you approve the fixed price before any parts are fitted. No surprise invoices.",
       },
       {
         q: "Do you repair boilers out of hours?",
@@ -118,15 +120,15 @@ export const SERVICES: Service[] = [
   {
     slug: "boiler-servicing",
     name: "Boiler Service",
-    short: "Annual boiler servicing from £75 — keeps your warranty valid, cuts bills, stops breakdowns.",
+    short: "Annual boiler servicing from £100 — keeps your warranty valid, cuts bills, stops breakdowns.",
     category: "maintenance",
     icon: "shield-check",
-    priceFrom: "£75",
-    priceUnit: "per service",
+    priceFrom: "£100",
+    priceUnit: "per year",
     h1: (a) => `Annual Boiler Service${local(a)}`,
-    metaTitle: (a) => `Boiler Service${local(a)} from £75 | Gas Safe Engineers`,
+    metaTitle: (a) => `Boiler Service${local(a)} from £100 | Gas Safe Engineers`,
     metaDesc: (a) =>
-      `Manufacturer-spec annual boiler service${local(a)} from £75. Keeps your warranty valid, lowers gas bills, prevents breakdowns. Same-day certificate. Book online.`,
+      `Manufacturer-spec annual boiler service${local(a)} from £100. Keeps your warranty valid, lowers gas bills, prevents breakdowns. Same-day certificate. Book online.`,
     intro: (a) =>
       `Keep your boiler running smoothly${local(a)} with an annual service. We check everything, spot problems early, keep your warranty valid, and help you avoid surprise breakdowns when it's freezing.`,
     bullets: [
@@ -431,7 +433,8 @@ export const PRICING = [
   {
     name: "Boiler Installation",
     price: "£2,500",
-    unit: "starting from",
+    unit: "from",
+    popular: true,
     features: [
       "A-rated boiler supplied & fitted",
       "Up to 12-year manufacturer warranty",

@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, AREAS, REVIEWS, getArea, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, localServiceJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
+import { breadcrumbJsonLd, localServiceJsonLd, gasEngineerJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, MapPin, Star, ArrowRight } from "lucide-react";
@@ -48,6 +48,7 @@ export const Route = createFileRoute("/areas/$areaSlug")({
             county: a.county,
           }),
         ),
+        jsonLdScript(gasEngineerJsonLd()),
       ],
     };
   },

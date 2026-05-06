@@ -519,55 +519,93 @@ export const contactActionJsonLd = () => ({
   availableLanguage: ["en"],
 });
 
-// Geofenced area + service schema — used on service×area combo pages
+// Geofenced area + service schema — used on service×area combo pages and area pages
 export const localServiceJsonLd = (
-  serviceName: string,
-  area: { name: string; postcodes: string[]; county: string },
-  serviceDescription: string,
+  serviceNameOrObj: string | {
+    serviceName: string;
+    serviceDescription: string;
+    areaName: string;
+    areaPostcodes: string[];
+    county: string;
+    price?: string;
+  },
+  area?: { name: string; postcodes: string[]; county: string },
+  serviceDescription?: string,
   price?: string,
   isPlumbingService?: boolean,
-) => ({
-  "@context": "https://schema.org",
-  "@type": isPlumbingService ? ["Service", "PlumbingService"] : "Service",
-  name: `${serviceName} in ${area.name}`,
-  serviceType: serviceName,
-  description: serviceDescription,
-  provider: { "@id": `${BUSINESS.url}/#business` },
-  areaServed: {
-    "@type": "City",
-    name: area.name,
-    containsPlace: area.postcodes.map((p) => ({ "@type": "PostalCode", name: p })),
-    containedInPlace: { "@type": "AdministrativeArea", name: area.county },
-  },
-  ...(price
-    ? {
-        offers: {
-          "@type": "Offer",
-          price: price.replace(/[^0-9.]/g, ""),
-          priceCurrency: "GBP",
-          availability: "https://schema.org/InStock",
-        },
-      }
-    : {}),
-  potentialAction: [
-    {
-      "@type": "CallAction",
-      target: `tel:${BUSINESS.phoneE164}`,
-      name: "Call for Service",
+) => {
+  // Handle both object and positional argument calling conventions
+  let serviceName: string;
+  let areaName: string;
+  let areaPostcodes: string[];
+  let areaCounty: string;
+  let desc: string;
+  let p: string | undefined;
+  let isPlumbing: boolean | undefined;
+
+  if (typeof serviceNameOrObj === "object") {
+    // Object calling convention
+    serviceName = serviceNameOrObj.serviceName;
+    areaName = serviceNameOrObj.areaName;
+    areaPostcodes = serviceNameOrObj.areaPostcodes;
+    areaCounty = serviceNameOrObj.county;
+    desc = serviceNameOrObj.serviceDescription;
+    p = serviceNameOrObj.price;
+    isPlumbing = false;
+  } else {
+    // Positional calling convention
+    serviceName = serviceNameOrObj;
+    areaName = area!.name;
+    areaPostcodes = area!.postcodes;
+    areaCounty = area!.county;
+    desc = serviceDescription!;
+    p = price;
+    isPlumbing = isPlumbingService;
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": isPlumbing ? ["Service", "PlumbingService"] : "Service",
+    name: `${serviceName} in ${areaName}`,
+    serviceType: serviceName,
+    description: desc,
+    provider: { "@id": `${BUSINESS.url}/#business` },
+    areaServed: {
+      "@type": "City",
+      name: areaName,
+      containsPlace: areaPostcodes.map((pc) => ({ "@type": "PostalCode", name: pc })),
+      containedInPlace: { "@type": "AdministrativeArea", name: areaCounty },
     },
-    {
-      "@type": "Action",
-      name: "Message on WhatsApp",
-      target: `https://api.whatsapp.com/send?phone=${BUSINESS.whatsapp}`,
+    ...(p
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: p.replace(/[^0-9.]/g, ""),
+            priceCurrency: "GBP",
+            availability: "https://schema.org/InStock",
+          },
+        }
+      : {}),
+    potentialAction: [
+      {
+        "@type": "CallAction",
+        target: `tel:${BUSINESS.phoneE164}`,
+        name: "Call for Service",
+      },
+      {
+        "@type": "Action",
+        name: "Message on WhatsApp",
+        target: `https://api.whatsapp.com/send?phone=${BUSINESS.whatsapp}`,
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: String(REVIEWS.length + 115),
+      bestRating: "5",
     },
-  ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: String(REVIEWS.length + 115),
-    bestRating: "5",
-  },
-});
+  };
+};
 
 export const serviceFaqJsonLd = (
   serviceName: string,

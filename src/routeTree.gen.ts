@@ -18,6 +18,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as LandlordRouteImport } from './routes/landlord'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -73,6 +74,11 @@ const LandlordRoute = LandlordRouteImport.update({
   path: '/landlord',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EmergencyRoute = EmergencyRouteImport.update({
   id: '/emergency',
   path: '/emergency',
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/faq': typeof FaqRoute
   '/landlord': typeof LandlordRoute
   '/news': typeof NewsRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -145,6 +152,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/faq': typeof FaqRoute
   '/landlord': typeof LandlordRoute
   '/news': typeof NewsRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -166,6 +174,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/faq': typeof FaqRoute
   '/landlord': typeof LandlordRoute
   '/news': typeof NewsRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/emergency'
+    | '/faq'
     | '/landlord'
     | '/news'
     | '/pricing'
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/emergency'
+    | '/faq'
     | '/landlord'
     | '/news'
     | '/pricing'
@@ -228,6 +239,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/emergency'
+    | '/faq'
     | '/landlord'
     | '/news'
     | '/pricing'
@@ -249,6 +261,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   EmergencyRoute: typeof EmergencyRoute
+  FaqRoute: typeof FaqRoute
   LandlordRoute: typeof LandlordRoute
   NewsRoute: typeof NewsRouteWithChildren
   PricingRoute: typeof PricingRoute
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/landlord'
       fullPath: '/landlord'
       preLoaderRoute: typeof LandlordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/emergency': {
@@ -431,6 +451,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   EmergencyRoute: EmergencyRoute,
+  FaqRoute: FaqRoute,
   LandlordRoute: LandlordRoute,
   NewsRoute: NewsRouteWithChildren,
   PricingRoute: PricingRoute,

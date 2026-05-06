@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
+import { RelatedContent } from "@/components/RelatedContent";
 import { BUSINESS, AREAS } from "@/data/seo";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 
@@ -442,6 +443,8 @@ function EmergencyPage() {
           WA
         </a>
       </div>
+
+      <RelatedContent type="services" title="Emergency services we provide" limit={4} />
     </PageShell>
   );
 }

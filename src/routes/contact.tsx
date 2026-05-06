@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { RelatedContent } from "@/components/RelatedContent";
 import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
@@ -85,6 +86,8 @@ function ContactPage() {
           <EnquiryForm compact />
         </div>
       </section>
+
+      <RelatedContent type="services-and-areas" title="What we can help with" limit={3} />
     </PageShell>
   );
 }

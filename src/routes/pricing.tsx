@@ -3,6 +3,7 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { PRICING, BUSINESS } from "@/data/seo";
 import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { RelatedContent } from "@/components/RelatedContent";
 import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
@@ -89,6 +90,8 @@ function PricingPage() {
           </Button>
         </div>
       </section>
+
+      <RelatedContent type="services" title="Services at these price points" limit={6} />
     </PageShell>
   );
 }

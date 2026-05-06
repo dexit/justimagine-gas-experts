@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { RelatedContent } from "@/components/RelatedContent";
 import { BUSINESS, REVIEWS } from "@/data/seo";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 
@@ -464,6 +465,8 @@ function LandlordPage() {
           <EnquiryForm defaultService="Landlord Gas Safety" />
         </div>
       </section>
+
+      <RelatedContent type="services" title="Services included in landlord packages" limit={4} />
     </PageShell>
   );
 }

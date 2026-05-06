@@ -3,6 +3,8 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, AREAS, REVIEWS, getArea, BUSINESS } from "@/data/seo";
 import { breadcrumbJsonLd, localServiceJsonLd, gasEngineerJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { Certifications } from "@/components/Certifications";
+import { RelatedContent } from "@/components/RelatedContent";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, MapPin, Star, ArrowRight } from "lucide-react";
 
@@ -73,6 +75,18 @@ function AreaPage() {
 
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-16 grid lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-8">
+          {/* Map */}
+          <div className="rounded-2xl overflow-hidden border border-border">
+            <iframe
+              src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d76235.67206456206!2d-1.5102!3d52.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48770558a5f36e59%3A0x9a8d5f0f6edfb4f5!2s${encodeURIComponent(a.name)}%2C%20Warwickshire!5e0!3m2!1sen!2suk!4v1620000000000`}
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+            />
+          </div>
+
           {/* Postcodes */}
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin className="h-4 w-4 text-accent" /> Postcodes covered:{" "}
@@ -157,27 +171,6 @@ function AreaPage() {
             </div>
           )}
 
-          {/* Nearby areas */}
-          <div>
-            <h3 className="font-display text-lg font-semibold mb-3">
-              Nearby areas we also cover
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {allAreas
-                .filter((other) => other.slug !== a.slug)
-                .slice(0, 6)
-                .map((other) => (
-                  <Link
-                    key={other.slug}
-                    to="/areas/$areaSlug"
-                    params={{ areaSlug: other.slug }}
-                    className="px-3 py-1.5 rounded-full border border-border text-xs hover:border-accent/50 hover:text-accent transition-smooth"
-                  >
-                    {other.name}
-                  </Link>
-                ))}
-            </div>
-          </div>
         </div>
 
         {/* Sidebar */}
@@ -211,6 +204,14 @@ function AreaPage() {
           <EnquiryForm defaultArea={a.name} />
         </aside>
       </section>
+
+      <section className="bg-secondary/30 border-t border-border py-16">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <Certifications />
+        </div>
+      </section>
+
+      <RelatedContent type="areas" currentArea={a.slug} title="Nearby areas we also cover" limit={6} />
     </PageShell>
   );
 }

@@ -4,7 +4,7 @@ import { PRICING, BUSINESS } from "@/data/seo";
 import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RelatedContent } from "@/components/RelatedContent";
-import { geoMetaTags } from "@/lib/seo";
+import { geoMetaTags, contactActionJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -24,6 +24,7 @@ export const Route = createFileRoute("/pricing")({
       },
     ],
     links: [{ rel: "canonical", href: "https://justimagine.ltd/pricing" }],
+    scripts: [jsonLdScript(contactActionJsonLd())],
   }),
   component: PricingPage,
 });

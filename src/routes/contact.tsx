@@ -3,7 +3,7 @@ import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { RelatedContent } from "@/components/RelatedContent";
-import { geoMetaTags } from "@/lib/seo";
+import { geoMetaTags, contactActionJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -23,6 +23,7 @@ export const Route = createFileRoute("/contact")({
       },
     ],
     links: [{ rel: "canonical", href: "https://justimagine.ltd/contact" }],
+    scripts: [jsonLdScript(contactActionJsonLd())],
   }),
   component: ContactPage,
 });

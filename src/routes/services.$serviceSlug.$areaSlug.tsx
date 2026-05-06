@@ -30,7 +30,7 @@ export const Route = createFileRoute("/services/$serviceSlug/$areaSlug")({
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
-        jsonLdScript(localServiceJsonLd(s.name, a, s.metaDesc(a.name), s.priceFrom)),
+        jsonLdScript(localServiceJsonLd(s.name, a, s.metaDesc(a.name), s.priceFrom, s.slug === "plumbing")),
         jsonLdScript(
           breadcrumbJsonLd([
             { name: "Home", url: BUSINESS.url },

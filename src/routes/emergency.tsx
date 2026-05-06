@@ -14,8 +14,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
+import { RelatedContent } from "@/components/RelatedContent";
 import { BUSINESS, AREAS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags, contactActionJsonLd } from "@/lib/seo";
 
 const url = `${BUSINESS.url}/emergency`;
 
@@ -75,6 +76,7 @@ export const Route = createFileRoute("/emergency")({
           },
         ]),
       ),
+      jsonLdScript(contactActionJsonLd()),
     ],
   }),
   component: EmergencyPage,
@@ -442,6 +444,8 @@ function EmergencyPage() {
           WA
         </a>
       </div>
+
+      <RelatedContent type="services" title="Emergency services we provide" limit={4} />
     </PageShell>
   );
 }

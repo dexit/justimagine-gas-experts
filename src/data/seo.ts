@@ -39,14 +39,14 @@ export const SERVICES: Service[] = [
     short: "New boilers from Worcester, Vaillant and Ideal — fitted by Gas Safe engineers with up to 12-year warranty.",
     category: "installation",
     icon: "flame",
-    priceFrom: "£1,895",
+    priceFrom: "£2,500",
     priceUnit: "fully installed",
     h1: (a) => `New Boiler Installation${local(a)}`,
     metaTitle: (a) => `New Boiler Installation${local(a)} | Gas Safe Fitters | Just Imagine`,
     metaDesc: (a) =>
       `Fixed-price new boiler installation${local(a)}. Worcester, Vaillant & Ideal combi, system & regular boilers. Gas Safe registered, up to 12-year warranty. Free quote.`,
     intro: (a) =>
-      `Fast, fixed-price boiler installation${local(a)} from Gas Safe registered engineers. We specialise in high-efficiency A-rated boilers from Worcester Bosch, Vaillant, and Ideal. Whether you need a straight combi swap or a full system conversion, we provide expert installation, system balancing, and full certification.`,
+      `Looking for a new boiler${local(a)}? We install A-rated models from Worcester Bosch, Vaillant, and Ideal with fixed prices and no hidden fees. Straight swap or full system conversion — we'll handle it smoothly and get you warm again fast.`,
     bullets: [
       "Free no-obligation quote — usually within 24 hours",
       "Worcester Accredited & Vaillant Advance installer-grade workmanship",
@@ -60,7 +60,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "How much does a new boiler cost?",
-        a: "A typical combi swap starts at £1,895 fully fitted. Prices vary based on the boiler model, flue requirements, and whether you're converting from a regular to a combi system. We always provide a fixed written quote before any work begins.",
+        a: "A typical combi swap starts at £2,500 fully fitted. Prices vary based on the boiler model, flue requirements, and whether you're converting from a regular to a combi system. We always provide a fixed written quote before any work begins.",
       },
       {
         q: "How long does a boiler installation take?",
@@ -86,12 +86,14 @@ export const SERVICES: Service[] = [
     short: "Same-day boiler repair on all major makes — diagnostics, genuine parts, fixed price after assessment.",
     category: "maintenance",
     icon: "wrench",
+    priceFrom: "£100",
+    priceUnit: "from",
     h1: (a) => `Boiler Repair${local(a)} — Same Day Where Possible`,
     metaTitle: (a) => `Boiler Repair${local(a)} | Same-Day Gas Safe Engineers`,
     metaDesc: (a) =>
       `Boiler not working${local(a)}? Gas Safe boiler repair on Worcester, Vaillant, Ideal, Baxi, Glow-worm. Diagnostics, genuine parts, honest quotes. Call 07774 079152.`,
     intro: (a) =>
-      `Boiler broken down${local(a)}? We repair every major brand — Worcester, Vaillant, Ideal, Baxi, Glow-worm, Potterton and more. Diagnostics on the first visit, genuine parts only, and an honest answer if a replacement is the better call.`,
+      `Boiler not playing ball${local(a)}? We fix every major brand quickly and fairly. We'll diagnose the problem on day one, use genuine parts, and be honest about whether fixing or replacing makes more sense.`,
     bullets: [
       "Same-day callouts available across the area",
       "All major brands & error codes diagnosed",
@@ -103,7 +105,7 @@ export const SERVICES: Service[] = [
     faqs: [
       {
         q: "How much is a boiler repair callout?",
-        a: "Diagnostic visits start from £85 inc. VAT. If we recommend a repair, you approve the fixed price before any parts are fitted. No surprise invoices.",
+        a: "Diagnostic visits start from £100 inc. VAT. If we recommend a repair, you approve the fixed price before any parts are fitted. No surprise invoices.",
       },
       {
         q: "Do you repair boilers out of hours?",
@@ -118,17 +120,17 @@ export const SERVICES: Service[] = [
   {
     slug: "boiler-servicing",
     name: "Boiler Service",
-    short: "Annual boiler servicing from £75 — keeps your warranty valid, cuts bills, stops breakdowns.",
+    short: "Annual boiler servicing from £100 — keeps your warranty valid, cuts bills, stops breakdowns.",
     category: "maintenance",
     icon: "shield-check",
-    priceFrom: "£75",
-    priceUnit: "per service",
+    priceFrom: "£100",
+    priceUnit: "per year",
     h1: (a) => `Annual Boiler Service${local(a)}`,
-    metaTitle: (a) => `Boiler Service${local(a)} from £75 | Gas Safe Engineers`,
+    metaTitle: (a) => `Boiler Service${local(a)} from £100 | Gas Safe Engineers`,
     metaDesc: (a) =>
-      `Manufacturer-spec annual boiler service${local(a)} from £75. Keeps your warranty valid, lowers gas bills, prevents breakdowns. Same-day certificate. Book online.`,
+      `Manufacturer-spec annual boiler service${local(a)} from £100. Keeps your warranty valid, lowers gas bills, prevents breakdowns. Same-day certificate. Book online.`,
     intro: (a) =>
-      `A proper annual boiler service${local(a)} keeps your manufacturer warranty valid, cuts your gas bill and stops 90% of winter breakdowns before they start. Full strip-down, combustion analysis, flue test and written report — every time.`,
+      `Keep your boiler running smoothly${local(a)} with an annual service. We check everything, spot problems early, keep your warranty valid, and help you avoid surprise breakdowns when it's freezing.`,
     bullets: [
       "Manufacturer-specification service procedure",
       "Combustion analyser readings recorded and reported",
@@ -166,7 +168,7 @@ export const SERVICES: Service[] = [
     metaDesc: (a) =>
       `Landlord & homeowner CP12 gas safety certificates${local(a)} from £60. Gas Safe registered. Same-day issue. Multi-property discounts for landlords & agents.`,
     intro: (a) =>
-      `Legally required CP12 gas safety certificates${local(a)} for landlords, letting agents and homeowners. We test every gas appliance, flue and pipework, then issue your certificate the same day — usually before we leave.`,
+      `Need your landlord gas safety certificate${local(a)}? We test all your gas appliances and issue your CP12 certificate same day — digital copy sent to you and your agent straight away.`,
     bullets: [
       "All gas appliances, flues and pipework tested",
       "Same-day digital certificate sent to you and your agent",
@@ -205,7 +207,7 @@ export const SERVICES: Service[] = [
     metaDesc: (a) =>
       `Landlord packages${local(a)}: CP12 + annual boiler service + priority callouts. Trusted by letting agents across Warwickshire. Portfolio discounts available.`,
     intro: (a) =>
-      `Built for landlords and letting agents${local(a)} — bundle your CP12 gas safety certificate, annual boiler service and priority emergency cover into one fixed annual price. Compliance handled, tenants happy, paperwork in your inbox.`,
+      `Landlords and agents love this${local(a)} — one annual fee covers your CP12 safety certificate, boiler service, and priority emergency help. Compliance sorted, tenants looked after, paperwork done.`,
     bullets: [
       "Single annual fee — CP12 + full boiler service combined",
       "Priority emergency response for tenants (same day)",
@@ -241,7 +243,7 @@ export const SERVICES: Service[] = [
     metaDesc: (a) =>
       `Central heating installs, upgrades & repairs${local(a)}. Radiators, pipework, smart thermostats, balancing & TRV fitting. Gas Safe registered.`,
     intro: (a) =>
-      `Cold rooms, noisy radiators, uneven heating${local(a)}? We design, install and upgrade full central heating systems — radiators, pipework, smart controls and zoned heating — for homes that actually feel warm.`,
+      `Cold rooms, noisy radiators, uneven heating${local(a)}? We design and install heating systems that actually work — smart controls, properly balanced radiators, and zoned heating so you're comfortable everywhere.`,
     bullets: [
       "Radiator swaps, additions and relocations",
       "Smart thermostat & zoned heating installation (Hive, Nest, Honeywell)",
@@ -272,7 +274,7 @@ export const SERVICES: Service[] = [
     metaDesc: (a) =>
       `Reliable plumbers${local(a)} for leaks, taps, valves, hot water cylinders, bathroom & kitchen plumbing. No call-out fee on booked jobs.`,
     intro: (a) =>
-      `Trusted local plumbing${local(a)} — from a dripping tap to a full bathroom refit. Same-day for leaks and burst pipes, fixed-price for planned work. Tidy, certified and properly insured.`,
+      `Local plumbers you can trust${local(a)} — dripping taps, leaks, burst pipes, or a full bathroom refit. Fast for emergencies, fixed prices for planned work, and we clean up after ourselves.`,
     bullets: [
       "Leaks, burst pipes & emergency isolations",
       "Taps, mixers, showers & pressure valves",
@@ -305,7 +307,7 @@ export const SERVICES: Service[] = [
     metaDesc: (a) =>
       `Magnetite sludge in your radiators${local(a)}? Professional power flush from £395. Restores heat output, lowers bills, protects your boiler warranty.`,
     intro: (a) =>
-      `Cold spots in radiators${local(a)}, noisy boiler, black sludge in the system? A professional power flush clears years of magnetite, restores heat output, and protects your new boiler warranty.`,
+      `Radiators cold at the bottom, boiler making noise, or black sludge coming out${local(a)}? A power flush clears the muck, gets your heat back, and keeps your new boiler warranty safe.`,
     bullets: [
       "Full chemical & high-velocity magnetic flush",
       "Heat output tested before and after the flush",
@@ -335,7 +337,7 @@ export const SERVICES: Service[] = [
     metaDesc: (a) =>
       `24/7 emergency boiler, heating & gas leak response${local(a)}. Gas Safe engineers on call. No heat, no hot water, suspected gas leak — call 07774 079152 now.`,
     intro: (a) =>
-      `When the heat goes out at 11pm or there's a gas smell at 6am${local(a)}, you need a real engineer on the phone — not a call centre. We answer day and night, every day of the year.`,
+      `Heating gone at 11pm or something smells like gas at 6am${local(a)}? You'll get a real engineer, not a call centre. We're here 24/7, every day of the year.`,
     bullets: [
       "No heat / no hot water — rapid response",
       "Suspected gas leaks — make safe & repair",
@@ -373,12 +375,14 @@ export interface Area {
   geo?: { lat: number; lng: number };
   /** Effective service radius in km from the centroid. */
   radiusKm?: number;
+  /** Service tier: "both" = 1h repairs + 2h installs, "installs-only" = 2h installs only, "call-for-quote" = outside service area */
+  serviceTier?: "both" | "installs-only" | "call-for-quote";
 }
 
 export const PRICING = [
   {
     name: "Boiler Service",
-    price: "£75",
+    price: "£100",
     unit: "per year",
     popular: true,
     features: [
@@ -390,8 +394,20 @@ export const PRICING = [
     ],
   },
   {
+    name: "Boiler Repair",
+    price: "£100",
+    unit: "from",
+    features: [
+      "Same-day diagnostics on all major brands",
+      "Genuine OEM parts guaranteed",
+      "Fixed price after assessment",
+      "Workmanship warranty included",
+      "All brands covered",
+    ],
+  },
+  {
     name: "Landlord CP12",
-    price: "£60",
+    price: "£120",
     unit: "per certificate",
     features: [
       "Up to 2 gas appliances",
@@ -410,15 +426,15 @@ export const PRICING = [
     features: [
       "Annual CP12 included",
       "Full boiler service included",
-      "Save ~£25 vs booking separately",
       "Priority emergency response",
       "Single invoice to agent or landlord",
     ],
   },
   {
-    name: "Combi Swap",
-    price: "£1,895",
-    unit: "starting from",
+    name: "Boiler Installation",
+    price: "£2,500",
+    unit: "from",
+    popular: true,
     features: [
       "A-rated boiler supplied & fitted",
       "Up to 12-year manufacturer warranty",
@@ -428,19 +444,74 @@ export const PRICING = [
     ],
   },
   {
-    name: "Power Flush",
-    price: "£395",
-    unit: "per system",
+    name: "System Conversion",
+    price: "£3,200",
+    unit: "starting from",
     features: [
-      "High-velocity chemical flush",
-      "Heat output tested before & after",
-      "Inhibitor dose & filter fitted",
-      "Written system report provided",
+      "Full heating system upgrade",
+      "Pipework reconfiguration included",
+      "New radiators and controls",
+      "Building Regs certification",
+      "Commissioning and balancing",
+    ],
+  },
+  {
+    name: "Radiator Installation",
+    price: "£100",
+    unit: "horizontal from",
+    features: [
+      "Horizontal radiator replacement or installation",
+      "Pressure tested and balanced",
+      "TRV valves fitted",
+      "Magnetic filter optional",
+    ],
+  },
+  {
+    name: "Vertical Radiator",
+    price: "£150",
+    unit: "from",
+    features: [
+      "Vertical radiator replacement or installation",
+      "Modern designer options available",
+      "Balanced and tested",
+      "Aesthetically integrated",
+    ],
+  },
+  {
+    name: "Gas Hob/Cooker Installation",
+    price: "£120",
+    unit: "from",
+    features: [
+      "Gas hob or cooker installation",
+      "Safe connection and certification",
+      "All brands supported",
+      "Gas Safe certificate provided",
+    ],
+  },
+  {
+    name: "Unvented Cylinder",
+    price: "£1,200",
+    unit: "fit & supply",
+    features: [
+      "Unvented cylinder replacement or installation",
+      "Full fitting service included",
+      "Building Regs certification",
+      "Pressure and temperature relief included",
+    ],
+  },
+  {
+    name: "Disconnecting Appliances",
+    price: "£80",
+    unit: "per appliance",
+    features: [
+      "Safe disconnection of existing appliances",
+      "Capped off properly",
+      "Certificate provided",
     ],
   },
   {
     name: "Emergency Callout",
-    price: "£85",
+    price: "£120",
     unit: "diagnostic fee",
     features: [
       "24/7 response — day & night",
@@ -546,11 +617,12 @@ export const AREAS: Area[] = [
     postcodes: ["CV21", "CV22", "CV23"],
     landmarks: ["Rugby town centre", "Bilton", "Hillmorton", "Cawston", "Brownsover", "Newbold"],
     blurb:
-      "Our home town. We cover every street from Bilton to Hillmorton, Cawston to Brownsover — usually same-day for emergencies.",
+      "Our home town. We know Rugby inside out — from Bilton to Hillmorton, Cawston to Brownsover. Same-day emergencies when you need us.",
     referralNote:
-      "Based in Rugby ourselves, we typically arrive within 60 minutes for emergency callouts across all Rugby postcodes.",
+      "Based here, we usually reach you within an hour for emergencies across all Rugby postcodes.",
     geo: { lat: 52.3704, lng: -1.2658 },
     radiusKm: 12,
+    serviceTier: "both",
   },
   {
     slug: "leamington-spa",
@@ -559,11 +631,12 @@ export const AREAS: Area[] = [
     postcodes: ["CV31", "CV32", "CV33"],
     landmarks: ["Leamington town centre", "Lillington", "Whitnash", "Sydenham", "Milverton"],
     blurb:
-      "Regency homes, Victorian terraces and new-build estates — we install and service boilers across all of Royal Leamington Spa.",
+      "Regency homes, Victorian terraces, new-builds — we work across all of Leamington Spa.",
     referralNote:
-      "We're regulars in Leamington Spa — from the Victorian terraces of Lillington to the new-builds in Whitnash, we know the heating challenges of every era of property here.",
+      "From Lillington's Victorian terraces to Whitnash's new estates, we know what works in every property type here.",
     geo: { lat: 52.2852, lng: -1.52 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "warwick",
@@ -572,11 +645,12 @@ export const AREAS: Area[] = [
     postcodes: ["CV34", "CV35"],
     landmarks: ["Warwick town centre", "Woodloes Park", "Chase Meadow", "Hatton", "Barford"],
     blurb:
-      "Gas Safe heating engineers covering Warwick town, Woodloes Park, Chase Meadow and Hatton.",
+      "Boiler engineers across Warwick — Woodloes Park, Chase Meadow, and Hatton. Quick fixes, new installs, CP12s.",
     referralNote:
-      "Warwick's mix of older period properties and modern estates means we regularly work on everything from original gas fires to cutting-edge combi systems here.",
+      "Warwick's got everything from period homes to modern builds — we've fitted combi boilers, repaired old gas fires, and serviced everything in between.",
     geo: { lat: 52.2823, lng: -1.5849 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "kenilworth",
@@ -584,11 +658,12 @@ export const AREAS: Area[] = [
     county: "Warwickshire",
     postcodes: ["CV8"],
     landmarks: ["Kenilworth town centre", "Burton Green", "Balsall Common", "Berkswell"],
-    blurb: "Trusted local engineers serving Kenilworth, Burton Green and the surrounding villages.",
+    blurb: "Local engineers serving Kenilworth, Burton Green and the surrounding villages.",
     referralNote:
-      "Kenilworth's affluent detached homes often feature system boilers and larger radiator circuits — we're well-equipped to handle the full range.",
+      "Kenilworth's larger homes and system boilers are our bread and butter — we handle them all.",
     geo: { lat: 52.347, lng: -1.571 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "stratford-upon-avon",
@@ -597,11 +672,12 @@ export const AREAS: Area[] = [
     postcodes: ["CV37"],
     landmarks: ["Stratford town centre", "Shottery", "Bishopton", "Tiddington", "Welford-on-Avon"],
     blurb:
-      "Boilers, plumbing and landlord certificates across Stratford-upon-Avon and the surrounding villages.",
+      "Boiler installs, repairs, plumbing and CP12s across Stratford and the surrounding villages.",
     referralNote:
-      "We work with several holiday let and rental landlords in Stratford — keeping their properties compliant and guests warm year-round.",
+      "We help holiday let managers and landlords stay compliant — annual CP12s, quick fixes, and emergency cover when guests need warmth.",
     geo: { lat: 52.1917, lng: -1.7083 },
     radiusKm: 14,
+    serviceTier: "both",
   },
   {
     slug: "coventry",
@@ -610,11 +686,12 @@ export const AREAS: Area[] = [
     postcodes: ["CV1", "CV2", "CV3", "CV4", "CV5", "CV6"],
     landmarks: ["Coventry city centre", "Earlsdon", "Cheylesmore", "Tile Hill", "Stoke", "Binley"],
     blurb:
-      "Same-day boiler repair and installation across Coventry — Earlsdon, Cheylesmore, Stoke and Tile Hill.",
+      "Boiler repair, installs and emergency cover across Coventry — same-day response where possible.",
     referralNote:
-      "Coventry's large student and rental market means CP12 certificates and landlord packages are in constant demand — we handle dozens of Coventry properties every month.",
+      "Coventry's got plenty of rental properties — we do dozens of landlord CP12 checks and portfolio packages every month. Quick turnaround, digital certificates same day.",
     geo: { lat: 52.4068, lng: -1.5197 },
     radiusKm: 12,
+    serviceTier: "both",
   },
   {
     slug: "nuneaton",
@@ -622,11 +699,12 @@ export const AREAS: Area[] = [
     county: "Warwickshire",
     postcodes: ["CV10", "CV11"],
     landmarks: ["Nuneaton town centre", "Whitestone", "Weddington", "Galley Common"],
-    blurb: "Heating and gas engineers serving Nuneaton, Whitestone and Weddington.",
+    blurb: "Boiler repair, servicing and installations across Nuneaton and Weddington.",
     referralNote:
-      "We cover Nuneaton's mix of ex-council and private housing — reliable, practical heating work at fair prices.",
+      "We know Nuneaton's housing stock well — ex-council properties, older homes, new builds. Fair prices, practical heating work that lasts.",
     geo: { lat: 52.523, lng: -1.4659 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "bedworth",
@@ -639,6 +717,7 @@ export const AREAS: Area[] = [
       "Bedworth's compact geography means we're usually on-site quickly — a bonus when you have a heating emergency.",
     geo: { lat: 52.479, lng: -1.472 },
     radiusKm: 8,
+    serviceTier: "both",
   },
   {
     slug: "southam",
@@ -646,11 +725,12 @@ export const AREAS: Area[] = [
     county: "Warwickshire",
     postcodes: ["CV47"],
     landmarks: ["Southam town centre", "Long Itchington", "Napton-on-the-Hill", "Stockton"],
-    blurb: "Gas Safe engineers covering Southam, Long Itchington and Napton-on-the-Hill.",
+    blurb: "Boiler repairs, servicing and new installs across Southam and the villages around it.",
     referralNote:
-      "Rural Southam properties often have older systems and oil conversions — we're experienced with the full spectrum.",
+      "Rural Southam's got plenty of older homes and oil-to-gas conversions. We're comfortable with the full spectrum — from traditional systems to modern combis.",
     geo: { lat: 52.2493, lng: -1.3899 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "atherstone",
@@ -658,11 +738,12 @@ export const AREAS: Area[] = [
     county: "Warwickshire",
     postcodes: ["CV9"],
     landmarks: ["Atherstone town centre", "Mancetter", "Hartshill", "Polesworth"],
-    blurb: "Heating, plumbing and CP12 certificates across Atherstone, Mancetter and Hartshill.",
+    blurb: "Boiler engineers, plumbing and CP12 certificates across Atherstone and Mancetter.",
     referralNote:
-      "We cover the north Warwickshire corridor reliably — including the villages around Atherstone.",
+      "We know the north Warwickshire villages well — reliable service across Atherstone, Hartshill, and Polesworth.",
     geo: { lat: 52.579, lng: -1.547 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "alcester",
@@ -675,6 +756,7 @@ export const AREAS: Area[] = [
       "The Forest of Arden villages around Alcester mix old and new — we're equally comfortable with period cottages and modern new-builds.",
     geo: { lat: 52.215, lng: -1.869 },
     radiusKm: 10,
+    serviceTier: "both",
   },
   {
     slug: "shipston-on-stour",
@@ -682,11 +764,64 @@ export const AREAS: Area[] = [
     county: "Warwickshire",
     postcodes: ["CV36"],
     landmarks: ["Shipston town centre", "Tredington", "Long Compton", "Ilmington"],
-    blurb: "Gas Safe heating cover across Shipston-on-Stour and the south Warwickshire villages.",
+    blurb: "Boiler installs, repairs and emergency cover across Shipston and the south Warwickshire villages.",
     referralNote:
-      "South Warwickshire's rural character means we travel further — but we're committed to covering every corner of the county.",
+      "South Warwickshire's quiet, but we cover it fully. Travel further than we would closer to Rugby, but we're committed to reaching every corner.",
     geo: { lat: 52.0625, lng: -1.6258 },
     radiusKm: 12,
+    serviceTier: "both",
+  },
+  {
+    slug: "leicester",
+    name: "Leicester",
+    county: "Leicestershire",
+    postcodes: ["LE1", "LE2", "LE3", "LE4", "LE5"],
+    landmarks: ["Leicester city centre", "Narborough", "Braunstone", "Oadby", "Wigston", "Glenfield"],
+    blurb: "Boiler installs, repairs and emergency cover across Leicester — within one hour from Rugby.",
+    referralNote:
+      "Leicester's got Victorian terraces and new estates. We've worked on both, across every neighbourhood.",
+    geo: { lat: 52.6369, lng: -1.1398 },
+    radiusKm: 15,
+    serviceTier: "both",
+  },
+  {
+    slug: "northampton",
+    name: "Northampton",
+    county: "Northamptonshire",
+    postcodes: ["NN1", "NN2", "NN3", "NN4", "NN5"],
+    landmarks: ["Northampton town centre", "Wellingborough", "Kingsthorpe", "Duston", "Abington", "Upton"],
+    blurb: "Boiler installs, repairs and CP12s across Northampton — within one hour from Rugby.",
+    referralNote:
+      "Northampton's got Victorians and new builds. Whatever your heating setup, we've worked on it.",
+    geo: { lat: 52.2411, lng: -0.8812 },
+    radiusKm: 14,
+    serviceTier: "both",
+  },
+  {
+    slug: "corby",
+    name: "Corby",
+    county: "Northamptonshire",
+    postcodes: ["NN17", "NN18"],
+    landmarks: ["Corby town centre", "Kettering", "Desborough", "East Carlton", "Welland", "Rockingham"],
+    blurb: "Boiler repairs and installations across Corby and North Northamptonshire.",
+    referralNote:
+      "Corby's got older homes and new builds. We work on residential and commercial heating equally well.",
+    geo: { lat: 52.4907, lng: -0.7498 },
+    radiusKm: 13,
+    serviceTier: "both",
+  },
+  {
+    slug: "banbury",
+    name: "Banbury",
+    county: "Oxfordshire",
+    postcodes: ["OX16", "OX17"],
+    landmarks: ["Banbury town centre", "Kidlington", "Deddington", "Adderbury", "Wroxton", "Bloxham"],
+    blurb: "Boiler engineers across Banbury and North Oxfordshire — installs, repairs, and emergency cover.",
+    referralNote:
+      "Banbury's historic market town and the surrounding stone cottages need heating work you can trust. We know period properties well.",
+    geo: { lat: 52.0598, lng: -1.3381 },
+    radiusKm: 13,
+    serviceTier: "both",
   },
 ];
 

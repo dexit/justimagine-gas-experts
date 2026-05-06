@@ -23,6 +23,12 @@ export const Route = createFileRoute("/services")({
         content:
           "Boiler installation, servicing & repair, CP12 gas safety certificates, central heating, power flushing and 24/7 emergency callouts across Rugby & Warwickshire. Gas Safe registered.",
       },
+      { property: "og:title", content: "Boiler & Gas Services | Just Imagine Ltd — Rugby" },
+      {
+        property: "og:description",
+        content:
+          "Boiler installation, servicing & repair, CP12, emergency callouts & more. Gas Safe engineers across Warwickshire.",
+      },
       ...geoMetaTags(),
     ],
   }),

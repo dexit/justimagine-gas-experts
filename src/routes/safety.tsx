@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ShieldCheck, AlertTriangle, FileCheck, Phone } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
+import { BUSINESS } from "@/data/seo";
 import { geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/safety")({
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/safety")({
           "Landlord CP12 certificates from £60. Same-day issue, Gas Safe registered, Warwickshire-wide coverage. Free reminders when due for renewal.",
       },
     ],
+    links: [{ rel: "canonical", href: `${BUSINESS.url}/safety` }],
   }),
   component: SafetyPage,
 });

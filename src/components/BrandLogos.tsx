@@ -10,7 +10,7 @@ const brands: { name: string; className?: string }[] = [
   { name: "Baxi" },
   { name: "Glow-worm" },
   { name: "Viessmann" },
-  { name: "Gas Safe" },
+  { name: "And Others" },
 ];
 
 export function BrandLogos() {

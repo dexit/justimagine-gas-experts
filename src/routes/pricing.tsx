@@ -3,7 +3,8 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { PRICING, BUSINESS } from "@/data/seo";
 import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { geoMetaTags } from "@/lib/seo";
+import { RelatedContent } from "@/components/RelatedContent";
+import { geoMetaTags, contactActionJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -22,6 +23,8 @@ export const Route = createFileRoute("/pricing")({
           "Fixed-price boiler services in Rugby. Servicing from £75, CP12 from £60, new boiler from £1,895. Landlord bundle deals available.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://justimagine.ltd/pricing" }],
+    scripts: [jsonLdScript(contactActionJsonLd())],
   }),
   component: PricingPage,
 });
@@ -89,6 +92,8 @@ function PricingPage() {
           </Button>
         </div>
       </section>
+
+      <RelatedContent type="services" title="Services at these price points" limit={6} />
     </PageShell>
   );
 }

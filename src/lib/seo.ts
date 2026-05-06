@@ -424,6 +424,7 @@ export const productOfferJsonLd = (opts: {
   name: opts.name,
   description: opts.description,
   brand: { "@type": "Brand", name: BUSINESS.name },
+  image: `${BUSINESS.url}/og-default.jpg`,
   offers: {
     "@type": "Offer",
     price: opts.price.replace(/[^0-9.]/g, ""),
@@ -432,43 +433,196 @@ export const productOfferJsonLd = (opts: {
     url: opts.url,
     seller: { "@id": `${BUSINESS.url}/#business` },
   },
-});
-
-// Geofenced area + service schema — used on service×area combo pages
-export const localServiceJsonLd = (
-  serviceName: string,
-  area: { name: string; postcodes: string[]; county: string },
-  serviceDescription: string,
-  price?: string,
-) => ({
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: `${serviceName} in ${area.name}`,
-  serviceType: serviceName,
-  description: serviceDescription,
-  provider: { "@id": `${BUSINESS.url}/#business` },
-  areaServed: {
-    "@type": "City",
-    name: area.name,
-    containsPlace: area.postcodes.map((p) => ({ "@type": "PostalCode", name: p })),
-    containedInPlace: { "@type": "AdministrativeArea", name: area.county },
-  },
-  ...(price
-    ? {
-        offers: {
-          "@type": "Offer",
-          price: price.replace(/[^0-9.]/g, ""),
-          priceCurrency: "GBP",
-          availability: "https://schema.org/InStock",
-        },
-      }
-    : {}),
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
     reviewCount: String(REVIEWS.length + 115),
     bestRating: "5",
   },
+});
+
+export const plumbingServiceJsonLd = (
+  serviceName: string,
+  description: string,
+  priceFrom?: string,
+) => ({
+  "@context": "https://schema.org",
+  "@type": ["Service", "PlumbingService"],
+  name: serviceName,
+  description: description,
+  provider: { "@id": `${BUSINESS.url}/#business` },
+  areaServed: {
+    "@type": "GeoShape",
+    name: "Rugby, Warwickshire and surrounding areas",
+  },
+  availableChannel: {
+    "@type": "ServiceChannel",
+    servicePhone: BUSINESS.phoneE164,
+    serviceUrl: `${BUSINESS.url}/contact`,
+  },
+  ...(priceFrom
+    ? {
+        offers: {
+          "@type": "Offer",
+          price: priceFrom.replace(/[^0-9.]/g, ""),
+          priceCurrency: "GBP",
+          availability: "https://schema.org/InStock",
+        },
+      }
+    : {}),
+});
+
+export const gasEngineerJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService", "HomeServiceBusiness"],
+  "@id": `${BUSINESS.url}/#gas-engineer`,
+  name: BUSINESS.name,
+  description: "Gas Safe registered heating engineers providing boiler installation, repair, and servicing across the Midlands.",
+  url: BUSINESS.url,
+  telephone: BUSINESS.phoneE164,
+  email: BUSINESS.email,
+  priceRange: BUSINESS.priceRange,
+  image: `${BUSINESS.url}/logo.svg`,
+  knowsAbout: [
+    "Boiler Installation",
+    "Boiler Repair",
+    "Boiler Servicing",
+    "Central Heating",
+    "Emergency Heating",
+    "Gas Safety Certificates",
+    "Landlord CP12",
+    "Power Flushing",
+    "Radiator Installation",
+    "Plumbing",
+  ],
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Gas Safe Register",
+      credentialCategory: "Professional Certification",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "WRAS Approved",
+      credentialCategory: "Water Regulations Approval",
+    },
+  ],
+});
+
+export const contactActionJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "ContactPoint",
+  telephone: BUSINESS.phoneE164,
+  contactType: "Customer Service",
+  email: BUSINESS.email,
+  areaServed: "GB",
+  availableLanguage: ["en"],
+});
+
+// Geofenced area + service schema — used on service×area combo pages and area pages
+export const localServiceJsonLd = (
+  serviceNameOrObj: string | {
+    serviceName: string;
+    serviceDescription: string;
+    areaName: string;
+    areaPostcodes: string[];
+    county: string;
+    price?: string;
+  },
+  area?: { name: string; postcodes: string[]; county: string },
+  serviceDescription?: string,
+  price?: string,
+  isPlumbingService?: boolean,
+) => {
+  // Handle both object and positional argument calling conventions
+  let serviceName: string;
+  let areaName: string;
+  let areaPostcodes: string[];
+  let areaCounty: string;
+  let desc: string;
+  let p: string | undefined;
+  let isPlumbing: boolean | undefined;
+
+  if (typeof serviceNameOrObj === "object") {
+    // Object calling convention
+    serviceName = serviceNameOrObj.serviceName;
+    areaName = serviceNameOrObj.areaName;
+    areaPostcodes = serviceNameOrObj.areaPostcodes;
+    areaCounty = serviceNameOrObj.county;
+    desc = serviceNameOrObj.serviceDescription;
+    p = serviceNameOrObj.price;
+    isPlumbing = false;
+  } else {
+    // Positional calling convention
+    serviceName = serviceNameOrObj;
+    areaName = area!.name;
+    areaPostcodes = area!.postcodes;
+    areaCounty = area!.county;
+    desc = serviceDescription!;
+    p = price;
+    isPlumbing = isPlumbingService;
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": isPlumbing ? ["Service", "PlumbingService"] : "Service",
+    name: `${serviceName} in ${areaName}`,
+    serviceType: serviceName,
+    description: desc,
+    provider: { "@id": `${BUSINESS.url}/#business` },
+    areaServed: {
+      "@type": "City",
+      name: areaName,
+      containsPlace: areaPostcodes.map((pc) => ({ "@type": "PostalCode", name: pc })),
+      containedInPlace: { "@type": "AdministrativeArea", name: areaCounty },
+    },
+    ...(p
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: p.replace(/[^0-9.]/g, ""),
+            priceCurrency: "GBP",
+            availability: "https://schema.org/InStock",
+          },
+        }
+      : {}),
+    potentialAction: [
+      {
+        "@type": "CallAction",
+        target: `tel:${BUSINESS.phoneE164}`,
+        name: "Call for Service",
+      },
+      {
+        "@type": "Action",
+        name: "Message on WhatsApp",
+        target: `https://api.whatsapp.com/send?phone=${BUSINESS.whatsapp}`,
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: String(REVIEWS.length + 115),
+      bestRating: "5",
+    },
+  };
+};
+
+export const serviceFaqJsonLd = (
+  serviceName: string,
+  faqs: Array<{ q: string; a: string }>,
+) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+  headline: `Frequently Asked Questions about ${serviceName}`,
+  description: `Common questions and answers about ${serviceName} services`,
 });
 
 export const jsonLdScript = (data: unknown) => ({

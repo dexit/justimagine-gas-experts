@@ -124,11 +124,13 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
       <div
         role="status"
         aria-live="polite"
-        className={`text-center ${compact ? "" : "p-8 lg:p-10 bg-card border border-border rounded-2xl"}`}
+        className={`text-center animate-in fade-in-0 zoom-in-95 ${compact ? "" : "p-8 lg:p-10 bg-accent/8 border border-accent/30 rounded-2xl"}`}
       >
-        <CheckCircle2 className="h-10 w-10 text-accent mx-auto mb-3" aria-hidden="true" />
-        <h3 className="font-display text-xl font-semibold mb-2">Thanks — message received.</h3>
-        <p className="text-sm text-muted-foreground mb-5">
+        <div className="mb-4 flex justify-center">
+          <CheckCircle2 className="h-12 w-12 text-accent animate-in scale-in-95 duration-300" aria-hidden="true" />
+        </div>
+        <h3 className="font-display text-xl font-semibold mb-2 text-foreground">Thanks — message received.</h3>
+        <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
           We'll be in touch within 30 minutes during working hours, or first thing tomorrow.
         </p>
         <Button variant="outline" onClick={() => setDone(false)}>
@@ -138,10 +140,15 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
     );
   }
 
-  const fieldClass = (hasError?: boolean) =>
-    `w-full px-4 py-3 rounded-lg border bg-background text-foreground placeholder:text-muted-foreground/70 ` +
-    `focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring ` +
-    (hasError ? "border-destructive ring-1 ring-destructive/40" : "border-border");
+  const fieldClass = (hasError?: boolean, touched?: boolean) =>
+    `w-full px-4 py-3 rounded-lg border transition-all ` +
+    `bg-background text-foreground placeholder:text-muted-foreground/60 ` +
+    `focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background ` +
+    (hasError && touched
+      ? "border-destructive/80 bg-destructive/5 focus:ring-destructive focus:border-destructive"
+      : touched && !hasError
+        ? "border-accent/60 bg-accent/5 focus:ring-accent focus:border-accent"
+        : "border-border focus:ring-ring focus:border-ring");
 
   return (
     <form
@@ -165,7 +172,7 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
             autoComplete="name"
             placeholder="e.g. Sarah Lee"
             aria-invalid={!!errors.name}
-            className={fieldClass(!!errors.name)}
+            className={fieldClass(!!errors.name, touchedFields.name)}
           />
         </Field>
         <Field label="Phone (required)" error={errors.phone?.message} touched={touchedFields.phone}>
@@ -179,7 +186,7 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
             onChange={(e) =>
               setValue("phone", maskUkPhone(e.target.value), { shouldValidate: true })
             }
-            className={fieldClass(!!errors.phone)}
+            className={fieldClass(!!errors.phone, touchedFields.phone)}
           />
         </Field>
       </div>
@@ -193,7 +200,7 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
             autoComplete="email"
             placeholder="you@example.com"
             aria-invalid={!!errors.email}
-            className={fieldClass(!!errors.email)}
+            className={fieldClass(!!errors.email, touchedFields.email)}
           />
         </Field>
         <Field label="Postcode" error={errors.postcode?.message} touched={touchedFields.postcode}>
@@ -205,34 +212,34 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
             onChange={(e) =>
               setValue("postcode", maskPostcode(e.target.value), { shouldValidate: true })
             }
-            className={fieldClass(!!errors.postcode)}
+            className={fieldClass(!!errors.postcode, touchedFields.postcode)}
           />
         </Field>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-3">
-        <Field label="Service needed">
+        <Field label="Service needed" touched={touchedFields.service}>
           <input
             {...register("service")}
             placeholder="e.g. Boiler service"
-            className={fieldClass(false)}
+            className={fieldClass(false, touchedFields.service)}
           />
         </Field>
-        <Field label="Town / area">
+        <Field label="Town / area" touched={touchedFields.area}>
           <input
             {...register("area")}
             placeholder="e.g. Rugby"
-            className={fieldClass(false)}
+            className={fieldClass(false, touchedFields.area)}
           />
         </Field>
       </div>
 
-      <Field label="Brief description" error={errors.message?.message}>
+      <Field label="Brief description" error={errors.message?.message} touched={touchedFields.message}>
         <textarea
           {...register("message")}
           rows={4}
           placeholder="Tell us what's happening (optional)…"
-          className={`${fieldClass(!!errors.message)} resize-none`}
+          className={`${fieldClass(!!errors.message, touchedFields.message)} resize-none`}
         />
       </Field>
 
@@ -240,11 +247,18 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
         type="submit"
         disabled={isSubmitting}
         size="lg"
-        className="w-full bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold shadow-amber"
+        className="w-full bg-gradient-amber text-accent-foreground hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed font-semibold shadow-amber transition-all duration-200"
       >
-        {isSubmitting ? "Sending…" : "Request a callback"}
+        {isSubmitting ? (
+          <span className="inline-flex items-center gap-2">
+            <span className="h-4 w-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+            Sending…
+          </span>
+        ) : (
+          "Request a callback"
+        )}
       </Button>
-      <p className="text-[11px] text-muted-foreground text-center">
+      <p className="text-xs text-muted-foreground text-center leading-relaxed">
         By submitting you agree to be contacted about your enquiry. We never share your details.
       </p>
     </form>
@@ -264,14 +278,14 @@ function Field({
 }) {
   return (
     <label className="block text-left">
-      <span className="sr-only">{label}</span>
+      <span className="block text-sm font-medium text-foreground mb-1.5">{label}</span>
       {children}
       {error && touched && (
         <span
           role="alert"
-          className="mt-1 inline-flex items-center gap-1 text-xs text-destructive"
+          className="mt-1.5 inline-flex items-center gap-1.5 text-xs text-destructive font-medium animate-in fade-in-0 slide-in-from-top-1"
         >
-          <AlertCircle className="h-3 w-3" /> {error}
+          <AlertCircle className="h-3.5 w-3.5 flex-shrink-0" /> {error}
         </span>
       )}
     </label>

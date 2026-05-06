@@ -1,9 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
+import { BUSINESS } from "@/data/seo";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
-    meta: [{ title: "Privacy Policy | Just Imagine Ltd" }, { name: "robots", content: "noindex" }],
+    meta: [
+      { title: "Privacy Policy | Just Imagine Ltd — Data Protection" },
+      { name: "description", content: "Our privacy policy explains how we collect, use and protect your personal data in compliance with GDPR and UK data protection laws." },
+      { name: "robots", content: "noindex" },
+      { property: "og:title", content: "Privacy Policy | Just Imagine Ltd" },
+      { property: "og:description", content: "Learn how we protect your personal data and comply with GDPR and UK privacy laws." },
+    ],
+    links: [{ rel: "canonical", href: `${BUSINESS.url}/privacy` }],
   }),
   component: PrivacyPage,
 });

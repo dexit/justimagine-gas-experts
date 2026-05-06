@@ -5,24 +5,8 @@ import { newsListJsonLd, jsonLdScript } from "@/lib/seo";
 import { Calendar, ArrowRight, Tag } from "lucide-react";
 
 export const Route = createFileRoute("/news")({
-  head: () => ({
-    meta: [
-      { title: "News & Insights — Heating, Boilers & Landlord Updates | Just Imagine Ltd" },
-      {
-        name: "description",
-        content:
-          "Local heating, boiler and landlord compliance news for Rugby, Warwick, Coventry and Warwickshire homeowners.",
-      },
-      { property: "og:title", content: "News & Insights | Just Imagine Ltd" },
-      {
-        property: "og:description",
-        content: "Boiler grants, CP12 changes, winter heating tips and local updates.",
-      },
-    ],
-    links: [{ rel: "canonical", to: `${BUSINESS.url}/news` }],
-    scripts: [jsonLdScript(newsListJsonLd())],
-  }),
   component: NewsLayout,
+  notFoundComponent: () => <div className="p-10">News section temporarily unavailable.</div>,
 });
 
 function NewsLayout() {

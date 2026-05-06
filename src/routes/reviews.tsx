@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { REVIEWS, BUSINESS } from "@/data/seo";
 import { Star, Quote } from "lucide-react";
+import { RelatedContent } from "@/components/RelatedContent";
 import { breadcrumbJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
 
 export const Route = createFileRoute("/reviews")({
@@ -163,6 +164,8 @@ function ReviewsPage() {
           </p>
         </div>
       </section>
+
+      <RelatedContent type="services-and-areas" title="Our most reviewed services" limit={3} />
     </PageShell>
   );
 }

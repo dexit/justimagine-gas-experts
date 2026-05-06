@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
-import { geoMetaTags } from "@/lib/seo";
+import { RelatedContent } from "@/components/RelatedContent";
+import { geoMetaTags, contactActionJsonLd, jsonLdScript } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -21,6 +22,8 @@ export const Route = createFileRoute("/contact")({
           "Get a free, fixed-price quote from Gas Safe engineers in Rugby. Call 07774 079152, WhatsApp or use our online enquiry form. Same-day response.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://justimagine.ltd/contact" }],
+    scripts: [jsonLdScript(contactActionJsonLd())],
   }),
   component: ContactPage,
 });
@@ -85,6 +88,8 @@ function ContactPage() {
           <EnquiryForm compact />
         </div>
       </section>
+
+      <RelatedContent type="services-and-areas" title="What we can help with" limit={3} />
     </PageShell>
   );
 }

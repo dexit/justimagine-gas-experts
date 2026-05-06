@@ -1,8 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, getService, AREAS, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, serviceJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, serviceJsonLd, plumbingServiceJsonLd } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { Certifications } from "@/components/Certifications";
+import { RelatedContent } from "@/components/RelatedContent";
 import { Button } from "@/components/ui/button";
 import { Phone, Check, MessageCircle, MapPin } from "lucide-react";
 
@@ -43,6 +45,7 @@ export const Route = createFileRoute("/services/$serviceSlug")({
             { name: s.name, url },
           ]),
         ),
+        ...(s.slug === "plumbing" ? [jsonLdScript(plumbingServiceJsonLd(s.name, s.metaDesc(), s.priceFrom))] : []),
         ...(s.faqs.length ? [jsonLdScript(faqJsonLd(s.faqs))] : []),
       ],
     };
@@ -105,21 +108,35 @@ function ServicePage() {
           )}
 
           <div>
-            <h2 className="font-display text-2xl font-semibold mb-4 flex items-center gap-2">
+            <h2 className="font-display text-2xl font-semibold mb-6 flex items-center gap-2">
               <MapPin className="h-5 w-5 text-accent" />
-              Areas we cover for {s.name}
+              Coverage areas
             </h2>
-            <div className="flex flex-wrap gap-2">
-              {AREAS.map((a) => (
-                <Link
-                  key={a.slug}
-                  to="/services/$serviceSlug/$areaSlug"
-                  params={{ serviceSlug: s.slug, areaSlug: a.slug }}
-                  className="px-3 py-1.5 text-xs rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-smooth"
-                >
-                  {s.name} in {a.name}
-                </Link>
-              ))}
+            <div className="rounded-2xl overflow-hidden border border-border mb-6">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d76235.67206456206!2d-1.5102!3d52.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48770558a5f36e59%3A0x9a8d5f0f6edfb4f5!2sRugby%2C%20Warwickshire!5e0!3m2!1sen!2suk!4v1620000000000"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-lg mb-3">We serve these areas:</h3>
+              <div className="flex flex-wrap gap-2">
+                {AREAS.map((a) => (
+                  <Link
+                    key={a.slug}
+                    to="/services/$serviceSlug/$areaSlug"
+                    params={{ serviceSlug: s.slug, areaSlug: a.slug }}
+                    className="px-4 py-2 text-sm rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-smooth font-medium"
+                  >
+                    {a.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -158,26 +175,43 @@ function ServicePage() {
 
           <div className="p-5 bg-card border border-border rounded-2xl">
             <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
-              Other services
+              Next steps
             </div>
-            <ul className="text-sm space-y-1.5">
-              {SERVICES.filter((x) => x.slug !== s.slug)
-                .slice(0, 6)
-                .map((x) => (
-                  <li key={x.slug}>
-                    <Link
-                      to="/services/$serviceSlug"
-                      params={{ serviceSlug: x.slug }}
-                      className="hover:text-accent"
-                    >
-                      {x.name}
-                    </Link>
-                  </li>
-                ))}
+            <ul className="text-sm space-y-2">
+              <li>
+                <Link to="/faq" className="hover:text-accent transition-smooth">
+                  Browse FAQs
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="hover:text-accent transition-smooth">
+                  View pricing guide
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-accent transition-smooth">
+                  Contact us
+                </Link>
+              </li>
+              <li>
+                <Link to="/reviews" className="hover:text-accent transition-smooth">
+                  Read reviews
+                </Link>
+              </li>
             </ul>
           </div>
         </aside>
       </section>
+
+      <section className="bg-secondary/30 border-t border-border py-16">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <Certifications />
+        </div>
+      </section>
+
+      <RelatedContent type="services" currentService={s.slug} title="Other services we offer" limit={6} />
+
+      <RelatedContent type="areas" limit={6} title="Find this service in your area" />
     </PageShell>
   );
 }

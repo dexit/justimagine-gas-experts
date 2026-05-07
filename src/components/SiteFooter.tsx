@@ -86,11 +86,6 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/areas" className="hover:text-accent transition-smooth">
-                Areas We Cover
-              </Link>
-            </li>
-            <li>
               <Link to="/safety" className="hover:text-accent transition-smooth">
                 Gas Safety
               </Link>

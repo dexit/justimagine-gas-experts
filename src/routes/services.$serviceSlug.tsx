@@ -108,35 +108,20 @@ function ServicePage() {
           )}
 
           <div>
-            <h2 className="font-display text-2xl font-semibold mb-6 flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-accent" />
-              Coverage areas
-            </h2>
-            <div className="rounded-2xl overflow-hidden border border-border mb-6">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d76235.67206456206!2d-1.5102!3d52.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48770558a5f36e59%3A0x9a8d5f0f6edfb4f5!2sRugby%2C%20Warwickshire!5e0!3m2!1sen!2suk!4v1620000000000"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-              />
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-lg mb-3">We serve these areas:</h3>
-              <div className="flex flex-wrap gap-2">
-                {AREAS.map((a) => (
-                  <Link
-                    key={a.slug}
-                    to="/services/$serviceSlug/$areaSlug"
-                    params={{ serviceSlug: s.slug, areaSlug: a.slug }}
-                    className="px-4 py-2 text-sm rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-smooth font-medium"
-                  >
-                    {a.name}
-                  </Link>
-                ))}
-              </div>
+            <h2 className="font-display text-2xl font-semibold mb-4">Coverage areas</h2>
+            <p className="text-muted-foreground text-sm mb-4">Available across Warwickshire and surrounding areas.</p>
+            <div className="grid sm:grid-cols-2 gap-2">
+              {AREAS.map((a) => (
+                <Link
+                  key={a.slug}
+                  to="/services/$serviceSlug/$areaSlug"
+                  params={{ serviceSlug: s.slug, areaSlug: a.slug }}
+                  className="p-3 rounded-lg bg-card border border-border hover:border-accent/50 hover:bg-card/80 transition-smooth text-sm"
+                >
+                  <div className="font-medium">{a.name}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{a.postcodes.join(", ")}</div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

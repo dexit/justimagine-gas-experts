@@ -3,7 +3,7 @@ import { ShieldCheck, AlertTriangle, FileCheck, Phone } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import { BUSINESS } from "@/data/seo";
-import { geoMetaTags } from "@/lib/seo";
+import { geoMetaTags, contactActionJsonLd, jsonLdScript, serviceJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/safety")({
   head: () => ({
@@ -23,6 +23,17 @@ export const Route = createFileRoute("/safety")({
       },
     ],
     links: [{ rel: "canonical", href: `${BUSINESS.url}/safety` }],
+    scripts: [
+      jsonLdScript(
+        serviceJsonLd(
+          "Gas Safety Inspections & CP12 Certificates",
+          "Professional gas safety inspections, CP12 landlord certificates, homeowner safety checks and commercial audits for HMOs and lettings agencies. All work by Gas Safe registered engineers.",
+          undefined,
+          "£60"
+        )
+      ),
+      jsonLdScript(contactActionJsonLd()),
+    ],
   }),
   component: SafetyPage,
 });

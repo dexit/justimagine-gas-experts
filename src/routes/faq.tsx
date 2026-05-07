@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Certifications } from "@/components/Certifications";
 import { BUSINESS } from "@/data/seo";
-import { jsonLdScript, breadcrumbJsonLd } from "@/lib/seo";
+import { jsonLdScript, breadcrumbJsonLd, faqJsonLd, contactActionJsonLd } from "@/lib/seo";
 import { ArrowLeft, HelpCircle, Clock, Wrench, Home, DollarSign, Zap } from "lucide-react";
 
 const FAQs = [
@@ -133,6 +133,17 @@ export const Route = createFileRoute("/faq")({
             { name: "FAQ", url },
           ]),
         ),
+        jsonLdScript(
+          faqJsonLd(
+            FAQs.flatMap((cat) =>
+              cat.items.map((item) => ({
+                q: item.q,
+                a: item.a,
+              }))
+            )
+          )
+        ),
+        jsonLdScript(contactActionJsonLd()),
       ],
     };
   },

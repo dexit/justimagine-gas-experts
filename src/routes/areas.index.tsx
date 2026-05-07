@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { AREAS, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
+import { breadcrumbJsonLd, jsonLdScript, geoMetaTags, areasListJsonLd } from "@/lib/seo";
 import { MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/areas/")({
@@ -32,6 +32,7 @@ export const Route = createFileRoute("/areas/")({
             { name: "Areas", url },
           ]),
         ),
+        jsonLdScript(areasListJsonLd()),
       ],
     };
   },

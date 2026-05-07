@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, AREAS, REVIEWS, getArea, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, localServiceJsonLd, gasEngineerJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
+import { breadcrumbJsonLd, localServiceJsonLd, gasEngineerJsonLd, jsonLdScript, geoMetaTags, areaPlaceJsonLd } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Certifications } from "@/components/Certifications";
 import { RelatedContent } from "@/components/RelatedContent";
@@ -41,6 +41,7 @@ export const Route = createFileRoute("/areas/$areaSlug")({
             { name: a.name, url },
           ]),
         ),
+        jsonLdScript(areaPlaceJsonLd(a.slug)),
         jsonLdScript(
           localServiceJsonLd({
             serviceName: "Boiler Installation, Gas & Heating Services",

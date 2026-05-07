@@ -4,7 +4,7 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { REVIEWS, BUSINESS } from "@/data/seo";
 import { Star, Quote } from "lucide-react";
 import { RelatedContent } from "@/components/RelatedContent";
-import { breadcrumbJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
+import { breadcrumbJsonLd, jsonLdScript, geoMetaTags, localBusinessJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/reviews")({
   head: () => ({
@@ -30,6 +30,7 @@ export const Route = createFileRoute("/reviews")({
           { name: "Customer Reviews", url: `${BUSINESS.url}/reviews` },
         ]),
       ),
+      jsonLdScript(localBusinessJsonLd()),
     ],
   }),
   component: ReviewsPage,

@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 import { localBusinessJsonLd, jsonLdScript } from "@/lib/seo";
 import { BUSINESS, AREAS } from "@/data/seo";
 import { Phone, Flame, ArrowRight, Home, Wrench, AlertCircle, Building, MapPin } from "lucide-react";
+import { useSearchRedirect } from "@/hooks/useSearchRedirect";
 
 import appCss from "../styles.css?url";
 
@@ -178,5 +179,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  useSearchRedirect();
   return <Outlet />;
 }

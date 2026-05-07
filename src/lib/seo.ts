@@ -629,3 +629,94 @@ export const jsonLdScript = (data: unknown) => ({
   type: "application/ld+json",
   children: JSON.stringify(data),
 });
+
+export const offerCatalogJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: `${BUSINESS.name} — Service Catalog`,
+  description: "Gas Safe heating and plumbing services including boiler installation, servicing, repairs, and CP12 landlord certificates",
+  itemListElement: SERVICES.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Offer",
+      name: s.name,
+      description: s.short,
+      url: `${BUSINESS.url}/services/${s.slug}`,
+      itemOffered: {
+        "@type": "Service",
+        name: s.name,
+        description: s.short,
+        serviceType: s.name,
+        provider: { "@id": `${BUSINESS.url}/#business` },
+        areaServed: AREAS.map((a) => ({
+          "@type": "City",
+          name: a.name,
+          containsPlace: a.postcodes.map((p) => ({ "@type": "PostalCode", name: p })),
+          containedInPlace: { "@type": "AdministrativeArea", name: a.county },
+        })),
+        ...(s.priceFrom && {
+          offers: {
+            "@type": "Offer",
+            price: s.priceFrom.replace(/[^0-9.]/g, ""),
+            priceCurrency: "GBP",
+            availability: "https://schema.org/InStock",
+            priceValidUntil: "2026-12-31",
+            seller: { "@id": `${BUSINESS.url}/#business` },
+          },
+        }),
+      },
+    },
+  })),
+});
+
+export const homepageBreadcrumbsJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: BUSINESS.url,
+    },
+  ],
+});
+
+export const relatedLinksJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Related Services and Information",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      url: `${BUSINESS.url}/services`,
+      name: "All Services",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      url: `${BUSINESS.url}/landlord`,
+      name: "Landlord Services & CP12 Certificates",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      url: `${BUSINESS.url}/emergency`,
+      name: "24/7 Emergency Callouts",
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      url: `${BUSINESS.url}/pricing`,
+      name: "Pricing & Fixed Quotes",
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      url: `${BUSINESS.url}/areas`,
+      name: "Areas We Cover",
+    },
+  ],
+});

@@ -1,0 +1,66 @@
+# Just Imagine Ltd
+
+> Gas Safe registered heating engineers providing boiler installation, servicing, repairs, CP12 landlord gas safety certificates, plumbing, and 24/7 emergency callouts across Rugby and Warwickshire.
+
+Just Imagine Ltd is a local heating and gas services company operating across Warwickshire since 2012. All engineers are Gas Safe registered and certified for boiler installation, repair, and gas safety work. The company serves homeowners, landlords, and commercial properties with transparent pricing and same-day service availability.
+
+## Contact
+
+- **Phone**: [07774 079152](tel:07774079152) — Available 24/7 for emergencies
+- **Email**: [hello@justimagine.ltd](mailto:hello@justimagine.ltd)
+- **Address**: Rugby, Warwickshire, England
+- **Website**: [justimagine.ltd](https://justimagine.ltd)
+
+## Services
+
+- [Boiler Installation](https://justimagine.ltd/services) — Worcester Bosch, Vaillant, Ideal, and Baxi boilers with manufacturer warranties
+- [Boiler Servicing](https://justimagine.ltd/services) — Annual maintenance and safety checks with same-day reports
+- [Boiler Repairs](https://justimagine.ltd/services) — Diagnostics and repairs for all major makes with genuine parts only
+- [CP12 Landlord Gas Safety Certificates](https://justimagine.ltd/safety) — Annual compliance certificates issued same-day where possible
+- [Homeowner Safety Checks](https://justimagine.ltd/safety) — Carbon monoxide testing and appliance inspections for owner-occupied properties
+- [Commercial Gas Audits](https://justimagine.ltd/safety) — Insurance-grade audits for HMOs, lettings agencies, and commercial kitchens
+- [Central Heating Systems](https://justimagine.ltd/services) — Installation, repair, and power flushing
+- [Plumbing Services](https://justimagine.ltd/services) — Leaks, radiator installation, pipework alterations, hot water cylinders
+- [24/7 Emergency Callouts](https://justimagine.ltd/emergency) — Same-day response for heating failures, gas leaks, burst pipes, and carbon monoxide concerns
+
+## What We Do Not Do
+
+- We do not install or service oil heating systems
+- We do not provide electrical work beyond heating system controls
+- We do not carry out ground source heat pump installations
+- We do not offer solar thermal system installation or servicing
+- We do not provide building control sign-off (only self-certification for Part P boiler work)
+
+## Key Information
+
+- [About Us](https://justimagine.ltd/) — Company overview and values
+- [Pricing](https://justimagine.ltd/pricing) — Fixed-price service rates with no hidden fees
+- [Coverage Areas](https://justimagine.ltd/areas) — Specific postcodes and service area details
+- [Customer Reviews](https://justimagine.ltd/reviews) — 4.9/5 rating from verified customers
+- [FAQ](https://justimagine.ltd/faq) — Common questions about services, pricing, and booking
+- [Gas Safety Information](https://justimagine.ltd/safety) — Warning signs and emergency procedures
+- [Emergency Service](https://justimagine.ltd/emergency) — 24/7 callout details and response times
+- [Landlord Services](https://justimagine.ltd/landlord) — CP12 certificates and portfolio discounts
+
+## Certifications
+
+- [Gas Safe Registration](https://www.gassaferegister.co.uk) — All engineers verified on the public register
+- Worcester Bosch Accredited Installer
+- Vaillant Accredited Installer
+- Building Regulations Part P Self-Certification
+
+## Service Areas
+
+Just Imagine Ltd covers Rugby, Leamington Spa, Warwick, Kenilworth, Coventry, Stratford-upon-Avon, Nuneaton, Bedworth, Southam, Atherstone, Alcester and surrounding areas across Warwickshire. See [full coverage map](https://justimagine.ltd/areas).
+
+## Locations
+
+- **Headquarters**: Rugby, Warwickshire, England
+
+## AI Discovery Files
+
+- [llms.txt](https://justimagine.ltd/.well-known/llms.txt) — This file (human-readable business summary)
+- [faq-ai.txt](https://justimagine.ltd/.well-known/faq-ai.txt) — Structured Q&A for AI systems
+- [brand.txt](https://justimagine.ltd/.well-known/brand.txt) — Naming conventions and brand guidance
+- [identity.json](https://justimagine.ltd/.well-known/identity.json) — Canonical business identity data
+- [domain-profile.json](https://justimagine.ltd/.well-known/domain-profile.json) — AI domain data profile

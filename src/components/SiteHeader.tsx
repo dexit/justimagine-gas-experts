@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Menu, X, Flame, AlertCircle, ChevronDown, MapPin } from "lucide-react";
+import { Phone, Menu, X, Flame, AlertCircle, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -12,7 +12,6 @@ type NavItem = SimpleNav | MenuNav;
 const nav: NavItem[] = [
   { kind: "link", to: "/", label: "Home", exact: true },
   { kind: "menu", label: "Services", key: "services" },
-  { kind: "menu", label: "Areas", key: "areas" },
   { kind: "link", to: "/landlord", label: "Landlords" },
   { kind: "link", to: "/pricing", label: "Pricing" },
   { kind: "link", to: "/faq", label: "FAQ" },
@@ -126,18 +125,6 @@ export function SiteHeader() {
                           {s.name}
                         </Link>
                       ))}
-                    {n.key === "areas" &&
-                      AREAS.map((a) => (
-                        <Link
-                          key={a.slug}
-                          to="/areas/$areaSlug"
-                          params={{ areaSlug: a.slug }}
-                          onClick={() => setOpen(false)}
-                          className="text-sm text-foreground/75 py-1"
-                        >
-                          {a.name}
-                        </Link>
-                      ))}
                     {n.key === "news" && (
                       <>
                         <Link
@@ -218,38 +205,6 @@ function MegaPanel({ which, onClose }: { which: string; onClose: () => void }) {
                 {s.priceFrom && (
                   <div className="text-xs font-medium text-accent mt-1.5">{s.priceFrom} {s.priceUnit}</div>
                 )}
-              </Link>
-            ))}
-          </div>
-        )}
-        {which === "areas" && (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-3">
-            <div className="col-span-2 lg:col-span-4 flex items-center justify-between mb-4 pb-4 border-b border-border">
-              <div>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                  Where we cover
-                </span>
-                <p className="text-sm text-muted-foreground mt-1">Serving Rugby, Leamington and surrounding areas</p>
-              </div>
-              <Link to="/areas" onClick={onClose} className="text-xs font-semibold text-accent hover:text-accent/80 transition-smooth whitespace-nowrap ml-4">
-                View all →
-              </Link>
-            </div>
-            {AREAS.map((a) => (
-              <Link
-                key={a.slug}
-                to="/areas/$areaSlug"
-                params={{ areaSlug: a.slug }}
-                onClick={onClose}
-                className="group py-2.5 px-3 -mx-3 rounded-lg hover:bg-secondary/60 transition-all"
-              >
-                <div className="font-semibold text-sm text-foreground flex items-center gap-1.5 group-hover:text-accent transition-smooth">
-                  <MapPin className="h-3.5 w-3.5 opacity-70" />
-                  {a.name}
-                </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5">
-                  {a.postcodes.slice(0, 2).join(" · ")}
-                </div>
               </Link>
             ))}
           </div>

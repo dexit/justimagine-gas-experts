@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { PageShell } from "@/components/PageShell";
 import { RelatedContent } from "@/components/RelatedContent";
 import { BUSINESS, AREAS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags, contactActionJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags, contactActionJsonLd, serviceJsonLd } from "@/lib/seo";
 
 const url = `${BUSINESS.url}/emergency`;
 
@@ -47,6 +47,14 @@ export const Route = createFileRoute("/emergency")({
           { name: "Home", url: BUSINESS.url },
           { name: "Emergency Callout", url },
         ]),
+      ),
+      jsonLdScript(
+        serviceJsonLd(
+          "24/7 Emergency Heating & Gas Services",
+          "Gas Safe emergency engineers on call day and night for heating failures, gas leaks, burst pipes, and carbon monoxide concerns across Rugby & Warwickshire. Rapid response, transparent pricing, diagnostic visits from £85.",
+          undefined,
+          "£85"
+        )
       ),
       jsonLdScript(
         faqJsonLd([

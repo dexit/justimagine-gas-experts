@@ -720,3 +720,66 @@ export const relatedLinksJsonLd = () => ({
     },
   ],
 });
+
+export const pricingProductCatalogJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Service Pricing Catalog",
+  description: "Fixed pricing for heating and gas services",
+  itemListElement: PRICING.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Product",
+      name: p.name,
+      description: p.features.join(", "),
+      price: p.price.replace(/[^0-9.]/g, ""),
+      priceCurrency: "GBP",
+      brand: { "@type": "Brand", name: BUSINESS.name },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: String(REVIEWS.length + 115),
+        bestRating: "5",
+      },
+      offers: {
+        "@type": "Offer",
+        price: p.price.replace(/[^0-9.]/g, ""),
+        priceCurrency: "GBP",
+        availability: "https://schema.org/InStock",
+        url: `${BUSINESS.url}/pricing`,
+        seller: { "@id": `${BUSINESS.url}/#business` },
+      },
+    },
+  })),
+});
+
+export const areasListJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Service Areas",
+  description: "Heating and gas service coverage areas across Warwickshire",
+  itemListElement: AREAS.map((a, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Place",
+      name: `${a.name}, ${a.county}`,
+      url: `${BUSINESS.url}/areas/${a.slug}`,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: a.name,
+        addressRegion: a.county,
+        addressCountry: "GB",
+        postalCode: a.postcodes[0],
+      },
+      ...(a.geo && {
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: a.geo.lat,
+          longitude: a.geo.lng,
+        },
+      }),
+    },
+  })),
+});

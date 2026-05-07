@@ -17,7 +17,7 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { RelatedContent } from "@/components/RelatedContent";
 import { BUSINESS, REVIEWS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags, serviceJsonLd, productOfferJsonLd } from "@/lib/seo";
 
 const url = `${BUSINESS.url}/landlord`;
 
@@ -45,6 +45,22 @@ export const Route = createFileRoute("/landlord")({
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: [
+      jsonLdScript(
+        serviceJsonLd(
+          "Landlord Gas Safety Services",
+          "Comprehensive landlord-focused gas safety certification, boiler servicing, and compliance solutions for rental properties across Warwickshire.",
+          undefined,
+          "£60"
+        )
+      ),
+      jsonLdScript(
+        productOfferJsonLd({
+          name: "Landlord CP12 & Boiler Service Bundle",
+          description: "Annual gas safety certificate (CP12) combined with professional boiler servicing — £120 per property per year with portfolio discounts available",
+          price: "120",
+          url: url
+        })
+      ),
       jsonLdScript(
         breadcrumbJsonLd([
           { name: "Home", url: BUSINESS.url },

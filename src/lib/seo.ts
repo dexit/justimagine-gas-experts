@@ -303,7 +303,7 @@ export const localBusinessJsonLd = () => ({
         itemOffered: {
           "@type": "Service",
           name: s.name,
-          description: s.short,
+          description: s.metaDesc(),
           serviceType: s.name,
           provider: { "@id": `${BUSINESS.url}/#business` },
           areaServed: areasServed.map((a) => ({ "@type": "City", name: a.name })),
@@ -646,7 +646,7 @@ export const offerCatalogJsonLd = () => ({
       itemOffered: {
         "@type": "Service",
         name: s.name,
-        description: s.short,
+        description: s.metaDesc(),
         serviceType: s.name,
         provider: { "@id": `${BUSINESS.url}/#business` },
         areaServed: AREAS.map((a) => ({

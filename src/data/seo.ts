@@ -42,9 +42,9 @@ export const SERVICES: Service[] = [
     priceFrom: "£2,500",
     priceUnit: "fully installed",
     h1: (a) => `New Boiler Installation${local(a)}`,
-    metaTitle: (a) => `New Boiler Installation${local(a)} | Gas Safe Fitters | Just Imagine`,
+    metaTitle: (a) => `Boiler Installation${local(a)} | Gas Safe Engineer`,
     metaDesc: (a) =>
-      `Fixed-price new boiler installation${local(a)}. Worcester, Vaillant & Ideal combi, system & regular boilers. Gas Safe registered, up to 12-year warranty. Free quote.`,
+      `Fixed-price boiler installation${local(a)}. Worcester, Vaillant & Ideal boilers. Gas Safe registered engineer, 12-year warranty, no hidden fees. Get a free quote.`,
     intro: (a) =>
       `Looking for a new boiler${local(a)}? We install A-rated models from Worcester Bosch, Vaillant, and Ideal with fixed prices and no hidden fees. Straight swap or full system conversion — we'll handle it smoothly and get you warm again fast.`,
     bullets: [
@@ -89,9 +89,9 @@ export const SERVICES: Service[] = [
     priceFrom: "£100",
     priceUnit: "from",
     h1: (a) => `Boiler Repair${local(a)} — Same Day Where Possible`,
-    metaTitle: (a) => `Boiler Repair${local(a)} | Same-Day Gas Safe Engineers`,
+    metaTitle: (a) => `Boiler Repair${local(a)} | Same-Day Emergency Fix`,
     metaDesc: (a) =>
-      `Boiler not working${local(a)}? Gas Safe boiler repair on Worcester, Vaillant, Ideal, Baxi, Glow-worm. Diagnostics, genuine parts, honest quotes. Call 07774 079152.`,
+      `Same-day boiler repair${local(a)}. All major brands fixed. Gas Safe engineer, genuine parts, fixed price. Emergency callouts 24/7. Call 07774 079152.`,
     intro: (a) =>
       `Boiler not playing ball${local(a)}? We fix every major brand quickly and fairly. We'll diagnose the problem on day one, use genuine parts, and be honest about whether fixing or replacing makes more sense.`,
     bullets: [
@@ -126,9 +126,9 @@ export const SERVICES: Service[] = [
     priceFrom: "£100",
     priceUnit: "per year",
     h1: (a) => `Annual Boiler Service${local(a)}`,
-    metaTitle: (a) => `Boiler Service${local(a)} from £100 | Gas Safe Engineers`,
+    metaTitle: (a) => `Boiler Service${local(a)} from £100 | Gas Safe`,
     metaDesc: (a) =>
-      `Manufacturer-spec annual boiler service${local(a)} from £100. Keeps your warranty valid, lowers gas bills, prevents breakdowns. Same-day certificate. Book online.`,
+      `Annual boiler service${local(a)} from £100. Manufacturer-spec, keeps warranty valid, cuts bills. Gas Safe engineer. Free reminder service. Book online.`,
     intro: (a) =>
       `Keep your boiler running smoothly${local(a)} with an annual service. We check everything, spot problems early, keep your warranty valid, and help you avoid surprise breakdowns when it's freezing.`,
     bullets: [
@@ -164,9 +164,9 @@ export const SERVICES: Service[] = [
     priceFrom: "£60",
     priceUnit: "per certificate",
     h1: (a) => `Gas Safety Certificate (CP12)${local(a)}`,
-    metaTitle: (a) => `CP12 Gas Safety Certificate${local(a)} from £60 | Same Day`,
+    metaTitle: (a) => `CP12 Certificate${local(a)} from £60 | Same Day`,
     metaDesc: (a) =>
-      `Landlord & homeowner CP12 gas safety certificates${local(a)} from £60. Gas Safe registered. Same-day issue. Multi-property discounts for landlords & agents.`,
+      `CP12 gas safety certificate${local(a)} from £60. Same-day digital issue. Landlord & homeowner inspections. Gas Safe engineer. Portfolio discounts available.`,
     intro: (a) =>
       `Need your landlord gas safety certificate${local(a)}? We test all your gas appliances and issue your CP12 certificate same day — digital copy sent to you and your agent straight away.`,
     bullets: [
@@ -203,9 +203,9 @@ export const SERVICES: Service[] = [
     category: "safety",
     icon: "building",
     h1: (a) => `Landlord Gas Safety & Service Packages${local(a)}`,
-    metaTitle: (a) => `Landlord Gas Safety Packages${local(a)} | CP12 + Boiler Service`,
+    metaTitle: (a) => `Landlord Packages${local(a)} | CP12 + Service`,
     metaDesc: (a) =>
-      `Landlord packages${local(a)}: CP12 + annual boiler service + priority callouts. Trusted by letting agents across Warwickshire. Portfolio discounts available.`,
+      `Landlord packages${local(a)}: CP12 + boiler service + priority emergency cover. One fixed price. Portfolio discounts. Gas Safe registered.`,
     intro: (a) =>
       `Landlords and agents love this${local(a)} — one annual fee covers your CP12 safety certificate, boiler service, and priority emergency help. Compliance sorted, tenants looked after, paperwork done.`,
     bullets: [
@@ -239,9 +239,9 @@ export const SERVICES: Service[] = [
     category: "installation",
     icon: "thermometer",
     h1: (a) => `Central Heating Installation & Repair${local(a)}`,
-    metaTitle: (a) => `Central Heating${local(a)} | Radiators, Pipework, Upgrades`,
+    metaTitle: (a) => `Heating Install${local(a)} | Radiators, Pipework`,
     metaDesc: (a) =>
-      `Central heating installs, upgrades & repairs${local(a)}. Radiators, pipework, smart thermostats, balancing & TRV fitting. Gas Safe registered.`,
+      `Central heating installation & repair${local(a)}. Radiators, pipework, smart thermostats. Gas Safe engineer. Fixed prices. Get a free quote.`,
     intro: (a) =>
       `Cold rooms, noisy radiators, uneven heating${local(a)}? We design and install heating systems that actually work — smart controls, properly balanced radiators, and zoned heating so you're comfortable everywhere.`,
     bullets: [
@@ -270,9 +270,9 @@ export const SERVICES: Service[] = [
     category: "plumbing",
     icon: "droplets",
     h1: (a) => `Plumbing Services${local(a)}`,
-    metaTitle: (a) => `Plumber${local(a)} | Leaks, Taps, Cylinders, Bathrooms`,
+    metaTitle: (a) => `Plumber${local(a)} | Leaks, Taps, Hot Water`,
     metaDesc: (a) =>
-      `Reliable plumbers${local(a)} for leaks, taps, valves, hot water cylinders, bathroom & kitchen plumbing. No call-out fee on booked jobs.`,
+      `Reliable plumber${local(a)}. Leaks, taps, hot water, bathrooms. No call-out fee on pre-booked jobs. Emergency same-day response.`,
     intro: (a) =>
       `Local plumbers you can trust${local(a)} — dripping taps, leaks, burst pipes, or a full bathroom refit. Fast for emergencies, fixed prices for planned work, and we clean up after ourselves.`,
     bullets: [
@@ -303,9 +303,9 @@ export const SERVICES: Service[] = [
     priceFrom: "£395",
     priceUnit: "per system",
     h1: (a) => `Central Heating Power Flush${local(a)}`,
-    metaTitle: (a) => `Power Flush${local(a)} from £395 | Restore Heating Performance`,
+    metaTitle: (a) => `Power Flush${local(a)} from £395 | Heating Restored`,
     metaDesc: (a) =>
-      `Magnetite sludge in your radiators${local(a)}? Professional power flush from £395. Restores heat output, lowers bills, protects your boiler warranty.`,
+      `Power flush${local(a)} from £395. Removes sludge, restores heat, lowers bills. Protects boiler warranty. Book now.`,
     intro: (a) =>
       `Radiators cold at the bottom, boiler making noise, or black sludge coming out${local(a)}? A power flush clears the muck, gets your heat back, and keeps your new boiler warranty safe.`,
     bullets: [
@@ -333,9 +333,9 @@ export const SERVICES: Service[] = [
     category: "emergency",
     icon: "clock",
     h1: (a) => `24/7 Emergency Heating & Gas Engineer${local(a)}`,
-    metaTitle: (a) => `Emergency Gas Engineer${local(a)} | 24/7 No Heat & Gas Leaks`,
+    metaTitle: (a) => `Emergency Gas Engineer${local(a)} | 24/7 Response`,
     metaDesc: (a) =>
-      `24/7 emergency boiler, heating & gas leak response${local(a)}. Gas Safe engineers on call. No heat, no hot water, suspected gas leak — call 07774 079152 now.`,
+      `24/7 emergency boiler, heating & gas response${local(a)}. Gas Safe engineers on call. No heat, no hot water, gas leaks. Call now.`,
     intro: (a) =>
       `Heating gone at 11pm or something smells like gas at 6am${local(a)}? You'll get a real engineer, not a call centre. We're here 24/7, every day of the year.`,
     bullets: [

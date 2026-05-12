@@ -159,8 +159,8 @@ function EmergencyPage() {
             <span className="text-gradient-amber">We answer.</span>
           </h1>
           <p className="text-xl text-primary-foreground/75 max-w-2xl mx-auto mb-10">
-            No heat, no hot water, gas smell — real engineers on the phone day and night. Not a
-            call centre.
+            No heat, no hot water or smell of gas — a real engineer answers the phone, day and
+            night. Never a call centre, never a waiting list.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button
@@ -197,7 +197,7 @@ function EmergencyPage() {
         <div className="mx-auto max-w-4xl px-5 lg:px-8">
           <div className="grid grid-cols-3 gap-4 text-center">
             {[
-              { step: "1", title: "You call", body: "We answer — no hold music, no call centre" },
+              { step: "1", title: "You call", body: "A real engineer answers — no hold music, no call centre" },
               {
                 step: "2",
                 title: "Engineer dispatched",
@@ -316,9 +316,9 @@ function EmergencyPage() {
               Honest emergency pricing
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Emergency work shouldn't mean a blank cheque. We agree all rates upfront before we
-              attend. Diagnostic fee from £85, fixed repair price agreed before any parts are
-              fitted. No emergency markup on parts.
+              An emergency shouldn't mean a blank cheque. We agree all rates upfront before we
+              attend — diagnostic visit from £85, fixed repair price agreed before any parts are
+              touched. No inflated emergency markups, no hidden extras.
             </p>
             <ul className="space-y-3">
               {[

@@ -44,8 +44,8 @@ function AreasIndex() {
     <PageShell>
       <PageHero
         eyebrow="Coverage"
-        title="Local heating engineers across Warwickshire"
-        subtitle="From Rugby to Stratford-upon-Avon — same Gas Safe team, same fair pricing, same day where possible."
+        title="Local gas engineers across Warwickshire"
+        subtitle="Based in Rugby, we cover the whole county — from Stratford to Coventry, Kenilworth to Northampton. Same Gas Safe team, same honest pricing, wherever you are."
         crumbs={[{ name: "Areas" }]}
       />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-16">

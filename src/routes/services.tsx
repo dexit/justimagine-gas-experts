@@ -17,17 +17,17 @@ import { geoMetaTags, serviceJsonLd, jsonLdScript } from "@/lib/seo";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Gas & Boiler Services Rugby, Warwickshire | Just Imagine" },
+      { title: "Boiler & Gas Services Rugby, Warwickshire | Just Imagine" },
       {
         name: "description",
         content:
-          "Boiler installation, servicing & repair, CP12 gas safety certificates, central heating, power flushing and 24/7 emergency callouts across Rugby & Warwickshire. Gas Safe registered.",
+          "Boiler installation, servicing & repair, CP12 gas safety certificates, central heating, power flushing and 24/7 emergency callouts across Rugby & Warwickshire. Gas Safe registered engineers.",
       },
-      { property: "og:title", content: "Boiler & Gas Services | Just Imagine Ltd — Rugby" },
+      { property: "og:title", content: "Boiler & Gas Services | Just Imagine Ltd — Rugby, Warwickshire" },
       {
         property: "og:description",
         content:
-          "Boiler installation, servicing & repair, CP12, emergency callouts & more. Gas Safe engineers across Warwickshire.",
+          "Boiler installation, servicing & repair, CP12, emergency callouts & more. Gas Safe engineers across Rugby & Warwickshire. Honest prices, free quotes.",
       },
       ...geoMetaTags(),
     ],
@@ -48,80 +48,88 @@ const services = [
     icon: Flame,
     title: "Boiler Installation",
     points: [
-      "Combi, system & regular boilers",
-      "Leading brands: Worcester, Vaillant, Ideal",
+      "Combi, system & regular boilers supplied and fitted",
+      "Leading brands: Worcester Bosch, Vaillant, Ideal",
       "Manufacturer warranties up to 12 years",
-      "Smart thermostat setup included",
+      "Smart thermostat setup included on most installs",
+      "Fixed price quoted and agreed before any work begins",
     ],
   },
   {
     icon: Wrench,
     title: "Boiler Servicing",
     points: [
-      "Full annual service",
-      "Manufacturer-spec checks",
-      "Flue & combustion test",
-      "Service report issued same day",
+      "Full annual manufacturer-specification service",
+      "Combustion analysis & flue gas test",
+      "Magnetic filter clean and system pressure check",
+      "Service report & Gas Safe label issued same day",
+      "Free 12-month reminder — never miss a service",
     ],
   },
   {
     icon: Thermometer,
     title: "Boiler Repairs",
     points: [
-      "Diagnostics on all major makes",
-      "Common faults fixed in one visit",
-      "Genuine parts only",
-      "Honest replacement advice if needed",
+      "Diagnostics on all major makes and models",
+      "Common faults diagnosed and fixed in a single visit",
+      "Genuine OEM parts used throughout",
+      "Fixed price agreed after diagnosis — no surprises",
+      "Honest advice if replacement is better value",
     ],
   },
   {
     icon: ShieldCheck,
     title: "Gas Safety Certificates",
     points: [
-      "Landlord CP12 certificates",
-      "Same-day issue available",
-      "All gas appliances tested",
-      "Letting agency packages",
+      "Landlord CP12 certificates from £60",
+      "Same-day digital issue to landlord and agent",
+      "All gas appliances, flues and pipework tested",
+      "Portfolio discounts for 5+ properties",
+      "Free 30-day renewal reminder service",
     ],
   },
   {
     icon: FileCheck,
     title: "Safety Audits & Assessments",
     points: [
-      "Independent gas inspections",
-      "Commercial premises",
-      "Risk assessments & reports",
-      "Compliance for HMOs",
+      "Independent gas inspections for homeowners",
+      "HMO and commercial premises audits",
+      "Risk assessments & insurance-grade reports",
+      "Carbon monoxide testing included",
+      "Compliance documentation for licensing",
     ],
   },
   {
     icon: Droplets,
     title: "Plumbing",
     points: [
-      "Leaks, taps, valves & pipework",
-      "Radiator installs & swaps",
-      "Power flushing",
-      "Hot water cylinders",
+      "Leaks, burst pipes & emergency isolations",
+      "Taps, mixers, showers & pressure valves",
+      "Radiator installations and swaps",
+      "Power flushing & chemical system cleans",
+      "Unvented hot water cylinders (G3 qualified)",
     ],
   },
   {
     icon: Hammer,
-    title: "Ad-hoc Manual Work",
+    title: "Ad-hoc & Manual Work",
     points: [
-      "Removals, refits & relocations",
-      "Pipework alterations",
-      "Bathroom & kitchen plumbing",
-      "Site labour by certified hands",
+      "Pipework alterations and relocations",
+      "Appliance removals and refits",
+      "Bathroom & kitchen plumbing connections",
+      "Outside taps and isolation valves",
+      "Site labour by fully certified engineers",
     ],
   },
   {
     icon: Clock,
     title: "24/7 Emergency Callouts",
     points: [
-      "No heat or hot water",
-      "Suspected gas leaks",
-      "Burst pipes & flooding",
-      "Rapid response, day or night",
+      "No heat or no hot water — rapid same-day response",
+      "Suspected gas leaks — make safe and repair",
+      "Burst pipes & uncontrolled water leaks",
+      "Boiler lockouts, error codes & pressure loss",
+      "Real engineer answers — no call centres",
     ],
   },
 ];
@@ -131,8 +139,8 @@ function ServicesPage() {
     <PageShell>
       <PageHero
         eyebrow="Services"
-        title="Everything heating, gas & plumbing — under one roof."
-        subtitle="From a quick washer change to a full boiler swap, we handle the lot. Properly certified, properly insured, properly finished."
+        title="Everything heating, gas & plumbing — done properly."
+        subtitle="From a leaking tap to a full heating system installation — we handle every job to the same high standard. Gas Safe registered, fully insured, and always cleanly finished."
       />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-5">
@@ -165,7 +173,8 @@ function ServicesPage() {
             Not sure what you need?
           </h2>
           <p className="mt-3 text-primary-foreground/75 max-w-xl mx-auto">
-            Give us a quick call. Most jobs we can quote on the phone in minutes.
+            Call us — most jobs we can advise on or quote over the phone in five minutes. No
+            obligation, no pressure.
           </p>
           <Button
             asChild

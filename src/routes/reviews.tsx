@@ -65,8 +65,8 @@ function ReviewsPage() {
     <PageShell>
       <PageHero
         eyebrow="Reviews"
-        title="Don't take our word for it."
-        subtitle="We pride ourselves on our reputation. Here's what our customers across Warwickshire have to say."
+        title="What our customers say."
+        subtitle="We've helped hundreds of homeowners and landlords across Rugby and Warwickshire. Here's what they think — in their own words."
       />
 
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-10">
@@ -158,10 +158,10 @@ function ReviewsPage() {
 
         {/* Summary */}
         <div className="mt-16 text-center py-12 rounded-3xl bg-secondary/40 border border-border">
-          <h2 className="font-display text-3xl font-semibold mb-2">4.9/5 Average Rating</h2>
+          <h2 className="font-display text-3xl font-semibold mb-2">4.9/5 — Trusted by our community</h2>
           <p className="text-muted-foreground">
-            Based on {REVIEWS.length}+ verified reviews from homeowners and landlords across
-            Warwickshire, collected via Google, Checkatrade and direct customer feedback.
+            Based on {REVIEWS.length}+ verified reviews from homeowners and landlords across Rugby
+            and Warwickshire, collected via Google, Checkatrade and direct customer feedback.
           </p>
         </div>
       </section>

@@ -154,8 +154,8 @@ function FAQPage() {
     <PageShell>
       <PageHero
         eyebrow="Frequently Asked Questions"
-        title="Got a question? We've got answers."
-        subtitle="Find clear, honest answers about our services, pricing, and process."
+        title="Got a question? Here are the honest answers."
+        subtitle="Clear, straight answers about our services, pricing and how we work. No jargon, no runaround."
         crumbs={[
           { name: "Home", to: "/" },
           { name: "FAQ", to: "/faq" },
@@ -202,7 +202,8 @@ function FAQPage() {
               Still have a question?
             </h3>
             <p className="text-sm text-muted-foreground mb-5">
-              Get in touch and we'll be happy to help. Call us, send a message, or use our contact form.
+              Give us a call — most questions we can answer in a couple of minutes, and we're
+              always happy to talk things through before you commit to anything.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a

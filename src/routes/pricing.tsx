@@ -38,7 +38,7 @@ function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title="Fair, fixed, and transparent."
-        subtitle="No hidden fees. We provide clear, written quotes for all work before we start."
+        subtitle="No hidden fees, no hourly rates, no surprises. Every job is quoted in writing — and that's the price you pay."
       />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -77,11 +77,11 @@ function PricingPage() {
 
         <div className="mt-16 bg-gradient-hero text-primary-foreground p-10 lg:p-16 rounded-3xl text-center">
           <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4">
-            Need a custom quote?
+            Need a bespoke quote?
           </h2>
           <p className="text-primary-foreground/70 max-w-xl mx-auto mb-8">
-            For full heating systems, multiple properties, or complex plumbing work, we offer free
-            site visits and detailed written estimates.
+            For full heating systems, multi-property portfolios or complex plumbing work, call us
+            for a free site visit and a detailed written estimate. No obligation, no pressure.
           </p>
           <Button
             asChild

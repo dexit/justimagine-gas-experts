@@ -21,18 +21,18 @@ import heroImg from "@/assets/hero-engineer.webp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Just Imagine Ltd | Gas Safe Boiler & Plumbing Engineers Rugby" },
+      { title: "Just Imagine Ltd | Gas Safe Boiler & Heating Engineers Rugby & Warwickshire" },
       {
         name: "description",
         content:
-          "Gas Safe boiler engineers in Rugby & Warwickshire. New boiler installation, annual servicing, CP12 landlord certificates & 24/7 emergency callouts. Free fixed-price quotes.",
+          "Trusted Gas Safe boiler engineers in Rugby & Warwickshire. New boiler installation, annual servicing, CP12 landlord certificates & 24/7 emergency callouts. Honest prices, free fixed quotes.",
       },
       ...geoMetaTags(),
-      { property: "og:title", content: "Just Imagine Ltd | Gas Safe Boiler & Plumbing — Rugby" },
+      { property: "og:title", content: "Just Imagine Ltd | Gas Safe Heating Engineers — Rugby & Warwickshire" },
       {
         property: "og:description",
         content:
-          "Professional boiler installation, CP12 certificates & 24/7 emergency cover in Rugby, Warwickshire. Gas Safe registered. Free quotes — 07774 079152.",
+          "Professional boiler installation, servicing, CP12 certificates & 24/7 emergency cover across Rugby & Warwickshire. Gas Safe registered. Free quotes — 07774 079152.",
       },
     ],
     scripts: [
@@ -49,32 +49,32 @@ const services = [
   {
     icon: Flame,
     title: "Boiler Installation",
-    desc: "New boilers from leading brands, fitted by Gas Safe engineers with manufacturer-backed warranties.",
+    desc: "Old boiler on its last legs? We fit A-rated Worcester, Vaillant and Ideal boilers — fixed price agreed before we start, manufacturer warranties included.",
   },
   {
     icon: Wrench,
     title: "Servicing & Repairs",
-    desc: "Annual servicing and rapid repairs to keep your heating reliable through the coldest months.",
+    desc: "Annual services that keep your warranty valid and your heating running efficiently. Same-day repairs when things go wrong — without the runaround.",
   },
   {
     icon: ShieldCheck,
     title: "Gas Safety Certificates",
-    desc: "Landlord CP12 certificates and full gas safety inspections — booked fast, issued same day.",
+    desc: "Landlord CP12 certificates issued the same day. We test every appliance, handle the paperwork, and remind you when they're due again next year.",
   },
   {
     icon: Droplets,
     title: "Heating & Plumbing",
-    desc: "Radiators, pipework, leaks, power flushes and full system upgrades — done properly.",
+    desc: "Cold radiators, noisy pipes, leaking taps — we fix heating and plumbing problems quickly, cleanly and without overcharging.",
   },
   {
     icon: FileCheck,
     title: "Safety Audits & Assessments",
-    desc: "Independent assessments for landlords, agencies and commercial premises.",
+    desc: "Independent gas safety audits for landlords, HMOs and commercial premises. Clear written reports that meet insurance and licensing requirements.",
   },
   {
     icon: Clock,
     title: "24/7 Emergency Callouts",
-    desc: "No heat, no hot water, gas leak? We respond around the clock across the region.",
+    desc: "Boiler out at midnight? Gas smell at 6am? You'll speak to a real engineer straight away — not a call centre. We're on call every hour of every day.",
   },
 ];
 
@@ -89,11 +89,12 @@ function Home() {
               <ShieldCheck className="h-3.5 w-3.5" /> Gas Safe Registered · 24/7 Callouts
             </div>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.02]">
-              Heat your home, <span className="text-gradient-amber">safely.</span>
+              Trusted Gas Engineers{" "}
+              <span className="text-gradient-amber">across Warwickshire.</span>
             </h1>
             <p className="mt-6 text-lg text-primary-foreground/75 max-w-xl leading-relaxed">
-              Boiler installations, servicing, repairs and certified gas safety work — delivered by
-              trusted engineers across your area.
+              Whether you need a new boiler, an annual service or an emergency fix — we show up
+              when we say, do the job properly, and always charge a fair price.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button
@@ -135,7 +136,7 @@ function Home() {
           <div className="relative">
             <OptimizedImage
               src={heroImg}
-              alt="Gas Safe engineer servicing a boiler"
+              alt="Gas Safe engineer servicing a boiler in Rugby"
               width={1600}
               height={1200}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 800px"
@@ -149,9 +150,9 @@ function Home() {
                 ))}
               </div>
               <p className="text-sm font-medium leading-snug">
-                "On time, tidy, fully explained. Sorted our boiler same day."
+                "Turned up when they said, done in a day, priced exactly as quoted. Brilliant."
               </p>
-              <p className="text-xs text-muted-foreground mt-1">— Local homeowner</p>
+              <p className="text-xs text-muted-foreground mt-1">— Rugby homeowner</p>
             </div>
           </div>
         </div>
@@ -172,10 +173,10 @@ function Home() {
         <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-3">
-              What we do
+              How we help
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
-              A full-service heating & gas team you can rely on.
+              The heating and gas services you need — handled properly.
             </h2>
           </div>
           <Link
@@ -208,32 +209,33 @@ function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-3">
-                Why Just Imagine
+                Why choose us
               </p>
               <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight">
-                Engineering you can trust, prices that make sense.
+                We get the basics right. Every time.
               </h2>
               <p className="mt-5 text-muted-foreground leading-relaxed">
-                We're a small, focused team of Gas Safe registered engineers. Every job is properly
-                assessed, properly priced and properly finished — no shortcuts, no surprises.
+                At Just Imagine Ltd, we believe getting the basics right is everything — showing up
+                when we say, doing the job to a standard we're proud of, and never charging more than
+                was quoted. It's a simple promise, kept on every job.
               </p>
               <div className="mt-8 space-y-4">
                 {[
                   [
                     "Gas Safe Registered",
-                    "Every engineer is certified and on the public register.",
+                    "Every engineer carries their Gas Safe card and is verifiable on the public register.",
                   ],
                   [
                     "Transparent pricing",
-                    "Clear quotes before any work starts. No call-out fees on installs.",
+                    "Fixed written quotes before any work starts. No call-out fees on booked jobs.",
                   ],
                   [
                     "24/7 emergency cover",
-                    "Boiler down? Gas concern? We're on the phone day and night.",
+                    "A real engineer answers day or night — no hold music, no call centres.",
                   ],
                   [
                     "Workmanship guaranteed",
-                    "All installs and repairs come with a written guarantee.",
+                    "All installations and repairs come with a written guarantee on parts and labour.",
                   ],
                 ].map(([t, d]) => (
                   <div key={t} className="flex gap-4">
@@ -250,10 +252,10 @@ function Home() {
             </div>
             <div className="bg-gradient-hero text-primary-foreground rounded-3xl p-10 lg:p-14 shadow-elegant">
               <Flame className="h-10 w-10 text-accent mb-5" />
-              <h3 className="font-display text-3xl font-semibold mb-3">Need help today?</h3>
+              <h3 className="font-display text-3xl font-semibold mb-3">Need us today?</h3>
               <p className="text-primary-foreground/75 mb-8">
-                Speak to an engineer directly. Most problems we can talk through, book in or quote
-                inside 5 minutes.
+                Call us directly — we answer personally. Whether it's an emergency, a routine
+                service or a quote, we respond fast and we're honest about what you need.
               </p>
               <div className="space-y-3">
                 <Button
@@ -302,12 +304,13 @@ function Home() {
                     ["Engineers", "All Gas Safe Registered", "Often uncertified or sub-contracted"],
                     [
                       "Response",
-                      "24/7 Direct line to engineer",
-                      "Call centers and long wait times",
+                      "24/7 Direct line to a real engineer",
+                      "Call centres and long wait times",
                     ],
-                    ["Pricing", "Fixed, written quotes", "Hidden fees and hourly rates"],
-                    ["Warranty", "Up to 12 years manufacturer", "Basic 12-month parts"],
-                    ["Tidiness", "Full dust sheets & vacuumed", "Left for the homeowner"],
+                    ["Pricing", "Fixed written quotes, no surprises", "Hidden fees and hourly rates"],
+                    ["Warranty", "Up to 12-year manufacturer warranty", "Basic 12-month parts only"],
+                    ["Tidiness", "Dust sheets down, hoovered after", "Left for the homeowner"],
+                    ["Advice", "Honest — we'll say if repair isn't worth it", "Upselling over honesty"],
                   ].map(([f, j, o]) => (
                     <tr key={f}>
                       <td className="px-6 py-4 font-medium">{f}</td>
@@ -334,16 +337,26 @@ function Home() {
               Get a quote
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight">
-              Tell us about the job — we'll come back fast.
+              Tell us what's needed — we'll get back to you quickly.
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed max-w-lg">
               Most enquiries get a response within 30 minutes during working hours. For
-              emergencies, please call <a className="text-accent font-semibold" href="tel:07774079152">07774 079152</a>.
+              emergencies, please call{" "}
+              <a className="text-accent font-semibold" href="tel:07774079152">
+                07774 079152
+              </a>{" "}
+              directly.
             </p>
             <ul className="mt-8 space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-2"><span className="text-accent">›</span> Free quotes on installs</li>
-              <li className="flex gap-2"><span className="text-accent">›</span> Same-day landlord CP12s</li>
-              <li className="flex gap-2"><span className="text-accent">›</span> 24/7 emergency cover across Warwickshire</li>
+              <li className="flex gap-2">
+                <span className="text-accent">›</span> Free fixed-price quotes on all installations
+              </li>
+              <li className="flex gap-2">
+                <span className="text-accent">›</span> Same-day CP12 certificates for landlords
+              </li>
+              <li className="flex gap-2">
+                <span className="text-accent">›</span> 24/7 emergency cover across Warwickshire
+              </li>
             </ul>
           </div>
           <EnquiryForm />

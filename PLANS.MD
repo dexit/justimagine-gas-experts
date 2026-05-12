@@ -1,20 +1,24 @@
-# PLANS — Just Imagine Gas Experts
+# PLANS.MD - Project Roadmap
 
-## Plan 1: Content & Page Structure Overhaul (2026-05-12)
-**Status:** ⏳ AWAITING APPROVAL
+## Phase 1: Foundation & Migration (Completed)
+- [x] Migrate legacy content to TanStack Start.
+- [x] Establish OKLCH design system.
+- [x] Configure Bun runtime and deployment pipeline.
 
-### Objective
-Expand the site's content and page structure based on Hughes Plumbing & Heating's sitemap, rewriting all content for the Just Imagine brand.
+## Phase 2: Growth & Conversion (Completed)
+- [x] Implement dynamic area routing (300+ pages).
+- [x] Develop Vercel Edge API for lead submission.
+- [x] Integrate HubSpot and Cloudflare REST endpoints.
+- [x] Generate automated sitemap.
 
-### Summary
-- Add 5+ new service data entries (underfloor heating, air source heat pumps, bathroom installation, radiators, heating services hub)
-- Create 6 new static route pages (finance, commercial, team, our-story, why-trust-us, complaints)
-- Enrich 5 existing pages with deeper content
-- Update navigation and footer
-- SEO updates and deployment
+## Phase 3: Premium Polish (Completed)
+- [x] Implement glassmorphism and organic texture.
+- [x] Add entrance animations and micro-interactions.
+- [x] Refine typography with `text-balance`.
+- [x] Finalize bento-grid card layouts.
 
-### Reference
-- Source: https://hughesplumbingandheating.com
-- Sitemap: https://hughesplumbingandheating.com/page-sitemap.xml
-- Target: https://justimagine-gas-experts.vercel.app/
-- Repo: https://github.com/dexit/justimagine-gas-experts/
+## Phase 4: Optimization (Next)
+- [ ] Monitor real-world conversion rates via GA4/Clarity.
+- [ ] Perform A/B testing on hero messaging.
+- [ ] Optimize LCP metrics for image-heavy pages.
+- [ ] Implement automated CI/CD schema validation.

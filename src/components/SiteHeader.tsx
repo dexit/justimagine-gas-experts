@@ -25,7 +25,7 @@ export function SiteHeader() {
   const [menu, setMenu] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/60">
+    <header className="sticky top-0 z-50 glass border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
           <Logo size="h-9 w-9" />

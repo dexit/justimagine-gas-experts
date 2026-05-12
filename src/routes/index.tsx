@@ -90,11 +90,11 @@ function Home() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-foreground/10 border border-primary-foreground/15 text-xs font-medium text-accent mb-6">
               <ShieldCheck className="h-3.5 w-3.5" /> Gas Safe Registered · 24/7 Callouts
             </div>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.02]">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.02] text-balance animate-in fade-in slide-in-from-bottom-3 duration-700">
               Trusted Gas Engineers{" "}
               <span className="text-gradient-amber">across Warwickshire.</span>
             </h1>
-            <p className="mt-6 text-lg text-primary-foreground/75 max-w-xl leading-relaxed">
+            <p className="mt-6 text-lg text-primary-foreground/75 max-w-xl leading-relaxed text-balance animate-in fade-in slide-in-from-bottom-4 duration-1000">
               Whether you need a new boiler, an annual service or an emergency fix — we show up
               when we say, do the job properly, and always charge a fair price.
             </p>
@@ -192,10 +192,11 @@ function Home() {
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s) => (
+          {services.map((s, i) => (
             <div
               key={s.title}
-              className="p-7 rounded-2xl bg-card border border-border hover:border-accent/50 hover:shadow-elegant transition-smooth"
+              style={{ animationDelay: `${i * 100}ms` }}
+              className="bento-inner p-7 rounded-2xl bg-card border border-border hover:border-accent/40 hover:shadow-elegant transition-smooth animate-in fade-in slide-in-from-bottom-4 duration-700"
             >
               <div className="h-12 w-12 rounded-xl bg-gradient-amber flex items-center justify-center shadow-amber mb-5">
                 <s.icon className="h-5.5 w-5.5 text-accent-foreground" strokeWidth={2.2} />

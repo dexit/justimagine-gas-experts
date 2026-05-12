@@ -16,7 +16,12 @@ export const submitEnquiry = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const webhookUrl = process.env.ENQUIRY_WEBHOOK_URL;
     const smtpUrl = process.env.SMTP_WEBHOOK_URL;
-    const targets = [webhookUrl, smtpUrl].filter(Boolean) as string[];
+    // Internal Vercel Edge Function path (relative or full URL)
+    const edgeFunctionUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}/api/submit` 
+      : "http://localhost:5173/api/submit";
+      
+    const targets = [webhookUrl, smtpUrl, edgeFunctionUrl].filter(Boolean) as string[];
 
     const payload = {
       source: "justimagine.ltd",

@@ -95,9 +95,11 @@
     oklch(0.32 0.09 245) 100%
   );
   --gradient-amber: linear-gradient(135deg, oklch(0.82 0.17 78), oklch(0.72 0.18 60));
-  --shadow-elegant: 0 20px 50px -20px oklch(0.28 0.07 248 / 0.35);
+  --shadow-elegant: 0 30px 60px -12px oklch(0.28 0.07 248 / 0.18), 0 18px 36px -18px oklch(0.28 0.07 248 / 0.12);
   --shadow-amber: 0 12px 30px -10px oklch(0.78 0.16 75 / 0.5);
-  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-bg: oklch(1 0 0 / 70%);
+  --glass-border: oklch(1 0 0 / 15%);
+  --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,7 +142,9 @@
     oklch(0.14 0.05 252) 60%,
     oklch(0.22 0.07 245) 100%
   );
-  --shadow-elegant: 0 20px 50px -20px oklch(0 0 0 / 0.6);
+  --shadow-elegant: 0 40px 80px -20px oklch(0 0 0 / 0.8);
+  --glass-bg: oklch(0.21 0.05 250 / 60%);
+  --glass-border: oklch(1 0 0 / 10%);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -205,8 +209,32 @@
   .shadow-amber {
     box-shadow: var(--shadow-amber);
   }
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid var(--glass-border);
+  }
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+  }
   .transition-smooth {
     transition: var(--transition-smooth);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bento-inner {
+    position: relative;
+    overflow: hidden;
+  }
+  .bento-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at top left, oklch(1 0 0 / 0.05), transparent 40%);
   }
 }
 

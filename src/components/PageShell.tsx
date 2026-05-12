@@ -34,21 +34,25 @@ export function PageHero({
   crumbs?: Crumb[];
 }) {
   return (
-    <section className="bg-gradient-hero text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8 py-16 md:py-24">
+    <section className="relative bg-gradient-hero text-primary-foreground overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] animate-pulse duration-[10s]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-foreground/5 rounded-full blur-[100px] animate-pulse duration-[8s]" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-8 py-16 md:py-24">
         {crumbs && (
           <div className="mb-6">
             <Breadcrumbs items={crumbs} />
           </div>
         )}
-        <p className="text-xs uppercase tracking-[0.25em] text-accent font-medium mb-4">
+        <p className="text-xs uppercase tracking-[0.25em] text-accent font-medium mb-4 animate-in fade-in slide-in-from-bottom-2 duration-700">
           {eyebrow}
         </p>
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold max-w-4xl leading-[1.05]">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold max-w-4xl leading-[1.05] text-balance animate-in fade-in slide-in-from-bottom-3 duration-1000">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-6 text-lg text-primary-foreground/75 max-w-2xl leading-relaxed">
+          <p className="mt-6 text-lg text-primary-foreground/75 max-w-2xl leading-relaxed text-balance animate-in fade-in slide-in-from-bottom-4 duration-1000">
             {subtitle}
           </p>
         )}

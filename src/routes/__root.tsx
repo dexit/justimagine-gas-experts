@@ -189,7 +189,8 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="relative min-h-screen">
+        <div className="bg-noise fixed inset-0 z-[9999] pointer-events-none mix-blend-overlay" />
         <TrackingScripts />
         {children}
         <Scripts />

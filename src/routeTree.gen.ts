@@ -10,29 +10,41 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SafetyRouteImport } from './routes/safety'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as OurStoryRouteImport } from './routes/our-story'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as LandlordRouteImport } from './routes/landlord'
+import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ComplaintsRouteImport } from './routes/complaints'
+import { Route as CommercialRouteImport } from './routes/commercial'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AreasIndexRouteImport } from './routes/areas.index'
 import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
+import { Route as HeatingInAreaSlugRouteImport } from './routes/heating-in.$areaSlug'
+import { Route as GasBoilerInAreaSlugRouteImport } from './routes/gas-boiler-in.$areaSlug'
 import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
 import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
+  id: '/why-trust-us',
+  path: '/why-trust-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -65,6 +77,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OurStoryRoute = OurStoryRouteImport.update({
+  id: '/our-story',
+  path: '/our-story',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -73,6 +90,11 @@ const NewsRoute = NewsRouteImport.update({
 const LandlordRoute = LandlordRouteImport.update({
   id: '/landlord',
   path: '/landlord',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceRoute = FinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -93,6 +115,16 @@ const CookiesRoute = CookiesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplaintsRoute = ComplaintsRouteImport.update({
+  id: '/complaints',
+  path: '/complaints',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialRoute = CommercialRouteImport.update({
+  id: '/commercial',
+  path: '/commercial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -120,6 +152,16 @@ const NewsSlugRoute = NewsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => NewsRoute,
 } as any)
+const HeatingInAreaSlugRoute = HeatingInAreaSlugRouteImport.update({
+  id: '/heating-in/$areaSlug',
+  path: '/heating-in/$areaSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GasBoilerInAreaSlugRoute = GasBoilerInAreaSlugRouteImport.update({
+  id: '/gas-boiler-in/$areaSlug',
+  path: '/gas-boiler-in/$areaSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AreasAreaSlugRoute = AreasAreaSlugRouteImport.update({
   id: '/areas/$areaSlug',
   path: '/areas/$areaSlug',
@@ -135,20 +177,27 @@ const ServicesServiceSlugAreaSlugRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commercial': typeof CommercialRoute
+  '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
   '/faq': typeof FaqRoute
+  '/finance': typeof FinanceRoute
   '/landlord': typeof LandlordRoute
   '/news': typeof NewsRouteWithChildren
+  '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
+  '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas/': typeof AreasIndexRoute
@@ -157,20 +206,27 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commercial': typeof CommercialRoute
+  '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
   '/faq': typeof FaqRoute
+  '/finance': typeof FinanceRoute
   '/landlord': typeof LandlordRoute
   '/news': typeof NewsRouteWithChildren
+  '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
+  '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas': typeof AreasIndexRoute
@@ -180,20 +236,27 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commercial': typeof CommercialRoute
+  '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/emergency': typeof EmergencyRoute
   '/faq': typeof FaqRoute
+  '/finance': typeof FinanceRoute
   '/landlord': typeof LandlordRoute
   '/news': typeof NewsRouteWithChildren
+  '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
+  '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas/': typeof AreasIndexRoute
@@ -204,20 +267,27 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/commercial'
+    | '/complaints'
     | '/contact'
     | '/cookies'
     | '/emergency'
     | '/faq'
+    | '/finance'
     | '/landlord'
     | '/news'
+    | '/our-story'
     | '/pricing'
     | '/privacy'
     | '/reviews'
     | '/safety'
     | '/services'
     | '/terms'
+    | '/why-trust-us'
     | '/work'
     | '/areas/$areaSlug'
+    | '/gas-boiler-in/$areaSlug'
+    | '/heating-in/$areaSlug'
     | '/news/$slug'
     | '/services/$serviceSlug'
     | '/areas/'
@@ -226,20 +296,27 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/commercial'
+    | '/complaints'
     | '/contact'
     | '/cookies'
     | '/emergency'
     | '/faq'
+    | '/finance'
     | '/landlord'
     | '/news'
+    | '/our-story'
     | '/pricing'
     | '/privacy'
     | '/reviews'
     | '/safety'
     | '/services'
     | '/terms'
+    | '/why-trust-us'
     | '/work'
     | '/areas/$areaSlug'
+    | '/gas-boiler-in/$areaSlug'
+    | '/heating-in/$areaSlug'
     | '/news/$slug'
     | '/services/$serviceSlug'
     | '/areas'
@@ -248,20 +325,27 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/commercial'
+    | '/complaints'
     | '/contact'
     | '/cookies'
     | '/emergency'
     | '/faq'
+    | '/finance'
     | '/landlord'
     | '/news'
+    | '/our-story'
     | '/pricing'
     | '/privacy'
     | '/reviews'
     | '/safety'
     | '/services'
     | '/terms'
+    | '/why-trust-us'
     | '/work'
     | '/areas/$areaSlug'
+    | '/gas-boiler-in/$areaSlug'
+    | '/heating-in/$areaSlug'
     | '/news/$slug'
     | '/services/$serviceSlug'
     | '/areas/'
@@ -271,20 +355,27 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CommercialRoute: typeof CommercialRoute
+  ComplaintsRoute: typeof ComplaintsRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   EmergencyRoute: typeof EmergencyRoute
   FaqRoute: typeof FaqRoute
+  FinanceRoute: typeof FinanceRoute
   LandlordRoute: typeof LandlordRoute
   NewsRoute: typeof NewsRouteWithChildren
+  OurStoryRoute: typeof OurStoryRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRoute
   SafetyRoute: typeof SafetyRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsRoute: typeof TermsRoute
+  WhyTrustUsRoute: typeof WhyTrustUsRoute
   WorkRoute: typeof WorkRoute
   AreasAreaSlugRoute: typeof AreasAreaSlugRoute
+  GasBoilerInAreaSlugRoute: typeof GasBoilerInAreaSlugRoute
+  HeatingInAreaSlugRoute: typeof HeatingInAreaSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
 }
 
@@ -295,6 +386,13 @@ declare module '@tanstack/react-router' {
       path: '/work'
       fullPath: '/work'
       preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/why-trust-us': {
+      id: '/why-trust-us'
+      path: '/why-trust-us'
+      fullPath: '/why-trust-us'
+      preLoaderRoute: typeof WhyTrustUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -339,6 +437,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/our-story': {
+      id: '/our-story'
+      path: '/our-story'
+      fullPath: '/our-story'
+      preLoaderRoute: typeof OurStoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
@@ -351,6 +456,13 @@ declare module '@tanstack/react-router' {
       path: '/landlord'
       fullPath: '/landlord'
       preLoaderRoute: typeof LandlordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance': {
+      id: '/finance'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -379,6 +491,20 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/complaints': {
+      id: '/complaints'
+      path: '/complaints'
+      fullPath: '/complaints'
+      preLoaderRoute: typeof ComplaintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial': {
+      id: '/commercial'
+      path: '/commercial'
+      fullPath: '/commercial'
+      preLoaderRoute: typeof CommercialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -415,6 +541,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/news/$slug'
       preLoaderRoute: typeof NewsSlugRouteImport
       parentRoute: typeof NewsRoute
+    }
+    '/heating-in/$areaSlug': {
+      id: '/heating-in/$areaSlug'
+      path: '/heating-in/$areaSlug'
+      fullPath: '/heating-in/$areaSlug'
+      preLoaderRoute: typeof HeatingInAreaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gas-boiler-in/$areaSlug': {
+      id: '/gas-boiler-in/$areaSlug'
+      path: '/gas-boiler-in/$areaSlug'
+      fullPath: '/gas-boiler-in/$areaSlug'
+      preLoaderRoute: typeof GasBoilerInAreaSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/areas/$areaSlug': {
       id: '/areas/$areaSlug'
@@ -469,20 +609,27 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CommercialRoute: CommercialRoute,
+  ComplaintsRoute: ComplaintsRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   EmergencyRoute: EmergencyRoute,
   FaqRoute: FaqRoute,
+  FinanceRoute: FinanceRoute,
   LandlordRoute: LandlordRoute,
   NewsRoute: NewsRouteWithChildren,
+  OurStoryRoute: OurStoryRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRoute,
   SafetyRoute: SafetyRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsRoute: TermsRoute,
+  WhyTrustUsRoute: WhyTrustUsRoute,
   WorkRoute: WorkRoute,
   AreasAreaSlugRoute: AreasAreaSlugRoute,
+  GasBoilerInAreaSlugRoute: GasBoilerInAreaSlugRoute,
+  HeatingInAreaSlugRoute: HeatingInAreaSlugRoute,
   AreasIndexRoute: AreasIndexRoute,
 }
 export const routeTree = rootRouteImport

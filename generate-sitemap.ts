@@ -25,6 +25,12 @@ const staticPages: SitemapEntry[] = [
   { path: '/safety', priority: '0.7', changefreq: 'monthly' },
   { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },
+  { path: '/cookies', priority: '0.3', changefreq: 'yearly' },
+  { path: '/finance', priority: '0.8', changefreq: 'monthly' },
+  { path: '/commercial', priority: '0.8', changefreq: 'monthly' },
+  { path: '/our-story', priority: '0.6', changefreq: 'monthly' },
+  { path: '/why-trust-us', priority: '0.8', changefreq: 'monthly' },
+  { path: '/complaints', priority: '0.4', changefreq: 'yearly' },
 ];
 
 const servicePages: SitemapEntry[] = SERVICES.map((s) => ({
@@ -43,6 +49,18 @@ const combinedPages: SitemapEntry[] = SERVICES.flatMap((s) =>
   AREAS.map((a) => ({
     path: `/services/${s.slug}/${a.slug}`,
     priority: '0.7',
+    changefreq: 'monthly',
+  }))
+).concat(
+  AREAS.map((a) => ({
+    path: `/heating-in/${a.slug}`,
+    priority: '0.8',
+    changefreq: 'monthly',
+  }))
+).concat(
+  AREAS.map((a) => ({
+    path: `/gas-boiler-in/${a.slug}`,
+    priority: '0.8',
     changefreq: 'monthly',
   }))
 );

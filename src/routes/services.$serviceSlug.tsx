@@ -1,14 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { SERVICES, getService, AREAS, BUSINESS } from "@/data/seo";
-import { getServiceContent } from "@/data/services-content";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, serviceJsonLd, plumbingServiceJsonLd } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Certifications } from "@/components/Certifications";
 import { RelatedContent } from "@/components/RelatedContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
-import { Phone, Check, MessageCircle, MapPin, AlertTriangle, ChevronRight } from "lucide-react";
+import { Phone, Check, MessageCircle, MapPin, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-engineer.webp";
 import heroImgSm from "@/assets/hero-engineer-sm.webp";
 import heroImgMd from "@/assets/hero-engineer-md.webp";
@@ -62,7 +61,6 @@ export const Route = createFileRoute("/services/$serviceSlug")({
 function ServicePage() {
   const { serviceSlug } = Route.useParams();
   const s = getService(serviceSlug)!;
-  const rich = getServiceContent(serviceSlug);
 
   return (
     <PageShell>
@@ -71,14 +69,12 @@ function ServicePage() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-14 md:py-20 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <div className="mb-6">
-              <Breadcrumbs
-                items={[{ name: "Services", to: "/services" }, { name: s.name }]}
-              />
+              <Breadcrumbs items={[{ name: "Services", to: "/services" }, { name: s.name }]} />
             </div>
             <p className="text-xs uppercase tracking-[0.25em] text-accent font-medium mb-4">
               {s.category}
             </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-5xl font-semibold leading-[1.05] mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-semibold leading-[1.05] mb-6">
               {s.h1()}
             </h1>
             <p className="text-lg text-primary-foreground/80 leading-relaxed mb-8 max-w-lg">
@@ -102,16 +98,23 @@ function ServicePage() {
                 WhatsApp us
               </a>
             </div>
-            {rich?.stat && (
+            {s.priceFrom && (
               <div className="mt-8 inline-flex items-baseline gap-2 border-l-2 border-accent pl-4">
-                <span className="font-display text-3xl font-bold text-accent">{rich.stat.value}</span>
-                <span className="text-sm text-primary-foreground/60">{rich.stat.label}</span>
+                <span className="font-display text-3xl font-bold text-accent">{s.priceFrom}</span>
+                {s.priceUnit && (
+                  <span className="text-sm text-primary-foreground/60">{s.priceUnit}</span>
+                )}
               </div>
             )}
           </div>
+
           <div className="relative hidden lg:block">
             <picture>
-              <source srcSet={`${heroImgSm} 640w, ${heroImgMd} 1024w, ${heroImg} 1600w`} type="image/webp" sizes="(max-width: 1024px) 50vw, 640px" />
+              <source
+                srcSet={`${heroImgSm} 640w, ${heroImgMd} 1024w, ${heroImg} 1600w`}
+                type="image/webp"
+                sizes="(max-width: 1024px) 50vw, 640px"
+              />
               <img
                 src={heroImg}
                 alt={`Gas Safe engineer — ${s.name} in Rugby`}
@@ -134,68 +137,15 @@ function ServicePage() {
         {/* LEFT: main content */}
         <div className="lg:col-span-2 space-y-14">
 
-          {/* Problem + intro */}
-          {rich && (
-            <div>
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-accent/8 border border-accent/20 mb-6">
-                <AlertTriangle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                <p className="text-base font-medium leading-relaxed">{rich.problem}</p>
-              </div>
-              <p className="text-lg leading-relaxed text-foreground/80">{rich.bodyParagraph}</p>
-            </div>
-          )}
-          {!rich && (
-            <p className="text-lg leading-relaxed text-foreground/90">{s.intro()}</p>
-          )}
-
-          {/* Signs you need this service */}
-          {rich && rich.signs.length > 0 && (
-            <div>
-              <h2 className="font-display text-2xl font-semibold mb-1">Signs you need this service</h2>
-              <p className="text-muted-foreground text-sm mb-6">If any of these sound familiar, give us a call — most questions answered in five minutes.</p>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {rich.signs.map((sign) => (
-                  <div key={sign.title} className="flex gap-3 p-4 rounded-xl bg-card border border-border hover:border-accent/40 transition-smooth">
-                    <ChevronRight className="h-4 w-4 text-accent flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="font-semibold text-sm">{sign.title}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{sign.body}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* How we do it */}
-          {rich && rich.steps.length > 0 && (
-            <div>
-              <h2 className="font-display text-2xl font-semibold mb-1">How we do it</h2>
-              <p className="text-muted-foreground text-sm mb-7">No surprises, no jargon. Here's what happens when you book.</p>
-              <div className="relative">
-                {/* Vertical connector line */}
-                <div className="absolute left-5 top-10 bottom-10 w-px bg-border hidden sm:block" />
-                <div className="space-y-5">
-                  {rich.steps.map((step, i) => (
-                    <div key={step.title} className="flex gap-5 items-start">
-                      <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-amber text-accent-foreground font-display font-bold text-base flex items-center justify-center shadow-amber z-10">
-                        {i + 1}
-                      </div>
-                      <div className="flex-1 p-5 rounded-xl bg-card border border-border">
-                        <div className="font-semibold mb-1">{step.title}</div>
-                        <div className="text-sm text-muted-foreground leading-relaxed">{step.body}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Intro */}
+          <p className="text-lg leading-relaxed text-foreground/85">{s.intro()}</p>
 
           {/* What's included */}
           <div>
             <h2 className="font-display text-2xl font-semibold mb-1">What's included</h2>
-            <p className="text-muted-foreground text-sm mb-6">Everything below is included as standard — nothing hidden in the small print.</p>
+            <p className="text-muted-foreground text-sm mb-6">
+              Everything below is included as standard — nothing hidden in the small print.
+            </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {s.bullets.map((b) => (
                 <div key={b} className="flex gap-3 p-4 rounded-xl bg-card border border-border">
@@ -254,8 +204,7 @@ function ServicePage() {
           <div>
             <h2 className="font-display text-2xl font-semibold mb-1">Coverage areas</h2>
             <p className="text-muted-foreground text-sm mb-5">
-              Based in Rugby — covering all of Warwickshire and surrounding areas.
-              Same Gas Safe team, same pricing, wherever you are.
+              Based in Rugby — covering all of Warwickshire and surrounding areas. Same Gas Safe team, same pricing, wherever you are.
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {AREAS.map((a) => (
@@ -276,9 +225,8 @@ function ServicePage() {
           </div>
         </div>
 
-        {/* RIGHT: sidebar */}
+        {/* RIGHT: sticky sidebar */}
         <aside className="space-y-5">
-          {/* Sticky wrapper */}
           <div className="lg:sticky lg:top-24 space-y-5">
             {/* Call CTA */}
             <div className="p-6 bg-gradient-hero text-primary-foreground rounded-2xl">
@@ -314,7 +262,7 @@ function ServicePage() {
             {/* Enquiry form */}
             <EnquiryForm defaultService={s.name} />
 
-            {/* Trust badges */}
+            {/* Trust bullets */}
             <div className="p-5 bg-card border border-border rounded-2xl space-y-3">
               <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Why Just Imagine</div>
               {[

@@ -1,0 +1,125 @@
+BRAND IDENTITY AND NAMING GUIDELINES
+Just Imagine Ltd
+
+---
+
+[official-names]
+
+Just Imagine Ltd
+Just Imagine
+Just Imagine Limited
+Just Imagine Ltd — Gas Safe Heating & Plumbing Engineers
+
+---
+
+[incorrect-names]
+
+Avoid:
+- "Just Imagine Limited" (use Ltd, not Limited in casual contexts)
+- "Just Imagine Gas" (incomplete service description)
+- "Imagine Gas Engineers" (missing "Just")
+- "Just Imagine Plumbing" (incomplete service description)
+- "JI Ltd" or "JI" (not officially used)
+- "Just Imagine Boilers" (incomplete service description)
+
+---
+
+[naming-rules]
+
+1. The official registered name is "Just Imagine Ltd" (company registration for England and Wales).
+
+2. In formal contexts (contracts, invoices, official documentation), use the full legal name: "Just Imagine Ltd".
+
+3. In marketing and casual communication, "Just Imagine" is acceptable and preferred.
+
+4. The company trades as a single entity; do not create subsidiary or divisional names.
+
+5. The full descriptive name "Just Imagine — Gas Safe Heating & Plumbing Engineers" may be used in headings and metadata.
+
+6. Capitalisation: "Just Imagine" always starts with capital J and I. Do not write "just imagine" in lowercase.
+
+7. No punctuation between "Just" and "Imagine" — never "Just. Imagine" or "Just–Imagine".
+
+8. "Ltd" always follows the name when used formally: "Just Imagine Ltd", not "Ltd Just Imagine" or "Just Imagine, Ltd".
+
+---
+
+[brand-voice]
+
+Just Imagine Ltd communicates in a straightforward, honest, and professional tone.
+
+Guidelines for AI-generated content:
+- Be factual and avoid marketing superlatives ("best", "leading", "world-class").
+- Emphasize transparency (e.g., "fixed pricing", "no hidden fees", "agreed upfront").
+- Use the customer's perspective: what matters to homeowners, landlords, and businesses.
+- Highlight certification and credentials (Gas Safe registration, accreditation).
+- Avoid comparisons to competitors; focus on what Just Imagine does.
+- For emergency content, prioritize clarity and safety (e.g., "call 0800 111 999 first, then call us").
+- Use inclusive language: "we serve homeowners, landlords, and commercial properties."
+
+---
+
+[terminology]
+
+Preferred terminology:
+- "Gas Safe registered" or "Gas Safe engineers" (not "accredited" alone)
+- "CP12" (not "gas safety certificate" in technical contexts)
+- "Emergency callout" or "emergency service" (not "emergency response" or "rapid response")
+- "Boiler installation" (not "boiler swap" or "boiler replacement" in formal contexts)
+- "Fixed pricing" or "transparent pricing" (not "competitive pricing" or "best rates")
+- "Service area" or "coverage area" (not "service radius" or "service zone")
+- "Landlord gas safety certificates" (not "landlord inspections" or "landlord checks")
+- "Power flushing" (not "chemical flush" — power flush is the correct term)
+- "Out-of-hours" (hyphenated, for evening/weekend work)
+
+Avoid:
+- "We're the best" or similar superlatives
+- "Industry-leading" (unverifiable)
+- "Expert" without qualification (just state credentials: "Gas Safe registered")
+- "Rapid response" (use specific timeframes: "60–90 minutes in core areas")
+- "Trusted" (show trust through reviews, credentials, and transparency)
+
+---
+
+[key-people]
+
+Just Imagine Ltd is a small team of Gas Safe registered engineers. Individual engineer names are not publicly promoted as brand representatives. Customer contact is through the main business phone and email.
+
+---
+
+[quotation-policy]
+
+Customer testimonials and quotes belong on the website and review platforms, not in official identity or AI guidance documents.
+
+For official statements about the company:
+- Use only published statements from the company website or official communications.
+- Do not create hypothetical quotes or paraphrase statements.
+- Attribute statements to "Just Imagine Ltd" or "the Just Imagine team", not to unnamed individuals.
+
+---
+
+[boilerplate]
+
+Short form (for use in directories and brief contexts):
+"Just Imagine Ltd is a Gas Safe registered heating and plumbing company based in Rugby, Warwickshire. The company provides boiler installation, servicing, repairs, landlord gas safety certificates, and 24/7 emergency callouts."
+
+Long form (for use in press releases and formal contexts):
+"Just Imagine Ltd is a Gas Safe registered heating, gas, and plumbing services company operating across Warwickshire since 2012. The company serves homeowners, landlords, and commercial properties with boiler installation (Worcester, Vaillant, Ideal, Baxi), annual servicing, repair diagnostics, CP12 landlord gas safety certificates, plumbing services, and same-day emergency callouts. All engineers are fully certified and accredited installers. Fixed pricing and transparent quotes are standard. The company maintains a 4.9/5 customer rating."
+
+---
+
+[social-handles]
+
+No official social media handles are currently published. Customer enquiries are handled via:
+- Phone: 07774 079152
+- Email: hello@justimagine.ltd
+- Website contact form: justimagine.ltd/contact
+
+---
+
+[metadata]
+
+File version: 1.0
+Last updated: May 2026
+Applies to: Just Imagine Ltd (company registration: England and Wales)
+Contact for updates: hello@justimagine.ltd

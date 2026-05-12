@@ -50,16 +50,26 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ) : (
-              <button
-                key={n.key}
-                onMouseEnter={() => setMenu(n.key)}
-                onClick={() => setMenu(menu === n.key ? null : n.key)}
-                className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-smooth inline-flex items-center gap-1"
-                aria-expanded={menu === n.key}
-              >
-                {n.label}
-                <ChevronDown className="h-3.5 w-3.5 opacity-60" />
-              </button>
+              <div key={n.key} className="relative">
+                <Link
+                  to="/services"
+                  onMouseEnter={() => setMenu(n.key)}
+                  onClick={() => setMenu(null)}
+                  className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-smooth inline-flex items-center gap-1"
+                  activeProps={{ className: "px-3 py-2 text-sm font-semibold text-foreground inline-flex items-center gap-1" }}
+                >
+                  {n.label}
+                  <button
+                    type="button"
+                    aria-label="Open services menu"
+                    aria-expanded={menu === n.key}
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setMenu(menu === n.key ? null : n.key); }}
+                    className="ml-0.5 hover:text-foreground transition-smooth"
+                  >
+                    <ChevronDown className="h-3.5 w-3.5 opacity-60" />
+                  </button>
+                </Link>
+              </div>
             ),
           )}
           <Link

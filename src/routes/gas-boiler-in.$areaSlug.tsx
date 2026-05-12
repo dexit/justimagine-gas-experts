@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { SERVICES, getService, getArea, AREAS, BUSINESS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, localServiceJsonLd, geoMetaTags } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, localServiceJsonLd, geoMetaTags, localBusinessJsonLd } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Certifications } from "@/components/Certifications";
 import { Button } from "@/components/ui/button";
@@ -36,6 +36,15 @@ export const Route = createFileRoute("/gas-boiler-in/$areaSlug")({
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
+        jsonLdScript({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: title,
+          description: desc,
+          url,
+          isPartOf: { "@id": `${BUSINESS.url}/#website` },
+          about: { "@id": `${BUSINESS.url}/#business` },
+        }),
         jsonLdScript(localServiceJsonLd("Gas Boiler Services", a, desc, "£2,500")),
         jsonLdScript(
           breadcrumbJsonLd([
@@ -44,6 +53,7 @@ export const Route = createFileRoute("/gas-boiler-in/$areaSlug")({
             { name: a.name, url },
           ]),
         ),
+        jsonLdScript(localBusinessJsonLd()),
         ...(boilerFaqs.length ? [jsonLdScript(faqJsonLd(boilerFaqs))] : []),
       ],
     };

@@ -1,6 +1,8 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { localBusinessJsonLd, jsonLdScript } from "@/lib/seo";
 import { BUSINESS, AREAS } from "@/data/seo";
+import { GTM_ID, GA4_ID, CLARITY_ID, BING_VERIFY, GOOGLE_VERIFY, INDEXNOW_KEY } from "@/lib/analytics";
+import { TrackingScripts } from "@/components/TrackingScripts";
 import { Phone, Flame, ArrowRight, Home, Wrench, AlertCircle, Building, MapPin } from "lucide-react";
 import { useSearchRedirect } from "@/hooks/useSearchRedirect";
 
@@ -123,7 +125,9 @@ export const Route = createRootRoute({
             "Boiler installation, CP12 certificates & 24/7 emergency engineers in Rugby & Warwickshire. Call 07774 079152.",
         },
         { name: "twitter:image", content: ogImage },
-        { name: "google-site-verification", content: "placeholder-verify" },
+        ...(GOOGLE_VERIFY ? [{ name: "google-site-verification", content: GOOGLE_VERIFY }] : [{ name: "google-site-verification", content: "placeholder-verify" }]),
+        ...(BING_VERIFY ? [{ name: "msvalidate.01", content: BING_VERIFY }] : []),
+        ...(INDEXNOW_KEY ? [{ name: "indexnow-key", content: INDEXNOW_KEY }] : []),
       ],
       links: [
         { rel: "stylesheet", href: appCss },
@@ -140,16 +144,37 @@ export const Route = createRootRoute({
         { rel: "preload", as: "font", href: "/fonts/fraunces-variable.woff2", type: "font/woff2", crossOrigin: "anonymous" },
         { rel: "dns-prefetch", href: "https://www.googletagmanager.com" },
         { rel: "dns-prefetch", href: "https://www.google-analytics.com" },
+        { rel: "dns-prefetch", href: "https://www.clarity.ms" },
+        { rel: "dns-prefetch", href: "https://js.hs-scripts.com" },
+        { rel: "dns-prefetch", href: "https://conversations-widget.brevo.com" },
       ],
       scripts: [
         jsonLdScript(localBusinessJsonLd()),
-        {
-          children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-XXXXXXX');`,
-        },
+        // Google Tag Manager (manages GA4, Ads, and other tags — recommended)
+        ...(GTM_ID
+          ? [
+              {
+                children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
+              },
+            ]
+          : []),
+        // Google Analytics 4 direct (use only when NOT loading via GTM to avoid double-counting)
+        ...(GA4_ID && !GTM_ID
+          ? [
+              { src: `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`, async: true },
+              {
+                children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_ID}');`,
+              },
+            ]
+          : []),
+        // Microsoft Clarity heatmaps & session recordings
+        ...(CLARITY_ID
+          ? [
+              {
+                children: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_ID}");`,
+              },
+            ]
+          : []),
       ],
     };
   },
@@ -165,6 +190,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <TrackingScripts />
         {children}
         <Scripts />
       </body>

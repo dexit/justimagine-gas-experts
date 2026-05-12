@@ -17,6 +17,8 @@ import { OptimizedImage } from "@/components/OptimizedImage";
 import { BrandLogos } from "@/components/BrandLogos";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import heroImg from "@/assets/hero-engineer.webp";
+import heroImgSm from "@/assets/hero-engineer-sm.webp";
+import heroImgMd from "@/assets/hero-engineer-md.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -136,6 +138,8 @@ function Home() {
           <div className="relative">
             <OptimizedImage
               src={heroImg}
+              srcSm={heroImgSm}
+              srcMd={heroImgMd}
               alt="Gas Safe engineer servicing a boiler in Rugby"
               width={1600}
               height={1200}

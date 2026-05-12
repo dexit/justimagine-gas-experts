@@ -7,6 +7,10 @@ interface OptimizedImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   height?: number;
   lazy?: boolean;
   sizes?: string;
+  /** Explicit Vite-imported small variant (640w). Pass when src is a hashed Vite asset. */
+  srcSm?: string;
+  /** Explicit Vite-imported medium variant (1024w). Pass when src is a hashed Vite asset. */
+  srcMd?: string;
 }
 
 export function OptimizedImage({
@@ -17,32 +21,41 @@ export function OptimizedImage({
   lazy = true,
   sizes,
   className,
+  srcSm,
+  srcMd,
   ...props
 }: OptimizedImageProps) {
-  const getSrcSet = (baseSrc: string) => {
-    if (baseSrc.includes("node_modules")) return baseSrc;
-    const base = baseSrc.replace(/\.[^/.]+$/, "");
-    const ext = baseSrc.match(/\.[^/.]+$/)?.[0] || ".jpg";
-    if (width) {
-      return `${base}-sm${ext} 640w, ${base}-md${ext} 1024w, ${base}${ext} 1600w`;
-    }
-    return baseSrc;
+  const buildSrcSet = (full: string, sm?: string, md?: string): string => {
+    if (sm && md) return `${sm} 640w, ${md} 1024w, ${full} 1600w`;
+    // Fallback: static public/ paths where filenames are predictable (no Vite hash)
+    const base = full.replace(/\.[^/.]+$/, "");
+    const ext = full.match(/\.[^/.]+$/)?.[0] || ".jpg";
+    return `${base}-sm${ext} 640w, ${base}-md${ext} 1024w, ${full} 1600w`;
   };
 
+  const webpSrc = src.replace(/\.jpe?g$/, ".webp");
+  const webpSrcSm = srcSm?.replace(/\.jpe?g$/, ".webp");
+  const webpSrcMd = srcMd?.replace(/\.jpe?g$/, ".webp");
   const aspectRatio = width && height ? `${width}/${height}` : undefined;
+
+  const hasVariants = Boolean(width);
 
   return (
     <picture>
-      <source
-        srcSet={getSrcSet(src.replace(/\.jpg$/, ".webp"))}
-        type="image/webp"
-        sizes={sizes}
-      />
-      <source
-        srcSet={getSrcSet(src)}
-        type={`image/${src.split(".").pop()}`}
-        sizes={sizes}
-      />
+      {hasVariants && (
+        <source
+          srcSet={buildSrcSet(webpSrc, webpSrcSm, webpSrcMd)}
+          type="image/webp"
+          sizes={sizes}
+        />
+      )}
+      {hasVariants && (
+        <source
+          srcSet={buildSrcSet(src, srcSm, srcMd)}
+          type={`image/${src.split(".").pop()}`}
+          sizes={sizes}
+        />
+      )}
       <img
         src={src}
         alt={alt}
@@ -51,9 +64,7 @@ export function OptimizedImage({
         loading={lazy ? "lazy" : "eager"}
         decoding="async"
         className={className}
-        style={{
-          aspectRatio,
-        }}
+        style={{ aspectRatio }}
         {...props}
       />
     </picture>

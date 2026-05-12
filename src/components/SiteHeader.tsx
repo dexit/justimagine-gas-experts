@@ -3,6 +3,7 @@ import { Phone, Menu, X, Flame, AlertCircle, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Logo } from "@/components/Logo";
 import { SERVICES, AREAS, NEWS } from "@/data/seo";
 
 type SimpleNav = { kind: "link"; to: string; label: string; exact?: boolean };
@@ -26,7 +27,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <img src="/logo.svg" alt="Just Imagine Ltd" className="h-9 w-9 rounded-full" />
+          <Logo size="h-9 w-9" />
           <div className="leading-tight">
             <div className="font-display text-lg font-semibold tracking-tight">Just Imagine</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">

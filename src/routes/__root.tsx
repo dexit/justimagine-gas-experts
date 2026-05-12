@@ -124,11 +124,6 @@ export const Route = createRootRoute({
         },
         { name: "twitter:image", content: ogImage },
         { name: "google-site-verification", content: "placeholder-verify" },
-        { name: "description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
-        { property: "og:description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
-        { name: "twitter:description", content: "JustImagine Gas Experts provides comprehensive gas safety, boiler installation, servicing, and repair services." },
-        { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e80d17e4-7f28-401a-a1d2-af2085524c36/id-preview-56efb06a--7fb4e725-0c36-44e2-9a03-c32bfefb2a69.lovable.app-1777856771520.png" },
-        { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e80d17e4-7f28-401a-a1d2-af2085524c36/id-preview-56efb06a--7fb4e725-0c36-44e2-9a03-c32bfefb2a69.lovable.app-1777856771520.png" },
       ],
       links: [
         { rel: "stylesheet", href: appCss },
@@ -139,8 +134,7 @@ export const Route = createRootRoute({
         { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
         { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/manifest.json" },
-        /* Preload critical assets for performance */
-        { rel: "preload", as: "image", href: "/hero-engineer.webp", type: "image/webp" },
+        /* Preload critical fonts */
         { rel: "preload", as: "font", href: "/fonts/inter-400.woff2", type: "font/woff2", crossOrigin: "anonymous" },
         { rel: "preload", as: "font", href: "/fonts/inter-600.woff2", type: "font/woff2", crossOrigin: "anonymous" },
         { rel: "preload", as: "font", href: "/fonts/fraunces-variable.woff2", type: "font/woff2", crossOrigin: "anonymous" },

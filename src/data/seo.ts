@@ -10,7 +10,13 @@ export type ServiceSlug =
   | "central-heating"
   | "plumbing"
   | "power-flushing"
-  | "emergency-callout";
+  | "emergency-callout"
+  | "underfloor-heating"
+  | "air-source-heat-pumps"
+  | "bathroom-installation"
+  | "radiators"
+  | "heating-services"
+  | "gas-boilers";
 
 export type ServiceCategory = "installation" | "maintenance" | "safety" | "emergency" | "plumbing";
 
@@ -484,6 +490,280 @@ export const SERVICES: Service[] = [
       {
         q: "Is there really a 24/7 phone number?",
         a: "Yes — call 07774 079152 any time. We answer our own phone. If we're with another customer we'll call back within minutes, not hours.",
+      },
+    ],
+  },
+  {
+    slug: "underfloor-heating",
+    name: "Underfloor Heating",
+    short: "Warm-water underfloor heating design, installation and commissioning — the invisible luxury that cuts bills.",
+    category: "installation",
+    icon: "thermometer",
+    priceFrom: "£3,000",
+    priceUnit: "from (single zone)",
+    h1: (a) => `Underfloor Heating Installation${local(a)}`,
+    metaTitle: (a) => `Underfloor Heating${local(a)} | Wet Systems Installed`,
+    metaDesc: (a) =>
+      `Professional underfloor heating installation${local(a)}. Warm-water systems for new builds, extensions \u0026 renovations. Design, fit \u0026 commission. Gas Safe engineers. Free survey.`,
+    intro: (a) =>
+      `Underfloor heating transforms the way a home feels${local(a)}. No radiators taking up wall space, no cold spots, just an even, gentle warmth from the floor up. We design, install and commission warm-water underfloor heating systems for new builds, extensions, kitchen-diners and bathroom renovations — working with screeded, suspended timber and low-profile overlay systems to suit every floor type.`,
+    bullets: [
+      "Full system design — pipe spacing, manifold sizing, heat-loss calculation",
+      "Compatible with gas boilers, system boilers and air-source heat pumps",
+      "Screeded, overlay and suspended-timber installations",
+      "Smart zone controls and programmable room thermostats",
+      "Manifold installation, filling, pressure testing and commissioning",
+      "Compatible with tile, stone, engineered wood and LVT floor finishes",
+      "System balancing and flow-rate optimisation for even heat distribution",
+      "Written commissioning certificate and system handover documentation",
+    ],
+    faqs: [
+      {
+        q: "Can underfloor heating work with my existing boiler?",
+        a: "Yes — most modern combi and system boilers can drive underfloor heating. We fit a blending valve to lower the flow temperature to the 35–45°C range that UFH needs. If your boiler is older, we'll assess whether it can handle the additional demand.",
+      },
+      {
+        q: "How long does underfloor heating take to install?",
+        a: "A single-zone system in a kitchen or bathroom typically takes 2–3 days. Larger whole-house installations in new builds take a week or more depending on floor type and screed drying times.",
+      },
+      {
+        q: "Is underfloor heating more efficient than radiators?",
+        a: "Yes — UFH runs at lower flow temperatures (35–45°C vs 60–70°C for radiators), so the boiler works less hard. Combined with a heat pump, the efficiency gains are even greater. Most homeowners see a noticeable reduction in heating bills.",
+      },
+      {
+        q: "Can I have underfloor heating upstairs?",
+        a: "Yes — suspended timber floor systems and low-profile overlay boards make it practical for upper floors. We assess the joist structure and recommend the best option for your property.",
+      },
+      {
+        q: "Does underfloor heating work with all floor types?",
+        a: "It works best with tile, stone, polished concrete and engineered wood. Carpet can work but reduces heat output — if you prefer carpet, we use closer pipe spacing to compensate.",
+      },
+    ],
+  },
+  {
+    slug: "air-source-heat-pumps",
+    name: "Air Source Heat Pumps",
+    short: "Renewable heating for your home — extract heat from outside air, cut carbon and lower bills with government grants.",
+    category: "installation",
+    icon: "wind",
+    priceFrom: "£8,000",
+    priceUnit: "after BUS grant",
+    h1: (a) => `Air Source Heat Pump Installation${local(a)}`,
+    metaTitle: (a) => `Air Source Heat Pumps${local(a)} | MCS Certified`,
+    metaDesc: (a) =>
+      `Air source heat pump installation${local(a)}. MCS certified, eligible for £7,500 BUS grant. Slash carbon \u0026 heating bills. Free home survey. Gas Safe engineers.`,
+    intro: (a) =>
+      `Air source heat pumps extract heat from outside air — even in winter — and use it to warm your home and hot water${local(a)}. They're the most practical renewable heating option for most UK homes, and with the Boiler Upgrade Scheme (BUS) offering £7,500 off the installed cost, they've never been more affordable. We design, install and commission air-source systems that work properly in the real world — not just on paper.`,
+    bullets: [
+      "Full property heat-loss survey and system design",
+      "MCS-certified installation — required for government grant eligibility",
+      "BUS grant application handled on your behalf (up to £7,500)",
+      "Compatible with existing radiators, underfloor heating or both",
+      "Hot water cylinder installation and integration",
+      "Smart controls and weather compensation setup",
+      "Noise assessment and unit positioning for planning compliance",
+      "Full commissioning, performance testing and handover documentation",
+    ],
+    faqs: [
+      {
+        q: "How does an air source heat pump work?",
+        a: "It absorbs heat from outside air using a refrigerant, compresses it to raise the temperature, and transfers it to your heating and hot water system. Think of it as a fridge running in reverse — extracting warmth instead of cold.",
+      },
+      {
+        q: "Do heat pumps work in winter?",
+        a: "Yes — modern air-source heat pumps operate efficiently down to -15°C. UK winters rarely hit those extremes. Performance does reduce as temperatures drop, which is why proper sizing and heat-loss calculations are critical.",
+      },
+      {
+        q: "How much does an air source heat pump cost?",
+        a: "A typical installation costs £10,000–£16,000 before the BUS grant. After the £7,500 grant, most homeowners pay £8,000–£12,000 depending on property size and system complexity. We provide a fixed written quote after the survey.",
+      },
+      {
+        q: "Can I get a government grant?",
+        a: "Yes — the Boiler Upgrade Scheme (BUS) provides £7,500 toward air-source heat pump installation. You need a valid EPC, an existing wet heating system, and MCS-certified installation. We handle the application process for you.",
+      },
+      {
+        q: "Do I need to replace my radiators?",
+        a: "Not always — but heat pumps run at lower temperatures than boilers, so some radiators may need upsizing. We assess every radiator during the survey and recommend replacements only where necessary.",
+      },
+      {
+        q: "How noisy are heat pumps?",
+        a: "Modern units produce around 40–45 dB at 1 metre — similar to a quiet conversation. We position the outdoor unit carefully, considering noise limits and neighbour proximity, in line with permitted development rules.",
+      },
+    ],
+  },
+  {
+    slug: "bathroom-installation",
+    name: "Bathroom Installation",
+    short: "Full bathroom design, strip-out and installation — from first-fix plumbing to final tiling.",
+    category: "installation",
+    icon: "bath",
+    priceFrom: "£4,500",
+    priceUnit: "from (full bathroom)",
+    h1: (a) => `Bathroom Installation${local(a)}`,
+    metaTitle: (a) => `Bathroom Installation${local(a)} | Design to Finish`,
+    metaDesc: (a) =>
+      `Complete bathroom installation${local(a)}. Design, strip-out, plumbing, tiling \u0026 finishing. All trades coordinated. Free consultation. Trusted local team.`,
+    intro: (a) =>
+      `A new bathroom should be exciting, not stressful${local(a)}. We handle the entire process — from the initial consultation and layout planning to choosing the right fixtures, first-fix plumbing, tiling, electrics and final finishing. One team, one point of contact, one invoice. No chasing separate tradespeople, no miscommunication between contractors.`,
+    bullets: [
+      "Free initial consultation and layout planning",
+      "Full strip-out of existing bathroom and responsible waste disposal",
+      "First-fix plumbing, waste and water connections",
+      "Wall and floor preparation, waterproofing and tanking",
+      "Tile supply coordination and professional tiling",
+      "Sanitaryware fitting: bath, shower, toilet, basin, vanity",
+      "Electrics coordination: lighting, extractor fans, heated mirrors",
+      "Final clean, snagging inspection and handover",
+    ],
+    faqs: [
+      {
+        q: "How long does a bathroom installation take?",
+        a: "A standard family bathroom takes 7–10 working days from strip-out to handover. En-suites are typically 5–7 days. We provide a detailed timeline before starting so you know exactly when each stage happens.",
+      },
+      {
+        q: "Do you handle all the trades?",
+        a: "Yes — plumbing, tiling, plastering, electrics and joinery are all coordinated by us. You deal with one team from start to finish, not a rotation of different contractors.",
+      },
+      {
+        q: "Can you help me choose fixtures and fittings?",
+        a: "Absolutely. We'll advise on what works best for your space, water pressure and budget. We work with suppliers across all price ranges — from practical and durable to premium designer brands.",
+      },
+      {
+        q: "What about waterproofing and tanking?",
+        a: "Every wet area (shower enclosures, bath surrounds) is fully tanked with a liquid membrane system before tiling. This prevents moisture ingress and protects the structure behind the tiles.",
+      },
+      {
+        q: "Do you offer disability-adapted bathrooms?",
+        a: "Yes — walk-in showers, grab rails, comfort-height toilets and level-access designs. We can advise on layouts that meet accessibility requirements while still looking stylish.",
+      },
+    ],
+  },
+  {
+    slug: "radiators",
+    name: "Radiator Services",
+    short: "Radiator replacement, repositioning, upgrades and designer installations — balanced and pressure-tested.",
+    category: "installation",
+    icon: "heater",
+    priceFrom: "£100",
+    priceUnit: "horizontal from",
+    h1: (a) => `Radiator Installation \u0026 Replacement${local(a)}`,
+    metaTitle: (a) => `Radiator Installation${local(a)} | Replace \u0026 Upgrade`,
+    metaDesc: (a) =>
+      `Radiator installation, replacement \u0026 upgrades${local(a)}. Horizontal, vertical \u0026 designer radiators. TRV fitting, balancing \u0026 pressure testing. Gas Safe engineers.`,
+    intro: (a) =>
+      `Old radiators that take forever to warm up, cold spots that won't shift, or rooms with no radiator at all${local(a)} — upgrading or adding radiators is one of the most cost-effective heating improvements you can make. We supply and fit horizontal, vertical and designer radiators, balance the system properly, and leave everything pressure-tested and working perfectly.`,
+    bullets: [
+      "Horizontal and vertical radiator supply and installation",
+      "Designer and column radiator fitting",
+      "Radiator repositioning and pipework alterations",
+      "TRV (thermostatic radiator valve) fitting and replacement",
+      "System balancing after every installation",
+      "Pressure testing and leak checks",
+      "Old radiator removal and responsible disposal",
+      "Advice on sizing — we calculate BTU output for each room",
+    ],
+    faqs: [
+      {
+        q: "How long does it take to replace a radiator?",
+        a: "A like-for-like swap on existing pipework takes 1–2 hours. If pipework needs altering or rerouting, allow half a day. We always balance the system after installation.",
+      },
+      {
+        q: "Can I add a radiator to a room that doesn't have one?",
+        a: "Yes — we check your boiler capacity first, then run new pipework to the location. Most single additions are a half-day job including system balancing.",
+      },
+      {
+        q: "Vertical vs horizontal — which is better?",
+        a: "Both heat equally well if correctly sized. Vertical radiators are ideal where wall space is limited — below windows or between units. They also look more modern. We'll advise based on your room layout.",
+      },
+      {
+        q: "Do I need TRVs on every radiator?",
+        a: "Building Regulations require TRVs on all radiators except the one in the room with the main thermostat. We fit them as standard on every new installation.",
+      },
+    ],
+  },
+  {
+    slug: "heating-services",
+    name: "Heating Services",
+    short: "Complete heating solutions — from boiler installs and radiator upgrades to full central heating system design.",
+    category: "installation",
+    icon: "flame",
+    h1: (a) => `Heating Services${local(a)}`,
+    metaTitle: (a) => `Heating Services${local(a)} | Boilers, Radiators \u0026 More`,
+    metaDesc: (a) =>
+      `Complete heating services${local(a)}. Boiler installation, servicing \u0026 repair, radiators, central heating, underfloor heating \u0026 heat pumps. Gas Safe registered. Free quotes.`,
+    intro: (a) =>
+      `Whether you need a single radiator replaced or a whole-house heating system designed from scratch${local(a)}, we cover every aspect of domestic heating. Gas boilers, underfloor heating, air-source heat pumps, smart controls — we install, service and repair them all. One team, Gas Safe registered, with honest pricing and proper workmanship on every job.`,
+    bullets: [
+      "New boiler installation — Worcester, Vaillant, Ideal",
+      "Annual boiler servicing and manufacturer-spec maintenance",
+      "Boiler repair and diagnostics on all major brands",
+      "Central heating system design and full installation",
+      "Radiator replacement, additions and upgrades",
+      "Underfloor heating installation and commissioning",
+      "Air source heat pump installation (MCS certified)",
+      "Smart thermostat installation — Hive, Nest, Honeywell",
+      "Power flushing and system cleaning",
+      "24/7 emergency heating cover",
+    ],
+    faqs: [
+      {
+        q: "What heating services do you offer?",
+        a: "Everything from boiler installations and annual servicing to full heating system design, radiator upgrades, underfloor heating, air-source heat pumps and 24/7 emergency callouts. All work done by our own Gas Safe registered engineers.",
+      },
+      {
+        q: "Do you offer free quotes?",
+        a: "Yes — for installations and larger projects we provide a free home survey and fixed written quote. Smaller jobs can usually be quoted over the phone in five minutes.",
+      },
+      {
+        q: "Are your engineers Gas Safe registered?",
+        a: "Every engineer carries their Gas Safe card and is verifiable on the public register. We never sub-contract — the engineer who surveys is the one who does the work.",
+      },
+    ],
+  },
+  {
+    slug: "gas-boilers",
+    name: "Gas Boilers",
+    short: "Expert gas boiler installation, servicing and repair — combi, system and regular boilers from leading brands.",
+    category: "installation",
+    icon: "flame",
+    priceFrom: "£2,500",
+    priceUnit: "fully installed",
+    h1: (a) => `Gas Boiler Services${local(a)}`,
+    metaTitle: (a) => `Gas Boilers${local(a)} | Install, Service \u0026 Repair`,
+    metaDesc: (a) =>
+      `Gas boiler installation, servicing \u0026 repair${local(a)}. Combi, system \u0026 regular boilers. Worcester, Vaillant, Ideal. Up to 12-year warranty. Gas Safe registered.`,
+    intro: (a) =>
+      `Gas boilers remain the most common and cost-effective heating solution for UK homes${local(a)}. Whether you need a new combi boiler, a system boiler for a larger property, or a regular boiler for an older heating setup — we supply, install, service and repair them all. Fixed pricing, manufacturer warranties up to 12 years, and Gas Safe registered engineers who know every major brand inside out.`,
+    bullets: [
+      "Combi boiler installation — instant hot water, no tank needed",
+      "System boiler installation — ideal for larger homes with stored hot water",
+      "Regular (conventional) boiler replacement and upgrades",
+      "Like-for-like boiler swaps completed in a single day",
+      "Full system conversions — back boiler to combi, gravity to pressurised",
+      "Worcester Bosch, Vaillant and Ideal boilers supplied and fitted",
+      "Up to 12-year manufacturer warranty on qualifying models",
+      "Smart thermostat fitted and configured as part of every install",
+    ],
+    faqs: [
+      {
+        q: "What type of gas boiler do I need?",
+        a: "Combi boilers suit most 1–3 bedroom homes with one bathroom. System boilers are better for larger homes with multiple bathrooms. Regular boilers are typically only recommended if you already have a gravity-fed system you want to keep. We'll recommend the right type during your survey.",
+      },
+      {
+        q: "Which boiler brand is best?",
+        a: "Worcester Bosch is our top recommendation for reliability and warranty length. Vaillant offers exceptional build quality. Ideal provides excellent value. All three are A-rated and come with multi-year warranties when installed by an accredited engineer.",
+      },
+      {
+        q: "How long do gas boilers last?",
+        a: "A well-maintained gas boiler typically lasts 12–15 years. After that, efficiency drops noticeably and repair costs tend to increase. If your boiler is over 12 years old and requiring frequent repairs, replacement usually makes more financial sense.",
+      },
+      {
+        q: "Do you offer finance on gas boilers?",
+        a: "Yes — we offer flexible finance options including 0% interest on selected models. Ask for details when we come out for your survey. Credit subject to status.",
+      },
+      {
+        q: "Can you convert my back boiler to a combi?",
+        a: "Yes — this is one of our most common jobs. We remove the old back boiler and fireplace surround, install a modern combi in the kitchen or utility, and remove the hot water cylinder and cold water tank. Usually completed in 2–3 days.",
       },
     ],
   },

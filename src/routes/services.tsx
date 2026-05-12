@@ -132,6 +132,61 @@ const services = [
       "Real engineer answers — no call centres",
     ],
   },
+  {
+    icon: Thermometer,
+    title: "Underfloor Heating",
+    points: [
+      "Warm-water UFH design and installation",
+      "New builds, extensions & renovations",
+      "Screeded, overlay & suspended-timber systems",
+      "Smart zone controls and commissioning",
+      "Compatible with boilers and heat pumps",
+    ],
+  },
+  {
+    icon: Flame,
+    title: "Air Source Heat Pumps",
+    points: [
+      "MCS-certified installation",
+      "£7,500 BUS grant — application handled for you",
+      "Full property heat-loss survey included",
+      "Compatible with radiators and underfloor heating",
+      "Noise assessment and planning compliance",
+    ],
+  },
+  {
+    icon: Droplets,
+    title: "Bathroom Installation",
+    points: [
+      "Full design, strip-out and installation",
+      "All trades coordinated — one point of contact",
+      "Plumbing, tiling, electrics and finishing",
+      "Waterproofing and tanking as standard",
+      "Disability-adapted bathrooms available",
+    ],
+  },
+  {
+    icon: Thermometer,
+    title: "Radiator Services",
+    points: [
+      "Horizontal, vertical & designer radiators",
+      "Repositioning and pipework alterations",
+      "TRV fitting and system balancing",
+      "BTU sizing calculations for every room",
+      "Old radiator removal and disposal",
+    ],
+  },
+  {
+    icon: Flame,
+    title: "Gas Boilers",
+    points: [
+      "Combi, system & regular boiler specialists",
+      "Worcester, Vaillant & Ideal supplied and fitted",
+      "Up to 12-year manufacturer warranty",
+      "Back boiler to combi conversions",
+      "Full system conversions available",
+    ],
+  },
 ];
 
 function ServicesPage() {

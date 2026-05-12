@@ -69,6 +69,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/commercial" className="hover:text-accent transition-smooth">
+                Commercial & Construction
+              </Link>
+            </li>
+            <li>
               <Link
                 to="/emergency"
                 className="hover:text-accent transition-smooth flex items-center gap-1.5"
@@ -83,8 +88,23 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/finance" className="hover:text-accent transition-smooth">
+                Finance Options
+              </Link>
+            </li>
+            <li>
               <Link to="/reviews" className="hover:text-accent transition-smooth">
                 Customer Reviews
+              </Link>
+            </li>
+            <li>
+              <Link to="/why-trust-us" className="hover:text-accent transition-smooth">
+                Why Trust Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/our-story" className="hover:text-accent transition-smooth">
+                Our Story
               </Link>
             </li>
             <li>
@@ -126,6 +146,9 @@ export function SiteFooter() {
             </Link>
             <Link to="/cookies" className="hover:text-accent">
               Cookies Policy
+            </Link>
+            <Link to="/complaints" className="hover:text-accent">
+              Complaints
             </Link>
           </div>
           <span className="hidden md:inline">Boilers · Gas Safety · Heating · Plumbing · Emergencies</span>

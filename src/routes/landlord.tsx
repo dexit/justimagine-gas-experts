@@ -17,7 +17,7 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { RelatedContent } from "@/components/RelatedContent";
 import { BUSINESS, REVIEWS } from "@/data/seo";
-import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags, serviceJsonLd, productOfferJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, geoMetaTags, serviceJsonLd, productOfferJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 const url = `${BUSINESS.url}/landlord`;
 
@@ -45,6 +45,15 @@ export const Route = createFileRoute("/landlord")({
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: [
+      jsonLdScript({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "Landlord Gas Safety Services",
+        description: "Gas safety certificates (CP12), boiler servicing and priority repair packages for landlords and letting agents across Warwickshire.",
+        url,
+        isPartOf: { "@id": `${BUSINESS.url}/#website` },
+        about: { "@id": `${BUSINESS.url}/#business` },
+      }),
       jsonLdScript(
         serviceJsonLd(
           "Landlord Gas Safety Services",
@@ -103,6 +112,7 @@ export const Route = createFileRoute("/landlord")({
           },
         ]),
       ),
+      jsonLdScript(localBusinessJsonLd()),
     ],
   }),
   component: LandlordPage,

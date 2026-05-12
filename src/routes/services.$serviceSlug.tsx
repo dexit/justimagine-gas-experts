@@ -1,13 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import { SERVICES, getService, AREAS, BUSINESS } from "@/data/seo";
+import { SERVICES, REVIEWS, getService, AREAS, BUSINESS } from "@/data/seo";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, serviceJsonLd, plumbingServiceJsonLd } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Certifications } from "@/components/Certifications";
 import { RelatedContent } from "@/components/RelatedContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
-import { Phone, Check, MessageCircle, MapPin, ChevronRight } from "lucide-react";
+import { Phone, Check, MessageCircle, MapPin, ChevronRight, Star, AlertTriangle, Wrench } from "lucide-react";
 import heroImg from "@/assets/hero-engineer.webp";
 import heroImgSm from "@/assets/hero-engineer-sm.webp";
 import heroImgMd from "@/assets/hero-engineer-md.webp";
@@ -155,6 +155,72 @@ function ServicePage() {
               ))}
             </div>
           </div>
+
+          {/* Common Problems */}
+          {s.problems && s.problems.length > 0 && (
+            <div>
+              <h2 className="font-display text-2xl font-semibold mb-1">Common problems we fix</h2>
+              <p className="text-muted-foreground text-sm mb-6">
+                These are the faults we see most often — and what we do about each one.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {s.problems.map((p) => (
+                  <div key={p.name} className="p-5 rounded-xl bg-card border border-border space-y-2">
+                    <div className="flex items-start gap-3">
+                      <AlertTriangle className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
+                      <h3 className="font-semibold text-sm">{p.name}</h3>
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed pl-7">
+                      <span className="font-medium text-foreground/70">Cause: </span>{p.cause}
+                    </p>
+                    <p className="text-xs text-muted-foreground leading-relaxed pl-7">
+                      <span className="font-medium text-accent">Fix: </span>{p.fix}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* How we work — process */}
+          {s.process && s.process.length > 0 && (
+            <div>
+              <h2 className="font-display text-2xl font-semibold mb-1">How we work</h2>
+              <p className="text-muted-foreground text-sm mb-6">
+                So you know exactly what to expect from start to finish.
+              </p>
+              <ol className="space-y-4">
+                {s.process.map((p, i) => (
+                  <li key={p.step} className="flex gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-accent font-bold text-sm">
+                      {i + 1}
+                    </div>
+                    <div className="pt-0.5">
+                      <div className="font-semibold text-sm mb-0.5">{p.step}</div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
+          {/* Testimonial */}
+          {s.reviewIndex !== undefined && REVIEWS[s.reviewIndex] && (() => {
+            const r = REVIEWS[s.reviewIndex];
+            return (
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <div className="flex gap-0.5 mb-3">
+                  {Array.from({ length: r.rating }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                  ))}
+                </div>
+                <p className="text-base leading-relaxed text-foreground/85 italic mb-4">"{r.text}"</p>
+                <div className="text-sm font-semibold">{r.name}</div>
+                <div className="text-xs text-muted-foreground">{r.area}</div>
+              </div>
+            );
+          })()}
 
           {/* Pricing */}
           {s.priceFrom && (

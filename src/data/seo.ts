@@ -442,6 +442,8 @@ export const SERVICES: Service[] = [
     short: "No heat, no hot water, gas leak — Gas Safe engineers on call day and night across Warwickshire.",
     category: "emergency",
     icon: "clock",
+    priceFrom: "£120",
+    priceUnit: "diagnostic fee",
     h1: (a) => `24/7 Emergency Heating & Gas Engineer${local(a)}`,
     metaTitle: (a) => `Emergency Gas Engineer${local(a)} | 24/7 Response`,
     metaDesc: (a) =>
@@ -531,27 +533,28 @@ export const PRICING = [
   },
   {
     name: "Landlord CP12",
-    price: "£120",
+    price: "£60",
     unit: "per certificate",
     features: [
-      "Up to 2 gas appliances",
+      "Single-appliance properties from £60",
+      "Boiler + hob + fire from £75",
       "Digital copy issued same day",
       "Free renewal reminder service",
       "Agency direct invoicing",
-      "Portfolio discounts for 5+",
     ],
   },
   {
     name: "Landlord Bundle",
     price: "£120",
-    unit: "CP12 + full service",
+    unit: "CP12 + boiler service",
     popular: false,
     badge: "Best Value",
     features: [
-      "Annual CP12 included",
-      "Full boiler service included",
-      "Priority emergency response",
+      "Annual CP12 gas safety certificate",
+      "Full manufacturer-spec boiler service",
+      "Priority emergency response for tenants",
       "Single invoice to agent or landlord",
+      "Saves ~£80 vs booking separately",
     ],
   },
   {
@@ -624,6 +627,18 @@ export const PRICING = [
     ],
   },
   {
+    name: "Power Flushing",
+    price: "£395",
+    unit: "per system",
+    features: [
+      "Full high-velocity chemical flush",
+      "Every radiator flushed individually",
+      "Magnetic filter fitted as standard",
+      "Before & after thermal readings",
+      "Written flush certificate issued",
+    ],
+  },
+  {
     name: "Disconnecting Appliances",
     price: "£80",
     unit: "per appliance",
@@ -639,7 +654,7 @@ export const PRICING = [
     unit: "diagnostic fee",
     features: [
       "24/7 response — day & night",
-      "Transparent out-of-hours rates",
+      "Out-of-hours rate agreed before attendance",
       "All major brands diagnosed",
       "Fixed repair price after assessment",
     ],

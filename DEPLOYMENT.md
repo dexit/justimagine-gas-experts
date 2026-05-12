@@ -1,113 +1,54 @@
 # Deployment Guide
 
-This application is built with TanStack Start and includes server-side rendering (SSR). It's optimized for Cloudflare Pages/Workers but can also be deployed to other platforms.
+This application is built with TanStack Start, Vite, and Bun. It is configured for deployment on Vercel utilizing Vercel Serverless/Edge functions for API routes and form submissions.
 
-## Recommended: Cloudflare Pages (Native SSR Support)
+## Current Production Deployment
 
-Since the application is built with Cloudflare's vite plugin, Cloudflare Pages is the recommended deployment target with full native support.
+- **Hosting Platform**: Vercel
+- **Production URL**: [https://justaimagine.vercel.app](https://justaimagine.vercel.app)
+- **Git Integration**: Fully connected to GitHub for Continuous Deployment (CD). Any push to the `main` branch will automatically trigger a production build.
 
-### Prerequisites
-- Cloudflare account
-- Git repository connected to Cloudflare
+## Vercel Architecture
 
-### Steps
-1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Pages > Create project > Connect to Git
-3. Select your repository
-4. Build settings:
-   - Build command: `npm run build`
-   - Build output directory: `dist/client`
-   - Root directory: `/`
-5. Deploy
+- **Static Assets**: HTML, CSS, client-side JS, and optimized images (WebP) are built into the `dist/client` directory and served statically via Vercel's Edge Network.
+- **API & Routing**:
+  - `api/submit.ts`: Handles form submissions via Vercel Edge Functions, integrating securely with HubSpot and Cloudflare REST endpoints.
+  - `api/handler.ts`: Vercel routing fallback handler.
+  - Routing rules are defined in `vercel.json` to properly route requests and apply caching headers.
 
-The server-side rendering will work automatically on Cloudflare Pages.
+### Steps to Deploy Manually (Vercel CLI)
 
----
+If you need to trigger a manual deployment from the command line:
 
-## Alternative: Vercel (Static Site Only)
+```bash
+# Ensure Vercel CLI is installed
+npm i -g vercel
 
-**Note:** Vercel deployments will NOT support dynamic SSR due to architecture limitations. This should only be used if you need static site hosting.
-
-### Current Status
-- ✅ Static assets served from `dist/client`
-- ❌ SSR functionality requires Cloudflare Workers/Pages
-
-### Limitations
-- No server-side rendering (all routes are static)
-- Dynamic routes may return 404
-
-To fix this on Vercel, you would need to:
-1. Reconfigure the build to use Node.js output instead of Cloudflare Workers
-2. Create a custom serverless function handler
-3. Or migrate to Cloudflare Pages
-
----
-
-## Migration Path from Vercel to Cloudflare Pages
-
-If currently deployed on Vercel:
-
-1. Create `wrangler.toml` in the project root (see example below)
-2. Connect your Git repository to Cloudflare Pages
-3. Use build settings: `npm run build` → `dist/client`
-4. Deploy - SSR will work automatically
-
-### Example wrangler.toml
-```toml
-[env.production]
-name = "just-imagine"
-main = "dist/server/index.js"
-build = { command = "npm run build" }
-
-[env.production.build]
-upload { format = "service-worker" }
-
-[[r2_buckets]]
-binding = "UPLOADS"
-bucket_name = "just-imagine-uploads"
+# Deploy to production bypassing prompts
+vercel --prod --yes
 ```
-
----
 
 ## Environment Variables
 
-Required environment variables for full functionality:
-- None (static configuration used in `src/data/seo.ts`)
+For the production application to function properly (especially the lead generation pipeline), the following Environment Variables must be set in your Vercel Project Dashboard:
 
-Optional:
-- `VITE_API_URL` - For external API integrations (currently not used)
+- `HUBSPOT_PORTAL_ID`: Your HubSpot Portal ID.
+- `HUBSPOT_FORM_GUID`: The target HubSpot Form ID.
+- `ENQUIRY_WEBHOOK_URL`: (Optional) Custom webhook for external routing.
+- `SMTP_WEBHOOK_URL`: (Optional) Webhook for email notifications.
 
----
+> **Note**: You can configure these by navigating to your Vercel Project Dashboard -> Settings -> Environment Variables.
 
 ## Performance Notes
 
-- Static assets: Cached with 1-year expiration
-- HTML: Server-rendered on each request (Cloudflare cache-first)
-- Image optimization: Next-gen formats (WebP) with responsive srcsets
-- Sitemap: 142 URLs cached for 1 hour
-
----
+- **Static assets**: Served with aggressive caching (1-year immutable).
+- **Images**: Automatically optimized via `bun run optimize-images.ts` during the build step.
+- **Sitemap**: Automatically generated during the build step via `generate:sitemap` ensuring all 300+ dynamic routes are properly indexed.
 
 ## Troubleshooting
 
-### 404 Errors on Root/Dynamic Routes
-
-**Cause:** Deployed to Vercel or similar static host that doesn't support SSR
-
-**Solution:** Migrate to Cloudflare Pages as described above
+### API Returns 500
+Ensure your Environment Variables are correctly configured in Vercel. Vercel Edge functions will fail if required variables are missing during runtime.
 
 ### Build Failures
-
-Check that `npm run build` completes without errors:
-```bash
-npm run build
-# Should output: "Sitemap generated: 142 URLs"
-```
-
-### Static Files Not Loading
-
-Verify `dist/client/` contains:
-- `assets/` directory with bundled JS/CSS
-- `*.png`, `favicon.*`, `robots.txt`, `sitemap.xml`
-
-If missing, rebuild with `npm run build`
+Check the build logs in Vercel. Ensure `bun` is correctly detected by Vercel. The build script `bun run build` manages image optimization, favicon generation, Vite building, and sitemap generation in sequence.

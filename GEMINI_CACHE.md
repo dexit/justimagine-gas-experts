@@ -24,6 +24,11 @@
 - [ ] **API Validation**: Confirm HubSpot received test submission once production credentials are set in Vercel.
 - [ ] **Performance Monitoring**: Review Speed Insights in Vercel post-deployment.
 
+### Completed Deployment
+- [x] Successfully linked Vercel to GitHub via CLI.
+- [x] Initial production build and deployment to Vercel complete.
+- [x] Live URL confirmed working: https://justaimagine.vercel.app
+
 ### Notes
 - Ensure `HUBSPOT_PORTAL_ID` and `HUBSPOT_FORM_GUID` are configured in Vercel Dashboard.
 - The `bg-noise` overlay is applied globally via `__root.tsx`.

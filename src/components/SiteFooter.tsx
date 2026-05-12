@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, ShieldCheck, MapPin } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { BUSINESS, AREAS } from "@/data/seo";
 
 export function SiteFooter() {
@@ -8,12 +9,13 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8 py-12 md:py-16 grid gap-8 md:gap-12 sm:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2.5 mb-4">
-            <img src="/logo.svg" alt="Just Imagine Ltd" className="h-10 w-10 rounded-full" />
+            <Logo size="h-10 w-10" />
             <span className="font-display text-2xl font-semibold">Just Imagine Ltd</span>
           </div>
           <p className="text-primary-foreground/70 max-w-md leading-relaxed">
-            Gas Safe registered heating & plumbing engineers covering Rugby, Leamington Spa,
-            Warwick, Coventry and across Warwickshire. Honest work, safety-first, available 24/7.
+            Gas Safe registered heating & plumbing engineers based in Rugby, covering Leamington
+            Spa, Warwick, Coventry and across Warwickshire. We show up on time, do the job
+            properly, and always charge a fair price.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <div className="inline-flex items-center gap-2 text-sm text-accent border border-accent/30 rounded-full px-3 py-1">

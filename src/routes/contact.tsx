@@ -34,7 +34,7 @@ function ContactPage() {
       <PageHero
         eyebrow="Get in touch"
         title="Talk to a real engineer."
-        subtitle="Phone is fastest. We answer most calls personally — even out of hours."
+        subtitle="Phone is fastest. We answer most calls personally, even out of hours — no hold music, no call centre, no form to fill in first."
       />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20 grid lg:grid-cols-2 gap-10">
         <div className="space-y-4">

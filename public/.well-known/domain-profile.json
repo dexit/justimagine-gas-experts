@@ -1,0 +1,43 @@
+{
+  "spec": "https://ai-domain-data.org/spec/v0.1",
+  "name": "Just Imagine Ltd",
+  "description": "Gas Safe registered heating and plumbing company providing boiler installation, servicing, repairs, CP12 landlord gas safety certificates, and 24/7 emergency callouts across Warwickshire.",
+  "website": "https://justimagine.ltd",
+  "contact": "hello@justimagine.ltd",
+  "entity_type": "Organization",
+  "logo": "https://justimagine.ltd/logo.svg",
+  "jsonld": {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Just Imagine Ltd",
+    "url": "https://justimagine.ltd",
+    "description": "Gas Safe registered heating and plumbing company providing boiler installation, servicing, repairs, CP12 landlord gas safety certificates, and 24/7 emergency callouts across Warwickshire.",
+    "telephone": "+44 7774 079152",
+    "email": "hello@justimagine.ltd",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rugby",
+      "addressRegion": "Warwickshire",
+      "addressCountry": "GB"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "reviewCount": "120"
+    },
+    "areaServed": [
+      "Rugby",
+      "Leamington Spa",
+      "Warwick",
+      "Kenilworth",
+      "Coventry",
+      "Stratford-upon-Avon",
+      "Nuneaton",
+      "Bedworth",
+      "Southam",
+      "Atherstone",
+      "Alcester"
+    ]
+  }
+}

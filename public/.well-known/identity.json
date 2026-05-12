@@ -1,0 +1,135 @@
+{
+  "$schema": "https://www.ai-visibility.org.uk/specifications/identity-json/identity-json.schema.json",
+  "name": "Just Imagine Ltd",
+  "type": "LocalBusiness",
+  "url": "https://justimagine.ltd",
+  "description": "Gas Safe registered heating and plumbing company providing boiler installation, servicing, repairs, CP12 landlord gas safety certificates, and 24/7 emergency callouts across Warwickshire.",
+  "alternateNames": [
+    "Just Imagine",
+    "Just Imagine — Gas Safe Heating & Plumbing Engineers"
+  ],
+  "foundingDate": "2012",
+  "locations": [
+    {
+      "type": "headquarters",
+      "name": "Just Imagine Ltd",
+      "address": {
+        "streetAddress": "",
+        "addressLocality": "Rugby",
+        "postalCode": "CV21",
+        "addressRegion": "Warwickshire",
+        "addressCountry": "GB"
+      },
+      "telephone": "+44 7774 079152"
+    }
+  ],
+  "contactPoints": [
+    {
+      "type": "Customer Service",
+      "email": "hello@justimagine.ltd",
+      "telephone": "+44 7774 079152",
+      "areaServed": "GB-WAR",
+      "availableLanguage": ["en"]
+    },
+    {
+      "type": "Emergency",
+      "telephone": "+44 7774 079152",
+      "hoursAvailable": "Mo-Su 00:00-23:59",
+      "areaServed": "GB-WAR"
+    }
+  ],
+  "areaServed": [
+    "GB-WAR",
+    "Rugby",
+    "Leamington Spa",
+    "Warwick",
+    "Kenilworth",
+    "Coventry",
+    "Stratford-upon-Avon",
+    "Nuneaton",
+    "Bedworth",
+    "Southam",
+    "Atherstone",
+    "Alcester"
+  ],
+  "identifiers": {
+    "jurisdiction": "England and Wales"
+  },
+  "sameAs": [
+    "https://www.gassaferegister.co.uk"
+  ],
+  "logo": "https://justimagine.ltd/logo.svg",
+  "numberOfEmployees": {
+    "min": 5,
+    "max": 5
+  },
+  "priceRange": "£60-£2000+",
+  "serviceTypes": [
+    "Boiler Installation",
+    "Boiler Servicing",
+    "Boiler Repair",
+    "Gas Safety Certificate (CP12)",
+    "Central Heating Installation",
+    "Central Heating Repair",
+    "Plumbing Services",
+    "Emergency Heating & Plumbing",
+    "Power Flushing"
+  ],
+  "serviceArea": {
+    "type": "GeoCircle",
+    "center": {
+      "latitude": 52.37,
+      "longitude": -1.51
+    },
+    "radius": "50km"
+  },
+  "operatingHours": [
+    {
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    },
+    {
+      "dayOfWeek": "Saturday",
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "dayOfWeek": "Sunday",
+      "opens": "00:00",
+      "closes": "23:59",
+      "description": "Emergency callouts only"
+    }
+  ],
+  "credentials": [
+    {
+      "name": "Gas Safe Registration",
+      "type": "Professional Certification",
+      "issuer": "Gas Safe Register",
+      "issuerUrl": "https://www.gassaferegister.co.uk"
+    },
+    {
+      "name": "Worcester Bosch Accredited Installer",
+      "type": "Manufacturer Accreditation"
+    },
+    {
+      "name": "Vaillant Accredited Installer",
+      "type": "Manufacturer Accreditation"
+    },
+    {
+      "name": "Building Regulations Part P Self-Certification",
+      "type": "Regulatory Compliance"
+    }
+  ],
+  "aggregateRating": {
+    "ratingValue": 4.9,
+    "bestRating": 5,
+    "worstRating": 1,
+    "reviewCount": 120
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2026-05-07",
+    "source": "justimagine.ltd"
+  }
+}

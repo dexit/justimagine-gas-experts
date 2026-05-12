@@ -187,8 +187,8 @@ function LandlordPage() {
     <PageShell>
       <PageHero
         eyebrow="For Landlords & Letting Agents"
-        title="Gas safety. Sorted annually."
-        subtitle="CP12 certificates, boiler servicing and priority cover — one fixed annual price, compliance guaranteed."
+        title="Landlord gas safety — sorted."
+        subtitle="CP12 certificates, annual boiler servicing and priority emergency cover — one fixed price per property. Full compliance, without the admin headache."
         crumbs={[{ name: "Landlord Packages" }]}
       />
 
@@ -299,9 +299,9 @@ function LandlordPage() {
                 Everything covered. Nothing to chase.
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Our landlord service is designed to be completely hands-off for you. From booking
-                through to certificate delivery, we handle the entire process — including tenant
-                coordination, compliance reporting and renewal reminders.
+                We handle the whole process — from booking through to digital certificate delivery.
+                That includes coordinating access with tenants, compliance reporting, and renewal
+                reminders. You just get the invoice.
               </p>
               <div className="mt-6 flex gap-3 flex-wrap">
                 <Button asChild className="bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold">
@@ -464,11 +464,11 @@ function LandlordPage() {
               Get in touch
             </p>
             <h2 className="font-display text-3xl font-semibold mb-4">
-              Request a landlord package quote
+              Get a landlord package quote
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
               Fill in the form and we'll be in touch within one working day. For portfolios of 5+
-              properties or urgent requirements, call us directly for the fastest response.
+              properties or anything urgent, a phone call is the fastest route.
             </p>
             <a
               href={`tel:${BUSINESS.phoneE164}`}

@@ -52,8 +52,8 @@ function SafetyPage() {
     <PageShell>
       <PageHero
         eyebrow="Gas Safety"
-        title="Safety isn't optional. It's the whole job."
-        subtitle="Carbon monoxide is silent and lethal. We make compliance simple — for landlords, homeowners and commercial premises."
+        title="Gas safety done right. Every time."
+        subtitle="Carbon monoxide has no smell and no warning. We check, certify and report — making compliance simple for landlords, homeowners and commercial premises."
       />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20 grid lg:grid-cols-3 gap-6">
         {[
@@ -90,11 +90,12 @@ function SafetyPage() {
               Warning signs
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight">
-              If you notice any of these — call us today.
+              Noticed any of these? Don't wait.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Carbon monoxide poisoning can happen with no smell and no warning. If in doubt, switch
-              the appliance off and ventilate the room.
+              These are early warning signs of gas or carbon monoxide issues. If in doubt, switch
+              the appliance off, open windows and call us — we'd always rather check and find
+              nothing than the alternative.
             </p>
           </div>
           <div className="bg-card border border-border rounded-2xl p-8">

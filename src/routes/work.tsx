@@ -29,28 +29,28 @@ const projects = [
     title: "Worcester Bosch Combi Swap",
     area: "Rugby",
     date: "Feb 2024",
-    desc: "Replaced an aging, inefficient regular boiler with a new Worcester Bosch 8000 Life. Improved hot water flow and cut bills.",
+    desc: "Replaced an aging, inefficient regular boiler with a new Worcester Bosch 8000 Life. In and out in a single day — improved hot water pressure, lower bills and a 10-year warranty to boot.",
     icon: Hammer,
   },
   {
     title: "Emergency Power Flush",
     area: "Leamington Spa",
     date: "Jan 2024",
-    desc: "Full system cleanse for a property with cold radiators. Restored heat output and protected the heat exchanger.",
+    desc: "Called in for cold radiators and a noisy boiler. Carried out a full chemical power flush, cleared years of magnetite sludge, and had the system running efficiently the same day.",
     icon: Camera,
   },
   {
     title: "Landlord Portfolio Compliance",
     area: "Warwick",
     date: "Ongoing",
-    desc: "Managing annual gas safety (CP12) and servicing for a local agency's 15-property portfolio.",
+    desc: "Managing annual CP12 gas safety certificates and boiler servicing for a local letting agency's 15-property portfolio. Digital certificates issued same day, all renewal reminders handled for the agent.",
     icon: Calendar,
   },
   {
     title: "Unvented Cylinder Install",
     area: "Kenilworth",
     date: "Dec 2023",
-    desc: "Installed a high-pressure unvented hot water cylinder for a 3-bathroom family home.",
+    desc: "Supplied and installed a G3-qualified unvented hot water cylinder for a 3-bathroom family home. Fully certified, Building Regs notified, and the family had mains-pressure hot water the same afternoon.",
     icon: MapPin,
   },
 ];
@@ -60,8 +60,8 @@ function WorkPage() {
     <PageShell>
       <PageHero
         eyebrow="Portfolio"
-        title="Latest projects & callouts."
-        subtitle="A look at what we've been up to recently across the county."
+        title="Recent work across Warwickshire."
+        subtitle="From straightforward boiler swaps to landlord portfolio compliance — here's what we've been working on."
       />
       <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-8">

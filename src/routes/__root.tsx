@@ -1,5 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import { localBusinessJsonLd, jsonLdScript } from "@/lib/seo";
+import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd, jsonLdScript } from "@/lib/seo";
 import { BUSINESS, AREAS } from "@/data/seo";
 import { GTM_ID, GA4_ID, CLARITY_ID, BING_VERIFY, GOOGLE_VERIFY, INDEXNOW_KEY } from "@/lib/analytics";
 import { TrackingScripts } from "@/components/TrackingScripts";
@@ -87,51 +87,28 @@ function NotFoundComponent() {
 export const Route = createRootRoute({
   head: () => {
     const url = BUSINESS.url;
-    const ogImage = `${url}/og-default.jpg`;
     return {
       meta: [
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { title: "Just Imagine Ltd | Gas Safe Boiler & Heating Engineers Rugby" },
-        {
-          name: "description",
-          content:
-            "Gas Safe boiler installation, servicing & repair in Rugby & Warwickshire. CP12 certificates, central heating, emergency callouts 24/7. Call 07774 079152.",
-        },
         { name: "robots", content: "index, follow, max-image-preview:large" },
         { name: "author", content: BUSINESS.name },
         { name: "geo.region", content: "GB-WAR" },
         { name: "geo.placename", content: "Rugby, Warwickshire" },
         { name: "geo.position", content: `${BUSINESS.geo.lat};${BUSINESS.geo.lng}` },
         { name: "ICBM", content: `${BUSINESS.geo.lat}, ${BUSINESS.geo.lng}` },
-        { property: "og:title", content: "Just Imagine Ltd | Gas Safe Boiler & Heating — Rugby" },
-        {
-          property: "og:description",
-          content:
-            "Professional boiler installation, gas safety certificates & 24/7 emergency cover in Rugby & Warwickshire. Gas Safe registered. Free quotes.",
-        },
         { property: "og:type", content: "website" },
         { property: "og:url", content: url },
-        { property: "og:image", content: ogImage },
-        { property: "og:image:width", content: "1200" },
-        { property: "og:image:height", content: "630" },
         { property: "og:site_name", content: "Just Imagine Ltd" },
         { property: "og:locale", content: "en_GB" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Just Imagine Ltd — Gas Safe Heating, Boilers & Plumbing" },
-        {
-          name: "twitter:description",
-          content:
-            "Boiler installation, CP12 certificates & 24/7 emergency engineers in Rugby & Warwickshire. Call 07774 079152.",
-        },
-        { name: "twitter:image", content: ogImage },
         ...(GOOGLE_VERIFY ? [{ name: "google-site-verification", content: GOOGLE_VERIFY }] : [{ name: "google-site-verification", content: "placeholder-verify" }]),
         ...(BING_VERIFY ? [{ name: "msvalidate.01", content: BING_VERIFY }] : []),
         ...(INDEXNOW_KEY ? [{ name: "indexnow-key", content: INDEXNOW_KEY }] : []),
       ],
       links: [
         { rel: "stylesheet", href: appCss },
-        { rel: "canonical", href: url },
         { rel: "icon", type: "image/svg+xml", href: "/logo.svg" },
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
@@ -149,6 +126,8 @@ export const Route = createRootRoute({
         { rel: "dns-prefetch", href: "https://conversations-widget.brevo.com" },
       ],
       scripts: [
+        jsonLdScript(organizationJsonLd()),
+        jsonLdScript(websiteJsonLd()),
         jsonLdScript(localBusinessJsonLd()),
         // Google Tag Manager (manages GA4, Ads, and other tags — recommended)
         ...(GTM_ID

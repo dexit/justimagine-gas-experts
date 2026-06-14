@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Trusted Gas Safe boiler engineers in Rugby & Warwickshire. New boiler installation, annual servicing, CP12 landlord certificates & 24/7 emergency callouts. Honest prices, free fixed quotes.",
+          "Gas Safe boiler installation, servicing, CP12 certificates & 24/7 emergency callouts in Rugby & Warwickshire. Free fixed quotes.",
       },
       ...geoMetaTags(),
       { property: "og:title", content: "Just Imagine Ltd | Gas Safe Heating Engineers — Rugby & Warwickshire" },

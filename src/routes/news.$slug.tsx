@@ -1,12 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
-import { getNews, NEWS, BUSINESS } from "@/data/seo";
+import { getNews, NEWS, BUSINESS, type NewsPost } from "@/data/seo";
 import { newsArticleJsonLd, breadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 import { Calendar, ArrowLeft } from "lucide-react";
 
 export const Route = createFileRoute("/news/$slug")({
-  loader: () => {
-    throw notFound();
+  loader: ({ params }): { post: NewsPost } => {
+    const post = getNews(params.slug);
+    if (!post) throw notFound();
+    return { post };
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
@@ -22,7 +24,7 @@ export const Route = createFileRoute("/news/$slug")({
         { property: "article:published_time", content: post.date },
         { property: "article:section", content: post.category },
       ],
-      links: [{ rel: "canonical", to: url }],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         jsonLdScript(newsArticleJsonLd(post)),
         jsonLdScript(
@@ -44,7 +46,7 @@ export const Route = createFileRoute("/news/$slug")({
 });
 
 function NewsPostPage() {
-  const { post } = Route.useLoaderData();
+  const { post } = Route.useLoaderData() as { post: NewsPost };
   const others = NEWS.filter((n) => n.slug !== post.slug).slice(0, 2);
   return (
     <PageShell>

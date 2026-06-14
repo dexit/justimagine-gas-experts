@@ -9,11 +9,11 @@ export const Route = createFileRoute("/areas/")({
     const url = `${BUSINESS.url}/areas`;
     return {
       meta: [
-        { title: "Gas Engineers Near You — Rugby & Warwickshire | Just Imagine" },
+        { title: "Areas We Cover — Rugby & Warwickshire | Just Imagine" },
         {
           name: "description",
           content:
-            "Gas Safe boiler and heating engineers covering Rugby, Leamington Spa, Warwick, Kenilworth, Stratford-upon-Avon, Coventry & across Warwickshire. Same-day emergency cover available.",
+            "Gas Safe heating engineers covering Rugby, Leamington, Warwick, Kenilworth, Coventry & across Warwickshire. Same-day emergency cover.",
         },
         ...geoMetaTags("Warwickshire"),
         { property: "og:title", content: "Gas Engineers Near You — Rugby & Warwickshire | Just Imagine" },

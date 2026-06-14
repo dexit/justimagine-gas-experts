@@ -28,7 +28,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="font-display text-base mb-4 text-accent">Contact</h4>
+          <h3 className="font-display text-base mb-4 text-accent">Contact</h3>
           <ul className="space-y-3 text-sm text-primary-foreground/80">
             <li>
               <a
@@ -56,7 +56,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="font-display text-base mb-4 text-accent">Navigation</h4>
+          <h3 className="font-display text-base mb-4 text-accent">Navigation</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/80">
             <li>
               <Link to="/services" className="hover:text-accent transition-smooth">
@@ -116,7 +116,7 @@ export function SiteFooter() {
         </div>
 
         <div className="lg:col-span-2">
-          <h4 className="font-display text-base mb-4 text-accent">Areas We Serve</h4>
+          <h3 className="font-display text-base mb-4 text-accent">Areas We Serve</h3>
           <div className="grid grid-cols-2 gap-2 text-sm text-primary-foreground/80">
             {AREAS.map((area) => (
               <Link

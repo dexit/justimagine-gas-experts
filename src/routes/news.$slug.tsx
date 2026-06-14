@@ -22,7 +22,7 @@ export const Route = createFileRoute("/news/$slug")({
         { property: "article:published_time", content: post.date },
         { property: "article:section", content: post.category },
       ],
-      links: [{ rel: "canonical", to: url }],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         jsonLdScript(newsArticleJsonLd(post)),
         jsonLdScript(

@@ -1,11 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
-import { getNews, NEWS, BUSINESS } from "@/data/seo";
+import { getNews, NEWS, BUSINESS, type NewsPost } from "@/data/seo";
 import { newsArticleJsonLd, breadcrumbJsonLd, jsonLdScript } from "@/lib/seo";
 import { Calendar, ArrowLeft } from "lucide-react";
 
 export const Route = createFileRoute("/news/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { post: NewsPost } => {
     const post = getNews(params.slug);
     if (!post) throw notFound();
     return { post };

@@ -5,6 +5,29 @@ import { newsListJsonLd, jsonLdScript } from "@/lib/seo";
 import { Calendar, ArrowRight, Tag } from "lucide-react";
 
 export const Route = createFileRoute("/news")({
+  head: () => {
+    const url = `${BUSINESS.url}/news`;
+    return {
+      meta: [
+        { title: "Heating & Boiler News — Rugby & Warwickshire | Just Imagine" },
+        {
+          name: "description",
+          content:
+            "Practical heating, boiler and landlord guides from Just Imagine Ltd — Gas Safe engineers across Rugby and Warwickshire.",
+        },
+        { property: "og:title", content: "Heating & Boiler News — Just Imagine Ltd" },
+        {
+          property: "og:description",
+          content:
+            "How-tos, FAQs and updates for homeowners and landlords across Rugby, Leamington, Warwick and Coventry.",
+        },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [jsonLdScript(newsListJsonLd())],
+    };
+  },
   component: NewsLayout,
   notFoundComponent: () => <div className="p-10">News section temporarily unavailable.</div>,
 });

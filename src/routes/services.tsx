@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Flame,
   Wrench,
@@ -8,239 +8,242 @@ import {
   Clock,
   Thermometer,
   Hammer,
+  Phone,
+  ArrowRight,
+  MapPin,
+  type LucideIcon,
 } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
-import { geoMetaTags, serviceJsonLd, jsonLdScript } from "@/lib/seo";
+import { SERVICES, AREAS, BUSINESS } from "@/data/seo";
+import {
+  geoMetaTags,
+  serviceJsonLd,
+  offerCatalogJsonLd,
+  breadcrumbJsonLd,
+  jsonLdScript,
+} from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Boiler & Gas Services Rugby, Warwickshire | Just Imagine" },
+      { title: "Our Services & Prices | Just Imagine Ltd — Rugby & Warwickshire" },
       {
         name: "description",
         content:
-          "Boiler installs, servicing & repair, CP12, central heating, power flushing & 24/7 callouts. Gas Safe engineers across Rugby & Warwickshire.",
+          "Boiler installs, servicing, CP12, central heating, plumbing & 24/7 emergency callouts. Fixed prices, Gas Safe engineers across Rugby & Warwickshire.",
       },
-      { property: "og:title", content: "Boiler & Gas Services | Just Imagine Ltd — Rugby, Warwickshire" },
+      {
+        property: "og:title",
+        content: "Our Services & Prices | Just Imagine Ltd — Rugby & Warwickshire",
+      },
       {
         property: "og:description",
         content:
-          "Boiler installation, servicing & repair, CP12, emergency callouts & more. Gas Safe engineers across Rugby & Warwickshire. Honest prices, free quotes.",
+          "Browse every service we offer with starting prices and what's included. Gas Safe engineers. Free fixed quotes — 07774 079152.",
       },
       ...geoMetaTags(),
     ],
+    links: [{ rel: "canonical", href: `${BUSINESS.url}/services` }],
     scripts: [
       jsonLdScript(
         serviceJsonLd(
           "Heating & Gas Services",
-          "Professional boiler installation, servicing, repairs, CP12 gas safety certificates, central heating and 24/7 emergency callouts across Warwickshire. All work carried out by Gas Safe registered engineers."
-        )
+          "Professional boiler installation, servicing, repairs, CP12 gas safety certificates, central heating and 24/7 emergency callouts across Warwickshire.",
+        ),
+      ),
+      jsonLdScript(offerCatalogJsonLd()),
+      jsonLdScript(
+        breadcrumbJsonLd([
+          { name: "Home", url: BUSINESS.url },
+          { name: "Services", url: `${BUSINESS.url}/services` },
+        ]),
       ),
     ],
   }),
   component: ServicesPage,
 });
 
-const services = [
-  {
-    icon: Flame,
-    title: "Boiler Installation",
-    points: [
-      "Combi, system & regular boilers supplied and fitted",
-      "Leading brands: Worcester Bosch, Vaillant, Ideal",
-      "Manufacturer warranties up to 12 years",
-      "Smart thermostat setup included on most installs",
-      "Fixed price quoted and agreed before any work begins",
-    ],
-  },
-  {
-    icon: Wrench,
-    title: "Boiler Servicing",
-    points: [
-      "Full annual manufacturer-specification service",
-      "Combustion analysis & flue gas test",
-      "Magnetic filter clean and system pressure check",
-      "Service report & Gas Safe label issued same day",
-      "Free 12-month reminder — never miss a service",
-    ],
-  },
-  {
-    icon: Thermometer,
-    title: "Boiler Repairs",
-    points: [
-      "Diagnostics on all major makes and models",
-      "Common faults diagnosed and fixed in a single visit",
-      "Genuine OEM parts used throughout",
-      "Fixed price agreed after diagnosis — no surprises",
-      "Honest advice if replacement is better value",
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: "Gas Safety Certificates",
-    points: [
-      "Landlord CP12 certificates from £60",
-      "Same-day digital issue to landlord and agent",
-      "All gas appliances, flues and pipework tested",
-      "Portfolio discounts for 5+ properties",
-      "Free 30-day renewal reminder service",
-    ],
-  },
-  {
-    icon: FileCheck,
-    title: "Safety Audits & Assessments",
-    points: [
-      "Independent gas inspections for homeowners",
-      "HMO and commercial premises audits",
-      "Risk assessments & insurance-grade reports",
-      "Carbon monoxide testing included",
-      "Compliance documentation for licensing",
-    ],
-  },
-  {
-    icon: Droplets,
-    title: "Plumbing",
-    points: [
-      "Leaks, burst pipes & emergency isolations",
-      "Taps, mixers, showers & pressure valves",
-      "Radiator installations and swaps",
-      "Power flushing & chemical system cleans",
-      "Unvented hot water cylinders (G3 qualified)",
-    ],
-  },
-  {
-    icon: Hammer,
-    title: "Ad-hoc & Manual Work",
-    points: [
-      "Pipework alterations and relocations",
-      "Appliance removals and refits",
-      "Bathroom & kitchen plumbing connections",
-      "Outside taps and isolation valves",
-      "Site labour by fully certified engineers",
-    ],
-  },
-  {
-    icon: Clock,
-    title: "24/7 Emergency Callouts",
-    points: [
-      "No heat or no hot water — rapid same-day response",
-      "Suspected gas leaks — make safe and repair",
-      "Burst pipes & uncontrolled water leaks",
-      "Boiler lockouts, error codes & pressure loss",
-      "Real engineer answers — no call centres",
-    ],
-  },
-  {
-    icon: Thermometer,
-    title: "Underfloor Heating",
-    points: [
-      "Warm-water UFH design and installation",
-      "New builds, extensions & renovations",
-      "Screeded, overlay & suspended-timber systems",
-      "Smart zone controls and commissioning",
-      "Compatible with boilers and heat pumps",
-    ],
-  },
-  {
-    icon: Flame,
-    title: "Air Source Heat Pumps",
-    points: [
-      "MCS-certified installation",
-      "£7,500 BUS grant — application handled for you",
-      "Full property heat-loss survey included",
-      "Compatible with radiators and underfloor heating",
-      "Noise assessment and planning compliance",
-    ],
-  },
-  {
-    icon: Droplets,
-    title: "Bathroom Installation",
-    points: [
-      "Full design, strip-out and installation",
-      "All trades coordinated — one point of contact",
-      "Plumbing, tiling, electrics and finishing",
-      "Waterproofing and tanking as standard",
-      "Disability-adapted bathrooms available",
-    ],
-  },
-  {
-    icon: Thermometer,
-    title: "Radiator Services",
-    points: [
-      "Horizontal, vertical & designer radiators",
-      "Repositioning and pipework alterations",
-      "TRV fitting and system balancing",
-      "BTU sizing calculations for every room",
-      "Old radiator removal and disposal",
-    ],
-  },
-  {
-    icon: Flame,
-    title: "Gas Boilers",
-    points: [
-      "Combi, system & regular boiler specialists",
-      "Worcester, Vaillant & Ideal supplied and fitted",
-      "Up to 12-year manufacturer warranty",
-      "Back boiler to combi conversions",
-      "Full system conversions available",
-    ],
-  },
+const ICONS: Record<string, LucideIcon> = {
+  flame: Flame,
+  wrench: Wrench,
+  "shield-check": ShieldCheck,
+  "file-check": FileCheck,
+  thermometer: Thermometer,
+  droplets: Droplets,
+  hammer: Hammer,
+  clock: Clock,
+  building: ShieldCheck,
+};
+
+const CATEGORY_LABEL: Record<string, string> = {
+  installation: "Installation",
+  maintenance: "Service & Repair",
+  safety: "Safety & Compliance",
+  emergency: "Emergency",
+  plumbing: "Plumbing",
+};
+
+const CATEGORY_ORDER: Array<keyof typeof CATEGORY_LABEL> = [
+  "installation",
+  "maintenance",
+  "safety",
+  "plumbing",
+  "emergency",
 ];
 
+const FEATURED_AREAS = AREAS.slice(0, 6);
+
 function ServicesPage() {
+  const grouped = CATEGORY_ORDER.map((cat) => ({
+    cat,
+    label: CATEGORY_LABEL[cat],
+    items: SERVICES.filter((s) => s.category === cat),
+  })).filter((g) => g.items.length > 0);
+
   return (
     <PageShell>
       <PageHero
-        eyebrow="Services"
-        title="Everything heating, gas & plumbing — done properly."
-        subtitle="From a leaking tap to a full heating system installation — we handle every job to the same high standard. Gas Safe registered, fully insured, and always cleanly finished."
+        eyebrow="Services & Prices"
+        title="Every service we offer — with what's included and what it costs."
+        subtitle="Browse our full catalogue of boiler, gas and plumbing services. Each one is a fixed-price offer with clear inclusions — pick the one you need, or call and we'll point you the right way."
       />
-      <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20">
-        <div className="grid md:grid-cols-2 gap-5">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="p-8 rounded-2xl bg-card border border-border hover:border-accent/50 hover:shadow-elegant transition-smooth"
+
+      {/* Quick category jump */}
+      <section className="border-y border-border bg-secondary/30">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8 py-5 flex flex-wrap gap-2 justify-center">
+          {grouped.map((g) => (
+            <a
+              key={g.cat}
+              href={`#${g.cat}`}
+              className="px-4 py-2 rounded-full text-sm font-medium bg-card border border-border hover:border-accent/50 hover:text-accent-foreground transition-smooth"
             >
-              <div className="flex items-start gap-5">
-                <div className="h-12 w-12 rounded-xl bg-gradient-amber flex items-center justify-center shadow-amber flex-shrink-0">
-                  <s.icon className="h-5.5 w-5.5 text-accent-foreground" strokeWidth={2.2} />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-xl font-semibold mb-3">{s.title}</h3>
-                  <ul className="space-y-1.5 text-sm text-muted-foreground">
-                    {s.points.map((p) => (
-                      <li key={p} className="flex gap-2">
-                        <span className="text-accent">›</span>
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+              {g.label}
+            </a>
           ))}
         </div>
-        <div className="mt-16 p-10 rounded-3xl bg-gradient-hero text-primary-foreground text-center">
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 lg:px-8 py-16 md:py-20">
+        {grouped.map((group) => (
+          <div key={group.cat} id={group.cat} className="scroll-mt-24 mb-16 last:mb-0">
+            <div className="flex items-end justify-between mb-8">
+              <h2 className="font-display text-3xl md:text-4xl font-semibold">{group.label}</h2>
+              <span className="text-sm text-muted-foreground">
+                {group.items.length} offer{group.items.length === 1 ? "" : "s"}
+              </span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-5">
+              {group.items.map((s) => {
+                const Icon = ICONS[s.icon] ?? Wrench;
+                return (
+                  <Link
+                    key={s.slug}
+                    to="/services/$serviceSlug"
+                    params={{ serviceSlug: s.slug }}
+                    className="group p-7 rounded-2xl bg-card border border-border hover:border-accent/60 hover:shadow-elegant transition-smooth flex flex-col"
+                  >
+                    <div className="flex items-start gap-5">
+                      <div className="h-12 w-12 rounded-xl bg-gradient-amber flex items-center justify-center shadow-amber flex-shrink-0">
+                        <Icon className="h-5.5 w-5.5 text-accent-foreground" strokeWidth={2.2} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-3 mb-2">
+                          <h3 className="font-display text-xl font-semibold leading-tight">
+                            {s.name}
+                          </h3>
+                          {s.priceFrom && (
+                            <div className="text-right flex-shrink-0">
+                              <div className="text-xs text-muted-foreground">From</div>
+                              <div className="font-display text-lg font-semibold text-accent-foreground">
+                                {s.priceFrom}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                          {s.short}
+                        </p>
+                        <ul className="space-y-1.5 text-sm text-muted-foreground mb-5">
+                          {s.bullets.slice(0, 3).map((p) => (
+                            <li key={p} className="flex gap-2">
+                              <span className="text-accent">›</span>
+                              <span className="line-clamp-1">{p}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="inline-flex items-center gap-2 text-sm font-semibold text-accent-foreground group-hover:gap-3 transition-all">
+                          View details & book
+                          <ArrowRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+
+        {/* Areas cross-link */}
+        <div className="mt-12 p-8 md:p-10 rounded-3xl bg-secondary/50 border border-border">
+          <div className="flex items-center gap-3 mb-3">
+            <MapPin className="h-5 w-5 text-accent" />
+            <h2 className="font-display text-2xl font-semibold">Need this in your town?</h2>
+          </div>
+          <p className="text-muted-foreground mb-6 max-w-2xl">
+            Every service is available across Rugby and the wider Warwickshire area. Browse by
+            location to see local pricing, response times and recent jobs.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {FEATURED_AREAS.map((a) => (
+              <Link
+                key={a.slug}
+                to="/areas/$areaSlug"
+                params={{ areaSlug: a.slug }}
+                className="px-4 py-2 rounded-full text-sm bg-card border border-border hover:border-accent/50 transition-smooth"
+              >
+                {a.name}
+              </Link>
+            ))}
+            <Link
+              to="/areas"
+              className="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-amber text-accent-foreground"
+            >
+              All areas →
+            </Link>
+          </div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="mt-10 p-10 rounded-3xl bg-gradient-hero text-primary-foreground text-center">
           <h2 className="font-display text-3xl md:text-4xl font-semibold">
-            Not sure what you need?
+            Not sure which service you need?
           </h2>
           <p className="mt-3 text-primary-foreground/75 max-w-xl mx-auto">
             Call us — most jobs we can advise on or quote over the phone in five minutes. No
             obligation, no pressure.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-7 bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold shadow-amber"
-          >
-            <a href="tel:07774079152">
-              <Phone className="h-4 w-4 mr-2" />
-              07774 079152
-            </a>
-          </Button>
+          <div className="mt-7 flex flex-wrap gap-3 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold shadow-amber"
+            >
+              <a href="tel:07774079152">
+                <Phone className="h-4 w-4 mr-2" />
+                07774 079152
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="bg-transparent border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10"
+            >
+              <Link to="/contact">Get a free quote</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </PageShell>

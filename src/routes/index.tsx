@@ -47,36 +47,51 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const services = [
+const services: Array<{
+  icon: typeof Flame;
+  title: string;
+  desc: string;
+  slug: "boiler-installation" | "boiler-servicing" | "gas-safety-certificate" | "plumbing" | "landlord-gas-safety" | "emergency-callout";
+  priceFrom?: string;
+}> = [
   {
     icon: Flame,
     title: "Boiler Installation",
     desc: "Old boiler on its last legs? We fit A-rated Worcester, Vaillant and Ideal boilers — fixed price agreed before we start, manufacturer warranties included.",
+    slug: "boiler-installation",
+    priceFrom: "£2,500",
   },
   {
     icon: Wrench,
     title: "Servicing & Repairs",
     desc: "Annual services that keep your warranty valid and your heating running efficiently. Same-day repairs when things go wrong — without the runaround.",
+    slug: "boiler-servicing",
+    priceFrom: "£100",
   },
   {
     icon: ShieldCheck,
     title: "Gas Safety Certificates",
     desc: "Landlord CP12 certificates issued the same day. We test every appliance, handle the paperwork, and remind you when they're due again next year.",
+    slug: "gas-safety-certificate",
+    priceFrom: "£60",
   },
   {
     icon: Droplets,
     title: "Heating & Plumbing",
     desc: "Cold radiators, noisy pipes, leaking taps — we fix heating and plumbing problems quickly, cleanly and without overcharging.",
+    slug: "plumbing",
   },
   {
     icon: FileCheck,
-    title: "Safety Audits & Assessments",
-    desc: "Independent gas safety audits for landlords, HMOs and commercial premises. Clear written reports that meet insurance and licensing requirements.",
+    title: "Landlord Packages",
+    desc: "Annual CP12, boiler service and priority tenant emergency cover bundled into one fixed price. Portfolio discounts for 5+ properties.",
+    slug: "landlord-gas-safety",
   },
   {
     icon: Clock,
     title: "24/7 Emergency Callouts",
     desc: "Boiler out at midnight? Gas smell at 6am? You'll speak to a real engineer straight away — not a call centre. We're on call every hour of every day.",
+    slug: "emergency-callout",
   },
 ];
 
@@ -193,17 +208,32 @@ function Home() {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
-            <div
+            <Link
               key={s.title}
+              to="/services/$serviceSlug"
+              params={{ serviceSlug: s.slug }}
               style={{ animationDelay: `${i * 100}ms` }}
-              className="bento-inner p-7 rounded-2xl bg-card border border-border hover:border-accent/40 hover:shadow-elegant transition-smooth animate-in fade-in slide-in-from-bottom-4 duration-700"
+              className="group bento-inner p-7 rounded-2xl bg-card border border-border hover:border-accent/60 hover:shadow-elegant transition-smooth animate-in fade-in slide-in-from-bottom-4 duration-700 flex flex-col"
             >
-              <div className="h-12 w-12 rounded-xl bg-gradient-amber flex items-center justify-center shadow-amber mb-5">
-                <s.icon className="h-5.5 w-5.5 text-accent-foreground" strokeWidth={2.2} />
+              <div className="flex items-start justify-between mb-5">
+                <div className="h-12 w-12 rounded-xl bg-gradient-amber flex items-center justify-center shadow-amber">
+                  <s.icon className="h-5.5 w-5.5 text-accent-foreground" strokeWidth={2.2} />
+                </div>
+                {s.priceFrom && (
+                  <div className="text-right">
+                    <div className="text-xs text-muted-foreground">From</div>
+                    <div className="font-display text-lg font-semibold text-accent-foreground">
+                      {s.priceFrom}
+                    </div>
+                  </div>
+                )}
               </div>
               <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-            </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{s.desc}</p>
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-accent-foreground group-hover:gap-3 transition-all">
+                Learn more <ArrowRight className="h-4 w-4" />
+              </div>
+            </Link>
           ))}
         </div>
       </section>

@@ -208,17 +208,32 @@ function Home() {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
-            <div
+            <Link
               key={s.title}
+              to="/services/$serviceSlug"
+              params={{ serviceSlug: s.slug }}
               style={{ animationDelay: `${i * 100}ms` }}
-              className="bento-inner p-7 rounded-2xl bg-card border border-border hover:border-accent/40 hover:shadow-elegant transition-smooth animate-in fade-in slide-in-from-bottom-4 duration-700"
+              className="group bento-inner p-7 rounded-2xl bg-card border border-border hover:border-accent/60 hover:shadow-elegant transition-smooth animate-in fade-in slide-in-from-bottom-4 duration-700 flex flex-col"
             >
-              <div className="h-12 w-12 rounded-xl bg-gradient-amber flex items-center justify-center shadow-amber mb-5">
-                <s.icon className="h-5.5 w-5.5 text-accent-foreground" strokeWidth={2.2} />
+              <div className="flex items-start justify-between mb-5">
+                <div className="h-12 w-12 rounded-xl bg-gradient-amber flex items-center justify-center shadow-amber">
+                  <s.icon className="h-5.5 w-5.5 text-accent-foreground" strokeWidth={2.2} />
+                </div>
+                {s.priceFrom && (
+                  <div className="text-right">
+                    <div className="text-xs text-muted-foreground">From</div>
+                    <div className="font-display text-lg font-semibold text-accent-foreground">
+                      {s.priceFrom}
+                    </div>
+                  </div>
+                )}
               </div>
               <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-            </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{s.desc}</p>
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-accent-foreground group-hover:gap-3 transition-all">
+                Learn more <ArrowRight className="h-4 w-4" />
+              </div>
+            </Link>
           ))}
         </div>
       </section>

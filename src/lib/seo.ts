@@ -1,4 +1,4 @@
-import { BUSINESS, AREAS, SERVICES, REVIEWS, GEOFENCE, NEWS, type NewsPost } from "@/data/seo";
+import { BUSINESS, AREAS, SERVICES, REVIEWS, GEOFENCE, NEWS, PRICING, type NewsPost } from "@/data/seo";
 
 /* ----------------- Geo helpers (geofencing JSON-LD) ----------------- */
 

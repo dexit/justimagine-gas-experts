@@ -46,7 +46,7 @@ export const Route = createFileRoute("/news/$slug")({
 });
 
 function NewsPostPage() {
-  const { post } = Route.useLoaderData();
+  const { post } = Route.useLoaderData() as { post: NewsPost };
   const others = NEWS.filter((n) => n.slug !== post.slug).slice(0, 2);
   return (
     <PageShell>

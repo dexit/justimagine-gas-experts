@@ -47,36 +47,51 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const services = [
+const services: Array<{
+  icon: typeof Flame;
+  title: string;
+  desc: string;
+  slug: "boiler-installation" | "boiler-servicing" | "gas-safety-certificate" | "plumbing" | "landlord-gas-safety" | "emergency-callout";
+  priceFrom?: string;
+}> = [
   {
     icon: Flame,
     title: "Boiler Installation",
     desc: "Old boiler on its last legs? We fit A-rated Worcester, Vaillant and Ideal boilers — fixed price agreed before we start, manufacturer warranties included.",
+    slug: "boiler-installation",
+    priceFrom: "£2,500",
   },
   {
     icon: Wrench,
     title: "Servicing & Repairs",
     desc: "Annual services that keep your warranty valid and your heating running efficiently. Same-day repairs when things go wrong — without the runaround.",
+    slug: "boiler-servicing",
+    priceFrom: "£100",
   },
   {
     icon: ShieldCheck,
     title: "Gas Safety Certificates",
     desc: "Landlord CP12 certificates issued the same day. We test every appliance, handle the paperwork, and remind you when they're due again next year.",
+    slug: "gas-safety-certificate",
+    priceFrom: "£60",
   },
   {
     icon: Droplets,
     title: "Heating & Plumbing",
     desc: "Cold radiators, noisy pipes, leaking taps — we fix heating and plumbing problems quickly, cleanly and without overcharging.",
+    slug: "plumbing",
   },
   {
     icon: FileCheck,
-    title: "Safety Audits & Assessments",
-    desc: "Independent gas safety audits for landlords, HMOs and commercial premises. Clear written reports that meet insurance and licensing requirements.",
+    title: "Landlord Packages",
+    desc: "Annual CP12, boiler service and priority tenant emergency cover bundled into one fixed price. Portfolio discounts for 5+ properties.",
+    slug: "landlord-gas-safety",
   },
   {
     icon: Clock,
     title: "24/7 Emergency Callouts",
     desc: "Boiler out at midnight? Gas smell at 6am? You'll speak to a real engineer straight away — not a call centre. We're on call every hour of every day.",
+    slug: "emergency-callout",
   },
 ];
 

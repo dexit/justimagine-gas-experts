@@ -70,3 +70,108 @@ export async function createCheckoutSession(input: CheckoutInput) {
     },
   });
 }
+
+export interface PaymentInput {
+  refId: string;
+  email: string;
+  name: string;
+  service: string;
+  baseAmountPounds: number;
+  surchargePercent: number;
+}
+
+// CC payment with surcharge
+export async function createPaymentSession(input: PaymentInput) {
+  const baseCents = Math.round(input.baseAmountPounds * 100);
+  const surchargeCents = Math.round(baseCents * input.surchargePercent);
+  const totalCents = baseCents + surchargeCents;
+
+  const items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
+    {
+      price_data: {
+        currency: "gbp",
+        product_data: {
+          name: input.service,
+          description: `Enquiry: ${input.refId}`,
+        },
+        unit_amount: baseCents,
+      },
+      quantity: 1,
+    },
+  ];
+
+  // Add surcharge if > 0
+  if (surchargeCents > 0) {
+    items.push({
+      price_data: {
+        currency: "gbp",
+        product_data: { name: "Processing fee (+5%)" },
+        unit_amount: surchargeCents,
+      },
+      quantity: 1,
+    });
+  }
+
+  return stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: items,
+    mode: "payment",
+    success_url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/payment-success?ref=${input.refId}`,
+    cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/payment-cancelled?ref=${input.refId}`,
+    customer_email: input.email,
+    metadata: {
+      refId: input.refId,
+      service: input.service,
+    },
+  });
+}
+
+export interface InvoiceInput {
+  refId: string;
+  email: string;
+  name: string;
+  service: string;
+  amountPounds: number;
+}
+
+// Invoice for manual bank transfer
+export async function createInvoice(input: InvoiceInput) {
+  const amountCents = Math.round(input.amountPounds * 100);
+
+  try {
+    // Create invoice
+    const invoice = await stripe.invoices.create({
+      customer_email: input.email,
+      currency: "gbp",
+      collection_method: "send_invoice",
+      days_until_due: 14,
+      metadata: {
+        refId: input.refId,
+        service: input.service,
+      },
+    });
+
+    // Add line item
+    await stripe.invoiceItems.create({
+      invoice: invoice.id,
+      customer: invoice.customer as string,
+      amount: amountCents,
+      currency: "gbp",
+      description: `${input.service} - Ref: ${input.refId}`,
+    });
+
+    // Finalize + send
+    const finalized = await stripe.invoices.finalizeInvoice(invoice.id);
+    await stripe.invoices.sendInvoice(invoice.id);
+
+    return {
+      ok: true,
+      invoiceId: invoice.id,
+      url: finalized.hosted_invoice_url || "",
+    };
+  } catch (err) {
+    throw new Error(
+      `Invoice creation failed: ${err instanceof Error ? err.message : "Unknown error"}`
+    );
+  }
+}

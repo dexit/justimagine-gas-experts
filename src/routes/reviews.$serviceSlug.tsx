@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SERVICES } from "@/data/seo";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { getServiceBySlug } from "@/lib/services";
@@ -150,7 +150,7 @@ function ReviewsPage() {
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Button size="lg" asChild>
-              <a href="/contact">Request a quote</a>
+              <Link to="/contact">Request a quote</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <a href={`tel:07774079152`}>Call us now</a>

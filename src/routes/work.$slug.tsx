@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
@@ -68,9 +68,9 @@ function ProjectDetailPage() {
           size="icon"
           className="absolute top-6 left-6 bg-background/80 backdrop-blur"
         >
-          <a href="/work">
+          <Link to="/work">
             <ArrowLeft className="h-4 w-4" />
-          </a>
+          </Link>
         </Button>
       </div>
 
@@ -150,7 +150,7 @@ function ProjectDetailPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Button size="lg" asChild>
-              <a href="/contact">Request a quote</a>
+              <Link to="/contact">Request a quote</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <a href={`tel:07774079152`} className="gap-2">

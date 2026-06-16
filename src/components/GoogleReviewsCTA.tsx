@@ -1,4 +1,5 @@
 import { Button } from "./ui/button";
+import { Link } from "@tanstack/react-router";
 import { Star, ExternalLink } from "lucide-react";
 
 interface GoogleReviewsCTAProps {
@@ -28,7 +29,9 @@ export function GoogleReviewsCTA({ googleReviewsUrl, serviceSlug }: GoogleReview
           </Button>
           {serviceSlug && (
             <Button asChild variant="outline">
-              <a href={`/reviews/${serviceSlug}`}>See Reviews</a>
+              <Link to="/reviews/$serviceSlug" params={{ serviceSlug }}>
+                See Reviews
+              </Link>
             </Button>
           )}
         </div>

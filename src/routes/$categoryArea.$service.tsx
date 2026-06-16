@@ -1,7 +1,7 @@
 // Dynamic service page for /${categoryArea}/${service}
 // Renders full service landing with FAQs, pricing, reviews, CTAs, LD-JSON schema
 
-import { useParams, createFileRoute } from "@tanstack/react-router";
+import { useParams, createFileRoute, Link } from "@tanstack/react-router";
 import { SERVICES, type ServiceSlug } from "@/data/seo";
 import { AREAS, type AreaSlug } from "@/data/areas";
 import { PageShell } from "@/components/PageShell";
@@ -31,7 +31,7 @@ function ServicePageComponent() {
         <div className="mx-auto max-w-3xl px-4 py-16 text-center">
           <h1 className="text-3xl font-semibold mb-2">Service not found</h1>
           <p className="text-muted-foreground mb-6">This service is not available in your area.</p>
-          <Button asChild><a href="/services">Back to services</a></Button>
+          <Button asChild><Link to="/services">Back to services</Link></Button>
         </div>
       </PageShell>
     );

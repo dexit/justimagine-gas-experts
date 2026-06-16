@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import {
   ShieldCheck,
   Phone,
@@ -193,6 +194,8 @@ const landlordReviews = REVIEWS.filter(
 ).slice(0, 3);
 
 function LandlordPage() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <PageShell>
       <PageHero
@@ -201,6 +204,25 @@ function LandlordPage() {
         subtitle="CP12 certificates, annual boiler servicing and priority emergency cover — one fixed price per property. Full compliance, without the admin headache."
         crumbs={[{ name: "Landlord Packages" }]}
       />
+
+      {/* Quick access banner */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8 -mt-4 mb-8">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <Button
+            onClick={() => setShowForm(true)}
+            className="flex-1 bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold"
+          >
+            Get a Quote
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+          <Button asChild variant="outline" className="flex-1">
+            <a href={`tel:${BUSINESS.phoneE164}`}>
+              <Phone className="h-4 w-4 mr-2" />
+              Call {BUSINESS.phone}
+            </a>
+          </Button>
+        </div>
+      </section>
 
       {/* Legal obligation banner */}
       <section className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8 -mt-6 mb-3 sm:mb-4">
@@ -279,7 +301,7 @@ function LandlordPage() {
                 ))}
               </ul>
               <Button
-                asChild
+                onClick={() => setShowForm(true)}
                 className={
                   p.popular
                     ? "w-full bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold"
@@ -287,10 +309,8 @@ function LandlordPage() {
                 }
                 variant={p.popular ? "default" : "outline"}
               >
-                <a href={`tel:${BUSINESS.phoneE164}`}>
-                  <Phone className="h-4 w-4 mr-2" />
-                  Book now
-                </a>
+                Get a quote
+                <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
           ))}
@@ -466,33 +486,6 @@ function LandlordPage() {
         </div>
       </section>
 
-      {/* Enquiry form */}
-      <section className="bg-secondary/40 border-t border-border py-16">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-3">
-              Get in touch
-            </p>
-            <h2 className="font-display text-3xl font-semibold mb-4">
-              Get a landlord package quote
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Fill in the form and we'll be in touch within one working day. For portfolios of 5+
-              properties or anything urgent, a phone call is the fastest route.
-            </p>
-            <a
-              href={`tel:${BUSINESS.phoneE164}`}
-              className="inline-flex items-center gap-2 font-semibold text-foreground hover:text-accent transition-smooth"
-            >
-              <Phone className="h-4 w-4 text-accent" />
-              {BUSINESS.phone}
-            </a>
-          </div>
-          <EnquiryForm defaultService="Landlord Gas Safety" />
-        </div>
-      </section>
-
-      <RelatedContent type="services" title="Services included in landlord packages" limit={4} />
     </PageShell>
   );
 }

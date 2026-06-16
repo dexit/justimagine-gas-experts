@@ -3,7 +3,7 @@ import { PageShell, PageHero } from "@/components/PageShell";
 import { BUSINESS } from "@/data/seo";
 import { jsonLdScript, breadcrumbJsonLd } from "@/lib/seo";
 
-const LAST_UPDATED = "16 June 2026";
+const LAST_UPDATED = new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
 
 const COOKIE_TABLE = [
   { name: "_ga", provider: "Google Analytics", purpose: "Distinguishes unique users by assigning a randomly generated number", duration: "2 years", type: "Analytics" },

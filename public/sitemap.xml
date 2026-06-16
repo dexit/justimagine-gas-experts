@@ -211,7 +211,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas/leamington-spa</loc>
+    <loc>https://justimagine.ltd/areas/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -223,37 +223,43 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas/kenilworth</loc>
+    <loc>https://justimagine.ltd/areas/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/areas/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas/coventry</loc>
+    <loc>https://justimagine.ltd/areas/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas/nuneaton</loc>
+    <loc>https://justimagine.ltd/areas/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas/bedworth</loc>
+    <loc>https://justimagine.ltd/areas/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/areas/southam</loc>
+    <loc>https://justimagine.ltd/areas/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/areas/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -307,7 +313,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-installation/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/boiler-installation/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -319,37 +325,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-installation/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/boiler-installation/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-installation/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/boiler-installation/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-installation/coventry</loc>
+    <loc>https://justimagine.ltd/services/boiler-installation/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-installation/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/boiler-installation/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-installation/bedworth</loc>
+    <loc>https://justimagine.ltd/services/boiler-installation/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-installation/southam</loc>
+    <loc>https://justimagine.ltd/services/boiler-installation/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/boiler-installation/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -403,7 +415,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-repair/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/boiler-repair/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -415,37 +427,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-repair/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/boiler-repair/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-repair/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/boiler-repair/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-repair/coventry</loc>
+    <loc>https://justimagine.ltd/services/boiler-repair/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-repair/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/boiler-repair/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-repair/bedworth</loc>
+    <loc>https://justimagine.ltd/services/boiler-repair/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-repair/southam</loc>
+    <loc>https://justimagine.ltd/services/boiler-repair/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/boiler-repair/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -499,7 +517,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-servicing/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/boiler-servicing/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -511,37 +529,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-servicing/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/boiler-servicing/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-servicing/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/boiler-servicing/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-servicing/coventry</loc>
+    <loc>https://justimagine.ltd/services/boiler-servicing/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-servicing/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/boiler-servicing/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-servicing/bedworth</loc>
+    <loc>https://justimagine.ltd/services/boiler-servicing/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/boiler-servicing/southam</loc>
+    <loc>https://justimagine.ltd/services/boiler-servicing/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/boiler-servicing/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -595,7 +619,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-safety-certificate/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -607,37 +631,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-safety-certificate/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-safety-certificate/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-safety-certificate/coventry</loc>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-safety-certificate/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-safety-certificate/bedworth</loc>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-safety-certificate/southam</loc>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/gas-safety-certificate/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -691,7 +721,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/landlord-gas-safety/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -703,37 +733,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/landlord-gas-safety/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/landlord-gas-safety/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/landlord-gas-safety/coventry</loc>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/landlord-gas-safety/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/landlord-gas-safety/bedworth</loc>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/landlord-gas-safety/southam</loc>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/landlord-gas-safety/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -787,7 +823,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/central-heating/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/central-heating/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -799,37 +835,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/central-heating/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/central-heating/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/central-heating/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/central-heating/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/central-heating/coventry</loc>
+    <loc>https://justimagine.ltd/services/central-heating/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/central-heating/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/central-heating/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/central-heating/bedworth</loc>
+    <loc>https://justimagine.ltd/services/central-heating/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/central-heating/southam</loc>
+    <loc>https://justimagine.ltd/services/central-heating/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/central-heating/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -883,7 +925,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/plumbing/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/plumbing/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -895,37 +937,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/plumbing/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/plumbing/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/plumbing/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/plumbing/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/plumbing/coventry</loc>
+    <loc>https://justimagine.ltd/services/plumbing/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/plumbing/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/plumbing/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/plumbing/bedworth</loc>
+    <loc>https://justimagine.ltd/services/plumbing/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/plumbing/southam</loc>
+    <loc>https://justimagine.ltd/services/plumbing/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/plumbing/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -979,7 +1027,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/power-flushing/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/power-flushing/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -991,37 +1039,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/power-flushing/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/power-flushing/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/power-flushing/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/power-flushing/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/power-flushing/coventry</loc>
+    <loc>https://justimagine.ltd/services/power-flushing/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/power-flushing/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/power-flushing/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/power-flushing/bedworth</loc>
+    <loc>https://justimagine.ltd/services/power-flushing/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/power-flushing/southam</loc>
+    <loc>https://justimagine.ltd/services/power-flushing/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/power-flushing/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1075,7 +1129,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/emergency-callout/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/emergency-callout/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1087,37 +1141,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/emergency-callout/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/emergency-callout/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/emergency-callout/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/emergency-callout/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/emergency-callout/coventry</loc>
+    <loc>https://justimagine.ltd/services/emergency-callout/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/emergency-callout/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/emergency-callout/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/emergency-callout/bedworth</loc>
+    <loc>https://justimagine.ltd/services/emergency-callout/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/emergency-callout/southam</loc>
+    <loc>https://justimagine.ltd/services/emergency-callout/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/emergency-callout/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1171,7 +1231,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/underfloor-heating/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/underfloor-heating/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1183,37 +1243,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/underfloor-heating/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/underfloor-heating/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/underfloor-heating/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/underfloor-heating/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/underfloor-heating/coventry</loc>
+    <loc>https://justimagine.ltd/services/underfloor-heating/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/underfloor-heating/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/underfloor-heating/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/underfloor-heating/bedworth</loc>
+    <loc>https://justimagine.ltd/services/underfloor-heating/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/underfloor-heating/southam</loc>
+    <loc>https://justimagine.ltd/services/underfloor-heating/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/underfloor-heating/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1267,7 +1333,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/air-source-heat-pumps/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1279,37 +1345,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/air-source-heat-pumps/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/air-source-heat-pumps/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/air-source-heat-pumps/coventry</loc>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/air-source-heat-pumps/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/air-source-heat-pumps/bedworth</loc>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/air-source-heat-pumps/southam</loc>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/air-source-heat-pumps/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1363,7 +1435,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/bathroom-installation/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/bathroom-installation/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1375,37 +1447,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/bathroom-installation/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/bathroom-installation/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/bathroom-installation/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/bathroom-installation/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/bathroom-installation/coventry</loc>
+    <loc>https://justimagine.ltd/services/bathroom-installation/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/bathroom-installation/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/bathroom-installation/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/bathroom-installation/bedworth</loc>
+    <loc>https://justimagine.ltd/services/bathroom-installation/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/bathroom-installation/southam</loc>
+    <loc>https://justimagine.ltd/services/bathroom-installation/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/bathroom-installation/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1459,7 +1537,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/radiators/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/radiators/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1471,37 +1549,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/radiators/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/radiators/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/radiators/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/radiators/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/radiators/coventry</loc>
+    <loc>https://justimagine.ltd/services/radiators/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/radiators/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/radiators/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/radiators/bedworth</loc>
+    <loc>https://justimagine.ltd/services/radiators/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/radiators/southam</loc>
+    <loc>https://justimagine.ltd/services/radiators/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/radiators/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1555,7 +1639,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/heating-services/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/heating-services/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1567,37 +1651,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/heating-services/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/heating-services/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/heating-services/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/heating-services/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/heating-services/coventry</loc>
+    <loc>https://justimagine.ltd/services/heating-services/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/heating-services/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/heating-services/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/heating-services/bedworth</loc>
+    <loc>https://justimagine.ltd/services/heating-services/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/heating-services/southam</loc>
+    <loc>https://justimagine.ltd/services/heating-services/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/heating-services/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1651,7 +1741,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-boilers/leamington-spa</loc>
+    <loc>https://justimagine.ltd/services/gas-boilers/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1663,37 +1753,43 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-boilers/kenilworth</loc>
+    <loc>https://justimagine.ltd/services/gas-boilers/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-boilers/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/services/gas-boilers/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-boilers/coventry</loc>
+    <loc>https://justimagine.ltd/services/gas-boilers/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-boilers/nuneaton</loc>
+    <loc>https://justimagine.ltd/services/gas-boilers/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-boilers/bedworth</loc>
+    <loc>https://justimagine.ltd/services/gas-boilers/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/services/gas-boilers/southam</loc>
+    <loc>https://justimagine.ltd/services/gas-boilers/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/services/gas-boilers/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -1747,7 +1843,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/heating-in/leamington-spa</loc>
+    <loc>https://justimagine.ltd/heating-in/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1759,37 +1855,43 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/heating-in/kenilworth</loc>
+    <loc>https://justimagine.ltd/heating-in/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/heating-in/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/heating-in/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/heating-in/coventry</loc>
+    <loc>https://justimagine.ltd/heating-in/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/heating-in/nuneaton</loc>
+    <loc>https://justimagine.ltd/heating-in/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/heating-in/bedworth</loc>
+    <loc>https://justimagine.ltd/heating-in/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/heating-in/southam</loc>
+    <loc>https://justimagine.ltd/heating-in/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/heating-in/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1843,7 +1945,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/gas-boiler-in/leamington-spa</loc>
+    <loc>https://justimagine.ltd/gas-boiler-in/coventry</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1855,37 +1957,43 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/gas-boiler-in/kenilworth</loc>
+    <loc>https://justimagine.ltd/gas-boiler-in/leicester</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/gas-boiler-in/stratford-upon-avon</loc>
+    <loc>https://justimagine.ltd/gas-boiler-in/northampton</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/gas-boiler-in/coventry</loc>
+    <loc>https://justimagine.ltd/gas-boiler-in/corby</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/gas-boiler-in/nuneaton</loc>
+    <loc>https://justimagine.ltd/gas-boiler-in/banbury</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/gas-boiler-in/bedworth</loc>
+    <loc>https://justimagine.ltd/gas-boiler-in/atherstone</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://justimagine.ltd/gas-boiler-in/southam</loc>
+    <loc>https://justimagine.ltd/gas-boiler-in/alcester</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://justimagine.ltd/gas-boiler-in/shipston-on-stour</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

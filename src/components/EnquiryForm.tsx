@@ -40,6 +40,10 @@ const schema = z.object({
   service: z.string().trim().max(80).optional().or(z.literal("")),
   area: z.string().trim().max(80).optional().or(z.literal("")),
   message: z.string().trim().max(2000).optional().or(z.literal("")),
+  preferredDate: z.string().refine((v) => !v || new Date(v) > new Date(), "Pick a future date").optional().or(z.literal("")),
+  preferredTime: z.string().max(20).optional().or(z.literal("")),
+  underageConsent: z.boolean(),
+  animalConsent: z.boolean(),
   /** Honeypot — bots fill it, humans don't see it. */
   website: z.string().max(0, "").optional().or(z.literal("")),
 });
@@ -91,6 +95,10 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
       service: defaultService,
       area: defaultArea,
       message: "",
+      preferredDate: "",
+      preferredTime: "",
+      underageConsent: false,
+      animalConsent: false,
       website: "",
     },
   });
@@ -107,6 +115,10 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
           service: values.service ?? "",
           area: values.area ?? "",
           message: values.message ?? "",
+          preferredDate: values.preferredDate ?? "",
+          preferredTime: values.preferredTime ?? "",
+          underageConsent: values.underageConsent || false,
+          animalConsent: values.animalConsent || false,
         },
       });
       if (res.ok) {
@@ -239,6 +251,49 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
           className={`${fieldClass(!!errors.message, touchedFields.message)} resize-none`}
         />
       </Field>
+
+      <div className="grid sm:grid-cols-2 gap-3">
+        <Field label="Preferred date (optional)" touched={touchedFields.preferredDate}>
+          <input
+            {...register("preferredDate")}
+            type="date"
+            className={fieldClass(!!errors.preferredDate, touchedFields.preferredDate)}
+          />
+        </Field>
+        <Field label="Preferred time (optional)" touched={touchedFields.preferredTime}>
+          <input
+            {...register("preferredTime")}
+            type="time"
+            className={fieldClass(!!errors.preferredTime, touchedFields.preferredTime)}
+          />
+        </Field>
+      </div>
+
+      <div className="space-y-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <h4 className="font-semibold text-sm text-foreground">Before your visit</h4>
+        <div className="space-y-2">
+          <label className="flex items-start gap-3 text-sm cursor-pointer">
+            <input
+              type="checkbox"
+              {...register("underageConsent")}
+              className="mt-0.5 h-4 w-4 rounded border-border"
+            />
+            <span className="text-muted-foreground">
+              If anyone in the property is under 16, an adult must be present during the visit.
+            </span>
+          </label>
+          <label className="flex items-start gap-3 text-sm cursor-pointer">
+            <input
+              type="checkbox"
+              {...register("animalConsent")}
+              className="mt-0.5 h-4 w-4 rounded border-border"
+            />
+            <span className="text-muted-foreground">
+              All dogs, cats and other pets must be secured away while we work.
+            </span>
+          </label>
+        </div>
+      </div>
 
       <Button
         type="submit"

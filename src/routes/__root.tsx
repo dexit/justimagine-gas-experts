@@ -3,6 +3,7 @@ import { localBusinessJsonLd, organizationJsonLd, websiteJsonLd, jsonLdScript } 
 import { BUSINESS, AREAS } from "@/data/seo";
 import { GTM_ID, GA4_ID, CLARITY_ID, BING_VERIFY, GOOGLE_VERIFY, INDEXNOW_KEY } from "@/lib/analytics";
 import { TrackingScripts } from "@/components/TrackingScripts";
+import { CookiesBar } from "@/components/CookiesBar";
 import { Phone, Flame, ArrowRight, Home, Wrench, AlertCircle, Building, MapPin } from "lucide-react";
 import { useSearchRedirect } from "@/hooks/useSearchRedirect";
 
@@ -180,5 +181,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   useSearchRedirect();
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <CookiesBar />
+    </>
+  );
 }

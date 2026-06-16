@@ -1,7 +1,7 @@
-// Dynamic service page for /${category}-in-${area}/${service}
+// Dynamic service page for /${categoryArea}/${service}
 // Renders full service landing with FAQs, pricing, reviews, CTAs, LD-JSON schema
 
-import { useParams } from "@tanstack/react-router";
+import { useParams, createFileRoute } from "@tanstack/react-router";
 import { SERVICES, type ServiceSlug } from "@/data/seo";
 import { AREAS, type AreaSlug } from "@/data/areas";
 import { PageShell } from "@/components/PageShell";
@@ -11,9 +11,16 @@ import { useState } from "react";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { ServiceSchema, LocalBusinessSchema, FAQSchema, BreadcrumbSchema } from "@/lib/schemas";
 
-export function ServicePageComponent() {
-  const { service, category, area } = useParams({ from: "/$category-in-$area/$service" });
+export const Route = createFileRoute("/$categoryArea/$service")({
+  component: ServicePageComponent,
+});
+
+function ServicePageComponent() {
+  const { service, categoryArea } = useParams({ from: "/$categoryArea/$service" });
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+
+  // Parse categoryArea to extract category and area (format: "category-in-area")
+  const [category, area] = categoryArea.split("-in-") || ["", ""];
 
   const svc = SERVICES.find((s) => s.slug === (service as ServiceSlug));
   const areaData = AREAS.find((a) => a.slug === (area as AreaSlug));

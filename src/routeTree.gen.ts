@@ -38,6 +38,7 @@ import { Route as HeatingInAreaSlugRouteImport } from './routes/heating-in.$area
 import { Route as GasBoilerInAreaSlugRouteImport } from './routes/gas-boiler-in.$areaSlug'
 import { Route as ConfirmationRefIdRouteImport } from './routes/confirmation.$refId'
 import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
+import { Route as AdminPortfolioRouteImport } from './routes/admin.portfolio'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as ServicesServiceSlugHowToRouteImport } from './routes/services.$serviceSlug.how-to'
@@ -189,6 +190,11 @@ const AreasAreaSlugRoute = AreasAreaSlugRouteImport.update({
   path: '/areas/$areaSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPortfolioRoute = AdminPortfolioRouteImport.update({
+  id: '/admin/portfolio',
+  path: '/admin/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin/login',
   path: '/admin/login',
@@ -240,6 +246,7 @@ export interface FileRoutesByFullPath {
   '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
@@ -276,6 +283,7 @@ export interface FileRoutesByTo {
   '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
@@ -313,6 +321,7 @@ export interface FileRoutesById {
   '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
@@ -351,6 +360,7 @@ export interface FileRouteTypes {
     | '/work'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/portfolio'
     | '/areas/$areaSlug'
     | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
@@ -387,6 +397,7 @@ export interface FileRouteTypes {
     | '/work'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/portfolio'
     | '/areas/$areaSlug'
     | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
@@ -423,6 +434,7 @@ export interface FileRouteTypes {
     | '/work'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/portfolio'
     | '/areas/$areaSlug'
     | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
@@ -460,6 +472,7 @@ export interface RootRouteChildren {
   WorkRoute: typeof WorkRouteWithChildren
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminPortfolioRoute: typeof AdminPortfolioRoute
   AreasAreaSlugRoute: typeof AreasAreaSlugRoute
   ConfirmationRefIdRoute: typeof ConfirmationRefIdRoute
   GasBoilerInAreaSlugRoute: typeof GasBoilerInAreaSlugRoute
@@ -672,6 +685,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreasAreaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/portfolio': {
+      id: '/admin/portfolio'
+      path: '/admin/portfolio'
+      fullPath: '/admin/portfolio'
+      preLoaderRoute: typeof AdminPortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/admin/login'
@@ -791,6 +811,7 @@ const rootRouteChildren: RootRouteChildren = {
   WorkRoute: WorkRouteWithChildren,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminPortfolioRoute: AdminPortfolioRoute,
   AreasAreaSlugRoute: AreasAreaSlugRoute,
   ConfirmationRefIdRoute: ConfirmationRefIdRoute,
   GasBoilerInAreaSlugRoute: GasBoilerInAreaSlugRoute,

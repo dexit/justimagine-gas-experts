@@ -7,7 +7,6 @@ import { useServerFn } from "@tanstack/react-start";
 import { submitEnquiry } from "@/enquiry.functions";
 import { toast } from "sonner";
 import { CheckCircle2, AlertCircle } from "lucide-react";
-import { useNavigate } from "@tanstack/react-router";
 
 /* ------------ Validation schema (mirrors server-side) ------------ */
 const ukPhone = /^(?:(?:\+44\s?|0)(?:\d\s?){9,10})$/;
@@ -71,7 +70,6 @@ interface Props {
 
 export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: Props) {
   const submit = useServerFn(submitEnquiry);
-  const navigate = useNavigate();
   const [done, setDone] = useState(false);
 
   const {
@@ -111,8 +109,8 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
       });
       if (res.ok) {
         toast.success("Enquiry sent — we'll be in touch shortly.");
-        // Redirect to confirmation page with ref ID
-        await navigate({ to: `/confirmation/${res.refId}` });
+        setDone(true);
+        reset();
       } else {
         toast.error(res.error || "Could not send. Please call 07774 079152.");
       }
@@ -131,8 +129,13 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
         <div className="mb-4 flex justify-center">
           <CheckCircle2 className="h-12 w-12 text-accent animate-in scale-in-95 duration-300" aria-hidden="true" />
         </div>
-        <h3 className="font-display text-xl font-semibold mb-2 text-foreground">Redirecting to confirmation...</h3>
-        <p className="text-sm text-muted-foreground">You'll see your reference number momentarily.</p>
+        <h3 className="font-display text-xl font-semibold mb-2 text-foreground">Thanks — message received.</h3>
+        <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+          We'll be in touch within 30 minutes during working hours, or first thing tomorrow.
+        </p>
+        <Button variant="outline" onClick={() => setDone(false)}>
+          Send another enquiry
+        </Button>
       </div>
     );
   }

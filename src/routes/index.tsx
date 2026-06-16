@@ -100,20 +100,20 @@ function Home() {
     <PageShell>
       {/* Hero */}
       <section className="bg-gradient-hero text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8 pt-12 pb-20 sm:pt-16 sm:pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-foreground/10 border border-primary-foreground/15 text-xs font-medium text-accent mb-6">
               <ShieldCheck className="h-3.5 w-3.5" /> Gas Safe Registered · 24/7 Callouts
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.02] text-balance animate-in fade-in slide-in-from-bottom-3 duration-700">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.02] text-balance animate-in fade-in slide-in-from-bottom-3 duration-700">
               Trusted Gas Engineers{" "}
               <span className="text-gradient-amber">across Warwickshire.</span>
             </h1>
-            <p className="mt-5 sm:mt-6 text-base sm:text-lg text-primary-foreground/75 max-w-xl leading-relaxed text-balance animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            <p className="mt-6 text-lg text-primary-foreground/75 max-w-xl leading-relaxed text-balance animate-in fade-in slide-in-from-bottom-4 duration-1000">
               Whether you need a new boiler, an annual service or an emergency fix — we show up
               when we say, do the job properly, and always charge a fair price.
             </p>
-            <div className="mt-6 sm:mt-8 flex flex-wrap gap-2 sm:gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Button
                 asChild
                 size="lg"
@@ -135,22 +135,22 @@ function Home() {
                 </Link>
               </Button>
             </div>
-            <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 max-w-md">
+            <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
               {[
                 ["15+", "Years"],
                 ["1,200+", "Jobs done"],
                 ["24/7", "Callouts"],
               ].map(([n, l]) => (
                 <div key={l}>
-                  <div className="font-display text-2xl sm:text-3xl text-accent">{n}</div>
-                  <div className="text-xs uppercase tracking-wider text-primary-foreground/60 mt-0.5 sm:mt-1">
+                  <div className="font-display text-3xl text-accent">{n}</div>
+                  <div className="text-xs uppercase tracking-wider text-primary-foreground/60 mt-1">
                     {l}
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative -mx-4 sm:mx-0">
+          <div className="relative">
             <OptimizedImage
               src={heroImg}
               srcSm={heroImgSm}
@@ -178,8 +178,8 @@ function Home() {
       </section>
 
       {/* Trusted Brands */}
-      <section className="bg-secondary/30 border-y border-border py-8 sm:py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
+      <section className="bg-secondary/30 border-y border-border py-12">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="text-center text-xs uppercase tracking-widest text-muted-foreground mb-8 font-semibold">
             We Install & Service All Leading Brands
           </p>
@@ -188,13 +188,13 @@ function Home() {
       </section>
 
       {/* Services */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8 py-16 sm:py-20 md:py-28">
+      <section className="mx-auto max-w-7xl px-5 lg:px-8 py-20 md:py-28">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-3">
               How we help
             </p>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
+            <h2 className="font-display text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
               The heating and gas services you need — handled properly.
             </h2>
           </div>
@@ -206,7 +206,7 @@ function Home() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
             <Link
               key={s.title}

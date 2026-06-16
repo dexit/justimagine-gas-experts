@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { ServicesCMS } from "@/components/admin/ServicesCMS";
+import { AreasCMS } from "@/components/admin/AreasCMS";
 import {
   BarChart3,
   Settings,
@@ -146,25 +148,11 @@ function StatCard({ label, value }: { label: string; value: any }) {
 }
 
 function ServicesSection() {
-  return (
-    <div>
-      <h1 className="font-display text-3xl font-semibold mb-6">Services</h1>
-      <p className="text-muted-foreground">
-        Service CMS coming soon. Edit service names, keywords, CTAs, descriptions.
-      </p>
-    </div>
-  );
+  return <ServicesCMS />;
 }
 
 function AreasSection() {
-  return (
-    <div>
-      <h1 className="font-display text-3xl font-semibold mb-6">Areas</h1>
-      <p className="text-muted-foreground">
-        Area CMS coming soon. Manage geographic zones, postcodes, CTAs.
-      </p>
-    </div>
-  );
+  return <AreasCMS />;
 }
 
 function AnalyticsSection() {

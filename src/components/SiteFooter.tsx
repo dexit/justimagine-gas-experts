@@ -13,13 +13,14 @@ export function SiteFooter() {
             <span className="font-display text-2xl font-semibold">Just Imagine Ltd</span>
           </div>
           <p className="text-primary-foreground/70 max-w-md leading-relaxed">
-            Gas Safe registered heating & plumbing engineers based in Rugby, covering Leamington
-            Spa, Warwick, Coventry and across Warwickshire. We show up on time, do the job
-            properly, and always charge a fair price.
+            Gas Safe registered and WRAS approved heating &amp; plumbing engineers based in Rugby. Serving homeowners and landlords within a 1-hour radius — including Coventry, Warwick, Leicester, Northampton, Corby and Banbury. We show up, do the job right, and charge a fair price.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <div className="inline-flex items-center gap-2 text-sm text-accent border border-accent/30 rounded-full px-3 py-1">
               <ShieldCheck className="h-3.5 w-3.5" /> Gas Safe Registered
+            </div>
+            <div className="inline-flex items-center gap-2 text-sm text-accent/80 border border-accent/20 rounded-full px-3 py-1">
+              <ShieldCheck className="h-3.5 w-3.5" /> WRAS Approved
             </div>
             <div className="inline-flex items-center gap-2 text-sm text-primary-foreground/60 border border-primary-foreground/20 rounded-full px-3 py-1">
               Est. {BUSINESS.founded}
@@ -66,11 +67,6 @@ export function SiteFooter() {
             <li>
               <Link to="/landlord" className="hover:text-accent transition-smooth">
                 Landlord Packages
-              </Link>
-            </li>
-            <li>
-              <Link to="/commercial" className="hover:text-accent transition-smooth">
-                Commercial & Construction
               </Link>
             </li>
             <li>

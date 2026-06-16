@@ -22,8 +22,8 @@ const nav: NavItem[] = [
   { kind: "link", to: "/", label: "Home", exact: true },
   { kind: "menu", label: "Services", key: "services" },
   { kind: "link", to: "/landlord", label: "Landlords" },
-  { kind: "link", to: "/commercial", label: "Commercial" },
   { kind: "link", to: "/pricing", label: "Pricing" },
+  { kind: "link", to: "/areas", label: "Areas" },
   { kind: "link", to: "/faq", label: "FAQ" },
   { kind: "link", to: "/contact", label: "Contact" },
 ];

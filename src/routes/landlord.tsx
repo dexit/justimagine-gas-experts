@@ -59,7 +59,7 @@ export const Route = createFileRoute("/landlord")({
           "Landlord Gas Safety Services",
           "Comprehensive landlord-focused gas safety certification, boiler servicing, and compliance solutions for rental properties across Warwickshire.",
           undefined,
-          "£60"
+          "£120"
         )
       ),
       jsonLdScript(
@@ -84,7 +84,7 @@ export const Route = createFileRoute("/landlord")({
           },
           {
             q: "How much is a landlord gas safety certificate?",
-            a: "From £60 for a single-appliance property. Our landlord bundle (CP12 + annual boiler service) is £120 — saving around £25 compared to booking separately. Portfolio discounts apply for 5+ properties.",
+            a: "From £120 per property. Our landlord bundle (CP12 + annual boiler service) saves vs booking separately. Portfolio discounts apply for 5+ properties — call for a quote.",
           },
           {
             q: "How long does a CP12 last?",
@@ -121,29 +121,29 @@ export const Route = createFileRoute("/landlord")({
 const packages = [
   {
     name: "CP12 Certificate",
-    price: "£60",
+    price: "£120",
     unit: "per property / year",
     popular: false,
     icon: FileCheck,
     features: [
       "All gas appliances & flues tested",
+      "Gas Safe & WRAS approved engineers",
       "Digital certificate same day",
-      "Up to 2 appliances included",
+      "Sent to landlord, agent & tenant",
       "Free 30-day renewal reminder",
-      "HSE-compliant format",
     ],
   },
   {
     name: "Landlord Bundle",
-    price: "£120",
+    price: "£200",
     unit: "CP12 + boiler service",
     popular: true,
-    badge: "Best Value — Save £25",
+    badge: "Best Value",
     icon: ShieldCheck,
     features: [
       "Annual CP12 safety inspection",
-      "Full boiler service included",
-      "Priority emergency response",
+      "Full manufacturer-spec boiler service",
+      "Priority emergency response for tenants",
       "Digital certificate same day",
       "Free renewal reminder",
       "Single invoice to agent or landlord",

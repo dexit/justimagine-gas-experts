@@ -73,7 +73,7 @@ const services: Array<{
     title: "Gas Safety Certificates",
     desc: "Landlord CP12 certificates issued the same day. We test every appliance, handle the paperwork, and remind you when they're due again next year.",
     slug: "gas-safety-certificate",
-    priceFrom: "£60",
+    priceFrom: "£120",
   },
   {
     icon: Droplets,

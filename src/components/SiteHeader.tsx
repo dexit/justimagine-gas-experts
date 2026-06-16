@@ -5,6 +5,14 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Logo } from "@/components/Logo";
 import { SERVICES, AREAS, NEWS } from "@/data/seo";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 type SimpleNav = { kind: "link"; to: string; label: string; exact?: boolean };
 type MenuNav = { kind: "menu"; label: string; key: string };
@@ -22,7 +30,6 @@ const nav: NavItem[] = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [menu, setMenu] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 glass border-b border-border/60">
@@ -37,13 +44,12 @@ export function SiteHeader() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1" onMouseLeave={() => setMenu(null)}>
+        <nav className="hidden lg:flex items-center gap-1">
           {nav.map((n) =>
             n.kind === "link" ? (
               <Link
                 key={n.label}
                 to={n.to}
-                onMouseEnter={() => setMenu(null)}
                 className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-smooth"
                 activeProps={{ className: "px-3 py-2 text-sm font-semibold text-foreground" }}
                 activeOptions={{ exact: n.exact }}
@@ -51,40 +57,47 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ) : (
-              <div key={n.key} className="relative">
-                <Link
-                  to="/services"
-                  onMouseEnter={() => setMenu(n.key)}
-                  onClick={() => setMenu(null)}
-                  className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-smooth inline-flex items-center gap-1"
-                  activeProps={{ className: "px-3 py-2 text-sm font-semibold text-foreground inline-flex items-center gap-1" }}
-                >
+              <DropdownMenu key={n.key}>
+                <DropdownMenuTrigger className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-smooth inline-flex items-center gap-1 outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md">
                   {n.label}
-                  <button
-                    type="button"
-                    aria-label="Open services menu"
-                    aria-expanded={menu === n.key}
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setMenu(menu === n.key ? null : n.key); }}
-                    className="ml-0.5 hover:text-foreground transition-smooth"
-                  >
-                    <ChevronDown className="h-3.5 w-3.5 opacity-60" />
-                  </button>
-                </Link>
-              </div>
+                  <ChevronDown className="h-3.5 w-3.5 opacity-60" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-[min(92vw,640px)] p-2">
+                  <DropdownMenuLabel className="flex items-center justify-between">
+                    <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">What we do</span>
+                    <Link to="/services" className="text-xs font-semibold text-accent hover:text-accent/80">
+                      View all →
+                    </Link>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <div className="grid sm:grid-cols-2 gap-1">
+                    {SERVICES.map((s) => (
+                      <DropdownMenuItem key={s.slug} asChild className="cursor-pointer">
+                        <Link
+                          to="/services/$serviceSlug"
+                          params={{ serviceSlug: s.slug }}
+                          className="flex flex-col items-start gap-0.5 py-2.5 px-3"
+                        >
+                          <span className="font-semibold text-sm">{s.name}</span>
+                          <span className="text-xs text-muted-foreground line-clamp-2">{s.short}</span>
+                          {s.priceFrom && (
+                            <span className="text-xs font-medium text-accent mt-0.5">{s.priceFrom} {s.priceUnit}</span>
+                          )}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </div>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ),
           )}
           <Link
             to="/emergency"
-            onMouseEnter={() => setMenu(null)}
             className="ml-1 px-3 py-1.5 text-sm font-semibold bg-destructive/10 hover:bg-destructive/20 border border-destructive/30 rounded-full flex items-center gap-1.5 transition-smooth text-destructive"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-destructive animate-pulse" />
             Emergency
           </Link>
-
-          {menu && (
-            <MegaPanel which={menu} onClose={() => setMenu(null)} />
-          )}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -184,44 +197,3 @@ export function SiteHeader() {
   );
 }
 
-function MegaPanel({ which, onClose }: { which: string; onClose: () => void }) {
-  return (
-    <div
-      className="absolute left-0 right-0 top-16 mx-auto max-w-7xl px-5 lg:px-8 animate-in fade-in-0 slide-in-from-top-2 duration-200"
-      onMouseLeave={onClose}
-    >
-      <div className="rounded-2xl bg-popover text-popover-foreground border border-border shadow-elegant p-6 lg:p-8 backdrop-blur-sm">
-        {which === "services" && (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
-            <div className="col-span-2 lg:col-span-3 flex items-center justify-between mb-4 pb-4 border-b border-border">
-              <div>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                  What we do
-                </span>
-                <p className="text-sm text-muted-foreground mt-1">Browse our full range of services</p>
-              </div>
-              <Link to="/services" onClick={onClose} className="text-xs font-semibold text-accent hover:text-accent/80 transition-smooth whitespace-nowrap ml-4">
-                View all →
-              </Link>
-            </div>
-            {SERVICES.map((s) => (
-              <Link
-                key={s.slug}
-                to="/services/$serviceSlug"
-                params={{ serviceSlug: s.slug }}
-                onClick={onClose}
-                className="group py-3 px-4 -mx-4 rounded-lg hover:bg-secondary/60 transition-all"
-              >
-                <div className="font-semibold text-sm text-foreground group-hover:text-accent transition-smooth">{s.name}</div>
-                <div className="text-xs text-muted-foreground line-clamp-2 mt-0.5">{s.short}</div>
-                {s.priceFrom && (
-                  <div className="text-xs font-medium text-accent mt-1.5">{s.priceFrom} {s.priceUnit}</div>
-                )}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}

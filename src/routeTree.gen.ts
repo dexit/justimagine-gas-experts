@@ -43,6 +43,7 @@ import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
 import { Route as AdminPortfolioRouteImport } from './routes/admin.portfolio'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as CategoryAreaServiceRouteImport } from './routes/$categoryArea.$service'
 import { Route as ServicesServiceSlugHowToRouteImport } from './routes/services.$serviceSlug.how-to'
 import { Route as ServicesServiceSlugFaqsRouteImport } from './routes/services.$serviceSlug.faqs'
 import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
@@ -217,6 +218,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoryAreaServiceRoute = CategoryAreaServiceRouteImport.update({
+  id: '/$categoryArea/$service',
+  path: '/$categoryArea/$service',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesServiceSlugHowToRoute =
   ServicesServiceSlugHowToRouteImport.update({
     id: '/how-to',
@@ -258,6 +264,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRouteWithChildren
+  '/$categoryArea/$service': typeof CategoryAreaServiceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/portfolio': typeof AdminPortfolioRoute
@@ -297,6 +304,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRouteWithChildren
+  '/$categoryArea/$service': typeof CategoryAreaServiceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/portfolio': typeof AdminPortfolioRoute
@@ -337,6 +345,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRouteWithChildren
+  '/$categoryArea/$service': typeof CategoryAreaServiceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/portfolio': typeof AdminPortfolioRoute
@@ -378,6 +387,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-trust-us'
     | '/work'
+    | '/$categoryArea/$service'
     | '/admin/dashboard'
     | '/admin/login'
     | '/admin/portfolio'
@@ -417,6 +427,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-trust-us'
     | '/work'
+    | '/$categoryArea/$service'
     | '/admin/dashboard'
     | '/admin/login'
     | '/admin/portfolio'
@@ -456,6 +467,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-trust-us'
     | '/work'
+    | '/$categoryArea/$service'
     | '/admin/dashboard'
     | '/admin/login'
     | '/admin/portfolio'
@@ -496,6 +508,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
   WorkRoute: typeof WorkRouteWithChildren
+  CategoryAreaServiceRoute: typeof CategoryAreaServiceRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminPortfolioRoute: typeof AdminPortfolioRoute
@@ -746,6 +759,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$categoryArea/$service': {
+      id: '/$categoryArea/$service'
+      path: '/$categoryArea/$service'
+      fullPath: '/$categoryArea/$service'
+      preLoaderRoute: typeof CategoryAreaServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/$serviceSlug/how-to': {
       id: '/services/$serviceSlug/how-to'
       path: '/how-to'
@@ -851,6 +871,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
   WorkRoute: WorkRouteWithChildren,
+  CategoryAreaServiceRoute: CategoryAreaServiceRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminPortfolioRoute: AdminPortfolioRoute,

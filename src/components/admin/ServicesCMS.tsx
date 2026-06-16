@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Edit2, Save, X, Plus, AlertCircle, CheckCircle2 } from "lucide-react";
+import { MOCK_SERVICES } from "@/lib/mock-data";
 
 interface Service {
   id: string;
@@ -37,10 +38,14 @@ export function ServicesCMS() {
     })
       .then((r) => r.json())
       .then((data) => {
-        setServices(data.services || []);
+        setServices(data.services || MOCK_SERVICES);
         setLoading(false);
       })
-      .catch(console.error);
+      .catch(() => {
+        // Demo mode: use mock data
+        setServices(MOCK_SERVICES);
+        setLoading(false);
+      });
   }, []);
 
   const validateField = (field: string, value: any): string => {

@@ -31,6 +31,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AreasIndexRouteImport } from './routes/areas.index'
 import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
+import { Route as ReviewsServiceSlugRouteImport } from './routes/reviews.$serviceSlug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as HeatingInAreaSlugRouteImport } from './routes/heating-in.$areaSlug'
 import { Route as GasBoilerInAreaSlugRouteImport } from './routes/gas-boiler-in.$areaSlug'
@@ -38,6 +39,8 @@ import { Route as ConfirmationRefIdRouteImport } from './routes/confirmation.$re
 import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as ServicesServiceSlugHowToRouteImport } from './routes/services.$serviceSlug.how-to'
+import { Route as ServicesServiceSlugFaqsRouteImport } from './routes/services.$serviceSlug.faqs'
 import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
 
 const WorkRoute = WorkRouteImport.update({
@@ -150,6 +153,11 @@ const ServicesServiceSlugRoute = ServicesServiceSlugRouteImport.update({
   path: '/$serviceSlug',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ReviewsServiceSlugRoute = ReviewsServiceSlugRouteImport.update({
+  id: '/$serviceSlug',
+  path: '/$serviceSlug',
+  getParentRoute: () => ReviewsRoute,
+} as any)
 const NewsSlugRoute = NewsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -185,6 +193,17 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesServiceSlugHowToRoute =
+  ServicesServiceSlugHowToRouteImport.update({
+    id: '/how-to',
+    path: '/how-to',
+    getParentRoute: () => ServicesServiceSlugRoute,
+  } as any)
+const ServicesServiceSlugFaqsRoute = ServicesServiceSlugFaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => ServicesServiceSlugRoute,
+} as any)
 const ServicesServiceSlugAreaSlugRoute =
   ServicesServiceSlugAreaSlugRouteImport.update({
     id: '/$areaSlug',
@@ -207,7 +226,7 @@ export interface FileRoutesByFullPath {
   '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
@@ -220,9 +239,12 @@ export interface FileRoutesByFullPath {
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas/': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
+  '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
+  '/services/$serviceSlug/how-to': typeof ServicesServiceSlugHowToRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -239,7 +261,7 @@ export interface FileRoutesByTo {
   '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
@@ -252,9 +274,12 @@ export interface FileRoutesByTo {
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
+  '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
+  '/services/$serviceSlug/how-to': typeof ServicesServiceSlugHowToRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -272,7 +297,7 @@ export interface FileRoutesById {
   '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
@@ -285,9 +310,12 @@ export interface FileRoutesById {
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
   '/areas/': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
+  '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
+  '/services/$serviceSlug/how-to': typeof ServicesServiceSlugHowToRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -319,9 +347,12 @@ export interface FileRouteTypes {
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
+    | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
     | '/areas/'
     | '/services/$serviceSlug/$areaSlug'
+    | '/services/$serviceSlug/faqs'
+    | '/services/$serviceSlug/how-to'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -351,9 +382,12 @@ export interface FileRouteTypes {
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
+    | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
     | '/areas'
     | '/services/$serviceSlug/$areaSlug'
+    | '/services/$serviceSlug/faqs'
+    | '/services/$serviceSlug/how-to'
   id:
     | '__root__'
     | '/'
@@ -383,9 +417,12 @@ export interface FileRouteTypes {
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
+    | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
     | '/areas/'
     | '/services/$serviceSlug/$areaSlug'
+    | '/services/$serviceSlug/faqs'
+    | '/services/$serviceSlug/how-to'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -403,7 +440,7 @@ export interface RootRouteChildren {
   OurStoryRoute: typeof OurStoryRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
-  ReviewsRoute: typeof ReviewsRoute
+  ReviewsRoute: typeof ReviewsRouteWithChildren
   SafetyRoute: typeof SafetyRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsRoute: typeof TermsRoute
@@ -574,6 +611,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesServiceSlugRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/reviews/$serviceSlug': {
+      id: '/reviews/$serviceSlug'
+      path: '/$serviceSlug'
+      fullPath: '/reviews/$serviceSlug'
+      preLoaderRoute: typeof ReviewsServiceSlugRouteImport
+      parentRoute: typeof ReviewsRoute
+    }
     '/news/$slug': {
       id: '/news/$slug'
       path: '/$slug'
@@ -623,6 +667,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/$serviceSlug/how-to': {
+      id: '/services/$serviceSlug/how-to'
+      path: '/how-to'
+      fullPath: '/services/$serviceSlug/how-to'
+      preLoaderRoute: typeof ServicesServiceSlugHowToRouteImport
+      parentRoute: typeof ServicesServiceSlugRoute
+    }
+    '/services/$serviceSlug/faqs': {
+      id: '/services/$serviceSlug/faqs'
+      path: '/faqs'
+      fullPath: '/services/$serviceSlug/faqs'
+      preLoaderRoute: typeof ServicesServiceSlugFaqsRouteImport
+      parentRoute: typeof ServicesServiceSlugRoute
+    }
     '/services/$serviceSlug/$areaSlug': {
       id: '/services/$serviceSlug/$areaSlug'
       path: '/$areaSlug'
@@ -643,12 +701,27 @@ const NewsRouteChildren: NewsRouteChildren = {
 
 const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 
+interface ReviewsRouteChildren {
+  ReviewsServiceSlugRoute: typeof ReviewsServiceSlugRoute
+}
+
+const ReviewsRouteChildren: ReviewsRouteChildren = {
+  ReviewsServiceSlugRoute: ReviewsServiceSlugRoute,
+}
+
+const ReviewsRouteWithChildren =
+  ReviewsRoute._addFileChildren(ReviewsRouteChildren)
+
 interface ServicesServiceSlugRouteChildren {
   ServicesServiceSlugAreaSlugRoute: typeof ServicesServiceSlugAreaSlugRoute
+  ServicesServiceSlugFaqsRoute: typeof ServicesServiceSlugFaqsRoute
+  ServicesServiceSlugHowToRoute: typeof ServicesServiceSlugHowToRoute
 }
 
 const ServicesServiceSlugRouteChildren: ServicesServiceSlugRouteChildren = {
   ServicesServiceSlugAreaSlugRoute: ServicesServiceSlugAreaSlugRoute,
+  ServicesServiceSlugFaqsRoute: ServicesServiceSlugFaqsRoute,
+  ServicesServiceSlugHowToRoute: ServicesServiceSlugHowToRoute,
 }
 
 const ServicesServiceSlugRouteWithChildren =
@@ -681,7 +754,7 @@ const rootRouteChildren: RootRouteChildren = {
   OurStoryRoute: OurStoryRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
-  ReviewsRoute: ReviewsRoute,
+  ReviewsRoute: ReviewsRouteWithChildren,
   SafetyRoute: SafetyRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsRoute: TermsRoute,

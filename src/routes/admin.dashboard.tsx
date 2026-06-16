@@ -4,6 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { ServicesCMS } from "@/components/admin/ServicesCMS";
 import { AreasCMS } from "@/components/admin/AreasCMS";
+import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
 import {
   BarChart3,
   Settings,
@@ -156,14 +157,7 @@ function AreasSection() {
 }
 
 function AnalyticsSection() {
-  return (
-    <div>
-      <h1 className="font-display text-3xl font-semibold mb-6">Analytics</h1>
-      <p className="text-muted-foreground">
-        Analytics dashboard coming soon. GA4, GSC, MS Clarity, Bing Webmaster data.
-      </p>
-    </div>
-  );
+  return <AnalyticsDashboard />;
 }
 
 function LogsSection() {

@@ -10,6 +10,7 @@ import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { maskUkPhone, maskPostcode, formatDateInput, formatTimeInput, isValidUkPostcode } from "@/lib/input-masks";
 import { lookupPostcode, createPostcodeLookupDebounced } from "@/lib/postcode-lookup";
+import { PaymentOptionsModal } from "@/components/PaymentOptionsModal";
 
 /* ------------ Validation schema (mirrors server-side) ------------ */
 const ukPhone = /^(?:(?:\+44\s?|0)(?:\d\s?){9,10})$/;
@@ -63,6 +64,14 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
   const navigate = useNavigate();
   const [done, setDone] = useState(false);
   const [lookupLoading, setLookupLoading] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [enquiryRefId, setEnquiryRefId] = useState<string | null>(null);
+  const [enquiryData, setEnquiryData] = useState<{
+    serviceName: string;
+    totalPounds: number;
+    email: string;
+    name: string;
+  } | null>(null);
   
   // Initialize postcode lookup with debounce
   const [postcodeLookup] = useState(() => createPostcodeLookupDebounced(800));
@@ -140,9 +149,15 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
         },
       });
       if (res.ok) {
-        toast.success("Enquiry sent — we'll be in touch shortly.");
-        // Redirect to confirmation page with ref ID
-        await navigate({ to: `/confirmation/${res.refId}` });
+        toast.success("Enquiry received — choose payment method.");
+        setEnquiryRefId(res.refId);
+        setEnquiryData({
+          name: values.name,
+          email: values.email ?? "",
+          serviceName: values.service ?? "Service",
+          totalPounds: 99, // TODO: get actual quote amount
+        });
+        setShowPaymentModal(true);
       } else {
         toast.error(res.error || "Could not send. Please call 07774 079152.");
       }
@@ -178,12 +193,13 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
         : "border-border focus:ring-ring focus:border-ring");
 
   return (
-    <form
-      onSubmit={onSubmit}
-      noValidate
-      aria-label="Enquiry form"
-      className={`space-y-3 ${compact ? "" : "p-6 lg:p-8 bg-card border border-border rounded-2xl"}`}
-    >
+    <>
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        aria-label="Enquiry form"
+        className={`space-y-3 ${compact ? "" : "p-6 lg:p-8 bg-card border border-border rounded-2xl"}`}
+      >
       {/* Honeypot — hidden from users + assistive tech */}
       <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
         <label>
@@ -348,6 +364,20 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
         By submitting you agree to be contacted about your enquiry. We never share your details.
       </p>
     </form>
+
+    {showPaymentModal && enquiryRefId && enquiryData && (
+      <PaymentOptionsModal
+        refId={enquiryRefId}
+        serviceName={enquiryData.serviceName}
+        totalPounds={enquiryData.totalPounds}
+        email={enquiryData.email}
+        name={enquiryData.name}
+        onClose={() => {
+          setShowPaymentModal(false);
+        }}
+      />
+    )}
+    </>
   );
 }
 

@@ -11,6 +11,15 @@ import { Phone, Check, MessageCircle, MapPin, ChevronRight } from "lucide-react"
 import heroImg from "@/assets/hero-engineer.webp";
 import heroImgSm from "@/assets/hero-engineer-sm.webp";
 import heroImgMd from "@/assets/hero-engineer-md.webp";
+import {
+  WhyItMatters,
+  HowItWorks,
+  BrandStrip,
+  WhoWeWorkWith,
+  ComparisonTable,
+  RecentFindings,
+  FunnelCTA,
+} from "@/components/ServiceSections";
 
 export const Route = createFileRoute("/services/$serviceSlug")({
   beforeLoad: ({ params }) => {
@@ -302,6 +311,14 @@ function ServicePage() {
         </aside>
       </section>
 
+      {/* ── Plumcert-style funnel sections ────────────────────────────── */}
+      <BrandStrip />
+      <WhyItMatters service={s} />
+      <HowItWorks service={s} />
+      <ComparisonTable service={s} />
+      <WhoWeWorkWith service={s} />
+      <RecentFindings service={s} />
+
       {/* ── Certifications ────────────────────────────────────────────── */}
       <section className="bg-secondary/30 border-t border-border py-16">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -311,6 +328,8 @@ function ServicePage() {
 
       <RelatedContent type="services" currentService={s.slug} title="Other services we offer" limit={6} />
       <RelatedContent type="areas" limit={6} title={`Find ${s.name.toLowerCase()} in your area`} />
+
+      <FunnelCTA service={s} />
     </PageShell>
   );
 }

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 // @ts-ignore - server module is built at runtime
-import serverModule from "../dist/server/index.js";
+import serverModule from "../dist/server/server.js";
 
 interface ServerHandler {
   fetch: (request: Request) => Promise<Response>;

@@ -30,6 +30,7 @@ import { Route as CommercialRouteImport } from './routes/commercial'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AreasIndexRouteImport } from './routes/areas.index'
+import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
 import { Route as ReviewsServiceSlugRouteImport } from './routes/reviews.$serviceSlug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
@@ -148,6 +149,11 @@ const AreasIndexRoute = AreasIndexRouteImport.update({
   path: '/areas/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => WorkRoute,
+} as any)
 const ServicesServiceSlugRoute = ServicesServiceSlugRouteImport.update({
   id: '/$serviceSlug',
   path: '/$serviceSlug',
@@ -231,7 +237,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
@@ -241,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/news/$slug': typeof NewsSlugRoute
   '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/work/$slug': typeof WorkSlugRoute
   '/areas/': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
   '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
@@ -266,7 +273,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
@@ -276,6 +283,7 @@ export interface FileRoutesByTo {
   '/news/$slug': typeof NewsSlugRoute
   '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/work/$slug': typeof WorkSlugRoute
   '/areas': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
   '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
@@ -302,7 +310,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
@@ -312,6 +320,7 @@ export interface FileRoutesById {
   '/news/$slug': typeof NewsSlugRoute
   '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/work/$slug': typeof WorkSlugRoute
   '/areas/': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
   '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
@@ -349,6 +358,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
+    | '/work/$slug'
     | '/areas/'
     | '/services/$serviceSlug/$areaSlug'
     | '/services/$serviceSlug/faqs'
@@ -384,6 +394,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
+    | '/work/$slug'
     | '/areas'
     | '/services/$serviceSlug/$areaSlug'
     | '/services/$serviceSlug/faqs'
@@ -419,6 +430,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
+    | '/work/$slug'
     | '/areas/'
     | '/services/$serviceSlug/$areaSlug'
     | '/services/$serviceSlug/faqs'
@@ -445,7 +457,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsRoute: typeof TermsRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
-  WorkRoute: typeof WorkRoute
+  WorkRoute: typeof WorkRouteWithChildren
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AreasAreaSlugRoute: typeof AreasAreaSlugRoute
@@ -604,6 +616,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreasIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof WorkRoute
+    }
     '/services/$serviceSlug': {
       id: '/services/$serviceSlug'
       path: '/$serviceSlug'
@@ -739,6 +758,16 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
   ServicesRouteChildren,
 )
 
+interface WorkRouteChildren {
+  WorkSlugRoute: typeof WorkSlugRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkSlugRoute: WorkSlugRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -759,7 +788,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRouteWithChildren,
   TermsRoute: TermsRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
-  WorkRoute: WorkRoute,
+  WorkRoute: WorkRouteWithChildren,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
   AreasAreaSlugRoute: AreasAreaSlugRoute,

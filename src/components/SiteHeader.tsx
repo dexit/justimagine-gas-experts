@@ -5,6 +5,14 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Logo } from "@/components/Logo";
 import { SERVICES, AREAS, NEWS } from "@/data/seo";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 type SimpleNav = { kind: "link"; to: string; label: string; exact?: boolean };
 type MenuNav = { kind: "menu"; label: string; key: string };

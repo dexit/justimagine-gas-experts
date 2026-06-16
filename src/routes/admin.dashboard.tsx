@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ServicesCMS } from "@/components/admin/ServicesCMS";
 import { AreasCMS } from "@/components/admin/AreasCMS";
 import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
+import { LogsViewer } from "@/components/admin/LogsViewer";
 import {
   BarChart3,
   Settings,
@@ -161,14 +162,7 @@ function AnalyticsSection() {
 }
 
 function LogsSection() {
-  return (
-    <div>
-      <h1 className="font-display text-3xl font-semibold mb-6">Logs</h1>
-      <p className="text-muted-foreground">
-        Logs viewer coming soon. View API errors, form submissions, debug info.
-      </p>
-    </div>
-  );
+  return <LogsViewer />;
 }
 
 export const Route = createFileRoute("/admin/dashboard")({

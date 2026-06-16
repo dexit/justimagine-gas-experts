@@ -97,6 +97,13 @@ function ServicePage() {
                 <Phone className="h-4 w-4" />
                 {BUSINESS.phone}
               </a>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-5 py-3 rounded-lg hover:opacity-90 transition-smooth"
+              >
+                Get a free quote
+                <ChevronRight className="h-4 w-4" />
+              </Link>
               <a
                 href={`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(`Hi — I need help with ${s.name}`)}`}
                 target="_blank"
@@ -176,13 +183,13 @@ function ServicePage() {
                     <div className="text-sm text-primary-foreground/60 mt-1">{s.priceUnit}</div>
                   )}
                 </div>
-                <a
-                  href={`tel:${BUSINESS.phoneE164}`}
+                <Link
+                  to="/contact"
                   className="inline-flex items-center gap-2 bg-gradient-amber text-accent-foreground font-semibold px-5 py-3 rounded-lg hover:opacity-90 transition-smooth"
                 >
-                  <Phone className="h-4 w-4" />
-                  Get a quote
-                </a>
+                  Get a free quote
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
               </div>
               <div className="bg-card p-5 text-sm text-muted-foreground leading-relaxed">
                 Fixed written quote provided before any work starts. That's the price you pay — no call-out charges added after, no surprise extras on the invoice.
@@ -265,6 +272,15 @@ function ServicePage() {
                   <MessageCircle className="h-4 w-4 mr-2" />
                   WhatsApp
                 </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full bg-transparent border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                <Link to="/contact">
+                  Or fill out the form below
+                </Link>
               </Button>
             </div>
 

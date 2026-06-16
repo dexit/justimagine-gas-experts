@@ -13,6 +13,7 @@ import { Route as WorkRouteImport } from './routes/work'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServiceRequestRouteImport } from './routes/service-request'
 import { Route as SafetyRouteImport } from './routes/safety'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -27,17 +28,23 @@ import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as CommercialRouteImport } from './routes/commercial'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout-success'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AreasIndexRouteImport } from './routes/areas.index'
+import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
+import { Route as ReviewsServiceSlugRouteImport } from './routes/reviews.$serviceSlug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as HeatingInAreaSlugRouteImport } from './routes/heating-in.$areaSlug'
 import { Route as GasBoilerInAreaSlugRouteImport } from './routes/gas-boiler-in.$areaSlug'
 import { Route as ConfirmationRefIdRouteImport } from './routes/confirmation.$refId'
 import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
+import { Route as AdminPortfolioRouteImport } from './routes/admin.portfolio'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as ServicesServiceSlugHowToRouteImport } from './routes/services.$serviceSlug.how-to'
+import { Route as ServicesServiceSlugFaqsRouteImport } from './routes/services.$serviceSlug.faqs'
 import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
 
 const WorkRoute = WorkRouteImport.update({
@@ -58,6 +65,11 @@ const TermsRoute = TermsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiceRequestRoute = ServiceRequestRouteImport.update({
+  id: '/service-request',
+  path: '/service-request',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SafetyRoute = SafetyRouteImport.update({
@@ -130,6 +142,11 @@ const CommercialRoute = CommercialRouteImport.update({
   path: '/commercial',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/checkout-success',
+  path: '/checkout-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -145,10 +162,20 @@ const AreasIndexRoute = AreasIndexRouteImport.update({
   path: '/areas/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => WorkRoute,
+} as any)
 const ServicesServiceSlugRoute = ServicesServiceSlugRouteImport.update({
   id: '/$serviceSlug',
   path: '/$serviceSlug',
   getParentRoute: () => ServicesRoute,
+} as any)
+const ReviewsServiceSlugRoute = ReviewsServiceSlugRouteImport.update({
+  id: '/$serviceSlug',
+  path: '/$serviceSlug',
+  getParentRoute: () => ReviewsRoute,
 } as any)
 const NewsSlugRoute = NewsSlugRouteImport.update({
   id: '/$slug',
@@ -175,6 +202,11 @@ const AreasAreaSlugRoute = AreasAreaSlugRouteImport.update({
   path: '/areas/$areaSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPortfolioRoute = AdminPortfolioRouteImport.update({
+  id: '/admin/portfolio',
+  path: '/admin/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin/login',
   path: '/admin/login',
@@ -184,6 +216,17 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/admin/dashboard',
   path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesServiceSlugHowToRoute =
+  ServicesServiceSlugHowToRouteImport.update({
+    id: '/how-to',
+    path: '/how-to',
+    getParentRoute: () => ServicesServiceSlugRoute,
+  } as any)
+const ServicesServiceSlugFaqsRoute = ServicesServiceSlugFaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => ServicesServiceSlugRoute,
 } as any)
 const ServicesServiceSlugAreaSlugRoute =
   ServicesServiceSlugAreaSlugRouteImport.update({
@@ -195,6 +238,7 @@ const ServicesServiceSlugAreaSlugRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
   '/commercial': typeof CommercialRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
@@ -207,26 +251,33 @@ export interface FileRoutesByFullPath {
   '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
+  '/service-request': typeof ServiceRequestRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/work/$slug': typeof WorkSlugRoute
   '/areas/': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
+  '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
+  '/services/$serviceSlug/how-to': typeof ServicesServiceSlugHowToRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
   '/commercial': typeof CommercialRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
@@ -239,27 +290,34 @@ export interface FileRoutesByTo {
   '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
+  '/service-request': typeof ServiceRequestRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/work/$slug': typeof WorkSlugRoute
   '/areas': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
+  '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
+  '/services/$serviceSlug/how-to': typeof ServicesServiceSlugHowToRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
   '/commercial': typeof CommercialRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
@@ -272,28 +330,35 @@ export interface FileRoutesById {
   '/our-story': typeof OurStoryRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/reviews': typeof ReviewsRoute
+  '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
+  '/service-request': typeof ServiceRequestRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/portfolio': typeof AdminPortfolioRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
   '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
+  '/reviews/$serviceSlug': typeof ReviewsServiceSlugRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRouteWithChildren
+  '/work/$slug': typeof WorkSlugRoute
   '/areas/': typeof AreasIndexRoute
   '/services/$serviceSlug/$areaSlug': typeof ServicesServiceSlugAreaSlugRoute
+  '/services/$serviceSlug/faqs': typeof ServicesServiceSlugFaqsRoute
+  '/services/$serviceSlug/how-to': typeof ServicesServiceSlugHowToRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/checkout-success'
     | '/commercial'
     | '/complaints'
     | '/contact'
@@ -308,24 +373,31 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/safety'
+    | '/service-request'
     | '/services'
     | '/terms'
     | '/why-trust-us'
     | '/work'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/portfolio'
     | '/areas/$areaSlug'
     | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
+    | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
+    | '/work/$slug'
     | '/areas/'
     | '/services/$serviceSlug/$areaSlug'
+    | '/services/$serviceSlug/faqs'
+    | '/services/$serviceSlug/how-to'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/checkout-success'
     | '/commercial'
     | '/complaints'
     | '/contact'
@@ -340,24 +412,31 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/safety'
+    | '/service-request'
     | '/services'
     | '/terms'
     | '/why-trust-us'
     | '/work'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/portfolio'
     | '/areas/$areaSlug'
     | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
+    | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
+    | '/work/$slug'
     | '/areas'
     | '/services/$serviceSlug/$areaSlug'
+    | '/services/$serviceSlug/faqs'
+    | '/services/$serviceSlug/how-to'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/checkout-success'
     | '/commercial'
     | '/complaints'
     | '/contact'
@@ -372,25 +451,32 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/safety'
+    | '/service-request'
     | '/services'
     | '/terms'
     | '/why-trust-us'
     | '/work'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/portfolio'
     | '/areas/$areaSlug'
     | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
+    | '/reviews/$serviceSlug'
     | '/services/$serviceSlug'
+    | '/work/$slug'
     | '/areas/'
     | '/services/$serviceSlug/$areaSlug'
+    | '/services/$serviceSlug/faqs'
+    | '/services/$serviceSlug/how-to'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
   CommercialRoute: typeof CommercialRoute
   ComplaintsRoute: typeof ComplaintsRoute
   ContactRoute: typeof ContactRoute
@@ -403,14 +489,16 @@ export interface RootRouteChildren {
   OurStoryRoute: typeof OurStoryRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
-  ReviewsRoute: typeof ReviewsRoute
+  ReviewsRoute: typeof ReviewsRouteWithChildren
   SafetyRoute: typeof SafetyRoute
+  ServiceRequestRoute: typeof ServiceRequestRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsRoute: typeof TermsRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
-  WorkRoute: typeof WorkRoute
+  WorkRoute: typeof WorkRouteWithChildren
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminPortfolioRoute: typeof AdminPortfolioRoute
   AreasAreaSlugRoute: typeof AreasAreaSlugRoute
   ConfirmationRefIdRoute: typeof ConfirmationRefIdRoute
   GasBoilerInAreaSlugRoute: typeof GasBoilerInAreaSlugRoute
@@ -446,6 +534,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service-request': {
+      id: '/service-request'
+      path: '/service-request'
+      fullPath: '/service-request'
+      preLoaderRoute: typeof ServiceRequestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/safety': {
@@ -546,6 +641,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CommercialRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout-success': {
+      id: '/checkout-success'
+      path: '/checkout-success'
+      fullPath: '/checkout-success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -567,12 +669,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreasIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof WorkRoute
+    }
     '/services/$serviceSlug': {
       id: '/services/$serviceSlug'
       path: '/$serviceSlug'
       fullPath: '/services/$serviceSlug'
       preLoaderRoute: typeof ServicesServiceSlugRouteImport
       parentRoute: typeof ServicesRoute
+    }
+    '/reviews/$serviceSlug': {
+      id: '/reviews/$serviceSlug'
+      path: '/$serviceSlug'
+      fullPath: '/reviews/$serviceSlug'
+      preLoaderRoute: typeof ReviewsServiceSlugRouteImport
+      parentRoute: typeof ReviewsRoute
     }
     '/news/$slug': {
       id: '/news/$slug'
@@ -609,6 +725,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreasAreaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/portfolio': {
+      id: '/admin/portfolio'
+      path: '/admin/portfolio'
+      fullPath: '/admin/portfolio'
+      preLoaderRoute: typeof AdminPortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/admin/login'
@@ -622,6 +745,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/services/$serviceSlug/how-to': {
+      id: '/services/$serviceSlug/how-to'
+      path: '/how-to'
+      fullPath: '/services/$serviceSlug/how-to'
+      preLoaderRoute: typeof ServicesServiceSlugHowToRouteImport
+      parentRoute: typeof ServicesServiceSlugRoute
+    }
+    '/services/$serviceSlug/faqs': {
+      id: '/services/$serviceSlug/faqs'
+      path: '/faqs'
+      fullPath: '/services/$serviceSlug/faqs'
+      preLoaderRoute: typeof ServicesServiceSlugFaqsRouteImport
+      parentRoute: typeof ServicesServiceSlugRoute
     }
     '/services/$serviceSlug/$areaSlug': {
       id: '/services/$serviceSlug/$areaSlug'
@@ -643,12 +780,27 @@ const NewsRouteChildren: NewsRouteChildren = {
 
 const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 
+interface ReviewsRouteChildren {
+  ReviewsServiceSlugRoute: typeof ReviewsServiceSlugRoute
+}
+
+const ReviewsRouteChildren: ReviewsRouteChildren = {
+  ReviewsServiceSlugRoute: ReviewsServiceSlugRoute,
+}
+
+const ReviewsRouteWithChildren =
+  ReviewsRoute._addFileChildren(ReviewsRouteChildren)
+
 interface ServicesServiceSlugRouteChildren {
   ServicesServiceSlugAreaSlugRoute: typeof ServicesServiceSlugAreaSlugRoute
+  ServicesServiceSlugFaqsRoute: typeof ServicesServiceSlugFaqsRoute
+  ServicesServiceSlugHowToRoute: typeof ServicesServiceSlugHowToRoute
 }
 
 const ServicesServiceSlugRouteChildren: ServicesServiceSlugRouteChildren = {
   ServicesServiceSlugAreaSlugRoute: ServicesServiceSlugAreaSlugRoute,
+  ServicesServiceSlugFaqsRoute: ServicesServiceSlugFaqsRoute,
+  ServicesServiceSlugHowToRoute: ServicesServiceSlugHowToRoute,
 }
 
 const ServicesServiceSlugRouteWithChildren =
@@ -666,9 +818,20 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
   ServicesRouteChildren,
 )
 
+interface WorkRouteChildren {
+  WorkSlugRoute: typeof WorkSlugRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkSlugRoute: WorkSlugRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
   CommercialRoute: CommercialRoute,
   ComplaintsRoute: ComplaintsRoute,
   ContactRoute: ContactRoute,
@@ -681,14 +844,16 @@ const rootRouteChildren: RootRouteChildren = {
   OurStoryRoute: OurStoryRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
-  ReviewsRoute: ReviewsRoute,
+  ReviewsRoute: ReviewsRouteWithChildren,
   SafetyRoute: SafetyRoute,
+  ServiceRequestRoute: ServiceRequestRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsRoute: TermsRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
-  WorkRoute: WorkRoute,
+  WorkRoute: WorkRouteWithChildren,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminPortfolioRoute: AdminPortfolioRoute,
   AreasAreaSlugRoute: AreasAreaSlugRoute,
   ConfirmationRefIdRoute: ConfirmationRefIdRoute,
   GasBoilerInAreaSlugRoute: GasBoilerInAreaSlugRoute,

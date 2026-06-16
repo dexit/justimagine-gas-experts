@@ -783,3 +783,44 @@ export const areasListJsonLd = () => ({
     },
   })),
 });
+
+export const howtojsonLd = (opts: {
+  name: string;
+  description: string;
+  image: string;
+  steps: Array<{ position: string; name: string; description: string }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: opts.name,
+  description: opts.description,
+  image: opts.image,
+  step: opts.steps.map((step) => ({
+    "@type": "HowToStep",
+    position: step.position,
+    name: step.name,
+    text: step.description,
+  })),
+});
+
+export const reviewJsonLd = (opts: {
+  name: string;
+  ratingValue: number;
+  ratingCount: number;
+  reviews: Array<{ author: string; rating: number; text: string }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: opts.name,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: String(opts.ratingValue),
+    ratingCount: String(opts.ratingCount),
+  },
+  review: opts.reviews.map((r) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: r.author },
+    ratingValue: String(r.rating),
+    reviewBody: r.text,
+  })),
+});

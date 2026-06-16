@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { ServicesCMS } from "@/components/admin/ServicesCMS";
 import { AreasCMS } from "@/components/admin/AreasCMS";
 import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
+import { LogsViewer } from "@/components/admin/LogsViewer";
+import { OverviewSection } from "@/components/admin/OverviewSection";
 import {
   BarChart3,
   Settings,
@@ -110,43 +112,7 @@ function AdminDashboard() {
   );
 }
 
-function OverviewSection() {
-  const [stats, setStats] = useState<any>(null);
 
-  useEffect(() => {
-    fetch("/api/admin/stats", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-      },
-    })
-      .then((r) => r.json())
-      .then(setStats)
-      .catch(console.error);
-  }, []);
-
-  if (!stats) return <div>Loading stats...</div>;
-
-  return (
-    <div>
-      <h1 className="font-display text-3xl font-semibold mb-6">Dashboard</h1>
-      <div className="grid grid-cols-4 gap-4">
-        <StatCard label="Enquiries (7d)" value={stats.enquiries || 0} />
-        <StatCard label="Services" value={stats.services || 0} />
-        <StatCard label="Areas" value={stats.areas || 0} />
-        <StatCard label="Conversion Rate" value={stats.conversionRate || "0%"} />
-      </div>
-    </div>
-  );
-}
-
-function StatCard({ label, value }: { label: string; value: any }) {
-  return (
-    <div className="bg-card border border-border rounded-lg p-4">
-      <p className="text-xs text-muted-foreground mb-1">{label}</p>
-      <p className="font-display text-2xl font-semibold">{value}</p>
-    </div>
-  );
-}
 
 function ServicesSection() {
   return <ServicesCMS />;
@@ -161,14 +127,7 @@ function AnalyticsSection() {
 }
 
 function LogsSection() {
-  return (
-    <div>
-      <h1 className="font-display text-3xl font-semibold mb-6">Logs</h1>
-      <p className="text-muted-foreground">
-        Logs viewer coming soon. View API errors, form submissions, debug info.
-      </p>
-    </div>
-  );
+  return <LogsViewer />;
 }
 
 export const Route = createFileRoute("/admin/dashboard")({

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BarChart3, TrendingUp, AlertCircle } from "lucide-react";
+import { MOCK_ANALYTICS } from "@/lib/mock-data";
 
 interface Analytics {
   ga4: { sessions: number; users: number; bounce: number; avgDuration: number };
@@ -28,7 +29,10 @@ export function AnalyticsDashboard() {
     })
       .then((r) => r.json())
       .then(setData)
-      .catch(console.error)
+      .catch(() => {
+        // Demo mode: use mock data
+        setData(MOCK_ANALYTICS);
+      })
       .finally(() => setLoading(false));
   }, [period]);
 

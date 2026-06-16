@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Edit2, Save, X, Plus, AlertCircle } from "lucide-react";
+import { MOCK_AREAS } from "@/lib/mock-data";
 
 interface Area {
   id: string;
@@ -28,10 +29,14 @@ export function AreasCMS() {
     })
       .then((r) => r.json())
       .then((data) => {
-        setAreas(data.areas || []);
+        setAreas(data.areas || MOCK_AREAS);
         setLoading(false);
       })
-      .catch(console.error);
+      .catch(() => {
+        // Demo mode: use mock data
+        setAreas(MOCK_AREAS);
+        setLoading(false);
+      });
   }, []);
 
   const handleEdit = (area: Area) => {

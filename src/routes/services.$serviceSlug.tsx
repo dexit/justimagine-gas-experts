@@ -11,6 +11,15 @@ import { Phone, Check, MessageCircle, MapPin, ChevronRight } from "lucide-react"
 import heroImg from "@/assets/hero-engineer.webp";
 import heroImgSm from "@/assets/hero-engineer-sm.webp";
 import heroImgMd from "@/assets/hero-engineer-md.webp";
+import {
+  WhyItMatters,
+  HowItWorks,
+  BrandStrip,
+  WhoWeWorkWith,
+  ComparisonTable,
+  RecentFindings,
+  FunnelCTA,
+} from "@/components/ServiceSections";
 
 export const Route = createFileRoute("/services/$serviceSlug")({
   beforeLoad: ({ params }) => {

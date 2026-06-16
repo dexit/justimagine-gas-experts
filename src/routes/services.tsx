@@ -139,8 +139,8 @@ function ServicesPage() {
                 return (
                   <Link
                     key={s.slug}
-                    to="/services/$serviceSlug"
-                    params={{ serviceSlug: s.slug }}
+                    to="/$service/$area"
+                    params={{ service: s.slug, area: "rugby" }}
                     className="group p-7 rounded-2xl bg-card border border-border hover:border-accent/60 hover:shadow-elegant transition-smooth flex flex-col"
                   >
                     <div className="flex items-start gap-5">

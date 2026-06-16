@@ -13,6 +13,7 @@ import { Route as WorkRouteImport } from './routes/work'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServiceRequestRouteImport } from './routes/service-request'
 import { Route as SafetyRouteImport } from './routes/safety'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -27,6 +28,7 @@ import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as CommercialRouteImport } from './routes/commercial'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout-success'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AreasIndexRouteImport } from './routes/areas.index'
@@ -63,6 +65,11 @@ const TermsRoute = TermsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiceRequestRoute = ServiceRequestRouteImport.update({
+  id: '/service-request',
+  path: '/service-request',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SafetyRoute = SafetyRouteImport.update({
@@ -133,6 +140,11 @@ const ComplaintsRoute = ComplaintsRouteImport.update({
 const CommercialRoute = CommercialRouteImport.update({
   id: '/commercial',
   path: '/commercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/checkout-success',
+  path: '/checkout-success',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -226,6 +238,7 @@ const ServicesServiceSlugAreaSlugRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
   '/commercial': typeof CommercialRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
@@ -240,6 +253,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
+  '/service-request': typeof ServiceRequestRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -263,6 +277,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
   '/commercial': typeof CommercialRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
@@ -277,6 +292,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
+  '/service-request': typeof ServiceRequestRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -301,6 +317,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/checkout-success': typeof CheckoutSuccessRoute
   '/commercial': typeof CommercialRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
@@ -315,6 +332,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRouteWithChildren
   '/safety': typeof SafetyRoute
+  '/service-request': typeof ServiceRequestRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -340,6 +358,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/checkout-success'
     | '/commercial'
     | '/complaints'
     | '/contact'
@@ -354,6 +373,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/safety'
+    | '/service-request'
     | '/services'
     | '/terms'
     | '/why-trust-us'
@@ -377,6 +397,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/checkout-success'
     | '/commercial'
     | '/complaints'
     | '/contact'
@@ -391,6 +412,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/safety'
+    | '/service-request'
     | '/services'
     | '/terms'
     | '/why-trust-us'
@@ -414,6 +436,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/checkout-success'
     | '/commercial'
     | '/complaints'
     | '/contact'
@@ -428,6 +451,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/reviews'
     | '/safety'
+    | '/service-request'
     | '/services'
     | '/terms'
     | '/why-trust-us'
@@ -452,6 +476,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
   CommercialRoute: typeof CommercialRoute
   ComplaintsRoute: typeof ComplaintsRoute
   ContactRoute: typeof ContactRoute
@@ -466,6 +491,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRouteWithChildren
   SafetyRoute: typeof SafetyRoute
+  ServiceRequestRoute: typeof ServiceRequestRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsRoute: typeof TermsRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
@@ -508,6 +534,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service-request': {
+      id: '/service-request'
+      path: '/service-request'
+      fullPath: '/service-request'
+      preLoaderRoute: typeof ServiceRequestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/safety': {
@@ -606,6 +639,13 @@ declare module '@tanstack/react-router' {
       path: '/commercial'
       fullPath: '/commercial'
       preLoaderRoute: typeof CommercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout-success': {
+      id: '/checkout-success'
+      path: '/checkout-success'
+      fullPath: '/checkout-success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -791,6 +831,7 @@ const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
   CommercialRoute: CommercialRoute,
   ComplaintsRoute: ComplaintsRoute,
   ContactRoute: ContactRoute,
@@ -805,6 +846,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRouteWithChildren,
   SafetyRoute: SafetyRoute,
+  ServiceRequestRoute: ServiceRequestRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsRoute: TermsRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,

@@ -34,6 +34,7 @@ import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serv
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as HeatingInAreaSlugRouteImport } from './routes/heating-in.$areaSlug'
 import { Route as GasBoilerInAreaSlugRouteImport } from './routes/gas-boiler-in.$areaSlug'
+import { Route as ConfirmationRefIdRouteImport } from './routes/confirmation.$refId'
 import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
 import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
 
@@ -162,6 +163,11 @@ const GasBoilerInAreaSlugRoute = GasBoilerInAreaSlugRouteImport.update({
   path: '/gas-boiler-in/$areaSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConfirmationRefIdRoute = ConfirmationRefIdRouteImport.update({
+  id: '/confirmation/$refId',
+  path: '/confirmation/$refId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AreasAreaSlugRoute = AreasAreaSlugRouteImport.update({
   id: '/areas/$areaSlug',
   path: '/areas/$areaSlug',
@@ -196,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -225,6 +232,7 @@ export interface FileRoutesByTo {
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -255,6 +263,7 @@ export interface FileRoutesById {
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/why-trust-us'
     | '/work'
     | '/areas/$areaSlug'
+    | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
@@ -315,6 +325,7 @@ export interface FileRouteTypes {
     | '/why-trust-us'
     | '/work'
     | '/areas/$areaSlug'
+    | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
@@ -344,6 +355,7 @@ export interface FileRouteTypes {
     | '/why-trust-us'
     | '/work'
     | '/areas/$areaSlug'
+    | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
@@ -374,6 +386,7 @@ export interface RootRouteChildren {
   WhyTrustUsRoute: typeof WhyTrustUsRoute
   WorkRoute: typeof WorkRoute
   AreasAreaSlugRoute: typeof AreasAreaSlugRoute
+  ConfirmationRefIdRoute: typeof ConfirmationRefIdRoute
   GasBoilerInAreaSlugRoute: typeof GasBoilerInAreaSlugRoute
   HeatingInAreaSlugRoute: typeof HeatingInAreaSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
@@ -556,6 +569,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GasBoilerInAreaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/confirmation/$refId': {
+      id: '/confirmation/$refId'
+      path: '/confirmation/$refId'
+      fullPath: '/confirmation/$refId'
+      preLoaderRoute: typeof ConfirmationRefIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/areas/$areaSlug': {
       id: '/areas/$areaSlug'
       path: '/areas/$areaSlug'
@@ -628,6 +648,7 @@ const rootRouteChildren: RootRouteChildren = {
   WhyTrustUsRoute: WhyTrustUsRoute,
   WorkRoute: WorkRoute,
   AreasAreaSlugRoute: AreasAreaSlugRoute,
+  ConfirmationRefIdRoute: ConfirmationRefIdRoute,
   GasBoilerInAreaSlugRoute: GasBoilerInAreaSlugRoute,
   HeatingInAreaSlugRoute: HeatingInAreaSlugRoute,
   AreasIndexRoute: AreasIndexRoute,

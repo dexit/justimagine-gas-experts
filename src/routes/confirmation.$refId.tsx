@@ -1,4 +1,4 @@
-import { useParams } from "@tanstack/react-router";
+import { useParams, createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Copy, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
@@ -107,3 +107,7 @@ export function ConfirmationPage() {
     </PageShell>
   );
 }
+
+export const Route = createFileRoute("/confirmation/$refId")({
+  component: ConfirmationPage,
+});

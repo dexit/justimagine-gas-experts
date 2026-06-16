@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { BUSINESS } from "@/data/seo";
 
@@ -120,9 +120,9 @@ function TermsPage() {
           <h3 className="text-xl font-semibold mt-8 mb-4">13. Complaints Procedure</h3>
           <p>
             If you are not satisfied with our work, please contact us within 30 days. We will investigate and work toward a resolution. Full details of our complaints procedure are available at{" "}
-            <a href="/complaints" className="underline hover:no-underline">
-              /complaints
-            </a>
+            <Link to="/complaints" className="underline hover:no-underline">
+              Complaints Procedure
+            </Link>
             .
           </p>
 

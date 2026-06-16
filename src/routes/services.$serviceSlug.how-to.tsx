@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SERVICES } from "@/data/seo";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { getServiceBySlug } from "@/lib/services";
@@ -79,7 +79,7 @@ function HowToPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Button size="lg" asChild>
-              <a href="/contact">Book a visit</a>
+              <Link to="/contact">Book a visit</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <a href={`tel:07774079152`}>Call 07774 079152</a>

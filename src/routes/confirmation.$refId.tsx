@@ -1,4 +1,4 @@
-import { useParams, createFileRoute } from "@tanstack/react-router";
+import { useParams, createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Copy, ArrowRight } from "lucide-react";
 import { useRef, useState } from "react";
@@ -93,13 +93,13 @@ export function ConfirmationPage() {
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
-              <a href="/">Back to home</a>
+              <Link to="/">Back to home</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="/services" className="gap-2">
+              <Link to="/services" className="gap-2">
                 Explore services
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

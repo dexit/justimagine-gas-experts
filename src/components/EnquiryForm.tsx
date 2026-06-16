@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { useServerFn } from "@tanstack/react-start";
 import { submitEnquiry } from "@/enquiry.functions";
 import { toast } from "sonner";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
+import { maskUkPhone, maskPostcode, formatDateInput, formatTimeInput, isValidUkPostcode } from "@/lib/input-masks";
+import { lookupPostcode, createPostcodeLookupDebounced } from "@/lib/postcode-lookup";
 
 /* ------------ Validation schema (mirrors server-side) ------------ */
 const ukPhone = /^(?:(?:\+44\s?|0)(?:\d\s?){9,10})$/;
@@ -50,23 +52,6 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-/* ------------ Input masks ------------ */
-function maskUkPhone(raw: string): string {
-  const digits = raw.replace(/[^\d+]/g, "");
-  if (digits.startsWith("+44")) {
-    const rest = digits.slice(3).replace(/\D/g, "").slice(0, 10);
-    return `+44 ${rest.slice(0, 4)}${rest.length > 4 ? " " + rest.slice(4) : ""}`.trim();
-  }
-  const d = digits.replace(/\D/g, "").slice(0, 11);
-  if (d.length <= 5) return d;
-  return `${d.slice(0, 5)} ${d.slice(5)}`;
-}
-function maskPostcode(raw: string): string {
-  const cleaned = raw.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
-  if (cleaned.length <= 4) return cleaned;
-  return `${cleaned.slice(0, cleaned.length - 3)} ${cleaned.slice(-3)}`;
-}
-
 interface Props {
   defaultService?: string;
   defaultArea?: string;
@@ -77,6 +62,10 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
   const submit = useServerFn(submitEnquiry);
   const navigate = useNavigate();
   const [done, setDone] = useState(false);
+  const [lookupLoading, setLookupLoading] = useState(false);
+  
+  // Initialize postcode lookup with debounce
+  const [postcodeLookup] = useState(() => createPostcodeLookupDebounced(800));
 
   const {
     register,
@@ -84,6 +73,7 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
     setValue,
     reset,
     formState: { errors, isSubmitting, touchedFields },
+    watch,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onTouched",
@@ -102,6 +92,34 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
       website: "",
     },
   });
+
+  const postcode = watch("postcode");
+
+  // Postcode reverse-lookup for address autofill
+  useEffect(() => {
+    if (!postcode || postcode.length < 6) {
+      setLookupLoading(false);
+      return;
+    }
+
+    if (!isValidUkPostcode(postcode)) {
+      setLookupLoading(false);
+      return;
+    }
+
+    setLookupLoading(true);
+    postcodeLookup.lookup(postcode).then((addr) => {
+      if (addr) {
+        // Auto-populate area with town/suburb if empty
+        if (!watch("area") && (addr.town || addr.suburb)) {
+          setValue("area", addr.town || addr.suburb || "", { shouldValidate: false });
+        }
+      }
+      setLookupLoading(false);
+    });
+
+    return () => postcodeLookup.cancel();
+  }, [postcode, postcodeLookup, setValue, watch]);
 
   const onSubmit = handleSubmit(async (values) => {
     if (values.website) return; // honeypot tripped
@@ -212,7 +230,16 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
             className={fieldClass(!!errors.email, touchedFields.email)}
           />
         </Field>
-        <Field label="Postcode" error={errors.postcode?.message} touched={touchedFields.postcode}>
+        <Field 
+          label={
+            <div className="flex items-center gap-2">
+              <span>Postcode</span>
+              {lookupLoading && <Loader2 className="h-4 w-4 animate-spin text-accent" />}
+            </div>
+          } 
+          error={errors.postcode?.message} 
+          touched={touchedFields.postcode}
+        >
           <input
             {...register("postcode")}
             autoComplete="postal-code"
@@ -222,6 +249,7 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
               setValue("postcode", maskPostcode(e.target.value), { shouldValidate: true })
             }
             className={fieldClass(!!errors.postcode, touchedFields.postcode)}
+            disabled={isSubmitting}
           />
         </Field>
       </div>
@@ -257,6 +285,7 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
           <input
             {...register("preferredDate")}
             type="date"
+            min={new Date().toISOString().split("T")[0]}
             className={fieldClass(!!errors.preferredDate, touchedFields.preferredDate)}
           />
         </Field>
@@ -264,6 +293,11 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
           <input
             {...register("preferredTime")}
             type="time"
+            placeholder="e.g. 14:30"
+            onChange={(e) => {
+              const formatted = formatTimeInput(e.target.value);
+              setValue("preferredTime", formatted, { shouldValidate: true });
+            }}
             className={fieldClass(!!errors.preferredTime, touchedFields.preferredTime)}
           />
         </Field>

@@ -1,5 +1,6 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { hashPassword, verifyPassword } from "@/lib/admin-auth";
+import { setAdminSession, checkRateLimit } from "@/lib/kv-client";
 import crypto from "crypto";
 
 // Mock in-memory sessions (replace with KV in production)
@@ -20,11 +21,13 @@ export default async function handler(
   }
 
   const { username, password } = req.body;
+  const ip = (req.headers["x-forwarded-for"] as string) || "unknown";
 
-  // Rate limit: 5 attempts per minute per IP
-  const ip = req.headers["x-forwarded-for"] || "unknown";
-  const key = `login-attempt:${ip}`;
-  // (implement real rate limiting with KV)
+  // Rate limit: 5 attempts per minute per IP via KV
+  const allowed = await checkRateLimit("admin:login", ip, 5, 60);
+  if (!allowed) {
+    return res.status(429).json({ error: "Too many login attempts. Try again in 1 minute." });
+  }
 
   if (!username || !password) {
     return res.status(400).json({ error: "Missing username or password" });
@@ -41,9 +44,10 @@ export default async function handler(
 
   // Generate session token
   const token = crypto.randomBytes(32).toString("hex");
-  const expires = Date.now() + 8 * 60 * 60 * 1000; // 8 hours
+  const expiresAt = Date.now() + 8 * 60 * 60 * 1000; // 8 hours
 
-  sessions.set(token, { user: username, expires });
+  // Store session in KV instead of in-memory
+  await setAdminSession(token, { username, expiresAt });
 
   res.setHeader("Set-Cookie", [
     `adminToken=${token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${8 * 60 * 60}`,

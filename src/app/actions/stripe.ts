@@ -3,9 +3,21 @@
 import Stripe from "stripe";
 import { getProductById } from "@/lib/products";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2024-12-18.acacia",
-});
+// Lazy init: Create Stripe instance on first use (not at module load)
+let stripeInstance: Stripe | null = null;
+
+function getStripe(): Stripe {
+  if (!stripeInstance) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      throw new Error("STRIPE_SECRET_KEY not configured");
+    }
+    stripeInstance = new Stripe(key, {
+      apiVersion: "2024-12-18.acacia",
+    });
+  }
+  return stripeInstance;
+}
 
 export interface CheckoutInput {
   productId: string;
@@ -56,7 +68,7 @@ export async function createCheckoutSession(input: CheckoutInput) {
   }
 
   // Create session
-  return stripe.checkout.sessions.create({
+  return getStripe().checkout.sessions.create({
     payment_method_types: ["card"],
     line_items: items,
     mode: "payment",
@@ -112,7 +124,7 @@ export async function createPaymentSession(input: PaymentInput) {
     });
   }
 
-  return stripe.checkout.sessions.create({
+  return getStripe().checkout.sessions.create({
     payment_method_types: ["card"],
     line_items: items,
     mode: "payment",
@@ -140,7 +152,7 @@ export async function createInvoice(input: InvoiceInput) {
 
   try {
     // Create invoice
-    const invoice = await stripe.invoices.create({
+    const invoice = await getStripe().invoices.create({
       customer_email: input.email,
       currency: "gbp",
       collection_method: "send_invoice",
@@ -152,7 +164,7 @@ export async function createInvoice(input: InvoiceInput) {
     });
 
     // Add line item
-    await stripe.invoiceItems.create({
+    await getStripe().invoiceItems.create({
       invoice: invoice.id,
       customer: invoice.customer as string,
       amount: amountCents,
@@ -161,8 +173,8 @@ export async function createInvoice(input: InvoiceInput) {
     });
 
     // Finalize + send
-    const finalized = await stripe.invoices.finalizeInvoice(invoice.id);
-    await stripe.invoices.sendInvoice(invoice.id);
+    const finalized = await getStripe().invoices.finalizeInvoice(invoice.id);
+    await getStripe().invoices.sendInvoice(invoice.id);
 
     return {
       ok: true,

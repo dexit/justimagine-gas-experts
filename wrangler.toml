@@ -22,19 +22,28 @@ zone_id = ""
 name = "just-imagine-staging"
 workers_dev = true
 
-# Define triggers for Cloudflare Pages
-[triggers.crons]
-# Optional: Sitemap refresh every 24 hours
-# crons = ["0 0 * * *"]
+# KV Namespace bindings (for sessions, leads, analytics cache, rate limiting)
+[[kv_namespaces]]
+binding = "KV"
+id = "YOUR_KV_NAMESPACE_ID"
+preview_id = "YOUR_KV_PREVIEW_ID"
 
-# KV Namespace bindings (optional, for future features)
-# [[kv_namespaces]]
-# binding = "CACHE"
-# id = ""
-# preview_id = ""
+# D1 Database bindings (for CMS data: services, areas, leads, logs)
+[[d1_databases]]
+binding = "DB"
+database_name = "just-imagine-db"
+database_id = "YOUR_D1_DATABASE_ID"
 
-# D1 Database bindings (optional, for future database features)
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "just_imagine_db"
-# database_id = ""
+# Scheduled triggers for maintenance tasks
+[triggers]
+crons = [
+  "0 */6 * * *",    # Analytics sync every 6 hours
+  "0 3 * * *"       # Log cleanup daily at 3 AM UTC
+]
+
+# Optional: Durable Objects for state management
+# [[durable_objects.bindings]]
+# name = "ADMIN_STATE"
+# class_name = "AdminState"
+# script_name = "just-imagine-admin"
+

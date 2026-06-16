@@ -13,14 +13,14 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Transparent fixed prices: boiler servicing from £100, CP12 landlord certificates from £60, new boiler installation from £2,500. No hidden fees. Free quotes for Rugby & Warwickshire.",
+          "Transparent fixed prices: boiler servicing from £100, emergency callouts from £120, CP12 landlord certificates from £120, new boiler installation from £2,500. No hidden fees. Free quotes for Rugby & surrounding areas.",
       },
       ...geoMetaTags(),
       { property: "og:title", content: "Boiler & Gas Pricing Rugby, Warwickshire | Just Imagine" },
       {
         property: "og:description",
         content:
-          "Fixed-price boiler services in Rugby. Servicing from £100, CP12 from £60, new boiler from £2,500. Landlord bundle deals available.",
+          "Fixed-price gas services in Rugby. Servicing from £100, emergency callouts from £120, CP12 from £120, new boiler from £2,500. Landlord deals available.",
       },
     ],
     links: [{ rel: "canonical", href: "https://justimagine.ltd/pricing" }],

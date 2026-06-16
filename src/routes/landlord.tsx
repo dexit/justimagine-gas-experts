@@ -59,7 +59,7 @@ export const Route = createFileRoute("/landlord")({
           "Landlord Gas Safety Services",
           "Comprehensive landlord-focused gas safety certification, boiler servicing, and compliance solutions for rental properties across Warwickshire.",
           undefined,
-          "£60"
+          "£120"
         )
       ),
       jsonLdScript(
@@ -84,7 +84,7 @@ export const Route = createFileRoute("/landlord")({
           },
           {
             q: "How much is a landlord gas safety certificate?",
-            a: "From £60 for a single-appliance property. Our landlord bundle (CP12 + annual boiler service) is £120 — saving around £25 compared to booking separately. Portfolio discounts apply for 5+ properties.",
+            a: "From £120 per property. Our landlord bundle (CP12 + annual boiler service) saves vs booking separately. Portfolio discounts apply for 5+ properties — call for a quote.",
           },
           {
             q: "How long does a CP12 last?",
@@ -121,29 +121,29 @@ export const Route = createFileRoute("/landlord")({
 const packages = [
   {
     name: "CP12 Certificate",
-    price: "£60",
+    price: "£120",
     unit: "per property / year",
     popular: false,
     icon: FileCheck,
     features: [
       "All gas appliances & flues tested",
+      "Gas Safe & WRAS approved engineers",
       "Digital certificate same day",
-      "Up to 2 appliances included",
+      "Sent to landlord, agent & tenant",
       "Free 30-day renewal reminder",
-      "HSE-compliant format",
     ],
   },
   {
     name: "Landlord Bundle",
-    price: "£120",
+    price: "£200",
     unit: "CP12 + boiler service",
     popular: true,
-    badge: "Best Value — Save £25",
+    badge: "Best Value",
     icon: ShieldCheck,
     features: [
       "Annual CP12 safety inspection",
-      "Full boiler service included",
-      "Priority emergency response",
+      "Full manufacturer-spec boiler service",
+      "Priority emergency response for tenants",
       "Digital certificate same day",
       "Free renewal reminder",
       "Single invoice to agent or landlord",
@@ -203,8 +203,8 @@ function LandlordPage() {
       />
 
       {/* Legal obligation banner */}
-      <section className="mx-auto max-w-7xl px-5 lg:px-8 -mt-6 mb-4">
-        <div className="rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/40 p-5 flex gap-4 items-start">
+      <section className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8 -mt-6 mb-3 sm:mb-4">
+        <div className="rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/40 p-4 sm:p-5 flex gap-3 sm:gap-4 items-start">
           <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
           <div className="text-sm">
             <span className="font-semibold text-amber-900 dark:text-amber-200">
@@ -229,20 +229,20 @@ function LandlordPage() {
       </section>
 
       {/* Package Cards */}
-      <section className="mx-auto max-w-7xl px-5 lg:px-8 py-12">
+      <section className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8 py-12 sm:py-16">
         <div className="text-center mb-10">
           <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-2">
             Choose a package
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold">
             Simple, transparent pricing
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {packages.map((p) => (
             <div
               key={p.name}
-              className={`relative rounded-2xl border p-8 flex flex-col ${
+              className={`relative rounded-2xl border p-5 sm:p-8 flex flex-col ${
                 p.popular
                   ? "border-accent bg-gradient-hero text-primary-foreground shadow-elegant"
                   : "border-border bg-card"
@@ -257,16 +257,16 @@ function LandlordPage() {
                 className={`h-8 w-8 mb-4 ${p.popular ? "text-accent" : "text-accent"}`}
                 strokeWidth={1.5}
               />
-              <h3 className="font-display text-xl font-semibold mb-1">{p.name}</h3>
+              <h3 className="font-display text-lg sm:text-xl font-semibold mb-1">{p.name}</h3>
               <div className="mb-1">
-                <span className="text-3xl font-bold">{p.price}</span>
+                <span className="text-2xl sm:text-3xl font-bold">{p.price}</span>
               </div>
               <div
-                className={`text-xs mb-6 ${p.popular ? "text-primary-foreground/60" : "text-muted-foreground"}`}
+                className={`text-xs mb-4 sm:mb-6 ${p.popular ? "text-primary-foreground/60" : "text-muted-foreground"}`}
               >
                 {p.unit}
               </div>
-              <ul className="space-y-2.5 flex-1 mb-8">
+              <ul className="space-y-2 sm:space-y-2.5 flex-1 mb-6 sm:mb-8">
                 {p.features.map((f) => (
                   <li key={f} className="flex gap-2.5 text-sm">
                     <CheckCircle
@@ -298,14 +298,14 @@ function LandlordPage() {
       </section>
 
       {/* What's included checklist */}
-      <section className="bg-secondary/40 border-y border-border py-16">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="bg-secondary/40 border-y border-border py-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-accent-foreground/70 font-medium mb-3">
                 Full service
               </p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight mb-4">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight mb-3 sm:mb-4">
                 Everything covered. Nothing to chase.
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -313,7 +313,7 @@ function LandlordPage() {
                 That includes coordinating access with tenants, compliance reporting, and renewal
                 reminders. You just get the invoice.
               </p>
-              <div className="mt-6 flex gap-3 flex-wrap">
+              <div className="mt-4 sm:mt-6 flex gap-2 sm:gap-3 flex-wrap">
                 <Button asChild className="bg-gradient-amber text-accent-foreground hover:opacity-90 font-semibold">
                   <a href={`tel:${BUSINESS.phoneE164}`}>
                     <Phone className="h-4 w-4 mr-2" />
@@ -332,7 +332,7 @@ function LandlordPage() {
                 </Button>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-2.5">
+            <div className="grid grid-cols-1 gap-2 sm:gap-2.5">
               {whatsIncludes.map((item) => (
                 <div key={item} className="flex items-center gap-3 text-sm">
                   <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
@@ -345,7 +345,7 @@ function LandlordPage() {
       </section>
 
       {/* Portfolio management section */}
-      <section className="mx-auto max-w-7xl px-5 lg:px-8 py-16">
+      <section className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8 py-12 sm:py-16">
         <div className="grid lg:grid-cols-3 gap-8">
           {[
             {

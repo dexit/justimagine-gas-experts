@@ -51,9 +51,9 @@ export const Route = createFileRoute("/emergency")({
       jsonLdScript(
         serviceJsonLd(
           "24/7 Emergency Heating & Gas Services",
-          "Gas Safe emergency engineers on call day and night for heating failures, gas leaks, burst pipes, and carbon monoxide concerns across Rugby & Warwickshire. Rapid response, transparent pricing, diagnostic visits from £85.",
+          "Gas Safe emergency engineers on call 24/7 for heating failures, gas leaks, burst pipes, and carbon monoxide concerns across Rugby, Coventry, Warwick, Leicester, Northampton, Corby and Banbury. Rapid response, transparent pricing, emergency callouts from £120.",
           undefined,
-          "£85"
+          "£120"
         )
       ),
       jsonLdScript(
@@ -64,7 +64,7 @@ export const Route = createFileRoute("/emergency")({
           },
           {
             q: "How quickly can you attend an emergency?",
-            a: "We aim to respond within 60–90 minutes for emergencies in our core coverage area (Rugby, Leamington Spa, Warwick, Coventry). Response times may vary at peak periods or for more remote areas.",
+            a: "We aim to respond within 1 hour for emergencies in Rugby and surrounding areas — Coventry, Warwick, Leicester, Northampton, Corby, and Banbury. Response times may vary at peak periods.",
           },
           {
             q: "Do you charge more for out-of-hours callouts?",
@@ -76,11 +76,11 @@ export const Route = createFileRoute("/emergency")({
           },
           {
             q: "Is there a call-out fee?",
-            a: "Emergency diagnostic visits start from £85 inc. VAT. The repair cost is quoted and agreed as a fixed price before any parts are fitted.",
+            a: "Emergency callouts from £120 inc. VAT. The repair cost is quoted and agreed as a fixed price before any parts are fitted. Out-of-hours rates are confirmed before we attend.",
           },
           {
             q: "Do you cover my area?",
-            a: "We cover Rugby, Leamington Spa, Warwick, Kenilworth, Coventry, Stratford-upon-Avon, Nuneaton, Bedworth, Southam, Atherstone, Alcester and surrounding areas across Warwickshire.",
+            a: "Services and repairs within 1 hour of Rugby: Coventry, Warwick, Leicester, Northampton, Corby, and Banbury. Installations extended to 2 hours around Rugby.",
           },
         ]),
       ),

@@ -201,17 +201,17 @@ export const SERVICES: Service[] = [
   {
     slug: "gas-safety-certificate",
     name: "Gas Safety Certificate",
-    short: "CP12 gas safety certificates from £60 — same-day digital issue for landlords and homeowners.",
+    short: "CP12 landlord gas safety certificates from £120 — same-day digital issue, sent to all parties.",
     category: "safety",
     icon: "file-check",
-    priceFrom: "£60",
+    priceFrom: "£120",
     priceUnit: "per certificate",
     h1: (a) => `Gas Safety Certificate (CP12)${local(a)}`,
-    metaTitle: (a) => `CP12 Certificate${local(a)} from £60 | Same Day`,
+    metaTitle: (a) => `CP12 Certificate${local(a)} from £120 | Same Day`,
     metaDesc: (a) =>
-      `CP12 gas safety certificate${local(a)} from £60. Same-day digital issue. Landlord & homeowner inspections. Gas Safe engineer. Portfolio discounts available.`,
+      `CP12 gas safety certificate${local(a)} from £120. Same-day digital issue. Landlord inspections. Gas Safe registered. WRAS approved. Portfolio discounts available.`,
     intro: (a) =>
-      `If you rent out a property${local(a)}, a valid CP12 gas safety certificate isn't optional — it's the law. Every gas appliance, flue, and gas fitting must be inspected by a Gas Safe registered engineer at least every 12 months. We carry out thorough inspections and issue your digital certificate the same day, sent directly to you, your agent, and your tenant.`,
+      `If you rent out a property${local(a)}, a valid CP12 gas safety certificate isn't optional — it's the law. Every gas appliance, flue, and gas fitting must be inspected by a Gas Safe registered engineer at least every 12 months. We carry out thorough inspections and issue your digital certificate the same day, sent directly to you, your agent, and your tenant. All our engineers are Gas Safe registered and WRAS approved.`,
     bullets: [
       "All gas appliances tested: boiler, hob, gas fire, cooker, and any other gas fittings",
       "Flue flow, combustion readings, and gas pressure all checked and recorded",
@@ -228,7 +228,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "How much does a CP12 cost?",
-        a: "From £60 for a single-appliance property. Properties with a boiler, hob, and gas fire start from £75. Portfolio rates apply for 5+ properties — call for a quote.",
+        a: "From £120 per property. Portfolio rates available for 5+ properties — call us for a quote. Combining the CP12 with an annual boiler service saves on the combined visit cost.",
       },
       {
         q: "How quickly will I get the certificate?",
@@ -813,19 +813,19 @@ export const PRICING = [
   },
   {
     name: "Landlord CP12",
-    price: "£60",
+    price: "£120",
     unit: "per certificate",
     features: [
-      "Single-appliance properties from £60",
-      "Boiler + hob + fire from £75",
-      "Digital copy issued same day",
-      "Free renewal reminder service",
-      "Agency direct invoicing",
+      "Gas Safe registered engineer",
+      "All appliances: boiler, hob, gas fire",
+      "Digital CP12 issued same day",
+      "Sent to landlord, agent and tenant",
+      "Free 30-day renewal reminder",
     ],
   },
   {
     name: "Landlord Bundle",
-    price: "£120",
+    price: "£200",
     unit: "CP12 + boiler service",
     popular: false,
     badge: "Best Value",
@@ -834,7 +834,7 @@ export const PRICING = [
       "Full manufacturer-spec boiler service",
       "Priority emergency response for tenants",
       "Single invoice to agent or landlord",
-      "Saves ~£80 vs booking separately",
+      "Saves vs booking separately",
     ],
   },
   {
@@ -1028,6 +1028,9 @@ export const REVIEWS = [
   },
 ];
 
+// Service radius: 1 hour from Rugby base (CV21-23)
+// Services: Rugby, Coventry, Warwick (within ~30min), Leicester, Northampton, Corby, Banbury (~1hr)
+// Installations extend to 2 hours around Rugby
 export const AREAS: Area[] = [
   {
     slug: "rugby",
@@ -1036,119 +1039,134 @@ export const AREAS: Area[] = [
     postcodes: ["CV21", "CV22", "CV23"],
     landmarks: ["Rugby town centre", "Bilton", "Hillmorton", "Cawston", "Brownsover", "Newbold"],
     blurb:
-      "Our home town. We know Rugby inside out — from Bilton to Hillmorton, Cawston to Brownsover. Same-day emergencies when you need us.",
+      "Our home town. Based in Rugby, we cover every postcode — CV21, CV22 and CV23. Same-day emergencies, usually within the hour.",
     referralNote:
-      "Based here, we usually reach you within an hour for emergencies across all Rugby postcodes.",
+      "Based here, we reach you fastest. All services available including installations.",
     geo: { lat: 52.3704, lng: -1.2658 },
     radiusKm: 12,
-    serviceTier: "both",
-  },
-  {
-    slug: "leamington-spa",
-    name: "Leamington Spa",
-    county: "Warwickshire",
-    postcodes: ["CV31", "CV32", "CV33"],
-    landmarks: ["Leamington town centre", "Lillington", "Whitnash", "Sydenham", "Milverton"],
-    blurb:
-      "Regency homes, Victorian terraces, new-builds — we work across all of Leamington Spa.",
-    referralNote:
-      "From Lillington's Victorian terraces to Whitnash's new estates, we know what works in every property type here.",
-    geo: { lat: 52.2852, lng: -1.52 },
-    radiusKm: 10,
-    serviceTier: "both",
-  },
-  {
-    slug: "warwick",
-    name: "Warwick",
-    county: "Warwickshire",
-    postcodes: ["CV34", "CV35"],
-    landmarks: ["Warwick town centre", "Woodloes Park", "Chase Meadow", "Hatton", "Barford"],
-    blurb:
-      "Boiler engineers across Warwick — Woodloes Park, Chase Meadow, and Hatton. Quick fixes, new installs, CP12s.",
-    referralNote:
-      "Warwick's got everything from period homes to modern builds — we've fitted combi boilers, repaired old gas fires, and serviced everything in between.",
-    geo: { lat: 52.2823, lng: -1.5849 },
-    radiusKm: 10,
-    serviceTier: "both",
-  },
-  {
-    slug: "kenilworth",
-    name: "Kenilworth",
-    county: "Warwickshire",
-    postcodes: ["CV8"],
-    landmarks: ["Kenilworth town centre", "Burton Green", "Balsall Common", "Berkswell"],
-    blurb: "Local engineers serving Kenilworth, Burton Green and the surrounding villages.",
-    referralNote:
-      "Kenilworth's larger homes and system boilers are our bread and butter — we handle them all.",
-    geo: { lat: 52.347, lng: -1.571 },
-    radiusKm: 10,
-    serviceTier: "both",
-  },
-  {
-    slug: "stratford-upon-avon",
-    name: "Stratford-upon-Avon",
-    county: "Warwickshire",
-    postcodes: ["CV37"],
-    landmarks: ["Stratford town centre", "Shottery", "Bishopton", "Tiddington", "Welford-on-Avon"],
-    blurb:
-      "Boiler installs, repairs, plumbing and CP12s across Stratford and the surrounding villages.",
-    referralNote:
-      "We help holiday let managers and landlords stay compliant — annual CP12s, quick fixes, and emergency cover when guests need warmth.",
-    geo: { lat: 52.1917, lng: -1.7083 },
-    radiusKm: 14,
     serviceTier: "both",
   },
   {
     slug: "coventry",
     name: "Coventry",
     county: "West Midlands",
-    postcodes: ["CV1", "CV2", "CV3", "CV4", "CV5", "CV6"],
+    postcodes: ["CV1", "CV2", "CV3", "CV4", "CV5", "CV6", "CV7", "CV8"],
     landmarks: ["Coventry city centre", "Earlsdon", "Cheylesmore", "Tile Hill", "Stoke", "Binley"],
     blurb:
-      "Boiler repair, installs and emergency cover across Coventry — same-day response where possible.",
+      "Boiler repairs, servicing and emergency cover across Coventry. Approximately 30 minutes from our Rugby base — same-day response where possible.",
     referralNote:
-      "Coventry's got plenty of rental properties — we do dozens of landlord CP12 checks and portfolio packages every month. Quick turnaround, digital certificates same day.",
+      "Coventry landlords rely on us for CP12s across portfolios. Quick turnaround, digital certificates same day.",
     geo: { lat: 52.4068, lng: -1.5197 },
     radiusKm: 12,
     serviceTier: "both",
   },
   {
-    slug: "nuneaton",
-    name: "Nuneaton",
+    slug: "warwick",
+    name: "Warwick",
     county: "Warwickshire",
-    postcodes: ["CV10", "CV11"],
-    landmarks: ["Nuneaton town centre", "Whitestone", "Weddington", "Galley Common"],
-    blurb: "Boiler repair, servicing and installations across Nuneaton and Weddington.",
+    postcodes: ["CV34", "CV35", "CV36", "CV37"],
+    landmarks: ["Warwick town centre", "Woodloes Park", "Chase Meadow", "Hatton", "Barford"],
+    blurb:
+      "Boiler engineers covering Warwick and surrounding villages — repairs, servicing, installations and CP12 certificates.",
     referralNote:
-      "We know Nuneaton's housing stock well — ex-council properties, older homes, new builds. Fair prices, practical heating work that lasts.",
-    geo: { lat: 52.523, lng: -1.4659 },
+      "Everything from period homes to modern builds — we've fitted combis, repaired old gas fires and serviced it all.",
+    geo: { lat: 52.2823, lng: -1.5849 },
     radiusKm: 10,
     serviceTier: "both",
   },
   {
-    slug: "bedworth",
-    name: "Bedworth",
-    county: "Warwickshire",
-    postcodes: ["CV12"],
-    landmarks: ["Bedworth town centre", "Bulkington", "Exhall", "Ash Green"],
-    blurb: "Local boiler installs, services and emergency callouts across Bedworth and Bulkington.",
+    slug: "leicester",
+    name: "Leicester",
+    county: "Leicestershire",
+    postcodes: ["LE1", "LE2", "LE3", "LE4", "LE5"],
+    landmarks: ["Leicester city centre", "Narborough", "Braunstone", "Oadby", "Wigston", "Glenfield"],
+    blurb:
+      "Boiler installs, repairs and emergency cover across Leicester — approximately 1 hour from Rugby.",
     referralNote:
-      "Bedworth's compact geography means we're usually on-site quickly — a bonus when you have a heating emergency.",
-    geo: { lat: 52.479, lng: -1.472 },
-    radiusKm: 8,
+      "Victorian terraces and new estates — we've worked across every neighbourhood. Installations available.",
+    geo: { lat: 52.6369, lng: -1.1398 },
+    radiusKm: 15,
     serviceTier: "both",
   },
   {
-    slug: "southam",
-    name: "Southam",
-    county: "Warwickshire",
-    postcodes: ["CV47"],
-    landmarks: ["Southam town centre", "Long Itchington", "Napton-on-the-Hill", "Stockton"],
-    blurb: "Boiler repairs, servicing and new installs across Southam and the villages around it.",
+    slug: "northampton",
+    name: "Northampton",
+    county: "Northamptonshire",
+    postcodes: ["NN1", "NN2", "NN3", "NN4", "NN5"],
+    landmarks: ["Northampton town centre", "Kingsthorpe", "Duston", "Abington", "Upton"],
+    blurb:
+      "Boiler installs, repairs and CP12s across Northampton — within approximately 1 hour from Rugby.",
     referralNote:
-      "Rural Southam's got plenty of older homes and oil-to-gas conversions. We're comfortable with the full spectrum — from traditional systems to modern combis.",
-    geo: { lat: 52.2493, lng: -1.3899 },
+      "Victorian terraces and modern builds. Whatever your heating setup, we've worked on it.",
+    geo: { lat: 52.2411, lng: -0.8812 },
+    radiusKm: 14,
+    serviceTier: "both",
+  },
+  {
+    slug: "corby",
+    name: "Corby",
+    county: "Northamptonshire",
+    postcodes: ["NN17", "NN18"],
+    landmarks: ["Corby town centre", "Kettering", "Desborough", "East Carlton", "Welland", "Rockingham"],
+    blurb:
+      "Boiler repairs, servicing and installations across Corby and North Northamptonshire.",
+    referralNote:
+      "Corby's older homes and new builds — residential heating work across the area.",
+    geo: { lat: 52.4907, lng: -0.7498 },
+    radiusKm: 13,
+    serviceTier: "both",
+  },
+  {
+    slug: "banbury",
+    name: "Banbury",
+    county: "Oxfordshire",
+    postcodes: ["OX15", "OX16", "OX17"],
+    landmarks: ["Banbury town centre", "Deddington", "Adderbury", "Wroxton", "Bloxham"],
+    blurb:
+      "Boiler engineers across Banbury and North Oxfordshire — installs, repairs and emergency cover.",
+    referralNote:
+      "Banbury's historic market town and surrounding stone cottages — period properties are our speciality.",
+    geo: { lat: 52.0598, lng: -1.3381 },
+    radiusKm: 13,
+    serviceTier: "both",
+  },
+  {
+    slug: "atherstone",
+    name: "Atherstone",
+    county: "Warwickshire",
+    postcodes: ["CV9"],
+    landmarks: ["Atherstone town centre", "Mancetter", "Hartshill", "Polesworth"],
+    blurb: "Boiler engineers, plumbing and CP12 certificates across Atherstone and Mancetter.",
+    referralNote:
+      "North Warwickshire villages — reliable service across Atherstone, Hartshill, and Polesworth.",
+    geo: { lat: 52.579, lng: -1.547 },
     radiusKm: 10,
+    serviceTier: "both",
+  },
+  {
+    slug: "alcester",
+    name: "Alcester",
+    county: "Warwickshire",
+    postcodes: ["B49"],
+    landmarks: ["Alcester town centre", "Kinwarton", "Arrow", "Great Alne"],
+    blurb: "Trusted boiler engineers serving Alcester and the Arden villages.",
+    referralNote:
+      "The Arden villages around Alcester — comfortable with period cottages and modern new-builds.",
+    geo: { lat: 52.215, lng: -1.869 },
+    radiusKm: 10,
+    serviceTier: "both",
+  },
+  {
+    slug: "shipston-on-stour",
+    name: "Shipston-on-Stour",
+    county: "Warwickshire",
+    postcodes: ["CV36"],
+    landmarks: ["Shipston town centre", "Tredington", "Long Compton", "Ilmington"],
+    blurb: "Boiler installs, repairs and emergency cover across Shipston and south Warwickshire villages.",
+    referralNote:
+      "South Warwickshire — we cover it fully. A little further from Rugby, but committed to reaching every corner.",
+    geo: { lat: 52.0625, lng: -1.6258 },
+    radiusKm: 12,
     serviceTier: "both",
   },
   {

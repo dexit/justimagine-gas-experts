@@ -34,7 +34,10 @@ import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serv
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as HeatingInAreaSlugRouteImport } from './routes/heating-in.$areaSlug'
 import { Route as GasBoilerInAreaSlugRouteImport } from './routes/gas-boiler-in.$areaSlug'
+import { Route as ConfirmationRefIdRouteImport } from './routes/confirmation.$refId'
 import { Route as AreasAreaSlugRouteImport } from './routes/areas.$areaSlug'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as ServicesServiceSlugAreaSlugRouteImport } from './routes/services.$serviceSlug.$areaSlug'
 
 const WorkRoute = WorkRouteImport.update({
@@ -162,9 +165,24 @@ const GasBoilerInAreaSlugRoute = GasBoilerInAreaSlugRouteImport.update({
   path: '/gas-boiler-in/$areaSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConfirmationRefIdRoute = ConfirmationRefIdRouteImport.update({
+  id: '/confirmation/$refId',
+  path: '/confirmation/$refId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AreasAreaSlugRoute = AreasAreaSlugRouteImport.update({
   id: '/areas/$areaSlug',
   path: '/areas/$areaSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesServiceSlugAreaSlugRoute =
@@ -195,7 +213,10 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -224,7 +245,10 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -254,7 +278,10 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/work': typeof WorkRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
   '/areas/$areaSlug': typeof AreasAreaSlugRoute
+  '/confirmation/$refId': typeof ConfirmationRefIdRoute
   '/gas-boiler-in/$areaSlug': typeof GasBoilerInAreaSlugRoute
   '/heating-in/$areaSlug': typeof HeatingInAreaSlugRoute
   '/news/$slug': typeof NewsSlugRoute
@@ -285,7 +312,10 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-trust-us'
     | '/work'
+    | '/admin/dashboard'
+    | '/admin/login'
     | '/areas/$areaSlug'
+    | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
@@ -314,7 +344,10 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-trust-us'
     | '/work'
+    | '/admin/dashboard'
+    | '/admin/login'
     | '/areas/$areaSlug'
+    | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
@@ -343,7 +376,10 @@ export interface FileRouteTypes {
     | '/terms'
     | '/why-trust-us'
     | '/work'
+    | '/admin/dashboard'
+    | '/admin/login'
     | '/areas/$areaSlug'
+    | '/confirmation/$refId'
     | '/gas-boiler-in/$areaSlug'
     | '/heating-in/$areaSlug'
     | '/news/$slug'
@@ -373,7 +409,10 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
   WorkRoute: typeof WorkRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   AreasAreaSlugRoute: typeof AreasAreaSlugRoute
+  ConfirmationRefIdRoute: typeof ConfirmationRefIdRoute
   GasBoilerInAreaSlugRoute: typeof GasBoilerInAreaSlugRoute
   HeatingInAreaSlugRoute: typeof HeatingInAreaSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
@@ -556,11 +595,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GasBoilerInAreaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/confirmation/$refId': {
+      id: '/confirmation/$refId'
+      path: '/confirmation/$refId'
+      fullPath: '/confirmation/$refId'
+      preLoaderRoute: typeof ConfirmationRefIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/areas/$areaSlug': {
       id: '/areas/$areaSlug'
       path: '/areas/$areaSlug'
       fullPath: '/areas/$areaSlug'
       preLoaderRoute: typeof AreasAreaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/$serviceSlug/$areaSlug': {
@@ -627,7 +687,10 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
   WorkRoute: WorkRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminLoginRoute: AdminLoginRoute,
   AreasAreaSlugRoute: AreasAreaSlugRoute,
+  ConfirmationRefIdRoute: ConfirmationRefIdRoute,
   GasBoilerInAreaSlugRoute: GasBoilerInAreaSlugRoute,
   HeatingInAreaSlugRoute: HeatingInAreaSlugRoute,
   AreasIndexRoute: AreasIndexRoute,

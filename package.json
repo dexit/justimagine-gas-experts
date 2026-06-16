@@ -10,7 +10,10 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "generate:sitemap": "bun generate-sitemap.ts"
+    "generate:sitemap": "bun generate-sitemap.ts",
+    "setup": "npx tsx scripts/setup-integrations.ts",
+    "migrate:d1": "npx tsx scripts/migrate-d1.ts",
+    "sync:data": "npx tsx scripts/sync-data.ts"
   },
   "resolutions": {
     "file-type": "16.5.4",

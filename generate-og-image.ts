@@ -44,8 +44,10 @@ async function createOGImage() {
 
     console.log("✓ OG image generated");
   } catch (error) {
-    console.error("Failed to generate OG image:", error);
+    console.warn(`[warn] OG image generation failed: ${error}`);
   }
 }
 
-createOGImage();
+createOGImage().catch((e) => {
+  console.warn(`[warn] Uncaught OG error: ${e}`);
+});

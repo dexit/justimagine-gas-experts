@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "bun generate-favicons.ts && bun optimize-images.ts && bun generate-og-image.ts && vite build && bun generate-sitemap.ts",
+    "build": "npx tsx generate-favicons.ts && npx tsx optimize-images.ts && npx tsx generate-og-image.ts && vite build && npx tsx generate-sitemap.ts",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -104,6 +104,7 @@
     "imagemin-webp": "^8.0.0",
     "prettier": "^3.7.3",
     "sharp": "^0.34.5",
+    "tsx": "^4.22.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1"

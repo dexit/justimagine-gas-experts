@@ -30,6 +30,12 @@ export interface Service {
   metaDesc: (area?: string) => string;
   intro: (area?: string) => string;
   bullets: string[];
+  /** Common problems / symptoms shown as visual cards */
+  problems?: { name: string; cause: string; fix: string }[];
+  /** Numbered how-we-work steps */
+  process?: { step: string; desc: string }[];
+  /** Index into REVIEWS array for the on-page testimonial */
+  reviewIndex?: number;
   faqs: { q: string; a: string }[];
   priceFrom?: string;
   priceUnit?: string;
@@ -62,6 +68,16 @@ export const SERVICES: Service[] = [
       "Old boiler stripped out, removed and disposed of responsibly",
       "Gas Safe certificate and Building Regulations notification issued on completion",
       "0% finance available on selected boilers — ask during your survey",
+    ],
+    reviewIndex: 0,
+    process: [
+      { step: "Free home survey", desc: "We visit at a time that suits you, assess your property and existing system, and answer every question. No obligation, no pressure." },
+      { step: "Fixed written quote", desc: "You get a detailed, itemised quote within 24 hours. The figure on the quote is the figure on the invoice — nothing changes on the day." },
+      { step: "Installation day", desc: "Old boiler stripped out, new boiler fitted, all pipe connections made and pressure-tested for leaks before we go further." },
+      { step: "System flush & filter", desc: "Chemical system flush and magnetic filter fitted as standard. Required by Worcester, Vaillant, and Ideal to activate their warranty." },
+      { step: "Commissioning", desc: "Boiler lit, pressurised, and run through all modes. Smart thermostat installed and connected. We don't leave until everything works." },
+      { step: "Gas Safe certificate", desc: "Issued on the day. Building Regulations notification filed automatically — no separate council visit required." },
+      { step: "Warranty registered", desc: "We register the manufacturer warranty directly so you don't have to chase it. Confirmation sent to you by email." },
     ],
     faqs: [
       {
@@ -111,6 +127,24 @@ export const SERVICES: Service[] = [
       "Fixed repair price agreed in writing before any parts are fitted",
       "12-month workmanship and parts warranty on all repairs",
       "Honest advice — we'll tell you if replacing makes more sense than repairing",
+    ],
+    reviewIndex: 10,
+    problems: [
+      { name: "No heating or hot water", cause: "Faulty diverter valve, failed pump, or ignition component not firing", fix: "Full diagnostic with brand-specific tools. Failed component replaced. Most resolved same visit." },
+      { name: "Low boiler pressure", cause: "System leak, discharged pressure relief valve, or air in the system", fix: "Source located, repaired, and system correctly repressurised — not just topped up." },
+      { name: "Kettling or banging noises", cause: "Limescale or magnetite sludge built up on the heat exchanger", fix: "Descale or power flush depending on severity. Heat exchanger replaced if irreparably damaged." },
+      { name: "Boiler keeps switching off", cause: "Low pressure, pump failure, overheating from blocked heat exchanger, or faulty thermostat", fix: "Root cause diagnosed and fixed — not just reset and hoped for the best." },
+      { name: "Leaking from the casing", cause: "Pressure relief valve discharge, pump seal failure, or cracked heat exchanger", fix: "Severity assessed honestly. Minor leaks are seal or valve replacements. Major leaks get an honest repair vs replace opinion." },
+      { name: "Frozen condensate pipe", cause: "External condensate pipe freezes in low temperatures and causes boiler lockout", fix: "Safely thawed, pipe lagged to prevent recurrence. Usually resolved within the hour." },
+    ],
+    process: [
+      { step: "Same-day booking", desc: "Call before noon and we aim to attend the same afternoon. We give you a realistic arrival window — not a vague 'sometime today'." },
+      { step: "Full diagnostic", desc: "Root cause identified using brand-specific diagnostic tools. We look past the fault code to find what actually failed." },
+      { step: "Honest assessment", desc: "We explain what failed and why, and give you a clear picture of repair versus replace options before you commit to anything." },
+      { step: "Fixed price agreed", desc: "You approve the repair price in writing before any parts are ordered or fitted. No surprises on the invoice." },
+      { step: "Repair completed", desc: "We carry genuine OEM parts for the most common failures. Most jobs are fixed on the first visit." },
+      { step: "System test", desc: "Full operational test before we leave. Boiler run through all modes, pressures checked, everything confirmed working." },
+      { step: "12-month guarantee", desc: "All parts and labour carry a 12-month written guarantee. If it fails again within a year, we come back at no cost." },
     ],
     faqs: [
       {
@@ -180,6 +214,18 @@ export const SERVICES: Service[] = [
       "Service report and appliance label issued same day",
       "Free 12-month reminder — we contact you when it's due",
     ],
+    reviewIndex: 7,
+    process: [
+      { step: "Visual inspection", desc: "Casing, flue terminal, pipework, and condensate drain checked for condition, leaks, and compliance." },
+      { step: "Casing removal", desc: "Boiler opened and every internal component visually inspected for wear, corrosion, or damage." },
+      { step: "Cleaning", desc: "Burner, electrodes, and heat exchanger cleaned. Condensate trap cleared and refilled. Any debris removed." },
+      { step: "Combustion analysis", desc: "Calibrated flue gas analyser records CO/CO₂ levels and combustion efficiency. Readings compared against manufacturer benchmarks." },
+      { step: "Pressure & gas rate check", desc: "Gas inlet pressure and working pressure tested and recorded. Gas rate verified against manufacturer specification." },
+      { step: "Operational testing", desc: "Thermostats, controls, pressure relief valve, expansion vessel, and circulating pump all tested for correct operation." },
+      { step: "System controls verified", desc: "Boiler response to manual and smart controls (Hive, Nest) confirmed. Settings checked and corrected if needed." },
+      { step: "Service report issued", desc: "Full written report with all readings. Service label fixed to the appliance. Digital copy emailed same day." },
+      { step: "Gas Safety Certificate", desc: "CP12 issued same day if required. Recommended for landlords. Available for homeowners on request." },
+    ],
     faqs: [
       {
         q: "How often should a boiler be serviced?",
@@ -239,6 +285,15 @@ export const SERVICES: Service[] = [
       "Portfolio discounts available for 5+ properties",
       "Free 30-day renewal reminder — your certificate never lapses",
     ],
+    reviewIndex: 9,
+    process: [
+      { step: "Book your inspection", desc: "Choose a convenient time. We work around tenants and coordinate access with letting agents directly." },
+      { step: "Appliance testing", desc: "Every gas appliance, flue, and fitting tested to current Gas Safe standards. Nothing skipped, nothing assumed." },
+      { step: "Gas pressure checks", desc: "Inlet pressure, working pressure, and tightness test all recorded and compared against safe operating limits." },
+      { step: "Unsafe appliance procedure", desc: "At Risk or Immediately Dangerous items classified, documented, and actioned. Immediately Dangerous appliances isolated on-site." },
+      { step: "Digital certificate issued", desc: "CP12 emailed to landlord, agent, and tenant simultaneously the moment the inspection is complete." },
+      { step: "Renewal reminder set", desc: "We remind you 30 days before your certificate expires so you're never in breach of your legal obligations." },
+    ],
     faqs: [
       {
         q: "Is a gas safety certificate a legal requirement for landlords?",
@@ -297,6 +352,15 @@ export const SERVICES: Service[] = [
       "Multi-property discounts for 5+ and 10+ properties",
       "Full HMRC-compliant documentation for your records",
     ],
+    reviewIndex: 5,
+    process: [
+      { step: "Portfolio assessment", desc: "We review your properties, agree a schedule, and set up direct billing with your letting agent." },
+      { step: "Annual inspection visit", desc: "CP12 gas safety check and full boiler service completed in a single visit per property. One slot, both certificates." },
+      { step: "Tenant coordination", desc: "We contact tenants directly to schedule access. You don't need to be involved unless there's a problem." },
+      { step: "Same-day certificates", desc: "Digital CP12 and service report issued to landlord, agent, and tenant simultaneously. No chasing paperwork." },
+      { step: "Emergency cover active", desc: "From day one, tenants can call us directly for heating emergencies. Billed at the agreed package rate." },
+      { step: "Renewals managed", desc: "We track every certificate and send renewal notices before anything lapses. Your compliance is never at risk." },
+    ],
     faqs: [
       {
         q: "What's included in the landlord package?",
@@ -341,6 +405,16 @@ export const SERVICES: Service[] = [
       "Underfloor heating connection and commissioning",
       "Magnetic filter installation and corrosion inhibitor dosing",
       "System pressure optimisation and radiator bleeding",
+    ],
+    reviewIndex: 8,
+    process: [
+      { step: "Diagnosis", desc: "We identify the actual cause — imbalanced flow, sludge, undersized radiators, or ageing pipework. We don't guess." },
+      { step: "Written quote", desc: "Detailed, itemised quote for all work. Fixed price from approval to invoice — nothing changes in the middle of the job." },
+      { step: "Installation or repair", desc: "Radiators fitted or replaced, pipework run, TRVs fitted, and system reconnected. Work done right first time." },
+      { step: "System flush & inhibitor", desc: "System flushed clean and correctly dosed with corrosion inhibitor to protect all components." },
+      { step: "Balancing", desc: "Flow rates adjusted at every radiator so heat distributes evenly. No more scorching living room and freezing bedroom." },
+      { step: "Smart controls commissioned", desc: "Hive, Nest, or Honeywell thermostat installed, zones configured, and app connected before we leave." },
+      { step: "Pressure test & sign-off", desc: "All connections pressure-tested, system run to temperature, and full commissioning check completed." },
     ],
     faqs: [
       {
@@ -399,6 +473,15 @@ export const SERVICES: Service[] = [
       "Bathroom and kitchen fixture installation",
       "Washing machine and dishwasher plumbing connections",
       "Mains water pressure checks and pressure limiting valve fitting",
+    ],
+    reviewIndex: 11,
+    process: [
+      { step: "Call or book", desc: "Describe the problem and we'll confirm whether it needs same-day attendance or a scheduled visit. No unnecessary callouts." },
+      { step: "Engineer visit", desc: "Arrive within the agreed window. We assess the full scope before touching anything — no charging ahead." },
+      { step: "Diagnosis & fixed quote", desc: "Cause identified, repair price agreed in writing. You approve before we proceed. No surprises." },
+      { step: "Repair completed", desc: "Quality parts used throughout. Floors and surfaces protected. We work cleanly from start to finish." },
+      { step: "Test & verify", desc: "All repairs pressure-tested and flow-checked. We don't consider the job done until everything performs correctly." },
+      { step: "Clean up & go", desc: "Work area left clean. No mess, no debris, no damage to surrounding surfaces. Just done properly." },
     ],
     faqs: [
       {
@@ -460,6 +543,24 @@ export const SERVICES: Service[] = [
       "Before-and-after thermal readings taken and documented",
       "Written flush report and certificate issued — required by most boiler warranties",
     ],
+    reviewIndex: 6,
+    problems: [
+      { name: "Cold spots at the bottom of radiators", cause: "Magnetite sludge settles in the lower part of the radiator, blocking water flow", fix: "Power flush breaks up and removes the sludge so heat reaches every part of the radiator." },
+      { name: "Black or brown water when bleeding", cause: "Corroded iron particles (magnetite) circulating freely through the system", fix: "Indicates significant contamination. Power flush with magnetic filtration removes the debris completely." },
+      { name: "Boiler making rumbling or banging", cause: "Sludge deposits on the heat exchanger cause localised boiling (kettling)", fix: "Power flush reduces the load on the heat exchanger and quietens the boiler." },
+      { name: "Slow or uneven heat-up times", cause: "Restricted flow through pipework from sludge and scale build-up", fix: "After the flush, full circulation is restored and heat-up times improve significantly." },
+    ],
+    process: [
+      { step: "System assessment", desc: "We test flow rates and check radiator temperatures to confirm a power flush is the right solution — we won't recommend it if it isn't needed." },
+      { step: "Machine connection", desc: "Professional powerflush machine connected to the system at the boiler return." },
+      { step: "Chemical circulation", desc: "Cleaning agents pumped through every pipe run at high velocity to break up sludge and corrosion deposits." },
+      { step: "Radiator-by-radiator flush", desc: "Each radiator isolated, flushed, and tested individually until the water runs completely clear." },
+      { step: "Magnetic filter fitted", desc: "Neodymium magnetic filter installed at the boiler return to catch any remaining particles and protect the boiler long-term." },
+      { step: "Drain, rinse & refill", desc: "System fully drained, clean-rinsed, and refilled with fresh treated water." },
+      { step: "Inhibitor dosed", desc: "Correct concentration of corrosion inhibitor added and recorded. This prevents future sludge build-up." },
+      { step: "Before & after readings", desc: "Thermal readings confirm restored heat output across all radiators. You can see the difference immediately." },
+      { step: "Flush certificate issued", desc: "Written report and powerflush certificate provided — required by Worcester, Vaillant, and Ideal for warranty compliance." },
+    ],
     faqs: [
       {
         q: "How do I know if I need a power flush?",
@@ -519,6 +620,23 @@ export const SERVICES: Service[] = [
       "Frozen condensate pipe — thaw and insulate to prevent recurrence",
       "Out-of-hours rate agreed with you before we attend — no shock invoices",
       "Direct engineer line — you speak to the person coming to you",
+    ],
+    reviewIndex: 1,
+    problems: [
+      { name: "No heating or hot water", cause: "Boiler lockout, pressure failure, or component fault", fix: "Same-day diagnosis and repair. We prioritise no-heat callouts in cold weather — especially for vulnerable households." },
+      { name: "Gas smell", cause: "Gas leak from pipework, appliance connection, or faulty gas valve", fix: "Leave the property and call 0800 111 999 first. Once declared safe, we attend to locate and repair the leak." },
+      { name: "Boiler flooding", cause: "Pressure relief valve discharge, pump seal failure, or cracked heat exchanger", fix: "Leak isolated immediately. Source diagnosed, repair quoted, and carried out same visit where possible." },
+      { name: "CO alarm activation", cause: "Incomplete combustion — often a cracked heat exchanger or flue fault", fix: "Urgent attendance. Appliance isolated if unsafe. Full Gas Safe documentation issued." },
+      { name: "Burst or leaking pipe", cause: "Frost damage, corrosion, or joint failure", fix: "Water supply isolated, pipe repaired or replaced. We move fast to minimise water damage." },
+    ],
+    process: [
+      { step: "Call us directly", desc: "You speak to an engineer, not a call centre. Describe the problem and we advise immediately — including whether to call 0800 111 999 first for gas concerns." },
+      { step: "ETA confirmed", desc: "Honest arrival window given based on current workload. No vague 'sometime today' — you know when we're coming." },
+      { step: "Safety first", desc: "Gas concerns made safe before any diagnosis. We follow Gas Safe safe isolation procedures without exception." },
+      { step: "Full diagnosis", desc: "Root cause identified and explained clearly. We show you what failed and why before quoting anything." },
+      { step: "Fixed price agreed", desc: "Repair price confirmed before work starts. Out-of-hours rate already agreed on the call — no shock invoices." },
+      { step: "Repair completed", desc: "Most faults fixed on the first visit. Genuine parts carried in the van for common emergency failures." },
+      { step: "Gas Safe documentation", desc: "Safety certificate issued where required. Full written record of the visit provided to you." },
     ],
     faqs: [
       {

@@ -3,6 +3,7 @@ import { PageShell } from "@/components/PageShell";
 import { SERVICES, getService, AREAS, getArea, BUSINESS } from "@/data/seo";
 import { breadcrumbJsonLd, faqJsonLd, jsonLdScript, serviceJsonLd } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { OptimizedImage } from "@/components/OptimizedImage";
 import { Certifications } from "@/components/Certifications";
 import { RelatedContent } from "@/components/RelatedContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -104,11 +105,19 @@ function ServiceAreaPage() {
               </a>
             </div>
           </div>
-          <picture className="hidden lg:block">
-            <source media="(max-width: 640px)" srcSet={heroImgSm.src} />
-            <source media="(max-width: 1024px)" srcSet={heroImgMd.src} />
-            <img src={heroImg.src} alt={svc.name} className="w-full rounded-lg" />
-          </picture>
+          <div className="hidden lg:block">
+            <OptimizedImage
+              src={heroImg.src}
+              srcSm={heroImgSm.src}
+              srcMd={heroImgMd.src}
+              alt={`${svc.name} engineer at work`}
+              width={1600}
+              height={1067}
+              lazy={false}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full rounded-lg"
+            />
+          </div>
         </div>
       </section>
 

@@ -1121,7 +1121,8 @@ export const REVIEWS = [
 // Service radius: 1 hour from Rugby base (CV21-23)
 // Services: Rugby, Coventry, Warwick (within ~30min), Leicester, Northampton, Corby, Banbury (~1hr)
 // Installations extend to 2 hours around Rugby
-export const AREAS: Area[] = [
+export const AREAS: Area[] = Array.from(
+  new Map(([
   {
     slug: "rugby",
     name: "Rugby",
@@ -1350,7 +1351,7 @@ export const AREAS: Area[] = [
     radiusKm: 13,
     serviceTier: "both",
   },
-];
+]).map((area) => [area.slug, area] as const)).values());
 
 export const BUSINESS = {
   name: "Just Imagine Ltd",

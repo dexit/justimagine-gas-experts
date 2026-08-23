@@ -10,7 +10,6 @@ import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { maskUkPhone, maskPostcode, formatDateInput, formatTimeInput, isValidUkPostcode } from "@/lib/input-masks";
 import { lookupPostcode, createPostcodeLookupDebounced } from "@/lib/postcode-lookup";
-import { PaymentOptionsModal } from "@/components/PaymentOptionsModal";
 
 /* ------------ Validation schema (mirrors server-side) ------------ */
 const ukPhone = /^(?:(?:\+44\s?|0)(?:\d\s?){9,10})$/;
@@ -64,14 +63,6 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
   const navigate = useNavigate();
   const [done, setDone] = useState(false);
   const [lookupLoading, setLookupLoading] = useState(false);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [enquiryRefId, setEnquiryRefId] = useState<string | null>(null);
-  const [enquiryData, setEnquiryData] = useState<{
-    serviceName: string;
-    totalPounds: number;
-    email: string;
-    name: string;
-  } | null>(null);
   
   // Initialize postcode lookup with debounce
   const [postcodeLookup] = useState(() => createPostcodeLookupDebounced(800));
@@ -149,15 +140,9 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
         },
       });
       if (res.ok) {
-        toast.success("Enquiry received — choose payment method.");
-        setEnquiryRefId(res.refId);
-        setEnquiryData({
-          name: values.name,
-          email: values.email ?? "",
-          serviceName: values.service ?? "Service",
-          totalPounds: 99, // TODO: get actual quote amount
-        });
-        setShowPaymentModal(true);
+        toast.success("Enquiry received — we’ll be in touch.");
+        setDone(true);
+        await navigate({ to: "/confirmation/$refId", params: { refId: res.refId } });
       } else {
         toast.error(res.error || "Could not send. Please call 07774 079152.");
       }
@@ -365,18 +350,6 @@ export function EnquiryForm({ defaultService = "", defaultArea = "", compact }: 
       </p>
     </form>
 
-    {showPaymentModal && enquiryRefId && enquiryData && (
-      <PaymentOptionsModal
-        refId={enquiryRefId}
-        serviceName={enquiryData.serviceName}
-        totalPounds={enquiryData.totalPounds}
-        email={enquiryData.email}
-        name={enquiryData.name}
-        onClose={() => {
-          setShowPaymentModal(false);
-        }}
-      />
-    )}
     </>
   );
 }
